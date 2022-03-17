@@ -1,25 +1,44 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using System;
+using Walking_Skeleton_LOUPE.Model;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+app.MapGet("/", (Func<string>)(() => "Hello World!"));
 
-app.UseAuthorization();
+app.MapGet("/employee", (Func<Employee>)(() =>
+{
+    return new Employee()
+    {
+        Name = "Youssef",
+        Citizenship = "Turks",
+        EmployeeId = "1"
+    };
+}));
 
-app.MapControllers();
+app.MapGet("/employees", (Func <List<Employee>>)(() =>
+    {
+        return new EmployeeCollection().GetEmployees();
+    }
+));
+
+app.MapGet("/employee/{id}", async (http) =>
+{
+    if(!http.Request.RouteValues.TryGetValue("id", out var id))
+    {
+        http.Response.StatusCode = 400;
+    }
+    else
+    {
+        await http.Response.WriteAsJsonAsync(new EmployeeCollection().GetEmployees().FirstOrDefault(x => x.EmployeeId == (string)id));
+    }
+});
 
 app.Run();

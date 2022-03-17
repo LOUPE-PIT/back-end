@@ -1,0 +1,27 @@
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\appsettings.json
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Walking Skeleton LOUPE.exe
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Walking Skeleton LOUPE.deps.json
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Walking Skeleton LOUPE.runtimeconfig.json
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Walking Skeleton LOUPE.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\ref\Walking Skeleton LOUPE.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Walking Skeleton LOUPE.pdb
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.csproj.AssemblyReference.cache
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.AssemblyInfoInputs.cache
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.AssemblyInfo.cs
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.csproj.CoreCompileInputs.cache
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\scopedcss\bundle\Walking Skeleton LOUPE.styles.css
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.csproj.CopyComplete
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\ref\Walking Skeleton LOUPE.dll
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.pdb
+C:\Users\Sem Kivits\Documents\GitHub\back-end\Walking Skeleton LOUPE\Walking Skeleton LOUPE\obj\Debug\net6.0\Walking Skeleton LOUPE.genruntimeconfig.cache
