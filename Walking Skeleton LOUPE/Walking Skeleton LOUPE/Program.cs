@@ -13,10 +13,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionstring = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
+builder.Services.AddScoped<IDataRepository, DataRepository>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionstring));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+app.UseSwaggerUI();
 
 if (args.Length == 1 && args[0].ToLower() == "seeddata")
     SeedData(app);
@@ -38,34 +43,26 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.MapGet("/", (Func<string>)(() => "Hello World!"));
-
-app.MapGet("/user", (Func<User>)(() =>
+app.UseSwagger(x => x.SerializeAsV2 = true);
+app.MapGet("/user/{id}", ([FromServices] IDataRepository db, string id) =>
 {
-    return new User()
-    {
-        Name = "Youssef",
-        Citizenship = "Turks",
-        UserId = "1"
-    };
-}));
+    return db.GetUserById(id);
+});
 
-app.MapGet("/users", ([FromServices] UserDbContext db) =>
+
+app.MapGet("/users", ([FromServices] IDataRepository db) =>
    {
-       return db.User.ToList();
+       return db.GetUsers();
    }
 );
 
-//app.MapGet("/users/{id}", async (http) =>
-//{
-//    if(!http.Request.RouteValues.TryGetValue("id", out var id))
-//    {
-//        http.Response.StatusCode = 400;
-//    }
-//    else
-//    {
-//        await http.Response.WriteAsJsonAsync(new EmployeeCollection().GetEmployees().FirstOrDefault(x => x.EmployeeId == (string)id));
-//    }
-//});
+app.MapPut("/user/{id}", ([FromServices] IDataRepository db, User user) =>
+{
+    return db.UpdateUser(user);
+});
 
+app.MapPost("/user", ([FromServices] IDataRepository db, User user) =>
+{
+    return db.AddUser(user);
+});
 app.Run();

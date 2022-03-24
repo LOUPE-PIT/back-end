@@ -4,7 +4,7 @@
     {
         public string UserId { get; set; }
         public string Name { get; set; }
-        public string Citizenship { get; set; }    
+        public string Citizenship { get; set; }
     }
 
     //public class EmployeeCollection
@@ -16,11 +16,11 @@
     //        return new List<Employee>()
     //        {
     //            new Employee()
-    //            {
-    //                Name = "Pieter",
-    //                Citizenship = "Italian",
-    //                EmployeeId = "2"
-    //            },
+                //{
+                //    Name = "Pieter",
+                //    Citizenship = "Italian",
+                //    EmployeeId = "2"
+                //},
     //            new Employee()
     //            {
     //                Name = "Jens",
