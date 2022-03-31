@@ -13,6 +13,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+
+
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
@@ -21,7 +24,7 @@ jobs:
     strategy:
       matrix:
         dotnet-version: ['6.0' ]
-
+    
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
@@ -30,8 +33,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln'
-        #run: dotnet restore "./Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln"
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --configuration Release --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln'
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln' #--verbosity normal
