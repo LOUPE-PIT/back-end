@@ -29,7 +29,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore "./Walking Skeleton LOUPE/*.sln"
+        run: dotnet restore "./Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln"
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Test
