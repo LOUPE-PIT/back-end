@@ -63,3 +63,4 @@ jobs:
     - name: Build the Docker image
       #run: docker build './Walking Skeleton LOUPE/Walking Skeleton LOUPE/Dockerfile' --file Dockerfile --tag my-image-name:$(date +%s)
       run: ls './Walking Skeleton LOUPE'
+      run: pwd
