@@ -63,7 +63,10 @@ jobs:
     - name: Build docker image
       run: docker build . --file './Walking Skeleton LOUPE/Walking Skeleton LOUPE/Dockerfile' --tag loupe_image:latest
     - name: docker login
-      run: docker login -u 418262 -p 3c4bc7b5-cb47-491b-a9b2-cbcd53fa5049
+      uses: docker/login-action@v1
+      with:
+        username: 418262
+        password: 1c50a7e7-6eb9-4070-bb54-a0ac960fd91f
     - name: tag image
       run: docker tag loupe_image:latest 418262/loupe_back-end
     - name: push image
