@@ -42,6 +42,7 @@ jobs:
     strategy:
       matrix:
         dotnet-version: ['6.0' ]
+        
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
@@ -50,7 +51,6 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore "./Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln"
-      - name: Test
       - name: Test
         run: dotnet test --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln' #--verbosity normal
         
