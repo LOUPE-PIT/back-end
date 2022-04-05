@@ -65,8 +65,8 @@ jobs:
     - name: docker login
       uses: docker/login-action@v1
       with:
-        username: '418262'
-        password: 'ba3d316d-d0f5-47ae-8bd0-c321d0223c64'
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_ACCTOKEN }}
     - name: tag image
       run: docker tag loupe_image:latest 418262/loupe_back-end
     - name: push image
