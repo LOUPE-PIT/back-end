@@ -14,7 +14,7 @@ COPY ["Walking Skeleton LOUPE/Walking Skeleton LOUPE/Walking Skeleton LOUPE.cspr
 RUN dotnet restore "Walking Skeleton LOUPE/Walking Skeleton LOUPE.csproj"
 COPY . .
 WORKDIR "/src/Walking Skeleton LOUPE"
-RUN dotnet build "Walking Skeleton LOUPE.csproj" -c Release -o /app
+RUN dotnet build "*.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Walking Skeleton LOUPE.csproj" -c Release -o /app/publish
