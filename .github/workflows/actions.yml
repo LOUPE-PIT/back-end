@@ -60,5 +60,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: get root
+    - name: Build docker image
       run: docker build . --file './Walking Skeleton LOUPE/Walking Skeleton LOUPE/Dockerfile' --tag my-image-name:$(date +%s)
