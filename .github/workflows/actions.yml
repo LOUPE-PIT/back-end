@@ -13,6 +13,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+
+
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
@@ -21,7 +24,7 @@ jobs:
     strategy:
       matrix:
         dotnet-version: ['6.0' ]
-
+    
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
@@ -29,9 +32,10 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore "./Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln"
+        run: dotnet restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln'
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+<<<<<<< HEAD
+        run: dotnet build --configuration Release --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln'
     
   test:
     
@@ -48,7 +52,8 @@ jobs:
       - name: Install dependencies
         run: dotnet restore "./Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln"
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+      - name: Test
+        run: dotnet test --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln' #--verbosity normal
         
   docker:
 
@@ -58,4 +63,4 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
+>>>>>>> 8ecfcbc9f4e08647d68005ff6aca570349a9c876
