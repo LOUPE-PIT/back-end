@@ -61,4 +61,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build docker image
-      run: docker build . --file './Walking Skeleton LOUPE/Walking Skeleton LOUPE/Dockerfile' --tag my-image-name:$(date +%s)
+      run: docker build . --file './Walking Skeleton LOUPE/Walking Skeleton LOUPE/Dockerfile' --tag LOUPE_image:latest
+    - name: docker login
+      run: docker login -u 418262 -p 3c4bc7b5-cb47-491b-a9b2-cbcd53fa5049
+    - name: tag image
+      run: docker tag LOUPE_image:latest 418262/loupe_back-end
+    - name: push image
+      run: docker push 418262/loupe_back-end:latest
