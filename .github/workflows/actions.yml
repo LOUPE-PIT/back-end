@@ -37,6 +37,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln'
     
   test:
+    needs:
+    - build
     
     runs-on: ubuntu-latest
     strategy:
@@ -55,6 +57,9 @@ jobs:
         run: dotnet test --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln' #--verbosity normal
         
   docker:
+    needs:
+    - build
+    - test
 
     runs-on: ubuntu-latest
 
