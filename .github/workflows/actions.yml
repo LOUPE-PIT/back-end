@@ -52,7 +52,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore "./Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln"
       - name: Test
-        run: dotnet test --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln' #--verbosity normal
+        run: dotnet test --no-restore './Walking Skeleton LOUPE/Walking Skeleton LOUPE.sln' #--verbosity normal
         
   docker:
 
