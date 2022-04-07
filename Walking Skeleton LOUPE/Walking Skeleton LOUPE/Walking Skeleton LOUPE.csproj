@@ -8,6 +8,8 @@
     <RootNamespace>Walking_Skeleton_LOUPE</RootNamespace>
     <UserSecretsId>4297f812-2c8c-4e61-a107-fd29899f0dce</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>
