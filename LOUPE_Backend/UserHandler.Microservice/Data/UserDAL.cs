@@ -18,7 +18,7 @@ namespace User.Microservice.Data
         {
             db.User.Update(user);
             db.SaveChanges();
-            return db.User.Where(x => x.userPin == user.userPin).FirstOrDefault();
+            return db.User.Where(x => x.userID == user.userID).FirstOrDefault();
         }
 
         public List<UserModel> AddUser(UserModel user)
@@ -30,7 +30,12 @@ namespace User.Microservice.Data
 
         public UserModel GetUserById(string id)
         {
-            return db.User.Where(x => x.userPin == id).FirstOrDefault();
+            return db.User.Where(x => x.userID == id).FirstOrDefault();
         }
+
+        //public void DeleteUserById(string id)
+        //{
+        //    return 
+        //}
     }
 }

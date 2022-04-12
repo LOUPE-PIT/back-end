@@ -2,7 +2,7 @@
   {
     "Routes": [
       {
-        "DownstreamPathTemplate": "/users",
+        "DownstreamPathTemplate": "/user/all",
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {
@@ -10,7 +10,7 @@
             "Port": 5065
           }
         ],
-        "UpstreamPathTemplate": "/users",
+        "UpstreamPathTemplate": "/user/all",
         "UpstreamHttpMethod": [ "POST", "GET" ],
         "SwaggerKey": "UserHandler.Microservice"
       }
