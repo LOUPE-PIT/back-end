@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - pieter-pipeline
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
