@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace User.Microservice.Migrations
+namespace UserHandler.Microservice.Migrations
 {
-    public partial class initalDb : Migration
+    public partial class initialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,12 +12,12 @@ namespace User.Microservice.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    userPin = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    userName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    userID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.userPin);
+                    table.PrimaryKey("PK_User", x => x.userID);
                 });
         }
 

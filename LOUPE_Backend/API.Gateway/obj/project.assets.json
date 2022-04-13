@@ -6321,19 +6321,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sem Kivits\\.nuget\\packages\\": {}
+    "C:\\Users\\Sem\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
+      "projectUniqueName": "D:\\Git\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
       "projectName": "API.Gateway",
-      "projectPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
-      "packagesPath": "C:\\Users\\Sem Kivits\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\obj\\",
+      "projectPath": "D:\\Git\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
+      "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+      "outputPath": "D:\\Git\\back-end\\LOUPE_Backend\\API.Gateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sem Kivits\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6390,7 +6390,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

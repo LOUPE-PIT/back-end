@@ -8,11 +8,11 @@ using User.Microservice.Context;
 
 #nullable disable
 
-namespace User.Microservice.Migrations
+namespace UserHandler.Microservice.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20220406131552_initalDb")]
-    partial class initalDb
+    [Migration("20220413095423_initialDb")]
+    partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,14 +25,14 @@ namespace User.Microservice.Migrations
 
             modelBuilder.Entity("User.Microservice.Model.UserModel", b =>
                 {
-                    b.Property<string>("userPin")
+                    b.Property<string>("userID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("userName")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("userPin");
+                    b.HasKey("userID");
 
                     b.ToTable("User");
                 });

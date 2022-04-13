@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,15 @@ namespace UserHandler.Microservice.Test.Stubs
     {
         public bool? testValue = null;
 
-        public List<UserModel> AddUser(UserModel user)
+        public ActionResult AddUser(UserModel user)
         {
             if (testValue == true)
             {
-                return new List<UserModel>();
+                return new OkResult();
             }
             else
             {
-                return null;
+                return new NotFoundResult();
             }
         }
 

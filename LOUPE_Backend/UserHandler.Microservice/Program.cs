@@ -42,10 +42,10 @@ app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, string id) =>
 
 app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, string id) =>
 {
-    return db.GetUserById(id);
+    return db.DeleteUserById(id);
 });
 
-app.MapGet("/user/all", ([FromServices] IUserDAL db) =>
+app.MapGet("/user/all", ([FromServices] IUserDAL db) => 
 {
     return db.GetUsers();
 });
@@ -53,7 +53,6 @@ app.MapGet("/user/all", ([FromServices] IUserDAL db) =>
 app.MapPut("/user/update/{id}", ([FromServices] IUserDAL db, UserModel user) =>
 {
     db.UpdateUser(user);
-
 });
 
 app.MapPost("/user/add", ([FromServices] IUserDAL db, UserModel user) =>
