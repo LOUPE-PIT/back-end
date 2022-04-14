@@ -14,8 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  PATH_TO_SLN: './*.sln'
-  PATH_TO_DOCKERFILE: './Dockerfile'
+  PATH_TO_SLN: './LOUPE_Backend.sln'
   DOCKER_IMAGE_NAME: loupe_image:latest
   DOCKER_REPO_NAME: 418262/loupe_back-end
 
