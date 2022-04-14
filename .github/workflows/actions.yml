@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  PATH_TO_SLN: './LOUPE_Backend.sln'
+  PATH_TO_SLN: './LOUPE_Backend/LOUPE_Backend.sln'
   DOCKER_IMAGE_NAME: loupe_image:latest
   DOCKER_REPO_NAME: 418262/loupe_back-end
 
@@ -34,8 +34,6 @@ jobs:
       #  uses: actions/setup-dotnet@v1.7.2
        # with:
        #   dotnet-version: ${{ matrix.dotnet-version }}
-      - name: test
-        run: ls
       - name: Install dependencies
         run: dotnet restore $PATH_TO_SLN
       - name: Build

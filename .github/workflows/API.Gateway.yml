@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 env:
-  PATH_TO_SLN: './API.Gateway/API.Gateway.csproj'
-  PATH_TO_DOCKERFILE: './API.Gateway/Dockerfile'
+  PATH_TO_SLN: './LOUPE_Backend/API.Gateway/API.Gateway.csproj'
+  PATH_TO_DOCKERFILE: './LOUPE_Backend/API.Gateway/Dockerfile'
   DOCKER_IMAGE_NAME: api.gateway:latest
   DOCKER_REPO_NAME: 418262/loupe_api.gateway
 
