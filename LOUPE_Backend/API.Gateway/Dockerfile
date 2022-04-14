@@ -11,6 +11,7 @@ COPY ["LOUPE_Backend/API.Gateway/API.Gateway.csproj", "API.Gateway/"]
 RUN dotnet restore "API.Gateway/API.Gateway.csproj"
 COPY . .
 WORKDIR "/src/API.Gateway"
+COPY . .
 RUN dotnet build "API.Gateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
