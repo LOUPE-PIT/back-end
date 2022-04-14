@@ -7,17 +7,17 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LOUPE_Backend/API.Gateway/API.Gateway.csproj", "API.Gateway/"]
-RUN dotnet restore "API.Gateway/API.Gateway.csproj"
-COPY LOUPE_Backend/API.Gateway .
-WORKDIR "/src/API.Gateway"
-COPY LOUPE_Backend/API.Gateway .
-RUN dotnet build "API.Gateway.csproj" -c Release -o /app/build
+COPY ["LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj", "UserHandler.Microservice/"]
+RUN dotnet restore "UserHandler.Microservice/UserHandler.Microservice.csproj"
+COPY LOUPE_Backend/UserHandler.Microservice .
+WORKDIR "/src/UserHandler.Microservice"
+COPY LOUPE_Backend/UserHandler.Microservice .
+RUN dotnet build "UserHandler.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "API.Gateway.csproj" -c Release -o /app/publish
+RUN dotnet publish "UserHandler.Microservice.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "API.Gateway.dll"]
+ENTRYPOINT ["dotnet", "UserHandler.Microservice.dll"]
