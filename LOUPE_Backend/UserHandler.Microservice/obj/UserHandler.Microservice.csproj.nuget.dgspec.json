@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {}
+    "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {}
   },
   "projects": {
-    "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
+    "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
+        "projectUniqueName": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
         "projectName": "UserHandler.Microservice",
-        "projectPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
-        "packagesPath": "C:\\Users\\nahir\\.nuget\\packages\\",
-        "outputPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\obj\\",
+        "projectPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
+        "packagesPath": "C:\\Users\\pietv\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\nahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pietv\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

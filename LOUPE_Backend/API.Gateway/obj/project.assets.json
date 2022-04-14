@@ -6321,23 +6321,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nahir\\.nuget\\packages\\": {},
+    "C:\\Users\\pietv\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
+      "projectUniqueName": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
       "projectName": "API.Gateway",
-      "projectPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
-      "packagesPath": "C:\\Users\\nahir\\.nuget\\packages\\",
-      "outputPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\obj\\",
+      "projectPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
+      "packagesPath": "C:\\Users\\pietv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\API.Gateway\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\nahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pietv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
