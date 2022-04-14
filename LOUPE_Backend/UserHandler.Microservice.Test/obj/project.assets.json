@@ -9353,19 +9353,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sem\\.nuget\\packages\\": {}
+    "C:\\Users\\nahir\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
+      "projectUniqueName": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
       "projectName": "UserHandler.Microservice.Test",
-      "projectPath": "D:\\Git\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
-      "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\obj\\",
+      "projectPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
+      "packagesPath": "C:\\Users\\nahir\\.nuget\\packages\\",
+      "outputPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9379,8 +9383,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Git\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
-              "projectPath": "D:\\Git\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj"
+            "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
+              "projectPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj"
             }
           }
         }

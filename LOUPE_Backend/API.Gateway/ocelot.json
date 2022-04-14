@@ -10,7 +10,7 @@
             "Port": 5065
           }
         ],
-        "UpstreamPathTemplate": "/user/all",
+        "UpstreamPathTemplate": "/users",
         "UpstreamHttpMethod": [ "POST", "GET" ],
         "SwaggerKey": "UserHandler.Microservice"
       }
