@@ -2,7 +2,7 @@
   {
     "Routes": [
       {
-        "DownstreamPathTemplate": "/users",
+        "DownstreamPathTemplate": "/user/all",
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {

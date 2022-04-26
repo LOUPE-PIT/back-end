@@ -7,7 +7,7 @@ using User.Microservice.Context;
 
 #nullable disable
 
-namespace User.Microservice.Migrations
+namespace UserHandler.Microservice.Migrations
 {
     [DbContext(typeof(UserDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot
@@ -23,14 +23,14 @@ namespace User.Microservice.Migrations
 
             modelBuilder.Entity("User.Microservice.Model.UserModel", b =>
                 {
-                    b.Property<string>("userPin")
+                    b.Property<string>("userID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("userName")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("userPin");
+                    b.HasKey("userID");
 
                     b.ToTable("User");
                 });

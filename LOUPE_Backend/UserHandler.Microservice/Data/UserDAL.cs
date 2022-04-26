@@ -1,5 +1,7 @@
 ﻿using User.Microservice.Context;
 using User.Microservice.Model;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace User.Microservice.Data
 {
@@ -18,19 +20,26 @@ namespace User.Microservice.Data
         {
             db.User.Update(user);
             db.SaveChanges();
-            return db.User.Where(x => x.userPin == user.userPin).FirstOrDefault();
+            return db.User.Where(x => x.userID == user.userID).FirstOrDefault();
         }
 
-        public List<UserModel> AddUser(UserModel user)
+        public ActionResult AddUser(UserModel user)
         {
             db.User.Add(user);
             db.SaveChanges();
-            return db.User.ToList();
+            return new OkResult();
         }
 
         public UserModel GetUserById(string id)
         {
-            return db.User.Where(x => x.userPin == id).FirstOrDefault();
+            return db.User.Where(x => x.userID == id).FirstOrDefault();
+        }
+
+        public ActionResult DeleteUserById(string id)
+        {
+            db.User.Remove(db.User.Where(x => x.userID == id).FirstOrDefault());
+            db.SaveChanges();
+            return new OkResult();
         }
     }
 }
