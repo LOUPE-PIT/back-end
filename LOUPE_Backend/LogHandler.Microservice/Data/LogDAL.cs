@@ -27,9 +27,9 @@ namespace LogHandler.Microservice.Data
             return db.Log.Where(x => x.logId == id).FirstOrDefault();
         }
 
-        public LogModel GetLogByUserId(string userid)
+        public LogModel GetLogByUserId(string id)
         {
-            return db.Log.Where(x => x.userId == userid).FirstOrDefault();
+            return db.Log.Where(x => x.userId == id).FirstOrDefault();
         }
     }
 }

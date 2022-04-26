@@ -47,9 +47,9 @@ app.MapGet("/log/{id}", ([FromServices] ILogDAL db, string id) =>
     return db.GetLogByLogId(id);
 });
 
-app.MapGet("/log/{userid}", ([FromServices] ILogDAL db, string userid) =>
+app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, string id) =>
 {
-    return db.GetLogByUserId(userid);
+    return db.GetLogByUserId(id);
 });
 
 app.Run();
