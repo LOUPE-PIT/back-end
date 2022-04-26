@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj": {}
+    "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj": {
+    "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
+        "projectUniqueName": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
         "projectName": "API.Gateway",
-        "projectPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
-        "packagesPath": "C:\\Users\\Sem Kivits\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\API.Gateway\\obj\\",
+        "projectPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\API.Gateway.csproj",
+        "packagesPath": "C:\\Users\\nahir\\.nuget\\packages\\",
+        "outputPath": "D:\\nahir\\Documents\\School\\Semester 6\\Loupe Back-end\\LOUPE-PIT\\back-end\\LOUPE_Backend\\API.Gateway\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Sem Kivits\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
