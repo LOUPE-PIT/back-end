@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Hf+7rvkwzp28gmvhSke6DPvf4m/m9L6id31+Idorohk=",
+  "Source": "UserHandler.Microservice",
+  "BasePath": "_content/UserHandler.Microservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
