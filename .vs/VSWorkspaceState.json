@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\LOUPE_Backend",
+    "\\LOUPE_Backend\\UserHandler.Microservice"
   ],
+  "SelectedNode": "\\LOUPE_Backend\\UserHandler.Microservice\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

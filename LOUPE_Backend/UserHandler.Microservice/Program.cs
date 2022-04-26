@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
-using System;
-using User.Microservice.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using User.Microservice.Context;
 using User.Microservice.Data;
-using Microsoft.AspNetCore.Mvc;
+using User.Microservice.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +42,7 @@ app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, string id) =>
     return db.DeleteUserById(id);
 });
 
-app.MapGet("/user/all", ([FromServices] IUserDAL db) => 
+app.MapGet("/user/all", ([FromServices] IUserDAL db) =>
 {
     return db.GetUsers();
 });

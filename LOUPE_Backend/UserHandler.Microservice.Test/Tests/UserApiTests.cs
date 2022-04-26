@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using System.Net.Http;
 using User.Microservice.Data;
 using User.Microservice.Model;
@@ -12,7 +9,7 @@ using Xunit;
 
 namespace UserHandler.Microservice.Test
 {
-    
+
     public class UserApiTests : WebApplicationFactory<Program>
     {
         UserDALStub stub = new UserDALStub();
