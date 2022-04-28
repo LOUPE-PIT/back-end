@@ -37,5 +37,5 @@ namespace LogHandler.Microservice.Data
             }
         }
 
-     }
+    }
 }

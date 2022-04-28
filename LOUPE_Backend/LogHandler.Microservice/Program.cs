@@ -1,8 +1,8 @@
 using LogHandler.Microservice.Context;
 using LogHandler.Microservice.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 using LogHandler.Microservice.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
