@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Gateway", "API.Gateway\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserHandler", "UserHandler", "{C7432413-77C0-4C79-B572-E49A2072EF72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserHandler.Microservice.Test", "UserHandler.Microservice.Test\UserHandler.Microservice.Test.csproj", "{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserHandler.Microservice.Test", "UserHandler.Microservice.Test\UserHandler.Microservice.Test.csproj", "{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ObjectHandler", "ObjectHandler", "{D0DC7D2E-B298-40AF-BB5C-A038FBA28C33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectHandler.Microservice", "ObjectHandler.Microservice\ObjectHandler.Microservice.csproj", "{FE5CBF72-3E3B-4F4F-9353-7A73CB699FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectHandler.Microservice.Test", "ObjectHandler.Microservice.Test\ObjectHandler.Microservice.Test.csproj", "{89AC62F1-48AF-4662-949A-F430C6013CB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,14 @@ Global
 		{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE5CBF72-3E3B-4F4F-9353-7A73CB699FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE5CBF72-3E3B-4F4F-9353-7A73CB699FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE5CBF72-3E3B-4F4F-9353-7A73CB699FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE5CBF72-3E3B-4F4F-9353-7A73CB699FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89AC62F1-48AF-4662-949A-F430C6013CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89AC62F1-48AF-4662-949A-F430C6013CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89AC62F1-48AF-4662-949A-F430C6013CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89AC62F1-48AF-4662-949A-F430C6013CB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +53,9 @@ Global
 		{07F96333-D49C-4415-89A3-913A8C6C074C} = {C7432413-77C0-4C79-B572-E49A2072EF72}
 		{C7432413-77C0-4C79-B572-E49A2072EF72} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A} = {C7432413-77C0-4C79-B572-E49A2072EF72}
+		{D0DC7D2E-B298-40AF-BB5C-A038FBA28C33} = {2337F546-B056-4710-BDB4-A63686894FC3}
+		{FE5CBF72-3E3B-4F4F-9353-7A73CB699FEF} = {D0DC7D2E-B298-40AF-BB5C-A038FBA28C33}
+		{89AC62F1-48AF-4662-949A-F430C6013CB9} = {D0DC7D2E-B298-40AF-BB5C-A038FBA28C33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76921467-FEB5-4CAB-B402-FC547B8CD260}

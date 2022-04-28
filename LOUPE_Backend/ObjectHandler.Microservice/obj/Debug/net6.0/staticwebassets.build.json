@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "m7etdWSn8npJ1PSGDbXgo/gzxvAWYHLh1iykAMynRTw=",
+  "Source": "ObjectHandler.Microservice",
+  "BasePath": "_content/ObjectHandler.Microservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

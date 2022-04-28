@@ -2021,19 +2021,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sem Kivits\\.nuget\\packages\\": {}
+    "C:\\Users\\pietv\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
+      "projectUniqueName": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
       "projectName": "UserHandler.Microservice",
-      "projectPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
-      "packagesPath": "C:\\Users\\Sem Kivits\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\obj\\",
+      "projectPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
+      "packagesPath": "C:\\Users\\pietv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Sem Kivits\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pietv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2096,7 +2100,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

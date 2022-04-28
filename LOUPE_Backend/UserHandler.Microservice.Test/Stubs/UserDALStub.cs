@@ -54,5 +54,10 @@ namespace UserHandler.Microservice.Test.Stubs
         {
             return new UserModel();
         }
+
+        public ActionResult DeleteUserById(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
