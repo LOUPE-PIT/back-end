@@ -7,7 +7,7 @@ namespace User.Microservice.Data
     {
         private readonly UserDbContext userDbContext;
 
-        public DataSeeder (UserDbContext userDbContext)
+        public DataSeeder(UserDbContext userDbContext)
         {
             this.userDbContext = userDbContext;
         }
@@ -34,6 +34,6 @@ namespace User.Microservice.Data
                 userDbContext.SaveChanges();
             }
         }
-        
+
     }
 }

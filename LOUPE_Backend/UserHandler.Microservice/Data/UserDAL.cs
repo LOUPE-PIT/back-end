@@ -1,7 +1,6 @@
-﻿using User.Microservice.Context;
+﻿using Microsoft.AspNetCore.Mvc;
+using User.Microservice.Context;
 using User.Microservice.Model;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Mvc;
 
 namespace User.Microservice.Data
 {

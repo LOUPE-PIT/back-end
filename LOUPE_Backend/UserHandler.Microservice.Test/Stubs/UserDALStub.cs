@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using User.Microservice.Data;
 using User.Microservice.Model;
 
@@ -53,6 +49,18 @@ namespace UserHandler.Microservice.Test.Stubs
         public UserModel GetUserById(string id)
         {
             return new UserModel();
+        }
+
+        public ActionResult DeleteUserById(string id)
+        {
+            if (testValue == true)
+            {
+                return new OkResult();
+            }
+            else
+            {
+                return new NotFoundResult();
+            }
         }
     }
 }
