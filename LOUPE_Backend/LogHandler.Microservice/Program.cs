@@ -53,3 +53,5 @@ app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, string id) =>
 });
 
 app.Run();
+
+public partial class LogProgram { }
