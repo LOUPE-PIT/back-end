@@ -17,7 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LogHandler", "LogHandler", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogHandler.Microservice", "LogHandler.Microservice\LogHandler.Microservice.csproj", "{BDB33417-D8CC-4BC1-915E-13AF799F02A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogHandler.Microservice.Tests", "LogHandler.Microservice.Tests\LogHandler.Microservice.Tests.csproj", "{8AFDDA22-36E9-4E29-A6A5-1B29C638E4F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogHandler.Microservice.Tests", "LogHandler.Microservice.Tests\LogHandler.Microservice.Tests.csproj", "{8AFDDA22-36E9-4E29-A6A5-1B29C638E4F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogHandler.WebApplicationSender", "LogHandler.WebApplicationSender\LogHandler.WebApplicationSender.csproj", "{738A2FCA-32D0-4393-9615-7CAE664F5078}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogHandler.SharedLibrary", "SharedLibrary\LogHandler.SharedLibrary.csproj", "{E178BA21-CED4-4A37-89A3-F2B9EC8B4071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{8AFDDA22-36E9-4E29-A6A5-1B29C638E4F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AFDDA22-36E9-4E29-A6A5-1B29C638E4F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AFDDA22-36E9-4E29-A6A5-1B29C638E4F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{738A2FCA-32D0-4393-9615-7CAE664F5078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{738A2FCA-32D0-4393-9615-7CAE664F5078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{738A2FCA-32D0-4393-9615-7CAE664F5078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{738A2FCA-32D0-4393-9615-7CAE664F5078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E178BA21-CED4-4A37-89A3-F2B9EC8B4071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E178BA21-CED4-4A37-89A3-F2B9EC8B4071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E178BA21-CED4-4A37-89A3-F2B9EC8B4071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E178BA21-CED4-4A37-89A3-F2B9EC8B4071}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +68,8 @@ Global
 		{4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{BDB33417-D8CC-4BC1-915E-13AF799F02A9} = {4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6}
 		{8AFDDA22-36E9-4E29-A6A5-1B29C638E4F5} = {4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6}
+		{738A2FCA-32D0-4393-9615-7CAE664F5078} = {4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6}
+		{E178BA21-CED4-4A37-89A3-F2B9EC8B4071} = {4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76921467-FEB5-4CAB-B402-FC547B8CD260}
