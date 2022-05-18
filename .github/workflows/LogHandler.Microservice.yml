@@ -1,4 +1,4 @@
-name: UserHandler.Microservice CI/CD
+name: LogHandler.Microservice CI/CD
 
 # Controls when the workflow will run
 on:
@@ -6,16 +6,16 @@ on:
   push:
     branches: [ main, pipeline-update ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, pipeline-update ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
-  PATH_TO_SLN: './LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj'
-  PATH_TO_DOCKERFILE: './LOUPE_Backend/UserHandler.Microservice/Dockerfile'
-  DOCKER_IMAGE_NAME: userhandler.microservice:latest
-  DOCKER_REPO_NAME: 418262/loupe_userhandler.microservice
+  PATH_TO_SLN: './LOUPE_Backend/LogHandler.Microservice/LogHandler.Microservice.csproj'
+  PATH_TO_DOCKERFILE: './LOUPE_Backend/LogHandler.Microservice/Dockerfile'
+  DOCKER_IMAGE_NAME: loghandler.microservice:latest
+  DOCKER_REPO_NAME: 418262/loupe_loghandler.microservice
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

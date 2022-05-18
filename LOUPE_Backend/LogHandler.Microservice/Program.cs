@@ -1,22 +1,41 @@
+using LogHandler.Microservice;
 using LogHandler.Microservice.Context;
 using LogHandler.Microservice.Data;
-using LogHandler.Microservice.Model;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SharedLibrary;
+
+RabbitMQSettings rMQSettings = new RabbitMQSettings();
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddScoped<ILogDAL, LogDAL>();
 builder.Services.AddDbContext<LogDbContext>(x => x.UseSqlServer(connectionString));
-
+builder.Services.AddMassTransit(config => {
+    // Add Consumer which reads the sent message;
+    config.AddConsumer<LogModelConsumer>();
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
+        // Connect to RabbitMQ server;
+        cfg.Host("amqp://" + rMQSettings.Username + ":" + rMQSettings.Password + "@" + rMQSettings.IPAddress);
+        // Add endpoint which will recieve messages from the [model] queue, these messages will be returned in via Consumer class;
+        // In here you will be able to change settings, like setting the queue messageretry interval and more;
+        cfg.ReceiveEndpoint(rMQSettings.QueueName, c =>
+        {
+            c.ConfigureConsumer<LogModelConsumer>(ctx);
+        });
+    });
+});
+builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 
 if (args.Length == 1 && args[0].ToLower() == "seeddata")
     SeedData(app);
 
-void SeedData(IHost app)
+void SeedData(Microsoft.Extensions.Hosting.IHost app)
 {
     var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 
@@ -53,3 +72,5 @@ app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, string id) =>
 });
 
 app.Run();
+
+public partial class LogProgram { }
