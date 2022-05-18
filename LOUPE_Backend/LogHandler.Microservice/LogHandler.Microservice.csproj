@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharedLibrary\LogHandler.SharedLibrary.csproj" />
-    <ProjectReference Include="..\UserHandler.Microservice\UserHandler.Microservice.csproj" />
   </ItemGroup>
 
 </Project>
