@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f446ef2e-3989-4066-9e5a-dc1586ebacd1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharedLibrary\LogHandler.SharedLibrary.csproj" />
-    <ProjectReference Include="..\UserHandler.Microservice\UserHandler.Microservice.csproj" />
   </ItemGroup>
 
 </Project>
