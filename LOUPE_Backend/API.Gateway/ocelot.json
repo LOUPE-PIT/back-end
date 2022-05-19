@@ -1,5 +1,4 @@
-﻿
-  {
+﻿  {
     "Routes": [
       {
         "DownstreamPathTemplate": "/user/all",
@@ -10,6 +9,10 @@
             "Port": 5065
           }
         ],
+        "AuthenticationOptions": {
+          "AuthenticationProvderKey": "UserKey",
+          "AllowedScopes": []
+        },
         "UpstreamPathTemplate": "/users",
         "UpstreamHttpMethod": [ "POST", "GET" ],
         "SwaggerKey": "UserHandler.Microservice"

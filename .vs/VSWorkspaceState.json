@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LOUPE_Backend"
+    "\\LOUPE_Backend",
+    "\\LOUPE_Backend\\LogHandler.Microservice",
+    "\\LOUPE_Backend\\LogHandler.Microservice\\Model"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\LOUPE_Backend\\LogHandler.Microservice\\Model\\LogModel.cs",
   "PreviewInSolutionExplorer": false
 }

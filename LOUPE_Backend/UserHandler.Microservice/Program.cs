@@ -3,13 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using User.Microservice.Context;
 using User.Microservice.Data;
 using User.Microservice.Model;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
+var authenticationProviderKey = "UserKey";
 
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddScoped<IUserDAL, UserDAL>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionString));
+
+builder.Services.AddAuthentication()
+    .AddJwtBearer(authenticationProviderKey, x =>
+    {
+    });
 
 var app = builder.Build();
 
