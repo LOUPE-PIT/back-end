@@ -39,10 +39,52 @@ app.MapGet("/object/{classid}/get", ([FromServices] IObjectDAL db, int classid) 
 });
 
 // Get all objects
-app.MapPost("/object/upload", ([FromServices] IObjectDAL db, ObjectModel objectModel) =>
+//app.MapPost("/object/upload", ([FromServices] IObjectDAL db, ObjectModel objectModel) =>
+//{
+//    return db.UploadObject(objectModel);
+//});
+
+app.MapPost("object/upload", ([FromServices] IObjectDAL db, HttpRequest request) =>
 {
-    return db.UploadObject(objectModel);
+    var files = request.Form.Files;
+    var dir = Path.Combine(Directory.GetCurrentDirectory(), "Files");
+    string fileName = "";
+
+    if (!Directory.Exists(dir))
+    {
+        Directory.CreateDirectory(dir);
+    }
+
+
+    foreach (var file in files)
+    {
+        var extension = new FileInfo(file.FileName).Extension;
+
+        fileName = Guid.NewGuid() + extension;
+
+        string fullpath = Path.Combine(dir, fileName);
+
+        using (Stream fs = new FileStream(fullpath, FileMode.OpenOrCreate))
+        {
+            file.CopyTo(fs);
+            fs.Close();
+        };
+    }
+
+    return db.UploadObject(new ObjectModel()
+    {
+        Location = "Files/" + fileName
+    });
 });
 
+app.MapGet("/download", (string id) =>
+{
+    var dir = Path.Combine(Directory.GetCurrentDirectory(), "Files");
+
+    var file = id + ".png";
+    var x = Path.Combine(dir, file);
+
+    return Results.File(x, contentType: "image/png");
+});
 
 app.Run();
