@@ -1,0 +1,5 @@
+{
+  "LogHandler.Microservice, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\LogHandler.Microservice",
+  "LogHandler.SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\SharedLibrary",
+  "UserHandler.Microservice, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice"
+}

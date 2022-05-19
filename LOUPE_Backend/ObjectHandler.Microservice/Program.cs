@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ObjectHandler.Microservice.Context;
 using ObjectHandler.Microservice.Data;
 using ObjectHandler.Microservice.Model;
 
@@ -6,12 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var connectionString = builder.Configuration.GetConnectionString("AppDb");
+//Add Repository Pattern
+builder.Services.AddScoped<IObjectDAL, ObjectDAL>();
+builder.Services.AddDbContext<ObjectDbContext>(x => x.UseSqlServer(connectionString));
+//Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddScoped<IObjectDAL, ObjectDAL>();
 
 var app = builder.Build();
 
@@ -22,29 +26,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-//TODO pull dev-general
-
-/*
- app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, string id) =>
-{
-    return db.GetUserById(id);
-});
-*/
-
 // Get all objects
-app.MapGet("/object/all", ([FromServices] IObjectDAL db) =>
+app.MapGet("/object/getall", ([FromServices] IObjectDAL db) =>
 {
     return db.GetAllObjects();
 });
 
 // Get all objects
-app.MapGet("/object/byclass/{classid}", ([FromServices] IObjectDAL db, string classid) =>
+app.MapGet("/object/{classid}/get", ([FromServices] IObjectDAL db, int classid) =>
 {
     return db.GetObjectByClassId(classid);
 });

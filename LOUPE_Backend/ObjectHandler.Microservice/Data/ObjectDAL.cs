@@ -1,39 +1,31 @@
-﻿using ObjectHandler.Microservice.Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using ObjectHandler.Microservice.Context;
+using ObjectHandler.Microservice.Model;
 
 namespace ObjectHandler.Microservice.Data
 {
     public class ObjectDAL : IObjectDAL
     {
-        public List<ObjectModel> GetAllObjects()
+        private readonly ObjectDbContext db;
+
+        public ObjectDAL(ObjectDbContext db)
         {
-            return new List<ObjectModel>()
-            {
-                new ObjectModel()
-                {
-                    Id = "0",
-                    Location = "/Root/ObjectRepository/testobject_0000.obj"
-                },
-                new ObjectModel()
-                {
-                    Id = "1",
-                    Location = "/Root/ObjectRepository/testobject_0001.obj"
-                }
-            };
+            this.db = db;
         }
 
-        public ObjectModel UploadObject(ObjectModel objectModel)
+        public List<ObjectModel> GetAllObjects() => db.Object.ToList();
+
+        public ObjectModel GetObjectByClassId(int classId)
         {
-            //TODO
-            return objectModel;
+            return db.Object.Where(x => x.Id == classId).FirstOrDefault();
         }
 
-        public ObjectModel GetObjectByClassId(string classId)
+
+        public ActionResult UploadObject(ObjectModel objectModel)
         {
-            return new ObjectModel()
-            {
-                Id = "0",
-                Location = "/Root/ObjectRepository/testobject_0000.obj"
-            };
+            db.Object.Add(objectModel);
+            db.SaveChanges();
+            return new OkResult();
         }
     }
 }

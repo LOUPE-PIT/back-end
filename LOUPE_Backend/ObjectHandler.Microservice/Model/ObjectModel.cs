@@ -2,7 +2,7 @@
 {
     public class ObjectModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Location { get; set; }
     }
 }

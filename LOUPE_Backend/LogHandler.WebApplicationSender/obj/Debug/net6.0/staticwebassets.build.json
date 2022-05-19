@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "gDg3n/GnOQYeRmIG9fOUb0+PsRAMSEc31WRGxv27IJY=",
+  "Source": "LogHandler.WebApplicationSender",
+  "BasePath": "_content/LogHandler.WebApplicationSender",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
