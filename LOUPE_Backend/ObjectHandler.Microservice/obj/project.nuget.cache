@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dXKoX7i4eCAMIJkwwrYl2f8fYa75tVL0Vo5lxUhFYX7alg1ZhxSm9UmEppGh245jZCzdoyfwU9GCJ5IG//QD2Q==",
+  "dgSpecHash": "G9m0oBD76PuvZV96mxUyCbuqBr8QBf4XJactAlWj9GoPUOaGU+bxeu3A4+0fjrdOR6aaGIpa4MeLvJ/jnwRrqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\ObjectHandler.Microservice\\ObjectHandler.Microservice.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pietv\\.nuget\\packages\\fluentftp\\37.0.2\\fluentftp.37.0.2.nupkg.sha512",
     "C:\\Users\\pietv\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\pietv\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

@@ -27,13 +27,13 @@ if (app.Environment.IsDevelopment())
 }
 
 // Get all objects
-app.MapGet("/object/getall", ([FromServices] IObjectDAL db) =>
+app.MapGet("/objects/getall", ([FromServices] IObjectDAL db) =>
 {
     return db.GetAllObjects();
 });
 
 // Get all objects
-app.MapGet("/object/{classid}/get", ([FromServices] IObjectDAL db, int classid) =>
+app.MapGet("/objects/{classid}/get", ([FromServices] IObjectDAL db, int classid) =>
 {
     return db.GetObjectByClassId(classid);
 });
@@ -44,47 +44,61 @@ app.MapGet("/object/{classid}/get", ([FromServices] IObjectDAL db, int classid) 
 //    return db.UploadObject(objectModel);
 //});
 
-app.MapPost("object/upload", ([FromServices] IObjectDAL db, HttpRequest request) =>
+app.MapPost("Objects/upload", (HttpRequest request) =>
 {
+    // Get all files from the request
     var files = request.Form.Files;
-    var dir = Path.Combine(Directory.GetCurrentDirectory(), "Files");
-    string fileName = "";
 
-    if (!Directory.Exists(dir))
-    {
-        Directory.CreateDirectory(dir);
-    }
-
-
+    // For each file, start the upload process
     foreach (var file in files)
     {
+        // Get the file extension
         var extension = new FileInfo(file.FileName).Extension;
 
-        fileName = Guid.NewGuid() + extension;
+        // Generate a new file name
+        string name = Guid.NewGuid() + extension;
 
-        string fullpath = Path.Combine(dir, fileName);
+        // Connect to my FTP server
+        var client = new FluentFTP.FtpClient("192.168.150.128", "testuser", "root");
+        client.AutoConnect();
 
-        using (Stream fs = new FileStream(fullpath, FileMode.OpenOrCreate))
-        {
-            file.CopyTo(fs);
-            fs.Close();
-        };
+        // Turn the file into a byte[]
+        var ms = new MemoryStream();
+        file.CopyTo(ms);
+        ms.Close();
+        var array = ms.ToArray();
+
+        // Upload the file to FTP
+        var x = client.Upload(array, name);
+
+        // Disconnect the client
+        client.Disconnect();
     }
-
-    return db.UploadObject(new ObjectModel()
-    {
-        Location = "Files/" + fileName
-    });
 });
 
-app.MapGet("/download", (string id) =>
+app.MapGet("objects/download", () =>
 {
-    var dir = Path.Combine(Directory.GetCurrentDirectory(), "Files");
+    // Connect to FTP server
+    var client = new FluentFTP.FtpClient("192.168.150.128", "testuser", "root");
+    client.AutoConnect();
 
-    var file = id + ".png";
-    var x = Path.Combine(dir, file);
+    // Creating a new memory stream to save the file to
+    var ms = new MemoryStream();
 
-    return Results.File(x, contentType: "image/png");
+    // Download the file to the memory stream
+    client.Download(ms, "1bd792f4-9582-4f26-b69b-19a6a7e8884e.png");
+
+    // Turn the memory stream into a byte[]
+    var array = ms.ToArray();
+
+    // Close the memory stream
+    ms.Close();
+
+    // Close the FTP connection
+    client.Disconnect();
+
+    // Return the file to the user
+    return Results.File(array, contentType: "image/png");
 });
 
 app.Run();
