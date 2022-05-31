@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj": {}
+    "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj": {
+    "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
+        "projectUniqueName": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
         "projectName": "UserHandler.Microservice.Test",
-        "projectPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
-        "packagesPath": "C:\\Users\\pietv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\obj\\",
+        "projectPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\UserHandler.Microservice.Test.csproj",
+        "packagesPath": "C:\\Users\\Sem Kivits\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice.Test\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pietv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sem Kivits\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
-                "projectPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj"
+              "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
+                "projectPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj"
               }
             }
           }
@@ -103,24 +100,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
+    "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
+        "projectUniqueName": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
         "projectName": "UserHandler.Microservice",
-        "projectPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
-        "packagesPath": "C:\\Users\\pietv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pietv\\source\\repos\\LOUPE\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\obj\\",
+        "projectPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\UserHandler.Microservice.csproj",
+        "packagesPath": "C:\\Users\\Sem Kivits\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sem Kivits\\Documents\\GitHub\\back-end\\LOUPE_Backend\\UserHandler.Microservice\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pietv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sem Kivits\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -183,7 +177,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

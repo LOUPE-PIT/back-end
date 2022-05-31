@@ -1,13 +1,15 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Xunit;
 
 namespace ObjectHandler.Microservice.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class ObjectApiTests
     {
         [TestMethod]
         public void TestMethod1()
         {
+
         }
     }
 }
