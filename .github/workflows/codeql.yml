@@ -70,9 +70,11 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+      with:
+        upload: true
       
     - name: Archive code coverage results
       uses: actions/upload-artifact@v3
       with:
         name: code-coverage-report
-        path: output/results/csharp.sarif
+        path: back-end/results/csharp.sarif
