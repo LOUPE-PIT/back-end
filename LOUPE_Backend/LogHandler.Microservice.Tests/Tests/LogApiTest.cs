@@ -61,5 +61,33 @@ namespace LogHandler.Microservice.Tests.Tests
             //Assert
             response.EnsureSuccessStatusCode();
         }
+
+        [Fact]
+        public async void GetLogByLogId_Passed()
+        {
+            LogModel logModel = new LogModel();
+            logModel.logId = "1";
+            var webAppFactory = new LogApiTest(); ;
+            HttpClient httpsClient = webAppFactory.CreateClient();
+            stub.testValue = true;
+
+            var response = await httpsClient.GetAsync($"/log/{logModel.logId}");
+
+            response.EnsureSuccessStatusCode();
+        }
+
+        [Fact]
+        public async void GetLogByUserId_Passed()
+        {
+            LogModel logModel = new LogModel();
+            logModel.userId = "11";
+            var webAppFactory = new LogApiTest();
+            HttpClient httpsClient = webAppFactory.CreateClient();
+            stub.testValue = true;
+
+            var response = await httpsClient.GetAsync($"/log/user/{logModel.userId}");
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }

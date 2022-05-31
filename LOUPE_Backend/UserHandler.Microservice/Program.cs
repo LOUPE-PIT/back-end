@@ -4,10 +4,10 @@ using User.Microservice.Context;
 using User.Microservice.Data;
 using User.Microservice.Model;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var authenticationProviderKey = "UserKey";
@@ -16,6 +16,33 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddScoped<IUserDAL, UserDAL>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionString));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Bearer Authentication with JWT Token",
+        Type = SecuritySchemeType.Http
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+   {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Id = "Bearer",
+                    Type = ReferenceType.SecurityScheme
+                }
+            },
+            new List<string>()
+        }
+   });
+});
 
 builder.Services.AddAuthentication()
     .AddJwtBearer(authenticationProviderKey, options =>
@@ -51,6 +78,8 @@ void SeedData(IHost app)
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
 

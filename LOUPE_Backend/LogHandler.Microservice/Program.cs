@@ -13,6 +13,10 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddScoped<ILogDAL, LogDAL>();
 builder.Services.AddDbContext<LogDbContext>(x => x.UseSqlServer(connectionString));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddMassTransit(config => {
     // Add Consumer which reads the sent message;
     config.AddConsumer<LogModelConsumer>();
@@ -48,6 +52,8 @@ void SeedData(Microsoft.Extensions.Hosting.IHost app)
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
 
@@ -72,3 +78,5 @@ app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, string id) =>
 });
 
 app.Run();
+
+public partial class LogProgram { }

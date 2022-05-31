@@ -3,8 +3,8 @@
     "",
     "\\LOUPE_Backend",
     "\\LOUPE_Backend\\LogHandler.Microservice",
-    "\\LOUPE_Backend\\LogHandler.Microservice\\Model"
+    "\\LOUPE_Backend\\LogHandler.Microservice\\Data"
   ],
-  "SelectedNode": "\\LOUPE_Backend\\LogHandler.Microservice\\Model\\LogModel.cs",
+  "SelectedNode": "\\LOUPE_Backend\\LogHandler.Microservice\\Data\\LogDAL.cs",
   "PreviewInSolutionExplorer": false
 }

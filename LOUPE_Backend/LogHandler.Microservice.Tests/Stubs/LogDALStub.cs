@@ -42,5 +42,25 @@ namespace LogHandler.Microservice.Tests.Stubs
         {
             return new LogModel();
         }
+
+        public ActionResult InsertLog(SharedLibrary.LogModel log)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        List<SharedLibrary.LogModel> ILogDAL.GetAllLogs()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        SharedLibrary.LogModel ILogDAL.GetLogByLogId(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        SharedLibrary.LogModel ILogDAL.GetLogByUserId(string userid)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -13,7 +13,23 @@
           "AuthenticationProvderKey": "UserKey",
           "AllowedScopes": []
         },
+        "RouteClaimsRequirement": {
+          "Role": "Admin"
+        },
         "UpstreamPathTemplate": "/users",
+        "UpstreamHttpMethod": [ "POST", "GET" ],
+        "SwaggerKey": "UserHandler.Microservice"
+      },
+      {
+        "DownstreamPathTemplate": "/user/jwt/login",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 5065
+          }
+        ],
+        "UpstreamPathTemplate": "/jwt/login",
         "UpstreamHttpMethod": [ "POST", "GET" ],
         "SwaggerKey": "UserHandler.Microservice"
       },
@@ -77,10 +93,12 @@
           {
             "Name": "UserHandler API",
             "Version": "v1",
-            "Url": "https://localhost:5065/swagger/v1/swagger.json"
+            "Url": "http://localhost:5065/swagger/v1/swagger.json"
           }
         ]
       }
     ],
-    "GlobalConfiguration": {}
+    "GlobalConfiguration": {
+      "RequestIdKey": "X-Correlation-Id"
+    }
   }
