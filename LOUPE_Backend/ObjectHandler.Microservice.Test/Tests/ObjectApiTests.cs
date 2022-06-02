@@ -24,6 +24,7 @@ namespace ObjectHandler.Microservice.Test
             builder.ConfigureServices(services =>
             {
                 services.AddScoped<IObjectDAL, ObjectDALStub>();
+                services.AddScoped<IFTPObjectDAL, FTPDALStub>();
             });
 
             return base.CreateHost(builder);
