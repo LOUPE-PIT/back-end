@@ -44,20 +44,21 @@ app.MapGet("/objects/getall", ([FromServices] IObjectDAL db) =>
 //    return db.UploadObject(objectModel);
 //});
 
-app.MapPost("object/upload", ([FromServices] IObjectDAL db, [FromServices] IFTPObjectDAL ftp, HttpRequest request, string description) =>
+app.MapPost("object/upload", ([FromServices] IObjectDAL db, [FromServices] IFTPObjectDAL ftp, HttpRequest request) =>
 {
-    Guid id = ftp.UploadObject(request);
+    string[] data = ftp.UploadObject(request);
+    Guid guid = Guid.Parse(data[0]);
     ObjectModel model = new ObjectModel
     {
-        id = id,
-        desciption = description
+        id = Guid.Parse(data[0]),
+        desciption = data[1]
     };
     return db.UploadObject(model);
 });
 
 app.MapGet("object/download", ([FromServices] IFTPObjectDAL ftp, string objectId) =>
 {
-    ftp.DeleteObject(objectId);
+    ftp.DownloadObject(objectId);
 });
 
 app.MapDelete("object/delete", ([FromServices] IObjectDAL db, [FromServices] IFTPObjectDAL ftp, string guidString) =>

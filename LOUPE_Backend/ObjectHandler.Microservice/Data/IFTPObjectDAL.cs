@@ -5,6 +5,6 @@ namespace ObjectHandler.Microservice.Data
     {
         Guid DeleteObject(string guidString);
         IResult DownloadObject(string guidString);
-        Guid UploadObject(HttpRequest request);
+        string[] UploadObject(HttpRequest request);
     }
 }

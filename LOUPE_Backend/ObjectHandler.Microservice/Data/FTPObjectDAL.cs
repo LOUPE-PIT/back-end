@@ -9,12 +9,12 @@
             client = new FluentFTP.FtpClient("192.168.246.129", "sphinx", "root");
         }
 
-        public Guid UploadObject(HttpRequest request)
+        public string[] UploadObject(HttpRequest request)
         {
             Guid id = Guid.NewGuid();
             // Get all files from the request
             var files = request.Form.Files;
-
+            var description = request.Form["description"].ToString();
             // For each file, start the upload process
             foreach (var file in files)
             {
@@ -41,7 +41,8 @@
 
                 Console.WriteLine(id);
             }
-            return id;
+            string[] data = { id.ToString(), description };
+            return data;
         }
 
         public IResult DownloadObject(string guidString)
