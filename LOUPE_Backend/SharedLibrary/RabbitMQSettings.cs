@@ -2,7 +2,7 @@
 namespace SharedLibrary
 {
     public class RabbitMQSettings
-    {       
+    {
         // RabbitMQ properties;
 
         public readonly string Username = "guest";

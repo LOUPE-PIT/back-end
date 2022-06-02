@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using User.Microservice.Context;
 using User.Microservice.Data;
 using User.Microservice.Model;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.Security.Claims;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var authenticationProviderKey = "UserKey";
@@ -116,7 +116,7 @@ app.MapPost("/user/jwt/login", (UserModel user) =>
 IResult GenerateToken(UserModel user)
 {
     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]));
-    var credentials =new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
+    var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
     var expirationDate = DateTime.Now.AddHours(2);
 
     var claims = new[]

@@ -17,7 +17,8 @@ builder.Services.AddDbContext<LogDbContext>(x => x.UseSqlServer(connectionString
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMassTransit(config => {
+builder.Services.AddMassTransit(config =>
+{
     // Add Consumer which reads the sent message;
     config.AddConsumer<LogModelConsumer>();
     config.UsingRabbitMq((ctx, cfg) =>

@@ -1,13 +1,12 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using System.Net;
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("ocelot.json").Build();
 var OcelotConfiguration = new OcelotPipelineConfiguration
 {
     PreAuthorizationMiddleware = async (ctx, next) =>
     {
-       string token = ctx.Request.Headers["Authorization"].ToString().Replace("Bearer", "");
+        string token = ctx.Request.Headers["Authorization"].ToString().Replace("Bearer", "");
 
         await next.Invoke();
     }
