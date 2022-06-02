@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ObjectHandler.Microservice.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ObjectHandler.Microservice.Test.Stubs
 {
-    internal class FTPDALStub
+    internal class FTPDALStub : IFTPObjectDAL
     {
         public bool? testValue = null;
         public Guid DeleteObject(string guidString)
@@ -34,15 +35,15 @@ namespace ObjectHandler.Microservice.Test.Stubs
             }
         }
 
-        public Guid UploadObject(HttpRequest request)
+        public string[] UploadObject(HttpRequest request)
         {
             if (testValue == true)
             {
-                return new Guid();
+                return new string[2];
             }
             else
             {
-                return new Guid();
+                return null;
             }
         }
     }
