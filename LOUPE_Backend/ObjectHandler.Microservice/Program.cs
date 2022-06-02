@@ -66,3 +66,5 @@ app.MapDelete("object/delete", ([FromServices] IObjectDAL db, [FromServices] IFT
 });
 
 app.Run();
+
+public partial class Program { }
