@@ -5,7 +5,7 @@
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "UserHandler.Microservice",
             "Port": 5065
           }
         ],
@@ -25,7 +25,7 @@
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "UserHandler.Microservice",
             "Port": 5065
           }
         ],
@@ -38,7 +38,7 @@
         "DownstreamScheme": "https",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "LogHandler.Microservice",
             "Port": 7002
           }
         ],
@@ -51,7 +51,7 @@
         "DownstreamScheme": "https",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "LogHandler.Microservice",
             "Port": 7002
           }
         ],
@@ -64,7 +64,7 @@
         "DownstreamScheme": "https",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "LogHandler.Microservice",
             "Port": 7002
           }
         ],
@@ -77,7 +77,7 @@
         "DownstreamScheme": "https",
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
+            "Host": "LogHandler.Microservice",
             "Port": 7002
           }
         ],
