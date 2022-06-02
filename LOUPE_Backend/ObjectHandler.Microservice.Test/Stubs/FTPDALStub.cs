@@ -10,7 +10,7 @@ namespace ObjectHandler.Microservice.Test.Stubs
 {
     internal class FTPDALStub : IFTPObjectDAL
     {
-        public bool? testValue = null;
+        public bool? testValue {  get; set; }   
         public Guid DeleteObject(string guidString)
         {
             if (testValue == true)
@@ -39,11 +39,13 @@ namespace ObjectHandler.Microservice.Test.Stubs
         {
             if (testValue == true)
             {
-                return new string[2];
+                string[] data = { Guid.NewGuid().ToString(), "test" };
+                return data;
             }
             else
             {
-                return null;
+                string[] data = { Guid.NewGuid().ToString(), "test" };
+                return data;
             }
         }
     }
