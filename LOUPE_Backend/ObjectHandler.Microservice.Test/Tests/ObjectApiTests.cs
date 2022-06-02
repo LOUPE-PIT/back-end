@@ -63,7 +63,7 @@ namespace ObjectHandler.Microservice.Test
             using (var formdata = new MultipartFormDataContent())
             {
                 formdata.Add(content1, "files", "image.png");
-                formdata.Add(new StringContent("test"), "test");
+                formdata.Add(new StringContent("description"), "description");
 
                 response = await httpClient.PostAsync("object/upload", formdata);
             }
