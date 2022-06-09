@@ -1,0 +1,39 @@
+version: "2"
+services:
+  loupe-backend-gateway:
+    image: "loupegroup/loupe_api.gateway"
+    depends_on: [db]
+    ports:
+      - "8080:80"
+
+  loupe-backend-user:
+    image: "loupegroup/loupe_user.microservice"
+    depends_on: [db]
+    ports:
+      - "43332:32"
+    environment:
+      - ConnectionStrings__AppDb=Server=192.168.150.128,1401;Database=UserDb;User=SA;Password=Welkom12345
+
+  loupe-backend-object:
+    image: "loupegroup/loupe_object.microservice"
+    depends_on: [db]
+    ports:
+      - "43334:34"
+    environment:
+      - ConnectionStrings__AppDb=Server=192.168.150.128,1401;Database=ObjectDb;User=SA;Password=Welkom12345
+
+  loupe-backend-log:
+    image: "loupegroup/loupe_log.microservice"
+    depends_on: [db]
+    ports:
+      - "43335:35"
+    environment:
+      - ConnectionStrings__AppDb=Server=192.168.150.128,1401;Database=LogDb;User=SA;Password=Welkom12345
+      
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: db
+    hostname: db
+    environment:
+      SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
+      ACCEPT_EULA: "Y"
