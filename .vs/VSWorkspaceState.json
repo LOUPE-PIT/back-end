@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LOUPE_Backend",
-    "\\LOUPE_Backend\\LogHandler.Microservice",
-    "\\LOUPE_Backend\\LogHandler.Microservice\\Data"
+    "\\LOUPE_Backend"
   ],
+  "SelectedNode": "\\LOUPE_Backend\\LOUPE_Backend.sln",
   "PreviewInSolutionExplorer": false
 }
