@@ -5,6 +5,8 @@ services:
     depends_on: [db]
     ports:
       - "43334:34"
+    environment:
+      - ConnectionStrings__AppDb=Server=192.168.150.128,1401;Database=ObjectDb;User=SA;Password=Welkom12345
       
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
