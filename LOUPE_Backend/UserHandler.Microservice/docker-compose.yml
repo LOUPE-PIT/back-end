@@ -1,7 +1,7 @@
 version: "2"
 services:
   loupe-backend:
-    image: "418262/loupe_api.gateway"
+    image: "418262/loupe_user.microservice"
     depends_on: [db]
     ports:
       - "43332:32"
