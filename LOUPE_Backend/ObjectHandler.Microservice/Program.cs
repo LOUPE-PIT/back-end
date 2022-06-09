@@ -26,6 +26,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Automatically Migrate the database
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();
+    y.Database.Migrate();
+}
+
+
+
+
 // Get all objects
 app.MapGet("/objects/getall", ([FromServices] IObjectDAL db) =>
 {
