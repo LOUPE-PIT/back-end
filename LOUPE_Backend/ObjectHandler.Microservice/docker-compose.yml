@@ -1,13 +1,10 @@
-version: "2"
+﻿version: "2"
 services:
   loupe-backend:
     image: "418262/loupe_api.gateway"
     depends_on: [db]
     ports:
-      - "8080:80"
-    command:
-      - "dotnet-ef migrations add initial"
-      - "dotnet-ef database update"
+      - "43334:34"
       
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
