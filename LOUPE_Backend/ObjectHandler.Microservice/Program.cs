@@ -68,7 +68,8 @@ app.MapPost("object/upload", ([FromServices] IObjectDAL db, [FromServices] IFTPO
 
 app.MapGet("object/download", ([FromServices] IFTPObjectDAL ftp, string objectId) =>
 {
-    ftp.DownloadObject(objectId);
+    return ftp.DownloadObject(objectId);
+    
 });
 
 app.MapDelete("object/delete", ([FromServices] IObjectDAL db, [FromServices] IFTPObjectDAL ftp, string guidString) =>
