@@ -6,7 +6,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "host.docker.internal",
+          "Host": "userhandler",
           "Port": 5002
         }
       ],
@@ -82,7 +82,7 @@
     },
     {
       "DownstreamPathTemplate": "/log/all",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "loghandler",
