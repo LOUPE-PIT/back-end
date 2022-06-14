@@ -1,10 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.github",
+    "\\.github\\workflows",
     "\\LOUPE_Backend",
+    "\\LOUPE_Backend\\LogHandler.WebApplicationSender",
     "\\LOUPE_Backend\\ObjectHandler.Microservice",
-    "\\LOUPE_Backend\\ObjectHandler.Microservice\\Data"
+    "\\LOUPE_Backend\\ObjectHandler.Microservice\\Data",
+    "\\LOUPE_Backend\\SharedLibrary"
   ],
-  "SelectedNode": "\\LOUPE_Backend\\ObjectHandler.Microservice\\Data\\ObjectDAL.cs",
+  "SelectedNode": "\\LOUPE_Backend\\LOUPE_Backend.sln",
   "PreviewInSolutionExplorer": false
 }

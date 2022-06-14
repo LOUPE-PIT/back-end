@@ -1,8 +1,7 @@
 version: "2"
 services:
   loupe-backend:
-    image: "418262/loupe_api.gateway"
-    depends_on: [db]
+    image: "loupegroup/loupe_api.gateway"
     ports:
       - "8080:80"
       
