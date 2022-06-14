@@ -1,12 +1,13 @@
 {
   "Routes": [
+    //User.Microservice
     {
       "DownstreamPathTemplate": "/user/all",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5065
+          "Port": 5002
         }
       ],
       "AuthenticationOptions": {
@@ -21,25 +22,65 @@
       "SwaggerKey": "UserHandler.Microservice"
     },
     {
-      "DownstreamPathTemplate": "/user/jwt/login",
+      "DownstreamPathTemplate": "/user/login/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5065
+          "Port": 5002
         }
       ],
-      "UpstreamPathTemplate": "/jwt/login",
-      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "UpstreamPathTemplate": "/user/login/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
       "SwaggerKey": "UserHandler.Microservice"
     },
     {
-      "DownstreamPathTemplate": "/log/insert",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/user/delete/{id}",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7002
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/user/delete/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "SwaggerKey": "UserHandler.Microservice"
+    },
+    {
+      "DownstreamPathTemplate": "/user/update/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/user/login/{id}",
+      "UpstreamHttpMethod": [ "PUT" ],
+      "SwaggerKey": "UserHandler.Microservice"
+    },
+    {
+      "DownstreamPathTemplate": "/user/add",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/user/add",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "UserHandler.Microservice"
+    },
+    //Log.Microservice
+    {
+      "DownstreamPathTemplate": "/log/insert",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
         }
       ],
       "UpstreamPathTemplate": "/log/save",
@@ -48,11 +89,11 @@
     },
     {
       "DownstreamPathTemplate": "/log/all",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7002
+          "Port": 5000
         }
       ],
       "UpstreamPathTemplate": "/logs",
@@ -61,11 +102,11 @@
     },
     {
       "DownstreamPathTemplate": "/log/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7002
+          "Port": 5000
         }
       ],
       "UpstreamPathTemplate": "/log/{id}",
@@ -74,17 +115,58 @@
     },
     {
       "DownstreamPathTemplate": "/log/user/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7002
+          "Port": 5000
         }
       ],
       "UpstreamPathTemplate": "/log/user/{id}",
       "UpstreamHttpMethod": [ "POST", "GET" ],
       "SwaggerKey": "LogHandler.Microservice"
+    },
+    //Object.Microservice
+    {
+      "DownstreamPathTemplate": "/object/upload",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/object/upload",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "ObjectHandler.Microservice"
+    },
+    {
+      "DownstreamPathTemplate": "/object/download",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/object/download",
+      "UpstreamHttpMethod": [ "GET" ],
+      "SwaggerKey": "ObjectHandler.Microservice"
+    },
+    {
+      "DownstreamPathTemplate": "/object/delete",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/object/delete",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "SwaggerKey": "ObjectHandler.Microservice"
     }
+
   ],
   "SwaggerEndPoints": [
     {
@@ -93,7 +175,27 @@
         {
           "Name": "UserHandler API",
           "Version": "v1",
-          "Url": "http://localhost:5065/swagger/v1/swagger.json"
+          "Url": "http://localhost:5002/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "LogHandler.Microservice",
+      "Config": [
+        {
+          "Name": "LogHandler API",
+          "Version": "v1",
+          "Url": "http://localhost:5000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ObjectHandler.Microservice",
+      "Config": [
+        {
+          "Name": "ObjectHandler API",
+          "Version": "v1",
+          "Url": "http://localhost:5001/swagger/v1/swagger.json"
         }
       ]
     }
