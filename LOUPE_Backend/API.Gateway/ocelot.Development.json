@@ -10,10 +10,6 @@
           "Port": 5002
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProvderKey": "UserKey",
-        "AllowedScopes": []
-      },
       "UpstreamPathTemplate": "/users",
       "UpstreamHttpMethod": [ "POST", "GET" ],
       "SwaggerKey": "UserHandler.Microservice"
