@@ -158,8 +158,20 @@
       "UpstreamPathTemplate": "/object/delete",
       "UpstreamHttpMethod": [ "DELETE" ],
       "SwaggerKey": "ObjectHandler.Microservice"
+    },
+    {
+      "DownstreamPathTemplate": "/objects/getall",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "objecthandler",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/object/get/all",
+      "UpstreamHttpMethod": [ "GET" ],
+      "SwaggerKey": "ObjectHandler.Microservice"
     }
-
   ],
   "SwaggerEndPoints": [
     {
