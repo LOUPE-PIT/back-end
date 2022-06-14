@@ -10,8 +10,8 @@ WORKDIR /src
 COPY ["LOUPE_Backend/LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj", "LogHandler.WebApplicationSender/"]
 COPY ["LOUPE_Backend/SharedLibrary/LogHandler.SharedLibrary.csproj", "SharedLibrary/"]
 RUN dotnet restore "LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
-COPY . .
 WORKDIR "/src/LogHandler.WebApplicationSender"
+COPY . .
 RUN dotnet build "LogHandler.WebApplicationSender.csproj" -c Release -o /app/build
 
 FROM build AS publish
