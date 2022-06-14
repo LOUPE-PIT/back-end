@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["LOUPE_Backend/LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj", "LogHandler.WebApplication/"]
-RUN dotnet restore "LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
+RUN dotnet restore "LogHandler.WebApplication/LogHandler.WebApplicationSender.csproj"
 COPY . .
 WORKDIR "/src/LogHandler.WebApplicationSender"
 COPY LOUPE_Backend/UserHandler.Microservice .
