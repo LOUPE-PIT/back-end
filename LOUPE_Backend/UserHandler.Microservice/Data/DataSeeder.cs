@@ -21,12 +21,12 @@ namespace User.Microservice.Data
                 {
                     new UserModel()
                     {
-                        userID = "44",
+                        userID = 44,
                         name = "Sem"
                     },
                     new UserModel()
                     {
-                        userID = "55",
+                        userID = 55,
                         name = "Nahir"
                     }
                 };

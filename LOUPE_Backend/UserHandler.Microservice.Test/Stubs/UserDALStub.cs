@@ -46,12 +46,12 @@ namespace UserHandler.Microservice.Test.Stubs
             }
         }
 
-        public UserModel GetUserById(string id)
+        public UserModel GetUserById(int id)
         {
             return new UserModel();
         }
 
-        public ActionResult DeleteUserById(string id)
+        public ActionResult DeleteUserById(int id)
         {
             if (testValue == true)
             {

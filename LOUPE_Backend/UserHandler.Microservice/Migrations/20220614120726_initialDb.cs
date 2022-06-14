@@ -12,7 +12,8 @@ namespace UserHandler.Microservice.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    userID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    userID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

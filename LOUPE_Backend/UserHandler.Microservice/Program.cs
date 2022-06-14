@@ -44,12 +44,12 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, string id) =>
+app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, int id) =>
 {
     return db.GetUserById(id);
 });
 
-app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, string id) =>
+app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, int id) =>
 {
     return db.DeleteUserById(id);
 });
