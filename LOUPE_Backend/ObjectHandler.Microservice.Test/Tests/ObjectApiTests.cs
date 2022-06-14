@@ -15,6 +15,7 @@ using Xunit;
 
 namespace ObjectHandler.Microservice.Test
 {
+    // test mostly written to run thought the pipeline. No real value.
     public class ObjectApiTests : WebApplicationFactory<Program>
     {
         ObjectDALStub Obstub = new ObjectDALStub();

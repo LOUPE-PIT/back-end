@@ -3,6 +3,7 @@ using User.Microservice.Model;
 
 namespace User.Microservice.Data
 {
+    // dataseeder to seed the database with data. not needed can manually add data as well.
     public class DataSeeder
     {
         private readonly UserDbContext userDbContext;

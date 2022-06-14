@@ -1,6 +1,8 @@
 using MassTransit;
 using SharedLibrary;
 
+//PoC for messaging. The sender is supposed to be the frontend. We didn't have a frontend at the time of making the PoC.
+
 RabbitMQSettings rMQSettings = new RabbitMQSettings();
 
 var builder = WebApplication.CreateBuilder(args);

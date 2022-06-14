@@ -6,11 +6,13 @@
             
         public FTPObjectDAL()
         {
+            // This connects to my personal hosted FTP container with my ip / username / password
             client = new FluentFTP.FtpClient("192.168.246.129", "sphinx", "root");
         }
 
         public string[] UploadObject(HttpRequest request)
         {
+            // We use Guid because they can be easily generated and be controlled.
             Guid id = Guid.NewGuid();
             // Get all files from the request
             var files = request.Form.Files;

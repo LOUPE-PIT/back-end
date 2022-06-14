@@ -19,6 +19,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMassTransit(config =>
 {
+    // This microservice is the receiver from the message.
     // Add Consumer which reads the sent message;
     config.AddConsumer<LogModelConsumer>();
     config.UsingRabbitMq((ctx, cfg) =>
