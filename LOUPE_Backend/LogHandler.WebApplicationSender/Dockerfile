@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj", "LogHandler.WebApplicationSender/"]
-COPY ["SharedLibrary/LogHandler.SharedLibrary.csproj", "SharedLibrary/"]
+COPY ["LOUPE_BACKEND/LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj", "LogHandler.WebApplicationSender/"]
+COPY ["LOUPE_BACKEND/SharedLibrary/LogHandler.SharedLibrary.csproj", "SharedLibrary/"]
 RUN dotnet restore "LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
 COPY . .
 WORKDIR "/src/LogHandler.WebApplicationSender"
