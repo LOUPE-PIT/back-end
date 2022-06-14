@@ -6,16 +6,13 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "userhandler",
           "Port": 5002
         }
       ],
       "AuthenticationOptions": {
         "AuthenticationProvderKey": "UserKey",
         "AllowedScopes": []
-      },
-      "RouteClaimsRequirement": {
-        "Role": "Admin"
       },
       "UpstreamPathTemplate": "/users",
       "UpstreamHttpMethod": [ "POST", "GET" ],
@@ -26,7 +23,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "userhandler",
           "Port": 5002
         }
       ],
@@ -39,7 +36,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "userhandler",
           "Port": 5002
         }
       ],
@@ -52,7 +49,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "userhandler",
           "Port": 5002
         }
       ],
@@ -65,7 +62,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "userhandler",
           "Port": 5002
         }
       ],
@@ -79,7 +76,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "loghandler",
           "Port": 5000
         }
       ],
@@ -92,7 +89,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "loghandler",
           "Port": 5000
         }
       ],
@@ -105,7 +102,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "loghandler",
           "Port": 5000
         }
       ],
@@ -118,7 +115,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "loghandler",
           "Port": 5000
         }
       ],
@@ -132,7 +129,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "objecthandler",
           "Port": 5001
         }
       ],
@@ -145,7 +142,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "objecthandler",
           "Port": 5001
         }
       ],
@@ -158,7 +155,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "objecthandler",
           "Port": 5001
         }
       ],
