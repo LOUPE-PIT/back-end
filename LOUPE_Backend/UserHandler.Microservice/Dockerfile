@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj", "UserHandler.Microservice/"]
+COPY ["UserHandler.Microservice.csproj", "UserHandler.Microservice/"]
 RUN dotnet restore "UserHandler.Microservice/UserHandler.Microservice.csproj"
 COPY . .
 WORKDIR "/src/UserHandler.Microservice"
