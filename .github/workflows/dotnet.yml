@@ -9,11 +9,11 @@ jobs:
     strategy:
       matrix: 
         PATH_TO_SLN_OR_CSPROJ:
-          - ".LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj"
-          - ".LOUPE_Backend/LogHanlder.Microservice/LogHandler.Microservice.csproj"
-          - ".LOUPE_Backend/LogHanlder.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
-          - ".LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj"
-          - ".LOUPE_Backend/API.Gateway/API.Gateway.csproj"
+          - "./LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj"
+          - "./LOUPE_Backend/LogHanlder.Microservice/LogHandler.Microservice.csproj"
+          - "./LOUPE_Backend/LogHanlder.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
+          - "./LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj"
+          - "./LOUPE_Backend/API.Gateway/API.Gateway.csproj"
           - "LOUPE_Backend.sln"
 
     steps:
@@ -30,8 +30,8 @@ jobs:
     strategy:
       matrix: 
         PATH_TO_TEST_CSPROJ:
-          - ".LOUPE_Backend/UserHandler.Microservice.Test/UserHandler.Microservice.Test.csproj"
-          - ".LOUPE_Backend/LogHandler.Microservice.Test/LogHandler.Microservice.Test.csproj"
+          - "./LOUPE_Backend/UserHandler.Microservice.Test/UserHandler.Microservice.Test.csproj"
+          - "./LOUPE_Backend/LogHandler.Microservice.Test/LogHandler.Microservice.Test.csproj"
 
     steps:
       - name: Clone repo to runner
@@ -51,22 +51,22 @@ jobs:
       matrix: 
         array: [
           {
-            PATH_TO_DOCKERFILE: ".LOUPE_Backend/UserHandler.Microservice/",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/UserHandler.Microservice/",
             DOCKER_IMAGE_NAME: "userhandler.microservice",
             DOCKER_REPO_NAME: "loupegroup/loupe_userhandler.microservice"
           },
           {
-            PATH_TO_DOCKERFILE: ".LOUPE_Backend/API.Gateway/",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/API.Gateway/",
             DOCKER_IMAGE_NAME: "api.gateway",
             DOCKER_REPO_NAME: loupegroup/loupe_api.gateway"
           },
           {
-            PATH_TO_DOCKERFILE: ".LOUPE_Backend/LogHandler.Microservice/",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/LogHandler.Microservice/",
             DOCKER_IMAGE_NAME: "loghandler.microservice",
             DOCKER_REPO_NAME: "loupegroup/loupe_loghandler.microservice"
           },
           {
-            PATH_TO_DOCKERFILE: ".LOUPE_Backend/ObjectHandler.Microservice/",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/ObjectHandler.Microservice/",
             DOCKER_IMAGE_NAME: "objecthandler.microservice",
             DOCKER_REPO_NAME: "loupegroup/loupe_objecthandler.microservice"
           },
