@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install dependencies
-      run: dotnet build -restore ${{inputs.PATH_TO_SLN_OR_CSPROJ}}
-    - name: Build
-      run: dotnet build --no-restore ${{inputs.PATH_TO_SLN_OR_CSPROJ}}
+    - run: dotnet build -restore ${{inputs.PATH_TO_SLN_OR_CSPROJ}}
+      shell: bash
+    - run: dotnet build --no-restore ${{inputs.PATH_TO_SLN_OR_CSPROJ}}
+      shell: bash
