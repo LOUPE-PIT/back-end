@@ -10,11 +10,11 @@ jobs:
       matrix: 
         PATH_TO_SLN_OR_CSPROJ:
           - "./LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj"
-          - "./LOUPE_Backend/LogHanlder.Microservice/LogHandler.Microservice.csproj"
-          - "./LOUPE_Backend/LogHanlder.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
+          - "./LOUPE_Backend/LogHandler.Microservice/LogHandler.Microservice.csproj"
+          - "./LOUPE_Backend/LogHandler.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
           - "./LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj"
           - "./LOUPE_Backend/API.Gateway/API.Gateway.csproj"
-          - "LOUPE_Backend.sln"
+          - "./LOUPE_Backend/LOUPE_Backend.sln"
 
     steps:
       - name: Clone repo to runner
@@ -31,7 +31,8 @@ jobs:
       matrix: 
         PATH_TO_TEST_CSPROJ:
           - "./LOUPE_Backend/UserHandler.Microservice.Test/UserHandler.Microservice.Test.csproj"
-          - "./LOUPE_Backend/LogHandler.Microservice.Test/LogHandler.Microservice.Test.csproj"
+          - "./LOUPE_Backend/LogHandler.Microservice.Tests/LogHandler.Microservice.Test.csproj"
+          - "./LOUPE_Backend/ObjectHandler.Microservice.Test/ObjectHandler.Microservice.Test.csproj"
 
     steps:
       - name: Clone repo to runner
