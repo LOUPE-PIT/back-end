@@ -8,8 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["LogHandler.Microservice.csproj", "LogHandler.Microservice/"]
-#COPY ["../SharedLibrary/LogHandler.SharedLibrary.csproj", "SharedLibrary/"] 
-ADD "LOUPE_Backend/SharedLibrary/LogHandler.SharedLibrary.csproj" "/SharedLibrary"
+COPY LOUPE_Backend/SharedLibrary/LogHandler.SharedLibrary.csproj SharedLibrary/ 
+#ADD "LOUPE_Backend/SharedLibrary/LogHandler.SharedLibrary.csproj" "/SharedLibrary"
 RUN dotnet restore "LogHandler.Microservice/LogHandler.Microservice.csproj"
 RUN dotnet restore "SharedLibrary/LogHandler.SharedLibrary.csproj"
 COPY . .
