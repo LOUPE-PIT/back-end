@@ -4,7 +4,7 @@ name: ObjectHandler.Microservice CI/CD
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ main, Nahir-Docker ]
   pull_request:
     branches: [ main ]
 
@@ -15,7 +15,7 @@ env:
   PATH_TO_SLN: './LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj'
   PATH_TO_DOCKERFILE: './LOUPE_Backend/ObjectHandler.Microservice/Dockerfile'
   DOCKER_IMAGE_NAME: objecthandler.microservice:latest
-  DOCKER_REPO_NAME: 418262/loupe_objecthandler.microservice
+  DOCKER_REPO_NAME: loupegroup/loupe_objecthandler.microservice
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

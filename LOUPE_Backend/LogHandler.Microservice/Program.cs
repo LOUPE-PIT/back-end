@@ -52,10 +52,21 @@ void SeedData(Microsoft.Extensions.Hosting.IHost app)
     }
 }
 
+// Automatically Migrate the database
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
+    y.Database.Migrate();
+}
+
+
+// Use swagger
+app.UseSwagger();
+app.UseSwaggerUI();
+
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
 

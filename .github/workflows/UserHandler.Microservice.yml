@@ -4,7 +4,7 @@ name: UserHandler.Microservice CI/CD
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main, pipeline-update ]
+    branches: [ main, Nahir-Docker ]
   pull_request:
     branches: [ main ]
 
@@ -15,7 +15,7 @@ env:
   PATH_TO_SLN: './LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj'
   PATH_TO_DOCKERFILE: './LOUPE_Backend/UserHandler.Microservice/Dockerfile'
   DOCKER_IMAGE_NAME: userhandler.microservice:latest
-  DOCKER_REPO_NAME: 418262/loupe_userhandler.microservice
+  DOCKER_REPO_NAME: loupegroup/loupe_userhandler.microservice
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

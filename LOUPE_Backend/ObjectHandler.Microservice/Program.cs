@@ -19,12 +19,25 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Add swagger
+app.UseSwagger();
+app.UseSwaggerUI();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
+
+// Automatically Migrate the database
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();
+    y.Database.Migrate();
+}
+
+
+
 
 // Get all objects
 app.MapGet("/objects/getall", ([FromServices] IObjectDAL db) =>
@@ -55,7 +68,8 @@ app.MapPost("object/upload", ([FromServices] IObjectDAL db, [FromServices] IFTPO
 // Run this api with the objectId you get from /objects/getall
 app.MapGet("object/download", ([FromServices] IFTPObjectDAL ftp, string objectId) =>
 {
-    ftp.DownloadObject(objectId);
+    return ftp.DownloadObject(objectId);
+    
 });
 
 // a quality of life api call to easily delete objects from the FTP server and database

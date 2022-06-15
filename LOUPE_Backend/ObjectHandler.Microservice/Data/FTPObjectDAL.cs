@@ -3,11 +3,11 @@
     public class FTPObjectDAL : IFTPObjectDAL
     {
         private readonly FluentFTP.FtpClient client;
-            
+
         public FTPObjectDAL()
         {
-            // This connects to my personal hosted FTP container with my ip / username / password
-            client = new FluentFTP.FtpClient("192.168.246.129", "sphinx", "root");
+            var builder = WebApplication.CreateBuilder();
+            client = new FluentFTP.FtpClient(builder.Configuration["FTP:IpAddress"], builder.Configuration["FTP:User"], builder.Configuration["FTP:Password"]);
         }
 
         public string[] UploadObject(HttpRequest request)
