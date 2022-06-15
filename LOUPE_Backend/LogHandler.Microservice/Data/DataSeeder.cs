@@ -12,6 +12,7 @@ namespace LogHandler.Microservice.Data
             this.logDbContext = logDbContext;
         }
 
+        // Dataseeder is used to put data in the database on creation. Can also add data manually after creating the database.
         public void Seed()
         {
             if (!logDbContext.Log.Any())

@@ -12,6 +12,7 @@
 
         public string[] UploadObject(HttpRequest request)
         {
+            // We use Guid because they can be easily generated and be controlled.
             Guid id = Guid.NewGuid();
             // Get all files from the request
             var files = request.Form.Files;

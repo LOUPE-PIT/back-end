@@ -4,6 +4,7 @@ namespace SharedLibrary
 {
     public class LogModel
     {
+        // Model used to define in the messaging process. Needs to be the same model with the same values as in the recieving microservice.
         [Key]
         public string logId { get; set; }
         //[ForeignKey("User")]

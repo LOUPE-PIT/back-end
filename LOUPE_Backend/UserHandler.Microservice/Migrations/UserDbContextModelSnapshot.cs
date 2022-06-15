@@ -16,15 +16,18 @@ namespace UserHandler.Microservice.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("User.Microservice.Model.UserModel", b =>
                 {
-                    b.Property<string>("userID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("userID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userID"), 1L, 1);
 
                     b.Property<string>("name")
                         .IsRequired()

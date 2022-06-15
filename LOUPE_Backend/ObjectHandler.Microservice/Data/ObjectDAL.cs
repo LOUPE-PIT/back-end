@@ -15,6 +15,7 @@ namespace ObjectHandler.Microservice.Data
 
         public List<ObjectModel> GetAllObjects() => db.Object.ToList();
 
+        // For future use 
         //public ObjectModel GetObjectByClassId(int classId)
         //{
         //    return db.Object.Where(x => x.Id == classId).FirstOrDefault();

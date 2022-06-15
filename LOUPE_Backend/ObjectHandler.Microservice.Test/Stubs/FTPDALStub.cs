@@ -10,6 +10,7 @@ namespace ObjectHandler.Microservice.Test.Stubs
 {
     internal class FTPDALStub : IFTPObjectDAL
     {
+        // mock data layer to guarantee succesful tests
         public bool? testValue {  get; set; }   
         public Guid DeleteObject(string guidString)
         {
