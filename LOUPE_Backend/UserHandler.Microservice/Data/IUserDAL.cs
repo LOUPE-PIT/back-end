@@ -8,7 +8,7 @@ namespace User.Microservice.Data
         ActionResult AddUser(UserModel user);
         List<UserModel> GetUsers();
         UserModel UpdateUser(UserModel user);
-        UserModel GetUserById(string id);
-        public ActionResult DeleteUserById(string id);
+        UserModel GetUserById(int id);
+        public ActionResult DeleteUserById(int id);
     }
 }
