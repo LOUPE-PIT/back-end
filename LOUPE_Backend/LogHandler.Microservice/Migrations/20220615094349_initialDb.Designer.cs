@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogHandler.Microservice.Migrations
 {
     [DbContext(typeof(LogDbContext))]
-    [Migration("20220426121323_initalDb")]
-    partial class initalDb
+    [Migration("20220615094349_initialDb")]
+    partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,18 +23,20 @@ namespace LogHandler.Microservice.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("LogHandler.Microservice.Model.LogModel", b =>
+            modelBuilder.Entity("SharedLibrary.LogModel", b =>
                 {
-                    b.Property<string>("logId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("logId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("logId"), 1L, 1);
 
                     b.Property<string>("log")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("userId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("userId")
+                        .HasColumnType("int");
 
                     b.HasKey("logId");
 

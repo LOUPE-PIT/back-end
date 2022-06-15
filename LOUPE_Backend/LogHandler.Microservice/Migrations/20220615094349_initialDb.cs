@@ -4,7 +4,7 @@
 
 namespace LogHandler.Microservice.Migrations
 {
-    public partial class initalDb : Migration
+    public partial class initialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,9 @@ namespace LogHandler.Microservice.Migrations
                 name: "Log",
                 columns: table => new
                 {
-                    logId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    userId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    logId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userId = table.Column<int>(type: "int", nullable: false),
                     log = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

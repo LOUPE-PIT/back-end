@@ -53,12 +53,12 @@ namespace LogHandler.Microservice.Tests.Stubs
             throw new System.NotImplementedException();
         }
 
-        SharedLibrary.LogModel ILogDAL.GetLogByLogId(string id)
+        SharedLibrary.LogModel ILogDAL.GetLogByLogId(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        SharedLibrary.LogModel ILogDAL.GetLogByUserId(string userid)
+        SharedLibrary.LogModel ILogDAL.GetLogByUserId(int userid)
         {
             throw new System.NotImplementedException();
         }

@@ -21,14 +21,14 @@ namespace LogHandler.Microservice.Data
                 {
                     new LogModel()
                     {
-                        logId = "1",
-                        userId = "55",
+                        logId = 1,
+                        userId = 55,
                         log = "This is a test log entry"
                     },
                     new LogModel()
                     {
-                        logId = "2",
-                        userId = "44",
+                        logId = 2,
+                        userId = 44,
                         log = "This is the second test log entry"
                     }
                 };
