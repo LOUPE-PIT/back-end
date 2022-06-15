@@ -1,4 +1,4 @@
-# Loupe Project Bakckend
+# Loupe Project Backend
 The Loupe Project Backend in collaboration with the Loupe Unity project is a project made to improve/support practical lessons with the use of Mixed Reality.
 The Backend of this project is used and will be used as an API to deliver the essential data to the Unity Mixed Reality project (Logs, 3D Models, etc.). Eventually it will also be used as a way to save 3D Models via a web application.
 The technology’s used in this project were chosen by researching the available options. This project makes use of the microservice architecture, the main reason for this choice was the ability to scale the project to increase the performance. 
@@ -12,6 +12,7 @@ For the main framework of this project .NET 6.0 is being used, this choice was m
 -	License constraints
 -	Documentation/support
 -	Maturity of the product
+
 To make sure logs of user interactivity with 3D Models will be saved at all times Messaging is being used with RabbitMQ as the system. Messaging allows content to be handled by another part of the system that will process the message when it suits best. This feature is as of yet not fully implemented In both parts of the project.
 To store data for most microservices MsSQL databases are being used, every microservice has its own database. To store the data of the 3DModel microservice a FTP server is being used.
 
@@ -29,17 +30,18 @@ To store data for most microservices MsSQL databases are being used, every micro
 ## Installation of the project
 This project can be run locally in visual studio 2022. 
 To setup the project in Visual Studio 2022:
-* Clone the repository to your device
-*	Start Visual Studio 2022
-*	Select open a project or solution
-*	Browse to the repository and select the .sln file in LOUPE_Backend
-*	– The project will be loaded in, before building the project be sure to run the test project first. This can be done by right clicking servicename.Microservice.Test.csproj and selecting run tests.
-*	Once all the tests have been completed and verified, select the projects you want to run by setting the startup projects in the solution and run the application.
+1. Clone the repository to your device
+2.	Start Visual Studio 2022
+3.	Select open a project or solution
+4.	Browse to the repository and select the .sln file in LOUPE_Backend
+5.	– The project will be loaded in, before building the project be sure to run the test project first. This can be done by right clicking servicename.Microservice.Test.csproj and selecting run tests.
+6.	Once all the tests have been completed and verified, select the projects you want to run by setting the startup projects in the solution and run the application.
 
 After this set-up the main part of the application is set-up, to fully use the application and its features messaging, service related databases and the ftp server need to be set up.
-MESSAGING
-FTP SERVER
-MSSQL DATABASE
+
+### Messaging
+### FTP Server
+### MsSQL Database
 
 ## How to use the project
 Because this project makes use of the microservice architecture the project is split into several components/services. 
@@ -67,7 +69,7 @@ Both the Producer and Consumer make use of a SharedLibrary (which is needed beca
 ### ObjectHandler Microservice (3DModel)
 The ObjectHandler microservice is responsible for handling the 3DModels data and actions (upload, retrieve, delete, etc.). 3DModels are stored in a ftp server using .ZIP formatting.
 
-### Servicename.Microservice.Test
+### *Servicename*.Microservice.Test
 For every service there is a test project. The tests, test the actions the api endpoints will need to be able to execute during runtime.
 
 ### API Gateway
