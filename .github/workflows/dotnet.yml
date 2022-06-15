@@ -1,0 +1,86 @@
+name: dotnet
+on:
+  push:
+    branches: [main, Nahir-Docker]
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        PATH_TO_SLN_OR_CSPROJ:
+          - ".LOUPE_Backend/UserHandler.Microservice/UserHandler.Microservice.csproj"
+          - ".LOUPE_Backend/LogHanlder.Microservice/LogHandler.Microservice.csproj"
+          - ".LOUPE_Backend/LogHanlder.WebApplicationSender/LogHandler.WebApplicationSender.csproj"
+          - ".LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj"
+          - ".LOUPE_Backend/API.Gateway/API.Gateway.csproj"
+          - "LOUPE_Backend.sln"
+
+    steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: build 
+        uses: ./.github/actions/build
+        with:
+          PATH_TO_SLN_OR_CSPROJ: ${{matrix.PATH_TO_SLN_OR_CSPROJ}}
+  
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        PATH_TO_TEST_CSPROJ:
+          - ".LOUPE_Backend/UserHandler.Microservice.Test/UserHandler.Microservice.Test.csproj"
+          - ".LOUPE_Backend/LogHandler.Microservice.Test/LogHandler.Microservice.Test.csproj"
+
+    steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: test 
+        uses: ./.github/actions/test
+        with:
+          PATH_TO_TEST_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
+
+  containerize:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - test
+    strategy:
+      matrix: 
+        array: [
+          {
+            PATH_TO_DOCKERFILE: ".LOUPE_Backend/UserHandler.Microservice/",
+            DOCKER_IMAGE_NAME: "userhandler.microservice",
+            DOCKER_REPO_NAME: "loupegroup/loupe_userhandler.microservice"
+          },
+          {
+            PATH_TO_DOCKERFILE: ".LOUPE_Backend/API.Gateway/",
+            DOCKER_IMAGE_NAME: "api.gateway",
+            DOCKER_REPO_NAME: loupegroup/loupe_api.gateway"
+          },
+          {
+            PATH_TO_DOCKERFILE: ".LOUPE_Backend/LogHandler.Microservice/",
+            DOCKER_IMAGE_NAME: "loghandler.microservice",
+            DOCKER_REPO_NAME: "loupegroup/loupe_loghandler.microservice"
+          },
+          {
+            PATH_TO_DOCKERFILE: ".LOUPE_Backend/ObjectHandler.Microservice/",
+            DOCKER_IMAGE_NAME: "objecthandler.microservice",
+            DOCKER_REPO_NAME: "loupegroup/loupe_objecthandler.microservice"
+          },
+      ]
+
+    steps:
+    - name: Clone repo to runner
+      uses: actions/checkout@v3
+
+    - name: containerize 
+      uses: ./.github/actions/containerize
+      with:
+        PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
+        DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE_NAME}}
+        DOCKER_REPO_NAME: ${{matrix.array.DOCKER_REPO_NAME}}
+        DOCKER_ACCTOKEN: ${{secrets.DOCKER_ACCTOKEN}}
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
