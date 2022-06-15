@@ -45,7 +45,7 @@ namespace LogHandler.Microservice.Tests.Tests
             //Arrange
             LogModel logModel = new LogModel();
             logModel.log = "test log.";
-            logModel.userId = "11";
+            logModel.userId = 11;
             logModel.created = DateTime.Now;
             var webAppFactory = new LogApiTest();
             HttpClient httpsClient = webAppFactory.CreateClient();
@@ -66,7 +66,7 @@ namespace LogHandler.Microservice.Tests.Tests
         public async void GetLogByLogId_Passed()
         {
             LogModel logModel = new LogModel();
-            logModel.logId = "1";
+            logModel.logId = 1;
             var webAppFactory = new LogApiTest(); ;
             HttpClient httpsClient = webAppFactory.CreateClient();
             stub.testValue = true;
@@ -80,7 +80,7 @@ namespace LogHandler.Microservice.Tests.Tests
         public async void GetLogByUserId_Passed()
         {
             LogModel logModel = new LogModel();
-            logModel.userId = "11";
+            logModel.userId = 11;
             var webAppFactory = new LogApiTest();
             HttpClient httpsClient = webAppFactory.CreateClient();
             stub.testValue = true;

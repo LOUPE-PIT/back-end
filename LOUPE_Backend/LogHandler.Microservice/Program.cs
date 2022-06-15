@@ -53,11 +53,11 @@ void SeedData(Microsoft.Extensions.Hosting.IHost app)
 }
 
 // Automatically Migrate the database
-using (var scope = app.Services.CreateScope())
-{
-    var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
-    y.Database.Migrate();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
+//    y.Database.Migrate();
+//}
 
 
 // Use swagger
@@ -80,12 +80,12 @@ app.MapGet("/log/all", ([FromServices] ILogDAL db) =>
     return db.GetAllLogs();
 });
 
-app.MapGet("/log/{id}", ([FromServices] ILogDAL db, string id) =>
+app.MapGet("/log/{id}", ([FromServices] ILogDAL db, int id) =>
 {
     return db.GetLogByLogId(id);
 });
 
-app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, string id) =>
+app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, int id) =>
 {
     return db.GetLogByUserId(id);
 });

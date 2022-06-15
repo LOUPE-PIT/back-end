@@ -7,7 +7,7 @@ namespace LogHandler.Microservice.Data
     {
         ActionResult InsertLog(LogModel log);
         List<LogModel> GetAllLogs();
-        LogModel GetLogByLogId(string id);
-        LogModel GetLogByUserId(string userid);
+        LogModel GetLogByLogId(int id);
+        LogModel GetLogByUserId(int userid);
     }
 }
