@@ -30,9 +30,9 @@ jobs:
     strategy:
       matrix: 
         PATH_TO_TEST_CSPROJ:
-          - "./LOUPE_Backend/UserHandler.Microservice.Test/UserHandler.Microservice.Test.csproj"
+          #- "./LOUPE_Backend/UserHandler.Microservice.Test/UserHandler.Microservice.Test.csproj"
           - "./LOUPE_Backend/LogHandler.Microservice.Tests/LogHandler.Microservice.Tests.csproj"
-          - "./LOUPE_Backend/ObjectHandler.Microservice.Test/ObjectHandler.Microservice.Test.csproj"
+          #- "./LOUPE_Backend/ObjectHandler.Microservice.Test/ObjectHandler.Microservice.Test.csproj"
 
     steps:
       - name: Clone repo to runner
