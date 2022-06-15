@@ -52,22 +52,22 @@ jobs:
       matrix: 
         array: [
           {
-            PATH_TO_DOCKERFILE: "./LOUPE_Backend/UserHandler.Microservice/Dockerfile",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/UserHandler.Microservice/",
             DOCKER_IMAGE_NAME: "userhandler.microservice:latest",
             DOCKER_REPO_NAME: "loupegroup/loupe_userhandler.microservice"
           },
           {
-            PATH_TO_DOCKERFILE: "./LOUPE_Backend/API.Gateway/Dockerfile",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/API.Gateway/",
             DOCKER_IMAGE_NAME: "api.gateway:latest",
             DOCKER_REPO_NAME: loupegroup/loupe_api.gateway"
           },
           {
-            PATH_TO_DOCKERFILE: "./LOUPE_Backend/LogHandler.Microservice/Dockerfile",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/LogHandler.Microservice/",
             DOCKER_IMAGE_NAME: "loghandler.microservice:latest",
             DOCKER_REPO_NAME: "loupegroup/loupe_loghandler.microservice"
           },
           {
-            PATH_TO_DOCKERFILE: "./LOUPE_Backend/ObjectHandler.Microservice/Dockerfile",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/ObjectHandler.Microservice/",
             DOCKER_IMAGE_NAME: "objecthandler.microservice:latest",
             DOCKER_REPO_NAME: "loupegroup/loupe_objecthandler.microservice"
           },
