@@ -52,7 +52,7 @@ jobs:
       matrix: 
         array: [
           {
-            PATH_TO_DOCKERFILE: "./LOUPE_Backend/UserHandler.Microservice/",
+            PATH_TO_DOCKERFILE: "./UserHandler.Microservice/",
             DOCKER_IMAGE_NAME: "userhandler.microservice:latest",
             DOCKER_REPO_NAME: "loupegroup/loupe_userhandler.microservice"
           },
