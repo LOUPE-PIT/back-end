@@ -1,17 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using ObjectHandler.Microservice.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ObjectHandler.Microservice.Data;
 
 namespace ObjectHandler.Microservice.Test.Stubs
 {
     internal class FTPDALStub : IFTPObjectDAL
     {
         // mock data layer to guarantee succesful tests
-        public bool? testValue {  get; set; }   
+        public bool? testValue { get; set; }
         public Guid DeleteObject(string guidString)
         {
             if (testValue == true)
@@ -20,7 +14,7 @@ namespace ObjectHandler.Microservice.Test.Stubs
             }
             else
             {
-                return new Guid();  
+                return new Guid();
             }
         }
 
@@ -32,7 +26,7 @@ namespace ObjectHandler.Microservice.Test.Stubs
             }
             else
             {
-                return null; 
+                return null;
             }
         }
 

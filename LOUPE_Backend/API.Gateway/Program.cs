@@ -24,8 +24,6 @@ builder.Host.UseContentRoot(Directory.GetCurrentDirectory())
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-
 app.UseSwaggerForOcelotUI(opt =>
 {
     opt.PathToSwaggerGenerator = "/swagger/docs";
@@ -34,4 +32,5 @@ app.UseSwaggerForOcelotUI(opt =>
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseOcelot().Wait();
 app.Run();

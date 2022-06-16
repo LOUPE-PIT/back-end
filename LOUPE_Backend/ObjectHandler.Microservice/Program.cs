@@ -30,11 +30,11 @@ if (app.Environment.IsDevelopment())
 }
 
 // Automatically Migrate the database
-using (var scope = app.Services.CreateScope())
-{
-    var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();
-    y.Database.Migrate();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();
+//    y.Database.Migrate();
+//}
 
 
 
@@ -69,7 +69,7 @@ app.MapPost("object/upload", ([FromServices] IObjectDAL db, [FromServices] IFTPO
 app.MapGet("object/download", ([FromServices] IFTPObjectDAL ftp, string objectId) =>
 {
     return ftp.DownloadObject(objectId);
-    
+
 });
 
 // a quality of life api call to easily delete objects from the FTP server and database

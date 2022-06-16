@@ -6,8 +6,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
-          "Port": 5002
+          "Host": "localhost",
+          "Port": 15147
         }
       ],
       "UpstreamPathTemplate": "/users",
@@ -82,11 +82,11 @@
     },
     {
       "DownstreamPathTemplate": "/log/all",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "loghandler",
-          "Port": 5000
+          "Host": "localhost",
+          "Port": 7002
         }
       ],
       "UpstreamPathTemplate": "/logs",
@@ -180,7 +180,7 @@
         {
           "Name": "UserHandler API",
           "Version": "v1",
-          "Url": "userhandler/swagger/v1/swagger.json"
+          "Url": "http://localhost:15147/swagger/v1/swagger.json"
         }
       ]
     },
@@ -190,7 +190,7 @@
         {
           "Name": "LogHandler API",
           "Version": "v1",
-          "Url": "http://localhost:5000/swagger/v1/swagger.json"
+          "Url": "https://localhost:7002/swagger/v1/swagger.json"
         }
       ]
     },
@@ -200,12 +200,12 @@
         {
           "Name": "ObjectHandler API",
           "Version": "v1",
-          "Url": "http://localhost:5001/swagger/v1/swagger.json"
+          "Url": "https://localhost:44314/swagger/v1/swagger.json"
         }
       ]
     }
   ],
   "GlobalConfiguration": {
-    "RequestIdKey": "X-Correlation-Id"
+
   }
 }
