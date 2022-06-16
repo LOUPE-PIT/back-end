@@ -59,7 +59,7 @@ jobs:
           {
             PATH_TO_DOCKERFILE: "./LOUPE_Backend/API.Gateway/",
             DOCKER_IMAGE_NAME: "api.gateway:latest",
-            DOCKER_REPO_NAME: loupegroup/loupe_api.gateway"
+            DOCKER_REPO_NAME: "loupegroup/loupe_api.gateway"
           },
           {
             PATH_TO_DOCKERFILE: "./LOUPE_Backend/LogHandler.Microservice/",
