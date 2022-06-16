@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["API.Gateway.csproj", "API.Gateway/"]
 RUN dotnet restore "API.Gateway/API.Gateway.csproj"
-COPY . .
+
 WORKDIR "/src/API.Gateway"
 COPY . .
 RUN dotnet build "API.Gateway.csproj" -c Release -o /app/build

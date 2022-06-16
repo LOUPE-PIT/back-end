@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["UserHandler.Microservice.csproj", "UserHandler.Microservice/"]
 RUN dotnet restore "UserHandler.Microservice/UserHandler.Microservice.csproj"
-COPY . .
+
 WORKDIR "/src/UserHandler.Microservice"
 COPY . .
 RUN dotnet build "UserHandler.Microservice.csproj" -c Release -o /app/build
