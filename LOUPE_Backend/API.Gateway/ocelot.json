@@ -3,7 +3,7 @@
     //User.Microservice
     {
       "DownstreamPathTemplate": "/user/all",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "userhandler",
@@ -16,7 +16,7 @@
     },
     {
       "DownstreamPathTemplate": "/user/login/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "userhandler",
@@ -68,7 +68,7 @@
     },
     {
       "DownstreamPathTemplate": "/user/jwt/login",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "userhandler",
@@ -95,7 +95,7 @@
     },
     {
       "DownstreamPathTemplate": "/log/all",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "loghandler",

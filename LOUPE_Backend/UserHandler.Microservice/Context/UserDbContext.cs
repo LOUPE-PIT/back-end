@@ -21,6 +21,7 @@ namespace User.Microservice.Context
         {
             string connectionString = "";
 
+
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
                 var configuration = new ConfigurationBuilder()
@@ -36,6 +37,7 @@ namespace User.Microservice.Context
                 connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
             }
 
+            
 
             optionsBuilder.UseSqlServer(connectionString);
         }
