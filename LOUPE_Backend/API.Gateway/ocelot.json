@@ -66,6 +66,19 @@
       "UpstreamHttpMethod": [ "POST" ],
       "SwaggerKey": "UserHandler.Microservice"
     },
+    {
+      "DownstreamPathTemplate": "/user/jwt/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44396
+        }
+      ],
+      "UpstreamPathTemplate": "/user/jwt/login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "UserHandler.Microservice"
+    },
     //Log.Microservice
     {
       "DownstreamPathTemplate": "/log/insert",
