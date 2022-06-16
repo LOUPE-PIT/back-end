@@ -11,7 +11,7 @@ COPY ["UserHandler.Microservice.csproj", "UserHandler.Microservice/"]
 RUN dotnet restore "UserHandler.Microservice/UserHandler.Microservice.csproj"
 COPY . .
 WORKDIR "/src/UserHandler.Microservice"
-COPY LOUPE_Backend/UserHandler.Microservice .
+COPY . .
 RUN dotnet build "UserHandler.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
