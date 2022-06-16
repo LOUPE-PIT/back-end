@@ -1,5 +1,8 @@
-﻿using ObjectHandler.Microservice.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using ObjectHandler.Microservice.Data;
 using ObjectHandler.Microservice.Model;
+using System;
+using System.Collections.Generic;
 
 namespace ObjectHandler.Microservice.Test.Stubs
 {

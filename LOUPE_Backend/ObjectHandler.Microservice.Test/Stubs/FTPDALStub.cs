@@ -1,4 +1,6 @@
-﻿using ObjectHandler.Microservice.Data;
+﻿using Microsoft.AspNetCore.Http;
+using ObjectHandler.Microservice.Data;
+using System;
 
 namespace ObjectHandler.Microservice.Test.Stubs
 {

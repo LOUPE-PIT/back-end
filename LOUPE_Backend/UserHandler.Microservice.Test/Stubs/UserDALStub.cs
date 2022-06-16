@@ -1,4 +1,6 @@
-﻿using User.Microservice.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using User.Microservice.Data;
 using User.Microservice.Model;
 
 namespace UserHandler.Microservice.Test.Stubs

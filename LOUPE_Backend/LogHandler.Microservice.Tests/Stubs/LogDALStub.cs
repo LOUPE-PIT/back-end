@@ -1,5 +1,7 @@
 ﻿using LogHandler.Microservice.Data;
 using LogHandler.Microservice.Model;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace LogHandler.Microservice.Tests.Stubs
 {

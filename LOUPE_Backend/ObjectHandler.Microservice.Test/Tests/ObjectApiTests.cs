@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using ObjectHandler.Microservice.Data;
 using ObjectHandler.Microservice.Test.Stubs;
+using System.IO;
+using System.Net.Http;
 using Xunit;
 
 namespace ObjectHandler.Microservice.Test
