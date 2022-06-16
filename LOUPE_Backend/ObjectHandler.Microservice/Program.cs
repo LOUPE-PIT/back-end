@@ -69,7 +69,7 @@ app.MapPost("object/upload", ([FromServices] IObjectDAL db, [FromServices] IFTPO
 app.MapGet("object/download", ([FromServices] IFTPObjectDAL ftp, string objectId) =>
 {
     return ftp.DownloadObject(objectId);
-    
+
 });
 
 // a quality of life api call to easily delete objects from the FTP server and database

@@ -2,11 +2,6 @@
 using LogHandler.Microservice.Model;
 using LogHandler.Microservice.Tests.Stubs;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Net.Http;
-using System.Text;
 using Xunit;
 
 namespace LogHandler.Microservice.Tests.Tests

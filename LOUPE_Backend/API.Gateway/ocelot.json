@@ -3,11 +3,11 @@
     //User.Microservice
     {
       "DownstreamPathTemplate": "/user/all",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
-          "Port": 5002
+          "Host": "localhost",
+          "Port": 44396
         }
       ],
       "UpstreamPathTemplate": "/users",
@@ -16,11 +16,11 @@
     },
     {
       "DownstreamPathTemplate": "/user/login/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
-          "Port": 5002
+          "Host": "localhost",
+          "Port": 44396
         }
       ],
       "UpstreamPathTemplate": "/user/login/{id}",
@@ -49,7 +49,7 @@
           "Port": 5002
         }
       ],
-      "UpstreamPathTemplate": "/user/login/{id}",
+      "UpstreamPathTemplate": "/user/update/{id}",
       "UpstreamHttpMethod": [ "PUT" ],
       "SwaggerKey": "UserHandler.Microservice"
     },
@@ -63,6 +63,19 @@
         }
       ],
       "UpstreamPathTemplate": "/user/add",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "UserHandler.Microservice"
+    },
+    {
+      "DownstreamPathTemplate": "/user/jwt/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44396
+        }
+      ],
+      "UpstreamPathTemplate": "/user/jwt/login",
       "UpstreamHttpMethod": [ "POST" ],
       "SwaggerKey": "UserHandler.Microservice"
     },
@@ -82,11 +95,11 @@
     },
     {
       "DownstreamPathTemplate": "/log/all",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "loghandler",
-          "Port": 5000
+          "Host": "localhost",
+          "Port": 7002
         }
       ],
       "UpstreamPathTemplate": "/logs",
@@ -180,7 +193,7 @@
         {
           "Name": "UserHandler API",
           "Version": "v1",
-          "Url": "userhandler/swagger/v1/swagger.json"
+          "Url": "https://localhost:44396/swagger/v1/swagger.json"
         }
       ]
     },
@@ -190,7 +203,7 @@
         {
           "Name": "LogHandler API",
           "Version": "v1",
-          "Url": "http://localhost:5000/swagger/v1/swagger.json"
+          "Url": "https://localhost:7002/swagger/v1/swagger.json"
         }
       ]
     },
@@ -200,12 +213,12 @@
         {
           "Name": "ObjectHandler API",
           "Version": "v1",
-          "Url": "http://localhost:5001/swagger/v1/swagger.json"
+          "Url": "https://localhost:44314/swagger/v1/swagger.json"
         }
       ]
     }
   ],
   "GlobalConfiguration": {
-    "RequestIdKey": "X-Correlation-Id"
+
   }
 }

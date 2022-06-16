@@ -1,7 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System.Net.Http;
 using User.Microservice.Data;
 using User.Microservice.Model;
 using UserHandler.Microservice.Test.Stubs;

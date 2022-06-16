@@ -64,8 +64,6 @@ using (var scope = app.Services.CreateScope())
     y.Database.Migrate();
 }
 
-
-
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
