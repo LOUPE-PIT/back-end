@@ -12,10 +12,10 @@ RUN dotnet restore "ObjectHandler.Microservice/ObjectHandler.Microservice.csproj
 
 WORKDIR "/src/ObjectHandler.Microservice"
 COPY . .
-RUN dotnet build "ObjectHandler.Microservice.csproj" -c Release -o /app/build
+RUN dotnet build "Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ObjectHandler.Microservice.csproj" -c Release -o /app/publish
+RUN dotnet publish "Microservice.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

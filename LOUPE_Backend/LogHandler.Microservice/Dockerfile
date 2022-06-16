@@ -12,10 +12,10 @@ RUN dotnet restore "LogHandler.Microservice/LogHandler.Microservice.csproj"
 
 WORKDIR "/src/LogHandler.Microservice"
 COPY . .
-RUN dotnet build "LogHandler.Microservice/LogHandler.Microservice.csproj" -c Release -o /app/build
+RUN dotnet build "LogHandler.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LogHandler.Microservice/LogHandler.Microservice.csproj" -c Release -o /app/publish
+RUN dotnet publish "LogHandler.Microservice.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
