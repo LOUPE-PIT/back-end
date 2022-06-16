@@ -35,13 +35,32 @@ To setup the project in Visual Studio 2022:
 3.	Select open a project or solution
 4.	Browse to the repository and select the .sln file in LOUPE_Backend
 5.	– The project will be loaded in, before building the project be sure to run the test project first. This can be done by right clicking servicename.Microservice.Test.csproj and selecting run tests.
-6.	Once all the tests have been completed and verified, select the projects you want to run by setting the startup projects in the solution and run the application.
+6.	Once all the tests have been completed and verified, select the projects you want to run by setting the startup projects in the solution and run the application
 
 After this set-up the main part of the application is set-up, to fully use the application and its features messaging, service related databases and the ftp server need to be set up.
 
-### Messaging
+### Messaging RabbitMQ
+RabbitMQ can be set up using the docker image from docker hub: 
+```
+docker run -d --hostname my-rabbit --name some rabbit-p -p 15672:15672 -p 5672:5672 rabbitmq:management
+```
+Management is a key component here!
+The settings to connect to RabbitMQ in the application can be found in the RabbitMQSettings.cs file. Depending on if you're hosting RabbitMQ on a virtual machine or on e.g. docker desktop, the ip needs to be changed. Furthermore you can eventually choose to use different login credentials for security reasons (standard credentials are, pw: guest user:guest).
+More on this image can be found [here](https://hub.docker.com/_/rabbitmq/).
+
 ### FTP Server
+An FTP server can be set up using the docker image from docker hub:
+```
+docker run --rm -d --name ftpd_server -p 21:21 -p 30000-30009:30000-30009 stilliard/pure-ftpd bash /run.sh -c 30 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P localhost -p 30000:30059
+```
+More on this image can be found [here](https://hub.docker.com/r/stilliard/pure-ftpd).
 ### MsSQL Database
+MsSQL can be set up using the docker image from docker hub:
+```
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+```
+Using the Microsoft SQL Server Management Studio 18 or an equivalent management studio (Azure Data Studio), you can manage the created databases. For development the connectionstring is located in the appsettings.json file per microservice, as each microservice uses its own database as stated before.
+More on this image can be found [here](https://hub.docker.com/_/microsoft-mssql-server).
 
 ## How to use the project
 Because this project makes use of the microservice architecture the project is split into several components/services. 
