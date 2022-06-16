@@ -33,7 +33,6 @@ namespace LogHandler.Microservice.Context
             else
             {
                 connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
-                Console.Write(connectionString);
             }
 
 

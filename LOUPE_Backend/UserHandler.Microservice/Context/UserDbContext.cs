@@ -34,7 +34,6 @@ namespace User.Microservice.Context
             else
             {
                 connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
-                Console.Write(connectionString);
             }
 
 

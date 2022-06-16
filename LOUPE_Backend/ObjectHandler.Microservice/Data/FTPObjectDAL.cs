@@ -41,7 +41,7 @@
                 client.Disconnect();
 
 
-                Console.WriteLine(id);
+                Console.WriteLine("Model ID:" + id);
             }
             string[] data = { id.ToString(), description };
             return data;
