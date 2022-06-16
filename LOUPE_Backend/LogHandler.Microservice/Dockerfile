@@ -15,7 +15,7 @@ RUN dotnet restore "LogHandler.Microservice/LogHandler.Microservice.csproj"
 #RUN dotnet restore "SharedLibrary/LogHandler.SharedLibrary.csproj"
 COPY . .
 #WORKDIR "/src/LogHandler.Microservice"
-COPY LOUPE_Backend/LogHandler.Microservice ./LogHandler.Microservice
+COPY LogHandler.Microservice ./LogHandler.Microservice
 #COPY LOUPE_Backend/SharedLibrary ./SharedLibrary
 RUN dotnet build "LogHandler.Microservice/LogHandler.Microservice.csproj" -c Release -o /app/build
 
