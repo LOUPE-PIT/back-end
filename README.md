@@ -62,6 +62,8 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -p 1433:143
 Using the Microsoft SQL Server Management Studio 18 or an equivalent management studio (Azure Data Studio), you can manage the created databases. For development the connectionstring is located in the appsettings.json file per microservice, as each microservice uses its own database as stated before.
 More on this image can be found [here](https://hub.docker.com/_/microsoft-mssql-server).
 
+As the database is an important part to make sure the application works as it should, during development the database is required to run at all times. To make sure the data is up-to-date and backed up make sure the migrations are automatically run when starting a microservice.
+
 ## How to use the project
 Because this project makes use of the microservice architecture the project is split into several components/services. 
 
@@ -98,4 +100,4 @@ This project makes use of an API gateway, this API is setup using ocelot. The ap
 [How to create a minimal api microservice](https://www.youtube.com/watch?v=Z4bINJudHX8&list=PL6tu16kXT9PrlCX-b1o0WdBc56rXHJXLy)
 
 [Sharepoint directory to all project related documents](https://stichtingfontys.sharepoint.com/:f:/r/sites/LOUPE/Gedeelde%20documenten/General/S6-Team?csf=1&web=1&e=NVtOaq)
-
+[See the Trello board for open issues](https://trello.com/b/RDldlSvD/loupe-back-end)
