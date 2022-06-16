@@ -1,6 +1,6 @@
 ﻿
+using LogHandler.Microservice.Model;
 using MassTransit;
-using SharedLibrary;
 
 namespace LogHandler.Microservice
 {

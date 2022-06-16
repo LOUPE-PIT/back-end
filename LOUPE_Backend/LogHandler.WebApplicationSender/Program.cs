@@ -1,9 +1,6 @@
 using MassTransit;
-using SharedLibrary;
 
 //PoC for messaging. The sender is supposed to be the frontend. We didn't have a frontend at the time of making the PoC.
-
-RabbitMQSettings rMQSettings = new RabbitMQSettings();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +9,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMassTransit(config =>
 {
+    var user = builder.Configuration["rabbitmq:user"];
+    var password = builder.Configuration["rabbitmq:password"];
+    var ipaddress = builder.Configuration["rabbitmq:ip-address"];
+    var queueName = builder.Configuration["rabbitmq:queue-name"];
+
     config.UsingRabbitMq((ctx, cfg) =>
     {
         // Connect to RabbitMQ server;
-        cfg.Host("amqp://" + rMQSettings.Username + ":" + rMQSettings.Password + "@" + rMQSettings.IPAddress);
+        cfg.Host("amqp://" + user + ":" + password + "@" + ipaddress);
     });
 });
 builder.Services.AddMassTransitHostedService();

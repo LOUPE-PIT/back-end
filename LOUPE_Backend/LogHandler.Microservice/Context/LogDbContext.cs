@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SharedLibrary;
+﻿using LogHandler.Microservice.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogHandler.Microservice.Context
 {

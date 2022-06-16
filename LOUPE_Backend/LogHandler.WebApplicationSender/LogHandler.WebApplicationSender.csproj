@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SharedLibrary\LogHandler.SharedLibrary.csproj" />
+    <ProjectReference Include="..\LogHandler.Microservice\LogHandler.Microservice.csproj" />
   </ItemGroup>
 
 </Project>

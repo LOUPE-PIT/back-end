@@ -1,5 +1,5 @@
 ﻿using LogHandler.Microservice.Context;
-using SharedLibrary;
+using LogHandler.Microservice.Model;
 
 namespace LogHandler.Microservice.Data
 {
