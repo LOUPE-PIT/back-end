@@ -145,7 +145,6 @@ IResult GenerateToken(UserModel user)
     var authToken = new JwtSecurityTokenHandler().WriteToken(token);
 
     return Results.Ok(authToken);
-
 }
 
 app.Run();
