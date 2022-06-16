@@ -77,11 +77,11 @@ void SeedData(IHost app)
 
 
 // Automatically Migrate the database
-//using (var scope = app.Services.CreateScope())
-//{
-//    var y = scope.ServiceProvider.GetRequiredService<UserDbContext>();
-//    y.Database.Migrate();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+    y.Database.Migrate();
+}
 
 // Add swagger
 app.UseSwagger();

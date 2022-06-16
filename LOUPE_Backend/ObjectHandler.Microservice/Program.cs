@@ -30,11 +30,11 @@ if (app.Environment.IsDevelopment())
 }
 
 // Automatically Migrate the database
-//using (var scope = app.Services.CreateScope())
-//{
-//    var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();
-//    y.Database.Migrate();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();
+    y.Database.Migrate();
+}
 
 
 
