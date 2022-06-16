@@ -19,14 +19,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Add swagger
-app.UseSwagger();
-app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    // Add swagger
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 // Automatically Migrate the database
