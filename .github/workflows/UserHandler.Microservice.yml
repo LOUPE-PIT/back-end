@@ -4,7 +4,7 @@ name: UserHandler.Microservice CI/CD
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main, shared-library-fix ]
+    branches: [ main, shared-library-remove ]
   pull_request:
     branches: [ main ]
 
