@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SharedLibrary;
+﻿using LogHandler.Microservice.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LogHandler.Microservice.Data
 {

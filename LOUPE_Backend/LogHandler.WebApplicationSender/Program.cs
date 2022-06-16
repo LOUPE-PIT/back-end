@@ -1,7 +1,4 @@
 using MassTransit;
-using SharedLibrary;
-
-RabbitMQSettings rMQSettings = new RabbitMQSettings();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +7,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMassTransit(config =>
 {
+    var user = builder.Configuration["rabbitmq:user"];
+    var password = builder.Configuration["rabbitmq:password"];
+    var ipaddress = builder.Configuration["rabbitmq:ip-address"];
+
     config.UsingRabbitMq((ctx, cfg) =>
     {
         // Connect to RabbitMQ server;
-        cfg.Host("amqp://" + rMQSettings.Username + ":" + rMQSettings.Password + "@" + rMQSettings.IPAddress);
+        cfg.Host("amqp://" + user + ":" + password + "@" + ipaddress);
     });
 });
 builder.Services.AddMassTransitHostedService();

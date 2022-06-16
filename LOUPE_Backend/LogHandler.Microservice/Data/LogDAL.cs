@@ -1,6 +1,6 @@
 ﻿using LogHandler.Microservice.Context;
+using LogHandler.Microservice.Model;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary;
 
 namespace LogHandler.Microservice.Data
 {
