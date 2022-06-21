@@ -18,6 +18,8 @@ builder.Services.AddScoped<IUserDAL, UserDAL>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddEndpointsApiExplorer();
+
+//Authenticate in Swagger configuration
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -44,6 +46,7 @@ builder.Services.AddSwaggerGen(options =>
    });
 });
 
+//JWT config
 builder.Services.AddAuthentication()
     .AddJwtBearer(authenticationProviderKey, options =>
     {
@@ -122,6 +125,7 @@ app.MapPost("/user/jwt/login", (UserModel user) =>
     return GenerateToken(user);
 });
 
+//Generate JWT token with claims method
 IResult GenerateToken(UserModel user)
 {
     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]));
