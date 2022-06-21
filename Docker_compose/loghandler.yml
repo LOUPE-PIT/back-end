@@ -1,0 +1,38 @@
+version: "3"
+services:
+
+  loghandler:
+    image: "loupegroup/loupe_loghandler.microservice:latest"
+    container_name: loghandler
+    hostname: loghandler
+    depends_on: [db, rabbit-mq]
+    ports:
+      - "5000:5000"
+    environment:
+      - ConnectionStrings:AppDb=Server=db,1433;Database=LogDb;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
+      - rabbitmq:user=user
+      - rabbitmq:password=password
+      - rabbitmq:ip-address=rabbit-mq:5672
+      - rabbitmq:queue-name=log-queue
+      - ASPNETCORE_URLS=http://+:5000
+
+  rabbit-mq:
+    image: "rabbitmq:management"
+    container_name: rabbit-mq
+    hostname: rabbit-mq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: db
+    hostname: db
+    environment:
+      - SA_PASSWORD=Welkom12345
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"

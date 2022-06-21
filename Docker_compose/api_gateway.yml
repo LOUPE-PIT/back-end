@@ -1,0 +1,11 @@
+# THIS IS ONLY THE DEPLOYMENT OF THE API-GATEWAY
+# WITHOUT THE OTHER MICROSERVICES, IT WONT ROUTE ANYTHING
+
+version: "3"
+services:
+  api-gateway:
+    image: "loupegroup/loupe_api.gateway"
+    container_name: api-gateway
+    hostname: api-gateway
+    ports:
+      - "8080:80"

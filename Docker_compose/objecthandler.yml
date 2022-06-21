@@ -1,0 +1,39 @@
+version: "3"
+services:
+
+  objecthandler:
+    image: "loupegroup/loupe_objecthandler.microservice:latest"
+    container_name: objecthandler
+    hostname: objecthandler
+    depends_on: [db, ftp]
+    ports:
+      - "5001:5001"
+    environment:
+      - ConnectionStrings:AppDb=Server=db;Database=ObjectDb;User Id=SA;Password=Welkom12345
+      - FTP:User=username
+      - FTP:Password=mypass
+      - FTP:IpAddress=ftp
+      - ASPNETCORE_URLS=http://+:5001
+      
+  ftp:
+    image: stilliard/pure-ftpd:latest
+    container_name: ftp
+    hostname: ftp
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    environment:
+      - PUBLICHOST=localhost
+      - FTP_USER_NAME=username
+      - FTP_USER_PASS=mypass
+      - FTP_USER_HOME=/home/username
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: db
+    hostname: db
+    environment:
+      - SA_PASSWORD=Welkom12345
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"     

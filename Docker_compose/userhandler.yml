@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  userhandler:
+    image: "loupegroup/loupe_userhandler.microservice:latest"
+    container_name: userhandler
+    hostname: userhandler
+    depends_on: [db]
+    ports:
+      - "5002:5002"
+    environment:
+      - ConnectionStrings:AppDb=Server=db,1433;Database=ObjectDb;User Id=SA;Password=Welkom12345
+      - ASPNETCORE_URLS=http://+:5002
+      
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: db
+    hostname: db
+    environment:
+      - SA_PASSWORD=Welkom12345
+      - ACCEPT_EULA=Y
