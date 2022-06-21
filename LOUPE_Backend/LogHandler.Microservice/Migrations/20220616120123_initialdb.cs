@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace LogHandler.Microservice.Migrations
 {
-    public partial class initalDb : Migration
+    public partial class initialdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +13,11 @@ namespace LogHandler.Microservice.Migrations
                 name: "Log",
                 columns: table => new
                 {
-                    logId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    userId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    log = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    logId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userId = table.Column<int>(type: "int", nullable: false),
+                    log = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    created = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

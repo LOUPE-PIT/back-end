@@ -1,6 +1,6 @@
 ﻿using LogHandler.Microservice.Context;
+using LogHandler.Microservice.Model;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary;
 
 namespace LogHandler.Microservice.Data
 {
@@ -22,12 +22,12 @@ namespace LogHandler.Microservice.Data
 
         public List<LogModel> GetAllLogs() => db.Log.ToList();
 
-        public LogModel GetLogByLogId(string id)
+        public LogModel GetLogByLogId(int id)
         {
             return db.Log.Where(x => x.logId == id).FirstOrDefault();
         }
 
-        public LogModel GetLogByUserId(string id)
+        public LogModel GetLogByUserId(int id)
         {
             return db.Log.Where(x => x.userId == id).FirstOrDefault();
         }

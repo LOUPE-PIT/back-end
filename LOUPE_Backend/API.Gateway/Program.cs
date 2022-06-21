@@ -2,15 +2,6 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("ocelot.json").Build();
-var OcelotConfiguration = new OcelotPipelineConfiguration
-{
-    PreAuthorizationMiddleware = async (ctx, next) =>
-    {
-        string token = ctx.Request.Headers["Authorization"].ToString().Replace("Bearer", "");
-
-        await next.Invoke();
-    }
-};
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,8 +24,6 @@ builder.Host.UseContentRoot(Directory.GetCurrentDirectory())
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-
 app.UseSwaggerForOcelotUI(opt =>
 {
     opt.PathToSwaggerGenerator = "/swagger/docs";
@@ -43,6 +32,5 @@ app.UseSwaggerForOcelotUI(opt =>
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseOcelot(OcelotConfiguration).Wait();
-
+app.UseOcelot().Wait();
 app.Run();

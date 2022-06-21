@@ -1,20 +1,15 @@
-
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using ObjectHandler.Microservice.Data;
 using ObjectHandler.Microservice.Test.Stubs;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using Xunit;
 
 namespace ObjectHandler.Microservice.Test
 {
+    // test mostly written to run thought the pipeline. No real value.
     public class ObjectApiTests : WebApplicationFactory<Program>
     {
         ObjectDALStub Obstub = new ObjectDALStub();

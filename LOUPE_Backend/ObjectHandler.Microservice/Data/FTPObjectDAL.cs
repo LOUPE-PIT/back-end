@@ -3,14 +3,16 @@
     public class FTPObjectDAL : IFTPObjectDAL
     {
         private readonly FluentFTP.FtpClient client;
-            
+
         public FTPObjectDAL()
         {
-            client = new FluentFTP.FtpClient("192.168.246.129", "sphinx", "root");
+            var builder = WebApplication.CreateBuilder();
+            client = new FluentFTP.FtpClient(builder.Configuration["FTP:IpAddress"], builder.Configuration["FTP:User"], builder.Configuration["FTP:Password"]);
         }
 
         public string[] UploadObject(HttpRequest request)
         {
+            // We use Guid because they can be easily generated and be controlled.
             Guid id = Guid.NewGuid();
             // Get all files from the request
             var files = request.Form.Files;
@@ -39,7 +41,7 @@
                 client.Disconnect();
 
 
-                Console.WriteLine(id);
+                Console.WriteLine("Model ID:" + id);
             }
             string[] data = { id.ToString(), description };
             return data;

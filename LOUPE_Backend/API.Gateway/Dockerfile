@@ -7,11 +7,11 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LOUPE_Backend/API.Gateway/API.Gateway.csproj", "API.Gateway/"]
+COPY ["API.Gateway.csproj", "API.Gateway/"]
 RUN dotnet restore "API.Gateway/API.Gateway.csproj"
-COPY LOUPE_Backend/API.Gateway .
+
 WORKDIR "/src/API.Gateway"
-COPY LOUPE_Backend/API.Gateway .
+COPY . .
 RUN dotnet build "API.Gateway.csproj" -c Release -o /app/build
 
 FROM build AS publish

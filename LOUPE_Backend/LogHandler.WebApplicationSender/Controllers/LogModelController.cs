@@ -1,6 +1,6 @@
-﻿using MassTransit;
+﻿using LogHandler.Microservice.Model;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary;
 
 namespace WebApplicationLogSender.Controllers
 {

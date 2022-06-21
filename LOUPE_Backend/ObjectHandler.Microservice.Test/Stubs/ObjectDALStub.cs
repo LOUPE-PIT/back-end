@@ -3,12 +3,10 @@ using ObjectHandler.Microservice.Data;
 using ObjectHandler.Microservice.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ObjectHandler.Microservice.Test.Stubs
 {
+    // mock data layer to guarantee succesful tests
     internal class ObjectDALStub : IObjectDAL
     {
         public bool? testValue = null;

@@ -1,9 +1,10 @@
 ﻿
+using LogHandler.Microservice.Model;
 using MassTransit;
-using SharedLibrary;
 
 namespace LogHandler.Microservice
 {
+
     public class LogModelConsumer : IConsumer<LogModel>
     {
         private ILogger<LogModelConsumer> _logger;

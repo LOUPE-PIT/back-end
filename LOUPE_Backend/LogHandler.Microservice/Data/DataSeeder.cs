@@ -1,5 +1,5 @@
 ﻿using LogHandler.Microservice.Context;
-using SharedLibrary;
+using LogHandler.Microservice.Model;
 
 namespace LogHandler.Microservice.Data
 {
@@ -12,6 +12,7 @@ namespace LogHandler.Microservice.Data
             this.logDbContext = logDbContext;
         }
 
+        // Dataseeder is used to put data in the database on creation. Can also add data manually after creating the database.
         public void Seed()
         {
             if (!logDbContext.Log.Any())
@@ -20,14 +21,14 @@ namespace LogHandler.Microservice.Data
                 {
                     new LogModel()
                     {
-                        logId = "1",
-                        userId = "55",
+                        logId = 1,
+                        userId = 55,
                         log = "This is a test log entry"
                     },
                     new LogModel()
                     {
-                        logId = "2",
-                        userId = "44",
+                        logId = 2,
+                        userId = 44,
                         log = "This is the second test log entry"
                     }
                 };
