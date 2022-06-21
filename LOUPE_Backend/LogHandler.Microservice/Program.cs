@@ -64,15 +64,12 @@ using (var scope = app.Services.CreateScope())
     y.Database.Migrate();
 }
 
-
-// Use swagger
-app.UseSwagger();
-app.UseSwaggerUI();
-
-
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    // Use swagger
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.MapPost("/log/insert", ([FromServices] ILogDAL db, LogModel log) =>

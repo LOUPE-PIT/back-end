@@ -83,14 +83,13 @@ using (var scope = app.Services.CreateScope())
     y.Database.Migrate();
 }
 
-// Add swagger
-app.UseSwagger();
-app.UseSwaggerUI();
-
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    // Add swagger
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, int id) =>
