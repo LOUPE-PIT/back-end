@@ -50,8 +50,8 @@ builder.Services.AddAuthentication()
         options.TokenValidationParameters = new TokenValidationParameters()
         {
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"])),
-            ValidAudience = "apiUsers",
-            ValidIssuer = "apiIssuer",
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidateIssuerSigningKey = true,
             ValidateLifetime = true,
             ClockSkew = TimeSpan.Zero
@@ -136,8 +136,8 @@ IResult GenerateToken(UserModel user)
         new Claim("Role", "Admin")
     };
 
-    var token = new JwtSecurityToken(audience: "apiUsers",
-                                        issuer: "apiIssuer",
+    var token = new JwtSecurityToken(audience: builder.Configuration["Jwt:Audience"],
+                                        issuer: builder.Configuration["Jwt:Claims"],
                                         claims: claims,
                                         expires: expirationDate,
                                         signingCredentials: credentials);

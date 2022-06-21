@@ -4,6 +4,7 @@
     "\\.github",
     "\\.github\\workflows",
     "\\LOUPE_Backend",
+    "\\LOUPE_Backend\\API.Gateway",
     "\\LOUPE_Backend\\LogHandler.WebApplicationSender",
     "\\LOUPE_Backend\\ObjectHandler.Microservice",
     "\\LOUPE_Backend\\ObjectHandler.Microservice\\Data",
