@@ -7,18 +7,15 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LOUPE_Backend/LogHandler.Microservice/LogHandler.Microservice.csproj", "LogHandler.Microservice/"]
-COPY ["LOUPE_Backend/SharedLibrary/LogHandler.SharedLibrary.csproj", "SharedLibrary/"] 
+COPY ["LogHandler.Microservice.csproj", "LogHandler.Microservice/"]
 RUN dotnet restore "LogHandler.Microservice/LogHandler.Microservice.csproj"
-RUN dotnet restore "SharedLibrary/LogHandler.SharedLibrary.csproj"
+
+WORKDIR "/src/LogHandler.Microservice"
 COPY . .
-#WORKDIR "/src/LogHandler.Microservice"
-COPY LOUPE_Backend/LogHandler.Microservice ./LogHandler.Microservice
-COPY LOUPE_Backend/SharedLibrary ./SharedLibrary
-RUN dotnet build "LogHandler.Microservice/LogHandler.Microservice.csproj" -c Release -o /app/build
+RUN dotnet build "LogHandler.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LogHandler.Microservice/LogHandler.Microservice.csproj" -c Release -o /app/publish
+RUN dotnet publish "LogHandler.Microservice.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

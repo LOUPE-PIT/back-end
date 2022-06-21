@@ -45,7 +45,7 @@ namespace UserHandler.Microservice.Test
             // Arrange
             UserModel userModel = new UserModel();
             userModel.name = "mark";
-            userModel.userID = "11";
+            userModel.userID = 11;
             var webAppFactory = new UserApiTests();
             HttpClient httpClient = webAppFactory.CreateClient();
             stub.testValue = true;

@@ -1,12 +1,11 @@
 using LogHandler.Microservice;
 using LogHandler.Microservice.Context;
 using LogHandler.Microservice.Data;
+using LogHandler.Microservice.Model;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SharedLibrary;
 
-RabbitMQSettings rMQSettings = new RabbitMQSettings();
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
@@ -19,15 +18,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMassTransit(config =>
 {
+    var user = builder.Configuration["rabbitmq:user"];
+    var password = builder.Configuration["rabbitmq:password"];
+    var ipaddress = builder.Configuration["rabbitmq:ip-address"];
+    var queueName = builder.Configuration["rabbitmq:queue-name"];
+
+
+    // This microservice is the receiver from the message.
     // Add Consumer which reads the sent message;
     config.AddConsumer<LogModelConsumer>();
     config.UsingRabbitMq((ctx, cfg) =>
     {
         // Connect to RabbitMQ server;
-        cfg.Host("amqp://" + rMQSettings.Username + ":" + rMQSettings.Password + "@" + rMQSettings.IPAddress);
+        cfg.Host("amqp://" + user + ":" + password + "@" + ipaddress);
         // Add endpoint which will recieve messages from the [model] queue, these messages will be returned in via Consumer class;
         // In here you will be able to change settings, like setting the queue messageretry interval and more;
-        cfg.ReceiveEndpoint(rMQSettings.QueueName, c =>
+        cfg.ReceiveEndpoint(queueName, c =>
         {
             c.ConfigureConsumer<LogModelConsumer>(ctx);
         });
@@ -51,12 +57,20 @@ void SeedData(Microsoft.Extensions.Hosting.IHost app)
     }
 }
 
-if (app.Environment.IsDevelopment())
+// Automatically Migrate the database
+using (var scope = app.Services.CreateScope())
 {
+    var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
+    y.Database.Migrate();
+}
+
+//if (app.Environment.IsDevelopment())
+//{
+    app.UseDeveloperExceptionPage();
+    // Use swagger
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
-}
+//}
 
 app.MapPost("/log/insert", ([FromServices] ILogDAL db, LogModel log) =>
 {
@@ -68,12 +82,12 @@ app.MapGet("/log/all", ([FromServices] ILogDAL db) =>
     return db.GetAllLogs();
 });
 
-app.MapGet("/log/{id}", ([FromServices] ILogDAL db, string id) =>
+app.MapGet("/log/{id}", ([FromServices] ILogDAL db, int id) =>
 {
     return db.GetLogByLogId(id);
 });
 
-app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, string id) =>
+app.MapGet("/log/user/{id}", ([FromServices] ILogDAL db, int id) =>
 {
     return db.GetLogByUserId(id);
 });

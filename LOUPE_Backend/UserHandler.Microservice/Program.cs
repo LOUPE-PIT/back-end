@@ -57,7 +57,6 @@ builder.Services.AddAuthentication()
             ClockSkew = TimeSpan.Zero
         };
     });
-
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -76,19 +75,29 @@ void SeedData(IHost app)
     }
 }
 
-if (app.Environment.IsDevelopment())
+
+// Automatically Migrate the database
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
+    var y = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+    y.Database.Migrate();
 }
 
-app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, string id) =>
+
+//if (app.Environment.IsDevelopment())
+//{
+    app.UseDeveloperExceptionPage();
+    // Add swagger
+    app.UseSwagger();
+    app.UseSwaggerUI();
+//}
+
+app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, int id) =>
 {
     return db.GetUserById(id);
 });
 
-app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, string id) =>
+app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, int id) =>
 {
     return db.DeleteUserById(id);
 });
@@ -135,7 +144,6 @@ IResult GenerateToken(UserModel user)
     var authToken = new JwtSecurityTokenHandler().WriteToken(token);
 
     return Results.Ok(authToken);
-
 }
 
 app.Run();

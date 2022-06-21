@@ -1,13 +1,9 @@
 version: "2"
 services:
-  musika_backend:
-    image: "418262/loupe_api.gateway"
-    depends_on: [db]
+  loupe-backend:
+    image: "loupegroup/loupe_api.gateway"
     ports:
       - "8080:80"
-    command:
-      - "dotnet-ef migrations add initial"
-      - "dotnet-ef database update"
       
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
@@ -15,6 +11,4 @@ services:
     hostname: db
     environment:
       SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
-      ACCEPT_EULA: "Y"   
-    ports:
-      - "11433:1433" 
+      ACCEPT_EULA: "Y"

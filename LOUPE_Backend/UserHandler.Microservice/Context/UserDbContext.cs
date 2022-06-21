@@ -19,12 +19,26 @@ namespace User.Microservice.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var confuguration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            string connectionString = "";
 
-            var connectionString = confuguration.GetConnectionString("AppDb");
+
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+            {
+                var configuration = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
+
+                connectionString = configuration.GetConnectionString("AppDb");
+
+            }
+            else
+            {
+                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+            }
+
+            
+
             optionsBuilder.UseSqlServer(connectionString);
         }
     }

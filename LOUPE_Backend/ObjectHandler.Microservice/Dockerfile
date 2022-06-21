@@ -7,11 +7,11 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj", "ObjectHandler.Microservice/"]
+COPY ["ObjectHandler.Microservice.csproj", "ObjectHandler.Microservice/"]
 RUN dotnet restore "ObjectHandler.Microservice/ObjectHandler.Microservice.csproj"
 
 WORKDIR "/src/ObjectHandler.Microservice"
-COPY LOUPE_Backend/ObjectHandler.Microservice .
+COPY . .
 RUN dotnet build "ObjectHandler.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish

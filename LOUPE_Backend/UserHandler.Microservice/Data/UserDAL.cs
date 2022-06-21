@@ -29,12 +29,12 @@ namespace User.Microservice.Data
             return new OkResult();
         }
 
-        public UserModel GetUserById(string id)
+        public UserModel GetUserById(int id)
         {
             return db.User.Where(x => x.userID == id).FirstOrDefault();
         }
 
-        public ActionResult DeleteUserById(string id)
+        public ActionResult DeleteUserById(int id)
         {
             db.User.Remove(db.User.Where(x => x.userID == id).FirstOrDefault());
             db.SaveChanges();

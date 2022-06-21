@@ -1,11 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using ObjectHandler.Microservice.Model;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ObjectHandler.Microservice.Context
 {
@@ -24,12 +18,24 @@ namespace ObjectHandler.Microservice.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            string connectionString = "";
 
-            var connectionString = configuration.GetConnectionString("AppDb");
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+            {
+                var configuration = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
+
+                connectionString = configuration.GetConnectionString("AppDb");
+
+            }
+            else
+            {
+                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+            }
+
+
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
