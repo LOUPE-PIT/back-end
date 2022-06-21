@@ -97,10 +97,10 @@ For every service there is a test project. The tests, test the actions the api e
 This project makes use of an API gateway, this API is setup using ocelot. The api gateway can be used for authentication and other security purposes. This API is connected to the microservices and handles the routing of api calls to all the microservices
 
 #### Authentication
-As an addition to the API Gateway we started an implementation of the authentication in a seperate branch (Ocelot-Auth-Alpha).
-Medium described 3 scenarios on how to implement authentication using ocelot, which can be found [here](https://medium.com/@niteshsinghal85/3-ways-to-do-authorization-in-ocelot-api-gateway-in-asp-net-core-7ef8301b2f65). There is also an official documentation by ocelot on authencication [here](https://ocelot.readthedocs.io/en/latest/features/authentication.html).
+As an addition to the API Gateway we started an implementation of the authentication in a seperate branch (Ocelot-Auth-Alpha). To complete the authentication implementation the **claim** needs to be recognized by the jwt token.
 
-As the authentication wasn't made complete we hope these sources will help you in starting this issue.
+To elaborate:
+Medium described 3 scenarios on how to implement authentication using ocelot, which can be found [here](https://medium.com/@niteshsinghal85/3-ways-to-do-authorization-in-ocelot-api-gateway-in-asp-net-core-7ef8301b2f65). There is also an official documentation by ocelot on authencication [here](https://ocelot.readthedocs.io/en/latest/features/authentication.html).
 
 ## Useful Sources
 [How to create a minimal api microservice](https://www.youtube.com/watch?v=Z4bINJudHX8&list=PL6tu16kXT9PrlCX-b1o0WdBc56rXHJXLy)
