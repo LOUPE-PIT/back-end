@@ -10,6 +10,13 @@
           "Port": 44396
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "UserKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      },
       "UpstreamPathTemplate": "/users",
       "UpstreamHttpMethod": [ "POST", "GET" ],
       "SwaggerKey": "UserHandler.Microservice"
