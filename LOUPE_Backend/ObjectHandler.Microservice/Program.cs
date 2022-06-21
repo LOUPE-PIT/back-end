@@ -21,13 +21,13 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseDeveloperExceptionPage();
     // Add swagger
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 // Automatically Migrate the database
 using (var scope = app.Services.CreateScope())

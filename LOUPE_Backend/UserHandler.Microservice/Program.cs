@@ -84,13 +84,13 @@ using (var scope = app.Services.CreateScope())
 }
 
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseDeveloperExceptionPage();
     // Add swagger
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, int id) =>
 {
