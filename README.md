@@ -1,7 +1,7 @@
 # Loupe Project Backend
 The Loupe Project Backend in collaboration with the Loupe Unity project is a project made to improve/support practical lessons with the use of Mixed Reality.
 The Backend of this project is used and will be used as an API to deliver the essential data to the Unity Mixed Reality project (Logs, 3D Models, etc.). Eventually it will also be used as a way to save 3D Models via a web application.
-The technology’s used in this project were chosen by researching the available options. This project makes use of the microservice architecture, the main reason for this choice was the ability to scale the project to increase the performance. 
+The technologies used in this project were chosen by researching the available options. This project makes use of the microservice architecture, the main reason for this choice was the ability to scale the project to increase the performance. 
 For the main framework of this project .NET 6.0 is being used, this choice was made by comparing the framework to its competitors based on these nine different categories:
 - Range of Applicability
 -	Development Speed
@@ -80,7 +80,7 @@ To make messaging work you need a Producer (sender), Exchange & queue (RabbitMQ)
 As of now our sender (to send the log) is located in this repository as LogHandler.WebApplicationSender. It contains a controller with a post endpoint, which posts a simple LogModel. 
 
 #### Exchange & queue
-RabbitMQ (a message bus) is used to handle the exchange and queue. Messages/logs that run trough the message bus will stay in the queue in the case of a loghandler service failure. When there is no failure the message/log will immediately be send to the Logconsumer.
+RabbitMQ (a message bus) is used to handle the exchange and queue. Messages/logs that run through the message bus will stay in the queue in the case of a loghandler service failure. When there is no failure the message/log will immediately be send to the Logconsumer.
 
 #### Consumer
 In this case the loghandler microservice is the consumer. In the project there is a separate LogModelConsumer.cs file which, as of now, displays the log in the console.
