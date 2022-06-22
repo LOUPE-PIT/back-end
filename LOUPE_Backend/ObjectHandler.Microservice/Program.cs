@@ -30,6 +30,7 @@ var app = builder.Build();
 //}
 
 // Automatically Migrate the database
+// Need database connection to have this code work. Results in error otherwise.
 using (var scope = app.Services.CreateScope())
 {
     var y = scope.ServiceProvider.GetRequiredService<ObjectDbContext>();

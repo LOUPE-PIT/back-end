@@ -77,6 +77,7 @@ void SeedData(IHost app)
 
 
 // Automatically Migrate the database
+// Need database connection to have this code work. Results in error otherwise.
 using (var scope = app.Services.CreateScope())
 {
     var y = scope.ServiceProvider.GetRequiredService<UserDbContext>();
@@ -86,7 +87,7 @@ using (var scope = app.Services.CreateScope())
 
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseDeveloperExceptionPage();
+app.UseDeveloperExceptionPage();
     // Add swagger
     app.UseSwagger();
     app.UseSwaggerUI();
