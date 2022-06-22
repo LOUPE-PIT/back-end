@@ -122,4 +122,42 @@ This docker-compose file has 1 service:
 
 
 ## Fullstack
-The *fullstack.yaml* file combines all the individual docker-compose files into one. This one can be used to deploy the entire project.
+The *fullstack.yaml* file combines all the individual docker-compose files into one. This one can be used to deploy the entire project. We expose multiple ports for this project which are listed belowed.
+|App| Port|
+| ---|---|
+| API-GATEWAY | 8080
+| LOGHANDLER | 5000
+| OBJECTHANDLER | 5001
+| USERHANDLER | 5002
+| FTP | 21, 30000-30009
+| RABBITMQ | 15672, 5672
+
+For the documentation of each API we use swagger. This can be accessed by going to the address of the API and adding */swagger* at the end of the call (e.g. localhost:5000/swagger).
+> As of writing this document, the API gateway is unable to show the swagger endpoints of the services attached to it. However, Tthe endpoint */swagger* does exist. The API gateway does support this, but isnt configured directly. Perhaps something to look into.
+
+## How to use
+The docker-compose file can be used in a variation of different ways. The easiest way is by using docker CLI
+
+### Docker CLI
+If you use the docker CLI, all you need is to have docker installed on your system. For Windows and IOS this can be done using Docker Desktop, and for Linux can be done using [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04). Depending on your version of the Docker CLI, the command ```docker compose``` is avaiable or not. If it is not available, you need to install it seperately. See [this link](https://docs.docker.com/compose/install/) for more info.
+When docker compose is installed, you can run the full app by using the following command:
+```bash
+(sudo) docker-compose up -f fullstack.yml
+# OR
+(sudo) docker compose up -f fullstack.yml
+```
+Docker should create the containers itself
+
+### Portainer
+Portainer is a webinterface for container management. It is very simple to install and can be very usefull. To install it, first install docker on your system. Once that is done, enter the following commands:
+```bash
+# Create a volume to save all the containers to
+(sudo) docker volume create portainer_data
+
+# Run the container
+(sudo) docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+Once it is running, it can be accessed using port *9000*. Make sure to select local as your enviroment and voila, portainer is running!
+To run our app within portainer, you go into the local enviroment and click on the *Stacks* tab on the left hand side (see image).
+![](https://cdn.discordapp.com/attachments/899947100899508254/989133024031543326/unknown.png)
+Once you are here, you click the blue button *Add Stack*. Here you enter the stack name and the docker-compose file (fullstack.yml) and click the *deploy this stack* button at the bottom. Wait until it is started and you should see all the containers for the app be created.
