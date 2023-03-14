@@ -193,7 +193,7 @@
         {
           "Name": "UserHandler API",
           "Version": "v1",
-          "Url": "https://localhost:44396/swagger/v1/swagger.json"
+          "Url": "https://localhost:7065/swagger/v1/swagger.json"
         }
       ]
     },
@@ -213,7 +213,7 @@
         {
           "Name": "ObjectHandler API",
           "Version": "v1",
-          "Url": "https://localhost:44314/swagger/v1/swagger.json"
+          "Url": "https://localhost:7044/swagger/v1/swagger.json"
         }
       ]
     }
