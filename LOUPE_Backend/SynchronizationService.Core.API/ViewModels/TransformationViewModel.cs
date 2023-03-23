@@ -8,6 +8,10 @@ namespace SynchronizationService.Core.API.ViewModels
         public Guid UserId { get; set; }
         public string RoomCode { get; set; }
         public DateTimeOffset TimeStamp { get; set; }
-        public ActionType ActionType { get; set; }
+        public PerformedActionViewModel ActionType { get; set; }
+        public TransformationViewModel()
+        {
+            
+        }
     }
 }

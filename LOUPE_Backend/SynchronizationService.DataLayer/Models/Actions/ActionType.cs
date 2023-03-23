@@ -1,6 +1,6 @@
 ﻿namespace SynchronizationService.DataLayer
 {
-    public class ActionType
+    public abstract class ActionType
     {
         public string ObjectName { get; set; }
         public string ActionName { get; set; }
