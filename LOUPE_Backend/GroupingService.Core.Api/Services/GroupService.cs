@@ -13,8 +13,7 @@ public class GroupService : IGroupService
     {
         _groupingRespository = groupingRespository;
     }
-
-
+    
     // </ inheritdoc>
     public async Task<Collection<Group>> GetAll()
     {

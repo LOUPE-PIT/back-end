@@ -24,7 +24,6 @@ public class GroupingController : ControllerBase
     public async Task<IActionResult> All()
     {
         var groups = await _groupService.GetAll();
-
         return Ok(groups);
     }
 }

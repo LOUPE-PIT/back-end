@@ -1,4 +1,5 @@
-﻿using GroupingService.DataAccessLayer.Models;
+﻿using System.Diagnostics;
+using GroupingService.DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -16,8 +17,13 @@ public class GroupDbContext : DbContext
     public DbSet<Group> Groups { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connectionString = "";
-        connectionString = "Server=localhost,1433;User=SA;Password=Welkom12345";
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+        
+        var connectionString = configuration.GetConnectionString("AppDb");
+
         optionsBuilder.UseSqlServer(connectionString);
     }
 }
