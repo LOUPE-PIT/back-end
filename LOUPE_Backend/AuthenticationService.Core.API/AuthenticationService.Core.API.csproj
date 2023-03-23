@@ -10,4 +10,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AuthenticationService.DataLayer\AuthenticationService.DataLayer.csproj" />
+  </ItemGroup>
+
 </Project>
