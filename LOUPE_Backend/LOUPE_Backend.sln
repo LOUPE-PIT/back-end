@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{2337F546-B056-4710-BDB4-A63686894FC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Microservice", "UserHandler.Microservice\Authentication.Microservice.csproj", "{07F96333-D49C-4415-89A3-913A8C6C074C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Gateway", "API.Gateway\API.Gateway.csproj", "{71AF9DE5-C26B-43A8-A2B9-A3884B25F137}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationService", "AuthenticationService", "{C7432413-77C0-4C79-B572-E49A2072EF72}"
@@ -42,10 +40,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{07F96333-D49C-4415-89A3-913A8C6C074C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07F96333-D49C-4415-89A3-913A8C6C074C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07F96333-D49C-4415-89A3-913A8C6C074C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07F96333-D49C-4415-89A3-913A8C6C074C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71AF9DE5-C26B-43A8-A2B9-A3884B25F137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71AF9DE5-C26B-43A8-A2B9-A3884B25F137}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71AF9DE5-C26B-43A8-A2B9-A3884B25F137}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,7 +81,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{07F96333-D49C-4415-89A3-913A8C6C074C} = {C7432413-77C0-4C79-B572-E49A2072EF72}
 		{C7432413-77C0-4C79-B572-E49A2072EF72} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{BDB33417-D8CC-4BC1-915E-13AF799F02A9} = {4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6}
