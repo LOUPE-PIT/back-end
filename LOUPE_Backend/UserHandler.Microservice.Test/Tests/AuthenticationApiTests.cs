@@ -2,22 +2,23 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Net.Http;
-using User.Microservice.Data;
-using User.Microservice.Model;
-using UserHandler.Microservice.Test.Stubs;
+using Authentication.Microservice.Data;
+using Authentication.Microservice.Model;
+using AuthenticationService.Microservice.Test.Stubs;
 using Xunit;
+using System;
 
-namespace UserHandler.Microservice.Test
+namespace AuthenticationService.Microservice.Test
 {
 
-    public class UserApiTests : WebApplicationFactory<Program>
+    public class AuthenticationApiTests : WebApplicationFactory<Program>
     {
-        UserDALStub stub = new UserDALStub();
+        AuthenticationDALStub stub = new AuthenticationDALStub();
         protected override IHost CreateHost(IHostBuilder builder)
         {
             builder.ConfigureServices(services =>
             {
-                services.AddScoped<IUserDAL, UserDALStub>();
+                services.AddScoped<IAuthenticationDAL, AuthenticationDALStub>();
             });
 
             return base.CreateHost(builder);
@@ -27,7 +28,7 @@ namespace UserHandler.Microservice.Test
         public async void GetUsers_Passed()
         {
             // Arrange
-            var webAppFactory = new UserApiTests();
+            var webAppFactory = new AuthenticationApiTests();
             HttpClient httpClient = webAppFactory.CreateClient();
             stub.testValue = true;
 
@@ -45,8 +46,8 @@ namespace UserHandler.Microservice.Test
             // Arrange
             UserModel userModel = new UserModel();
             userModel.name = "mark";
-            userModel.userID = 11;
-            var webAppFactory = new UserApiTests();
+            userModel.userId = new Guid();
+            var webAppFactory = new AuthenticationApiTests();
             HttpClient httpClient = webAppFactory.CreateClient();
             stub.testValue = true;
 

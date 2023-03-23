@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{2337F546-B056-4710-BDB4-A63686894FC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserHandler.Microservice", "UserHandler.Microservice\UserHandler.Microservice.csproj", "{07F96333-D49C-4415-89A3-913A8C6C074C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Microservice", "UserHandler.Microservice\Authentication.Microservice.csproj", "{07F96333-D49C-4415-89A3-913A8C6C074C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Gateway", "API.Gateway\API.Gateway.csproj", "{71AF9DE5-C26B-43A8-A2B9-A3884B25F137}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserHandler", "UserHandler", "{C7432413-77C0-4C79-B572-E49A2072EF72}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationService", "AuthenticationService", "{C7432413-77C0-4C79-B572-E49A2072EF72}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserHandler.Microservice.Test", "UserHandler.Microservice.Test\UserHandler.Microservice.Test.csproj", "{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Microservice.Test", "UserHandler.Microservice.Test\Authentication.Microservice.Test.csproj", "{13CA1D32-9139-47E7-AEDF-4C13BE9D4F7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LogHandler", "LogHandler", "{4AACD133-9A8F-4E2D-ABC1-89A7EB191CC6}"
 EndProject
@@ -31,6 +31,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService.API", "AuthenticationService.API\AuthenticationService.API.csproj", "{E0214381-435B-4B45-B212-B6D8DCEDDB11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService.Core.API", "AuthenticationService.Core.API\AuthenticationService.Core.API.csproj", "{6C2A962C-9F0E-43B9-95EA-E8BA1C6448FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService.DataLayer", "AuthenticationService.DataLayer\AuthenticationService.DataLayer.csproj", "{3E9AA425-4EA7-4C60-9E76-59C40CB34E65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +76,18 @@ Global
 		{AD693A7E-CD7E-4D64-9F58-0451D237B825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD693A7E-CD7E-4D64-9F58-0451D237B825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD693A7E-CD7E-4D64-9F58-0451D237B825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0214381-435B-4B45-B212-B6D8DCEDDB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0214381-435B-4B45-B212-B6D8DCEDDB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0214381-435B-4B45-B212-B6D8DCEDDB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0214381-435B-4B45-B212-B6D8DCEDDB11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2A962C-9F0E-43B9-95EA-E8BA1C6448FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2A962C-9F0E-43B9-95EA-E8BA1C6448FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2A962C-9F0E-43B9-95EA-E8BA1C6448FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2A962C-9F0E-43B9-95EA-E8BA1C6448FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E9AA425-4EA7-4C60-9E76-59C40CB34E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9AA425-4EA7-4C60-9E76-59C40CB34E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9AA425-4EA7-4C60-9E76-59C40CB34E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9AA425-4EA7-4C60-9E76-59C40CB34E65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +103,9 @@ Global
 		{A6EAE81F-B640-42DC-8D16-88734A6EE789} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{7DE6FFD2-4FA5-46E6-9C24-82676D98A088} = {A6EAE81F-B640-42DC-8D16-88734A6EE789}
 		{AD693A7E-CD7E-4D64-9F58-0451D237B825} = {A6EAE81F-B640-42DC-8D16-88734A6EE789}
+		{E0214381-435B-4B45-B212-B6D8DCEDDB11} = {C7432413-77C0-4C79-B572-E49A2072EF72}
+		{6C2A962C-9F0E-43B9-95EA-E8BA1C6448FC} = {C7432413-77C0-4C79-B572-E49A2072EF72}
+		{3E9AA425-4EA7-4C60-9E76-59C40CB34E65} = {C7432413-77C0-4C79-B572-E49A2072EF72}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76921467-FEB5-4CAB-B402-FC547B8CD260}

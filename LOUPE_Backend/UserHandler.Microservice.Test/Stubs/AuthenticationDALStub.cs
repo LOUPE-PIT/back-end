@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using User.Microservice.Data;
-using User.Microservice.Model;
+using Authentication.Microservice.Data;
+using Authentication.Microservice.Model;
+using System;
 
-namespace UserHandler.Microservice.Test.Stubs
+namespace AuthenticationService.Microservice.Test.Stubs
 {
-    internal class UserDALStub : IUserDAL
+    internal class AuthenticationDALStub : IAuthenticationDAL
     {
         public bool? testValue = null;
 
@@ -46,12 +47,12 @@ namespace UserHandler.Microservice.Test.Stubs
             }
         }
 
-        public UserModel GetUserById(int id)
+        public UserModel GetUserById(Guid id)
         {
             return new UserModel();
         }
 
-        public ActionResult DeleteUserById(int id)
+        public ActionResult DeleteUserById(Guid id)
         {
             if (testValue == true)
             {

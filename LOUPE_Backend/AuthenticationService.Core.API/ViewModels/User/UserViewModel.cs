@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Authentication.Microservice.Model
+namespace AuthenticationService.Core.API.ViewModels
 {
-    public class UserModel
+    public class UserViewModel
     {
         [Key]
         public Guid userId { get; set; }

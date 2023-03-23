@@ -7,17 +7,17 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["UserHandler.Microservice.csproj", "UserHandler.Microservice/"]
-RUN dotnet restore "UserHandler.Microservice/UserHandler.Microservice.csproj"
+COPY ["AuthenticationService.Microservice.csproj", "AuthenticationService.Microservice/"]
+RUN dotnet restore "AuthenticationService.Microservice/AuthenticationService.Microservice.csproj"
 
-WORKDIR "/src/UserHandler.Microservice"
+WORKDIR "/src/AuthenticationService.Microservice"
 COPY . .
-RUN dotnet build "UserHandler.Microservice.csproj" -c Release -o /app/build
+RUN dotnet build "AuthenticationService.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "UserHandler.Microservice.csproj" -c Release -o /app/publish
+RUN dotnet publish "AuthenticationService.Microservice.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "UserHandler.Microservice.dll"]
+ENTRYPOINT ["dotnet", "AuthenticationService.Microservice.dll"]

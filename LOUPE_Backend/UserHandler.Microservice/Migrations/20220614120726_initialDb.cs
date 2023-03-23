@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace UserHandler.Microservice.Migrations
+namespace AuthenticationService.Microservice.Migrations
 {
     public partial class initialDb : Migration
     {

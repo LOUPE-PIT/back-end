@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using User.Microservice.Model;
+using Authentication.Microservice.Model;
 
-namespace User.Microservice.Context
+namespace Authentication.Microservice.Context
 {
     public class UserDbContext : DbContext
     {

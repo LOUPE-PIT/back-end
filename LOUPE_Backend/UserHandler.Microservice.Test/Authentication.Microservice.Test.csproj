@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UserHandler.Microservice\UserHandler.Microservice.csproj" />
+    <ProjectReference Include="..\UserHandler.Microservice\Authentication.Microservice.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using User.Microservice.Context;
-using User.Microservice.Model;
+using Authentication.Microservice.Context;
+using Authentication.Microservice.Model;
 
-namespace User.Microservice.Data
+namespace Authentication.Microservice.Data
 {
-    public class UserDAL : IUserDAL
+    public class AuthenticationDAL : IAuthenticationDAL
     {
         private readonly UserDbContext db;
 
-        public UserDAL(UserDbContext db)
+        public AuthenticationDAL(UserDbContext db)
         {
             this.db = db;
         }
@@ -19,7 +19,7 @@ namespace User.Microservice.Data
         {
             db.User.Update(user);
             db.SaveChanges();
-            return db.User.Where(x => x.userID == user.userID).FirstOrDefault();
+            return db.User.Where(x => x.userId == user.userId).FirstOrDefault();
         }
 
         public ActionResult AddUser(UserModel user)
@@ -29,14 +29,14 @@ namespace User.Microservice.Data
             return new OkResult();
         }
 
-        public UserModel GetUserById(int id)
+        public UserModel GetUserById(Guid id)
         {
-            return db.User.Where(x => x.userID == id).FirstOrDefault();
+            return db.User.Where(x => x.userId == id).FirstOrDefault();
         }
 
-        public ActionResult DeleteUserById(int id)
+        public ActionResult DeleteUserById(Guid id)
         {
-            db.User.Remove(db.User.Where(x => x.userID == id).FirstOrDefault());
+            db.User.Remove(db.User.Where(x => x.userId == id).FirstOrDefault());
             db.SaveChanges();
             return new OkResult();
         }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Authentication.Microservice.Model
+namespace AuthenticationService.DataLayer.Models.User
 {
     public class UserModel
     {
