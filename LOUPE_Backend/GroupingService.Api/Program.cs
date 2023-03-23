@@ -13,7 +13,7 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<IGroupService, GroupService>();
 builder.Services.AddTransient<IGroupRepository, GroupRepository>();
 
-builder.Services.AddDbContext<GroupDbContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddDbContext<GroupDbContext>(x => x.UseSqlServer(connectionString!));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

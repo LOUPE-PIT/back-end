@@ -14,10 +14,15 @@ public class GroupService : IGroupService
         _groupingRespository = groupingRespository;
     }
     
-    // </ inheritdoc>
+    /// <inheritdoc/>
     public async Task<Collection<Group>> GetAll()
     {
-        var groups = await _groupingRespository.GetAll();
-        return groups;
+      return await _groupingRespository.GetAll(); 
+    }
+
+    /// <inheritdoc/>
+    public async Task<Group?> ById(Guid Id)
+    {
+        return await _groupingRespository.ById(Id);
     }
 }

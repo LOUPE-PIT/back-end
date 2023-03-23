@@ -19,4 +19,9 @@ public class GroupRepository : IGroupRepository
     {
         return Task.FromResult(new Collection<Group>(_groupDbContext.Groups.ToList()));
     }
+
+    public Task<Group?> ById(Guid Id)
+    {
+        return Task.FromResult(_groupDbContext.Groups.FirstOrDefault(x => x.Id == Id));
+    }
 }

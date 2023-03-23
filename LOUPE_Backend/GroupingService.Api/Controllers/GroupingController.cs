@@ -21,9 +21,27 @@ public class GroupingController : ControllerBase
 
     [HttpGet("all")]
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> All()
     {
         var groups = await _groupService.GetAll();
         return Ok(groups);
+    }
+
+    [HttpGet("{groupId}")]
+    [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ById(Guid groupId)
+    {
+        var group = await _groupService.ById(groupId);
+        
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(group);
     }
 }
