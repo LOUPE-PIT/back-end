@@ -1,4 +1,5 @@
 ﻿using GroupingService.Core.Api.Services;
+using GroupingService.DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -19,7 +20,7 @@ public class GroupingController : ControllerBase
     }
 
     [HttpGet("all")]
-    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     public async Task<IActionResult> All()
     {
         var groups = await _groupService.GetAll();
