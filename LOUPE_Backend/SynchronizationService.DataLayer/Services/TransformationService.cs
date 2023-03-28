@@ -1,6 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using SynchronizationService.DataLayer.Models;
-using SynchronizationService.DataLayer.Models.MongoDB.Interfaces;
 using SynchronizationService.DataLayer.Services.Interface;
 
 namespace SynchronizationService.DataLayer.Services
@@ -9,10 +9,17 @@ namespace SynchronizationService.DataLayer.Services
     {
         private readonly IMongoCollection<Transformation> _transformations;
 
-        public TransformationService(ITransformationsDatabaseSettings settings, IMongoClient client)
+        public TransformationService()
         {
-            IMongoDatabase database = client.GetDatabase(settings.DatabaseName);
-            _transformations = database.GetCollection<Transformation>(settings.TransformationsCollectionName);
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+           .SetBasePath(Directory.GetCurrentDirectory())
+           .AddJsonFile("appsettings.json")
+           .Build();
+
+            IMongoClient client = new MongoClient(configuration.GetSection("MongoDb:connectionstring").Value);
+
+            IMongoDatabase database = client.GetDatabase(configuration.GetSection("MongoDb:databaseName").Value);
+            _transformations = database.GetCollection<Transformation>(configuration.GetSection("MongoDb:synchronizationCollectionName").Value);
         }
         public Transformation Create(Transformation transformation)
         {

@@ -11,8 +11,8 @@ namespace SynchronizationService.DataLayer.Models
         [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid UserId { get; set; }
         public string RoomCode { get; set; }
-        [BsonDateTimeOptions(DateOnly = false, Kind = DateTimeKind.Utc, Representation = BsonType.DateTime)]
+        [BsonRepresentation(BsonType.String)]
         public DateTimeOffset TimeStamp { get; set; }
-        public ActionType ActionType { get; set; }
+        public PerformedAction ActionType { get; set; }
     }
 }
