@@ -20,8 +20,14 @@ public class GroupRepository : IGroupRepository
         return Task.FromResult(new Collection<Group>(_groupDbContext.Groups.ToList()));
     }
 
-    public Task<Group?> ById(Guid Id)
+    public Task<Group?> ById(string roomCode)
     {
-        return Task.FromResult(_groupDbContext.Groups.FirstOrDefault(x => x.Id == Id));
+        return Task.FromResult(_groupDbContext.Groups.FirstOrDefault(x => x.RoomCode == roomCode));
+    }
+
+    public void New(Group group)
+    {
+        _groupDbContext.Groups.Add(group);
+        _groupDbContext.SaveChangesAsync();
     }
 }

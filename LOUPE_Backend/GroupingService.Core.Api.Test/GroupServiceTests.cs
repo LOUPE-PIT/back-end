@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using FluentAssertions;
 using GroupingService.Core.Api.Services;
+using GroupingService.Core.Api.Services.GroupService;
+using GroupingService.Core.Api.Services.GroupService.Implementation;
 using GroupingService.DataAccessLayer.Repositories;
 using GroupingService.DataAccessLayer.Models;
 using Moq;
@@ -29,9 +31,8 @@ public class GroupServiceTests
         var expectedGroups = new Collection<Group>
         {
             new Group {
-                Id = Guid.Parse("13baf352-cdb8-4c69-ba84-124d4b773fa4"), 
+                RoomCode = "ABCDEFG",
                 UserId = Guid.Parse("596d9da2-905e-48e4-aab5-41b29c89786f"), 
-                RoomCode = "AABB"
             },
         };
 

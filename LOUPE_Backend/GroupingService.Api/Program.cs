@@ -1,5 +1,9 @@
 using System.Text.Json.Serialization;
 using GroupingService.Core.Api.Services;
+using GroupingService.Core.Api.Services.GroupService;
+using GroupingService.Core.Api.Services.GroupService.Implementation;
+using GroupingService.Core.Api.Services.RoomCodeService;
+using GroupingService.Core.Api.Services.RoomCodeService.Implementation;
 using GroupingService.DataAccessLayer.Context;
 using GroupingService.DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +15,8 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 
 //SERVICES
 builder.Services.AddTransient<IGroupService, GroupService>();
-builder.Services.AddTransient<IGroupRepository, GroupRepository>();
+builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+builder.Services.AddTransient<IRoomCodeService, RoomCodeService>();
 
 builder.Services.AddDbContext<GroupDbContext>(x => x.UseSqlServer(connectionString!));
 builder.Services.AddEndpointsApiExplorer();

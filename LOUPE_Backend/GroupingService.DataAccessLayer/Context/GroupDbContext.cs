@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using GroupingService.DataAccessLayer.Models;
+﻿using GroupingService.DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -7,6 +6,9 @@ namespace GroupingService.DataAccessLayer.Context;
 
 public class GroupDbContext : DbContext
 {
+    //Tables
+    public DbSet<Group> Groups { get; set; } = null!;
+    
     public GroupDbContext()
     {
         
@@ -14,7 +16,7 @@ public class GroupDbContext : DbContext
     public GroupDbContext(DbContextOptions<GroupDbContext> options) : base(options)
     {
     }
-    public DbSet<Group> Groups { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var configuration = new ConfigurationBuilder()
