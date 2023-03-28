@@ -1,13 +1,16 @@
 using LogService.DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace LogService.DataAccessLayer.Context;
 
 public class LogDbContext : DbContext
 {
-    public LogDbContext()
-    {
+    private readonly IConfiguration _configuration;
 
+    public LogDbContext(IConfiguration configuration)
+    {
+        _configuration = configuration;
     }
 
     public LogDbContext(DbContextOptions<LogDbContext> options) : base(options)
@@ -18,8 +21,7 @@ public class LogDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connectionString = "";
-        connectionString = "Server=localhost,1433;User=SA;Password=Welkom12345";
+        string connectionString = _configuration.GetConnectionString("logDb");
         optionsBuilder.UseSqlServer(connectionString);
     }
 }

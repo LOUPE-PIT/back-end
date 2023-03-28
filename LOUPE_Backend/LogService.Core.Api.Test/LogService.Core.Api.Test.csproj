@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LogService.Core.Api\LogService.Core.Api.csproj" />
+      <ProjectReference Include="..\LogService.DataAccessLayer\LogService.DataAccessLayer.csproj" />
     </ItemGroup>
 
 </Project>

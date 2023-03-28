@@ -7,12 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\LogService.Core.API\LogService.Core.API.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="FluentAssertions" Version="6.10.0" />
-      <PackageReference Include="Moq" Version="4.18.4" />
+      <ProjectReference Include="..\LogService.Core.Api\LogService.Core.Api.csproj" />
     </ItemGroup>
 
 </Project>
