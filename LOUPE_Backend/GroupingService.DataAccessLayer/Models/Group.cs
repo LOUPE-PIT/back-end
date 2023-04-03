@@ -6,13 +6,14 @@ namespace GroupingService.DataAccessLayer.Models;
 [DataContract]
 public class Group
 {
+    [Key]
+    [DataMember]
+    public Guid Id { get; set; }
+
     /// <summary>
     /// The room code that can be used by a group to join the Unity env.
     /// </summary>
-    /// <remarks>
-    /// Also acts as the primary key of the table
-    /// </remarks>
-    [Key]
+    [Required]
     [DataMember]
     public string RoomCode { get; set; }
 

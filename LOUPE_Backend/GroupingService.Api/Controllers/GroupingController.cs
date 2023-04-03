@@ -11,6 +11,7 @@ namespace GroupingService.Controllers;
 [ApiController]
 [Route("[controller]")]
 [Produces("application/json")]
+[Consumes("application/json")]
 [SwaggerTag("Acties rondom groepen")]
 public class GroupingController : ControllerBase
 {
@@ -52,12 +53,8 @@ public class GroupingController : ControllerBase
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> New([FromBody] GroupRequestBody group)
+    public async Task<IActionResult> New([FromBody] GroupRequestBody group, CancellationToken cancellationToken)
     {
-        var roomCode = "EFG";
-            // await _roomCodeService.GenerateRoomCode();
-         _groupService.New(roomCode, group);
-         
-         return Ok();
+        return Ok(await _groupService.NewAsync(group, cancellationToken));
     }
 }

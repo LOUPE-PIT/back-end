@@ -2,5 +2,5 @@
 
 public interface IRoomCodeService
 {
-    Task<string> GenerateRoomCode();
+    Task<string> GenerateUniqueRoomCode();
 }

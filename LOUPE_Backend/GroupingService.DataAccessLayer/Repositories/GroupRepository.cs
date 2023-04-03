@@ -25,9 +25,14 @@ public class GroupRepository : IGroupRepository
         return Task.FromResult(_groupDbContext.Groups.FirstOrDefault(x => x.RoomCode == roomCode));
     }
 
-    public void New(Group group)
+    public async Task NewAsync(Group group, GroupDbContext dbContext, CancellationToken cancellationToken)
     {
-        _groupDbContext.Groups.Add(group);
-        _groupDbContext.SaveChangesAsync();
+        await dbContext.Groups.AddAsync(group, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public bool CheckIfExists(string roomCode)
+    {
+        return _groupDbContext.Groups.Any(g => g.RoomCode == roomCode);
     }
 }

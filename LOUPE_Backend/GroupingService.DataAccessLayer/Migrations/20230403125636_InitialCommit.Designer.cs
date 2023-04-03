@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupingService.DataAccessLayer.Migrations
 {
     [DbContext(typeof(GroupDbContext))]
-    [Migration("20230323100524_Initial_Commit")]
-    partial class Initial_Commit
+    [Migration("20230403125636_InitialCommit")]
+    partial class InitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -15,7 +15,7 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 
 //SERVICES
 builder.Services.AddTransient<IGroupService, GroupService>();
-builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+builder.Services.AddTransient<IGroupRepository, GroupRepository>();
 builder.Services.AddTransient<IRoomCodeService, RoomCodeService>();
 
 builder.Services.AddDbContext<GroupDbContext>(x => x.UseSqlServer(connectionString!));
@@ -32,7 +32,6 @@ using (var scope = app.Services.CreateScope())
     var y = scope.ServiceProvider.GetRequiredService<GroupDbContext>();
     y.Database.Migrate();
 }
-
 
 app.UseDeveloperExceptionPage();
 

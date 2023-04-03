@@ -10,4 +10,8 @@
       <ProjectReference Include="..\GroupingService.DataAccessLayer\GroupingService.DataAccessLayer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Services\RoomCodeService\Contracts" />
+    </ItemGroup>
+
 </Project>

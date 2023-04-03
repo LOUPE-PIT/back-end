@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using GroupingService.Core.Api.Services.GroupService.Contracts;
 using GroupingService.Core.Api.ViewModels;
 using GroupingService.DataAccessLayer.Models;
 
@@ -22,7 +23,7 @@ public interface IGroupService
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="roomCode"></param>
     /// <param name="groupRequestBody"></param>
-    void New(string roomCode, GroupRequestBody groupRequestBody);
+    /// <param name="cancellationToken"></param>
+    Task<NewGroupResponse> NewAsync(GroupRequestBody groupRequestBody, CancellationToken cancellationToken);
 }

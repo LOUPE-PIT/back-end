@@ -24,13 +24,18 @@ namespace GroupingService.DataAccessLayer.Migrations
 
             modelBuilder.Entity("GroupingService.DataAccessLayer.Models.Group", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("RoomCode")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("RoomCode");
+                    b.HasKey("Id");
 
                     b.ToTable("Groups");
                 });
