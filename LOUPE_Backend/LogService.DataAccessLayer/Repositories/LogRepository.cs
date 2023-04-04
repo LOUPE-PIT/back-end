@@ -18,4 +18,9 @@ public class LogRepository : ILogRepository
     {
         return Task.FromResult(new Collection<Log>(_logDbContext.Logs.ToList()));
     }
+
+    public Task<Log?> ById(Guid id)
+    {
+        return Task.FromResult(_logDbContext.Logs.FirstOrDefault(l => l.Id == id));
+    }
 }

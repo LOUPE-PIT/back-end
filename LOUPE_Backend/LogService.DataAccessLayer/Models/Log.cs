@@ -10,4 +10,9 @@ public class Log
     public Guid GroupId { get; set; }
     public string Text { get; set; }
     public DateTimeOffset Created { get; set; }
+
+    public Log()
+    {
+        
+    }
 }
