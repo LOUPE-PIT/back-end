@@ -7,7 +7,8 @@ namespace GroupingService.DataAccessLayer.Repositories;
 public interface IGroupRepository
 {
     Task<Collection<Group>> GetAll();
-    Task<Group?> ById(string roomCode);
+    Task<Collection<Group>> GetAllByRoomCode(string roomCode);
     Task NewAsync(Group group, GroupDbContext dbContext, CancellationToken cancellationToken);
+    Task ArchiveAsync(Group group, CancellationToken cancellationToken);
     bool CheckIfExists(string roomCode);
 }

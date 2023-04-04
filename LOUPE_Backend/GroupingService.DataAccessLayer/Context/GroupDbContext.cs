@@ -8,6 +8,7 @@ public class GroupDbContext : DbContext
 {
     //Tables
     public DbSet<Group> Groups { get; set; } = null!;
+    public DbSet<ArchivedGroup> ArchivedGroups { get; set; } = null!;
     
     public GroupDbContext()
     {

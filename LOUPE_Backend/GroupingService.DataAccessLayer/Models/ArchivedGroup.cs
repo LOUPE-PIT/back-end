@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace GroupingService.DataAccessLayer.Models;
 
 [DataContract]
-public class Group
+public class ArchivedGroup
 {
     [Key]
     [DataMember]

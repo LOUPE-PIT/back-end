@@ -1,6 +1,13 @@
-﻿namespace GroupingService.Core.Api.Services.GroupService.Contracts;
+﻿using System.Runtime.Serialization;
 
-public class NewGroupResponse
+namespace GroupingService.Core.Api.Services.GroupService.Contracts;
+
+[DataContract]
+public class GroupActionResponse
 {
+    [DataMember]
     public ActionResult? Result { get; set; }
+
+    [DataMember] 
+    public string? ResultString { get; set; } = null!;
 }

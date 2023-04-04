@@ -18,12 +18,20 @@ public interface IGroupService
     /// </summary>
     /// <param name="roomCode"> The roomCode of the group </param>
     /// <returns> A group that matches the Id</returns>
-    Task<Group?> ByRoomCode(string roomCode);
+    Task<Collection<Group>> ByRoomCode(string roomCode);
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="groupRequestBody"></param>
     /// <param name="cancellationToken"></param>
-    Task<NewGroupResponse> NewAsync(GroupRequestBody groupRequestBody, CancellationToken cancellationToken);
+    Task<GroupActionResponse> NewAsync(GroupRequestBody groupRequestBody, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="roomCode"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<GroupActionResponse> DeleteAsync(string roomCode, CancellationToken cancellationToken);
 }

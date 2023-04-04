@@ -25,7 +25,7 @@ public class GroupingController : ControllerBase
         _roomCodeService = roomCodeService;
     }
 
-    [HttpGet("all")]
+    [HttpGet]
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -35,7 +35,7 @@ public class GroupingController : ControllerBase
         return Ok(groups);
     }
 
-    [HttpGet("{roomCode}")]
+    [HttpGet("roomCode")]
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,12 +49,21 @@ public class GroupingController : ControllerBase
         return Ok(group);
     }
 
-    [HttpPost("new")]
+    [HttpPost]
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> New([FromBody] GroupRequestBody group, CancellationToken cancellationToken)
     {
         return Ok(await _groupService.NewAsync(group, cancellationToken));
+    }
+
+    [HttpDelete("roomCode")]
+    [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete(string roomCode, CancellationToken cancellationToken)
+    {
+        return Ok(await _groupService.DeleteAsync(roomCode, cancellationToken));
     }
 }

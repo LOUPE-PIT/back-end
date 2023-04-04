@@ -5,12 +5,12 @@ namespace GroupingService.Core.Api.Services.GroupService.Contracts;
 [DataContract]
 public enum ActionResult
 {
-    [DataMember]
+    [EnumMember(Value = "Succesvol")]
     Succesvol,
     
-    [DataMember]
+    [EnumMember(Value = "Onsuccesvol")]
     Onsuccesvol,
     
-    [DataMember]
+    [EnumMember(Value = "NietGevonden")]
     NietGevonden
 }

@@ -6,7 +6,6 @@ using GroupingService.Core.Api.Services.RoomCodeService;
 using GroupingService.Core.Api.Services.RoomCodeService.Implementation;
 using GroupingService.DataAccessLayer.Context;
 using GroupingService.DataAccessLayer.Repositories;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
