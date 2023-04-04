@@ -53,4 +53,13 @@ public class LogController : ControllerBase
     {
         return Ok(await _logService.Update(log));
     }
+
+    [HttpDelete]
+    [ProducesResponseType(typeof(Log), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete(Log log)
+    {
+        return Ok(await _logService.Delete(log));
+    }
 }

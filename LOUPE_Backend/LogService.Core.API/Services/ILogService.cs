@@ -10,4 +10,5 @@ public interface ILogService
     Task<Log> ById(Guid id);
     Task<LogResponse> New(Log log);
     Task<LogResponse> Update(Log log);
+    Task<LogResponse> Delete(Log log);
 }
