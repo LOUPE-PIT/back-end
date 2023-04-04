@@ -9,4 +9,5 @@ public interface ILogRepository
     Task<Log?> ById(Guid id);
     Task New(Log log);
     Task Update(Log log);
+    Task Delete(Log log);
 }

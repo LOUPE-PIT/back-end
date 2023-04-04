@@ -26,10 +26,26 @@ public class LogService : ILogService
         return await _logRepository.ById(id);
     }
 
-    public async Task<NewLogResponse> New(Log log)
+    public async Task<LogResponse> New(Log log)
     {
         await _logRepository.New(log);
-        var response = new NewLogResponse();
+        var response = new LogResponse();
+        response.Result = ActionResult.Succesvol;
+        return await Task.FromResult(response);
+    }
+
+    public async Task<LogResponse> Update(Log log)
+    {
+        await _logRepository.Update(log);
+        var response = new LogResponse();
+        response.Result = ActionResult.Succesvol;
+        return await Task.FromResult(response);
+    }
+
+    public async Task<LogResponse> Delete(Log log)
+    {
+        await _logRepository.Delete(log);
+        var response = new LogResponse();
         response.Result = ActionResult.Succesvol;
         return await Task.FromResult(response);
     }
