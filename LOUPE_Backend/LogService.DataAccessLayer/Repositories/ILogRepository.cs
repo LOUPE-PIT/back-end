@@ -7,4 +7,5 @@ public interface ILogRepository
 {
     Task<Collection<Log>> GetAll();
     Task<Log?> ById(Guid id);
+    Task New(Log log);
 }

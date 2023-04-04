@@ -23,4 +23,10 @@ public class LogRepository : ILogRepository
     {
         return Task.FromResult(_logDbContext.Logs.FirstOrDefault(l => l.Id == id));
     }
+
+    public async Task New(Log log)
+    {
+        await _logDbContext.Logs.AddAsync(log);
+        await _logDbContext.SaveChangesAsync();
+    }
 }
