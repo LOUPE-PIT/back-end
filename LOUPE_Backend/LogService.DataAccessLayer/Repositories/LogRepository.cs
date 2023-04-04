@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using LogService.DataAccessLayer.Context;
 using LogService.DataAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogService.DataAccessLayer.Repositories;
 
@@ -27,6 +28,12 @@ public class LogRepository : ILogRepository
     public async Task New(Log log)
     {
         await _logDbContext.Logs.AddAsync(log);
+        await _logDbContext.SaveChangesAsync();
+    }
+
+    public async Task Update(Log log)
+    {
+        _logDbContext.Entry(log).State = EntityState.Modified;
         await _logDbContext.SaveChangesAsync();
     }
 }

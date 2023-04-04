@@ -8,5 +8,6 @@ public interface ILogService
 {
     Task<Collection<Log>> GetAll();
     Task<Log> ById(Guid id);
-    Task<NewLogResponse> New(Log log);
+    Task<LogResponse> New(Log log);
+    Task<LogResponse> Update(Log log);
 }
