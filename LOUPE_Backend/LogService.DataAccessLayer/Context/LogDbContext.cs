@@ -8,9 +8,9 @@ public class LogDbContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
-    public LogDbContext(IConfiguration configuration)
+    public LogDbContext()
     {
-        _configuration = configuration;
+        
     }
 
     public LogDbContext(DbContextOptions<LogDbContext> options) : base(options)
@@ -21,7 +21,13 @@ public class LogDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connectionString = _configuration.GetConnectionString("logDb");
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+        
+        var connectionString = configuration.GetConnectionString("logDb");
+
         optionsBuilder.UseSqlServer(connectionString);
     }
 }

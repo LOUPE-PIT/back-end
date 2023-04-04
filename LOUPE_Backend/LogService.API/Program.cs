@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("AppDb");
+var connectionString = builder.Configuration.GetConnectionString("LogDb");
 
 //SERVICES
 builder.Services.AddTransient<ILogService, LogService.Core.Api.Services.LogService>();
 builder.Services.AddScoped<ILogRepository, LogRepository>();
 
-builder.Services.AddDbContext<LogDbContext>(x => x.UseSqlServer(connectionString!));
+builder.Services.AddDbContext<LogDbContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,7 +27,6 @@ using (var scope = app.Services.CreateScope())
     var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
     y.Database.Migrate();
 }
-
 
 app.UseDeveloperExceptionPage();
 

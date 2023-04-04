@@ -17,7 +17,6 @@ public class LogService : ILogService
     // </inheritdoc>
     public async Task<Collection<Log>> GetAll()
     {
-        var logs = await _logRepository.GetAll();
-        return logs;
+        return await _logRepository.GetAll();
     }
 }

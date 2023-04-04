@@ -7,6 +7,7 @@ namespace LogService.Api;
 [ApiController]
 [Route("[controller]")]
 [Produces("application/json")]
+[Consumes("application/json")]
 public class LogController : ControllerBase
 {
     //Service
@@ -23,7 +24,6 @@ public class LogController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> All()
     {
-        var logs = await _logService.GetAll();
-        return Ok(logs);
+        return Ok(await _logService.GetAll());
     }
 }
