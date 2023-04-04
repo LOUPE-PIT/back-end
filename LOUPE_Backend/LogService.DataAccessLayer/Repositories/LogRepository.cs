@@ -33,13 +33,13 @@ public class LogRepository : ILogRepository
 
     public async Task Update(Log log)
     {
-        _logDbContext.Entry(log).State = EntityState.Modified;
+        _logDbContext.Update(log);
         await _logDbContext.SaveChangesAsync();
     }
 
     public async Task Delete(Log log)
     {
-        _logDbContext.Entry(log).State = EntityState.Deleted;
+        _logDbContext.Remove(log);
         await _logDbContext.SaveChangesAsync();
     }
 }
