@@ -11,6 +11,8 @@ namespace SynchronizationService.Core.API.Strategies
             _syncService = service;
         }
 
+        public string Name => throw new NotImplementedException();
+
         public async Task<bool> AddAction(TransformationViewModel transformation)
         {
             await _syncService.Add(transformation);

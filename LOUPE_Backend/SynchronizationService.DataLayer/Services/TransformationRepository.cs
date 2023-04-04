@@ -22,9 +22,9 @@ namespace SynchronizationService.DataLayer.Services
                 await _transformations.InsertOneAsync(transformation);
                 return true;
             }
-            catch(Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 

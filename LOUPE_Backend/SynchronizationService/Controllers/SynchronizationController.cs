@@ -2,6 +2,7 @@
 using SynchronizationService.Core.API.ViewModels;
 using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace SynchronizationService.API.Controllers
 {
@@ -11,13 +12,9 @@ namespace SynchronizationService.API.Controllers
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
         private readonly ICollection<TransformationViewModel> _groupedTransformations = new List<TransformationViewModel>();
-        public SynchronizationController(RotationActionStrategy rotationStrategy, TranslationActionStrategy translationStrategy)
+        public SynchronizationController(IEnumerable<IActionStrategy> strategies)
         {
-            _strategies = new Dictionary<string, IActionStrategy>
-            {
-                {"Rotate", rotationStrategy },
-                {"Translate", translationStrategy },
-            };
+            _strategies = strategies.ToDictionary(s => s.Name);
         }
 
         [HttpGet]
@@ -35,24 +32,12 @@ namespace SynchronizationService.API.Controllers
 
             try
             {
-                if (_strategies.TryGetValue(action, out IActionStrategy? strategy))
-                {
-                    var r = await strategy.AddAction(transformation);
-                }
-                else
-                {
+                if (!_strategies.TryGetValue(action, out IActionStrategy? strategy))
                     return BadRequest("Given action not found");
-                }
 
-                if (!transformation.IsLast)
-                {
-                    _groupedTransformations.Add(transformation);
-                }
-                else
-                {
-                    //send groupedTransformations to logservice
-                    _groupedTransformations.Clear();
-                }
+                bool isChanged = await strategy.AddAction(transformation);
+
+                CheckLastMessage(transformation, isChanged);
             }
             catch (MongoWriteException ex)
             {
@@ -76,6 +61,19 @@ namespace SynchronizationService.API.Controllers
             }
 
             return Ok();
+        }
+
+        private void CheckLastMessage(TransformationViewModel transformation, bool isChanged)
+        {
+            if (!transformation.IsLast && isChanged)
+            {
+                _groupedTransformations.Add(transformation);
+            }
+            else if (transformation.IsLast)
+            {
+                //send groupedTransformations to logservice
+                _groupedTransformations.Clear();
+            }
         }
     }
 }

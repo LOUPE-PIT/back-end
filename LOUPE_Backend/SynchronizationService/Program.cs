@@ -2,6 +2,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using SynchronizationService.Core.API.Services;
 using SynchronizationService.Core.API.Strategies;
+using SynchronizationService.Core.API.Strategies.Provider;
 using SynchronizationService.DataLayer.Models.MongoDB;
 using SynchronizationService.DataLayer.Models.MongoDB.Interfaces;
 using SynchronizationService.DataLayer.Services;
@@ -23,8 +24,16 @@ builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configu
 
 builder.Services.AddTransient<ISynchronizationService, SyncService>();
 
-builder.Services.AddTransient<IActionStrategy, RotationActionStrategy>();
-builder.Services.AddTransient<IActionStrategy, TranslationActionStrategy>();
+builder.Services.AddTransient<RotationActionStrategy>();
+builder.Services.AddTransient<TranslationActionStrategy>();
+builder.Services.AddTransient<PressActionStrategy>();
+
+builder.Services.AddTransient<IActionStrategy>(provider =>
+    new NamedStrategyProvider("Rotate", provider.GetService<RotationActionStrategy>()!));
+builder.Services.AddTransient<IActionStrategy>(provider =>
+    new NamedStrategyProvider("Translate", provider.GetService<TranslationActionStrategy>()!));
+builder.Services.AddTransient<IActionStrategy>(provider =>
+    new NamedStrategyProvider("Press", provider.GetService<PressActionStrategy>()!));
 
 builder.Services.AddScoped<ITransformationRepository, TransformationRepository>();
 

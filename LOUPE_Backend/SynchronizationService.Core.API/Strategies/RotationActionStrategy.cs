@@ -6,6 +6,7 @@ namespace SynchronizationService.Core.API.Strategies
 {
     public class RotationActionStrategy : IActionStrategy
     {
+        private readonly string _name;
         private readonly ISynchronizationService _syncService;
 
         private TransformationViewModel lastTransformation = null!;
@@ -14,9 +15,11 @@ namespace SynchronizationService.Core.API.Strategies
             _syncService = service;
         }
 
+        public string Name => _name;
+
         public async Task<bool> AddAction(TransformationViewModel transformation)
         {
-            if (transformation.ActionType.Degrees == lastTransformation.ActionType.Degrees)
+            if (transformation.ActionType.Degrees == lastTransformation?.ActionType.Degrees)
                 return false;
 
             await _syncService.Add(transformation);
