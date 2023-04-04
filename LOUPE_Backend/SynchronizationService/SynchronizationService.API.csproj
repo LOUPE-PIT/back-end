@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SynchronizationService.Core.API\SynchronizationService.Core.API.csproj" />
+    <ProjectReference Include="..\SynchronizationService.DataLayer\SynchronizationService.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

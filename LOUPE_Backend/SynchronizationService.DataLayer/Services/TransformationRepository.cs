@@ -1,30 +1,31 @@
-﻿using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using SynchronizationService.DataLayer.Models;
+using SynchronizationService.DataLayer.Models.MongoDB.Interfaces;
 using SynchronizationService.DataLayer.Services.Interface;
 
 namespace SynchronizationService.DataLayer.Services
 {
-    public class TransformationService : ITransformationService
+    public class TransformationRepository : ITransformationRepository
     {
         private readonly IMongoCollection<Transformation> _transformations;
 
-        public TransformationService()
+        public TransformationRepository(ITransformationsDatabaseSettings settings, IMongoClient client)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-           .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json")
-           .Build();
-
-            IMongoClient client = new MongoClient(configuration.GetSection("MongoDb:connectionstring").Value);
-
-            IMongoDatabase database = client.GetDatabase(configuration.GetSection("MongoDb:databaseName").Value);
-            _transformations = database.GetCollection<Transformation>(configuration.GetSection("MongoDb:synchronizationCollectionName").Value);
+            IMongoDatabase database = client.GetDatabase(settings.DatabaseName);
+            _transformations = database.GetCollection<Transformation>(settings.TransformationsCollectionName);
         }
-        public Transformation Create(Transformation transformation)
+
+        public async Task<bool> Create(Transformation transformation)
         {
-            _transformations.InsertOne(transformation);
-            return transformation;
+            try
+            {
+                await _transformations.InsertOneAsync(transformation);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void Delete(Transformation transformation)

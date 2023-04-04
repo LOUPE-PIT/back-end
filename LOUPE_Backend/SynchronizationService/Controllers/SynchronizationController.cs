@@ -1,17 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SynchronizationService.Core.API.ViewModels;
-using SynchronizationService.Core.API.Services;
-using MongoDB.Driver.Core.Operations;
+using SynchronizationService.Core.API.Strategies;
+using MongoDB.Driver;
 
 namespace SynchronizationService.API.Controllers
 {
     [Route("[controller]")]
     public class SynchronizationController : Controller
     {
-        private readonly SynchronizationCore _synchronizationCore;
-        public SynchronizationController(SynchronizationCore core)
+        private readonly Dictionary<string, IActionStrategy> _strategies;
+
+        private ICollection<TransformationViewModel> groupedTransformations = new List<TransformationViewModel>();
+        public SynchronizationController(RotationActionStrategy rotationStrategy, TranslationActionStrategy translationStrategy)
         {
-            _synchronizationCore = core;
+            _strategies = new Dictionary<string, IActionStrategy>
+            {
+                {"Rotate", rotationStrategy },
+                {"Translate", translationStrategy },
+            };
         }
 
         [HttpGet]
@@ -22,14 +28,53 @@ namespace SynchronizationService.API.Controllers
         }
 
         [HttpPost("Test")]
-        public IActionResult Test([FromQuery]string action, [FromBody]TransformationViewModel transformation) 
+        public async Task<IActionResult> Test([FromQuery] string action, [FromBody] TransformationViewModel transformation)
         {
-            //--> action strategy
             if (action == string.Empty)
-                return BadRequest();
+                return BadRequest("No action given");
 
-            _synchronizationCore.Add(transformation);
-            
+            try
+            {
+                if (_strategies.TryGetValue(action, out IActionStrategy? strategy))
+                {
+                    var r = await strategy.AddAction(transformation);
+                }
+                else
+                {
+                    return BadRequest("Given action not found");
+                }
+
+                if (!transformation.IsLast)
+                {
+                    groupedTransformations.Add(transformation);
+                }
+                else
+                {
+                    //send groupedTransformations to logservice
+                    groupedTransformations.Clear();
+                }
+            }
+            catch (MongoWriteException ex)
+            {
+                Console.WriteLine("Mongo error: " + ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+            catch (MongoWriteConcernException ex)
+            {
+                Console.WriteLine("Mongo error: " + ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+            catch (MongoException ex)
+            {
+                Console.Write("Mongo error: " + ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.Write("Generic error: " + ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+
             return Ok();
         }
     }
