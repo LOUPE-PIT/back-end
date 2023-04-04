@@ -11,9 +11,10 @@ namespace SynchronizationService.Core.API.Strategies
             _syncService = service;
         }
 
-        public async Task AddAction(TransformationViewModel transformation)
+        public async Task<bool> AddAction(TransformationViewModel transformation)
         {
             await _syncService.Add(transformation);
+            return true;
         }
     }
 }

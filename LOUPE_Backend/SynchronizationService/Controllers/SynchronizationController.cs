@@ -10,7 +10,7 @@ namespace SynchronizationService.API.Controllers
     {
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
-        private ICollection<TransformationViewModel> groupedTransformations = new List<TransformationViewModel>();
+        private readonly ICollection<TransformationViewModel> _groupedTransformations = new List<TransformationViewModel>();
         public SynchronizationController(RotationActionStrategy rotationStrategy, TranslationActionStrategy translationStrategy)
         {
             _strategies = new Dictionary<string, IActionStrategy>
@@ -46,12 +46,12 @@ namespace SynchronizationService.API.Controllers
 
                 if (!transformation.IsLast)
                 {
-                    groupedTransformations.Add(transformation);
+                    _groupedTransformations.Add(transformation);
                 }
                 else
                 {
                     //send groupedTransformations to logservice
-                    groupedTransformations.Clear();
+                    _groupedTransformations.Clear();
                 }
             }
             catch (MongoWriteException ex)

@@ -13,15 +13,16 @@ namespace SynchronizationService.Core.API.Strategies
             _syncService = service;
         }
 
-        public async Task AddAction(TransformationViewModel transformation)
+        public async Task<bool> AddAction(TransformationViewModel transformation)
         {
             if (transformation.ActionType.XPos == lastTransformation.ActionType.XPos &&
                 transformation.ActionType.YPos == lastTransformation.ActionType.YPos &&
                 transformation.ActionType.ZPos == lastTransformation.ActionType.ZPos)
-                return;
+                return false;
             
             await _syncService.Add(transformation);
             lastTransformation = transformation;
+            return true;
         }
     }
 }

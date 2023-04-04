@@ -6,7 +6,7 @@ namespace SynchronizationService.DataLayer.Services.Interface
     {
         public List<Transformation> Get();
         public Transformation Get(Guid id);
-        public Task<Transformation> Create(Transformation transformation);
+        public Task<bool> Create(Transformation transformation);
         public void Update(Transformation transformation);
         public void Delete(Transformation transformation);
     }

@@ -22,8 +22,6 @@ namespace SynchronizationService.Core.API.Strategies
             await _syncService.Add(transformation);
             lastTransformation = transformation;
             return true;
-
-            return false;
         }
     }
 }
