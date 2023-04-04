@@ -15,7 +15,7 @@ namespace AuthenticationService.DataLayer.Services
 
         public void Seed()
         {
-            if (!userDbContext.User.Any())
+            if (!userDbContext.User_Db.Any())
             {
                 var user = new List<UserModel>()
                 {
@@ -31,7 +31,7 @@ namespace AuthenticationService.DataLayer.Services
                     }
                 };
 
-                userDbContext.User.AddRange(user);
+                userDbContext.User_Db.AddRange(user);
                 userDbContext.SaveChanges();
             }
         }

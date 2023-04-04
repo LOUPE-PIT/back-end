@@ -16,7 +16,7 @@ namespace AuthenticationService.DataLayer.Context
         {
         }
 
-        public DbSet<UserModel> User { get; set; }
+        public DbSet<UserModel> User_Db { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,12 +30,12 @@ namespace AuthenticationService.DataLayer.Context
                                     .AddJsonFile("appsettings.json")
                                     .Build();
 
-                connectionString = configuration.GetConnectionString("AppDb");
+                connectionString = "Server=localhost,1433;User=SA;Password=Welkom12345; TrustServerCertificate=true"; //configuration.GetConnectionString("AppDb");
 
             }
             else
             {
-                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+                connectionString = "Server=localhost,1433;User=SA;Password=Welkom12345; TrustServerCertificate=true"; //Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
             }
 
             
