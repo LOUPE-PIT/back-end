@@ -34,32 +34,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SynchronizationService", "SynchronizationService", "{2E3FEECA-78B6-463E-8A35-AA30A94F9D75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronizationService.Core.API", "SynchronizationService.Core.API\SynchronizationService.Core.API.csproj", "{4155E476-B15D-4ED8-889E-9E2EADD82E4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.Core.API", "SynchronizationService.Core.API\SynchronizationService.Core.API.csproj", "{4155E476-B15D-4ED8-889E-9E2EADD82E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronizationService.DataLayer", "SynchronizationService.DataLayer\SynchronizationService.DataLayer.csproj", "{51E3EFA5-4F21-45B8-ABF0-D246DEF26A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.DataLayer", "SynchronizationService.DataLayer\SynchronizationService.DataLayer.csproj", "{51E3EFA5-4F21-45B8-ABF0-D246DEF26A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronizationService.API", "SynchronizationService\SynchronizationService.API.csproj", "{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}"
-
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupingService.Api", "GroupingService.Api\GroupingService.Api.csproj", "{B4E35D5C-B7D2-4090-8526-196617BDB29E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.API", "SynchronizationService\SynchronizationService.API.csproj", "{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupingService.Api", "GroupingService.Api\GroupingService.Api.csproj", "{B4E35D5C-B7D2-4090-8526-196617BDB29E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GroupingService", "GroupingService", "{DEB90CEE-0BCB-46D8-BD64-FA06177C292E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupingService.Core.Api", "GroupingService.Core.Api\GroupingService.Core.Api.csproj", "{398C3C1B-CB46-40DC-B486-675DE8617D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupingService.Core.Api", "GroupingService.Core.Api\GroupingService.Core.Api.csproj", "{398C3C1B-CB46-40DC-B486-675DE8617D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupingService.DataAccessLayer", "GroupingService.DataAccessLayer\GroupingService.DataAccessLayer.csproj", "{F07B02C1-AB79-4C0B-8443-9B850FD22B62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupingService.DataAccessLayer", "GroupingService.DataAccessLayer\GroupingService.DataAccessLayer.csproj", "{F07B02C1-AB79-4C0B-8443-9B850FD22B62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupingService.Core.Api.Test", "GroupingService.Core.Api.Test\GroupingService.Core.Api.Test.csproj", "{4341ED65-C16F-492C-B274-5D097438A031}"
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupingService.Core.Api.Test", "GroupingService.Core.Api.Test\GroupingService.Core.Api.Test.csproj", "{4341ED65-C16F-492C-B274-5D097438A031}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LogService", "LogService", "{DA3FB718-B95E-4B50-AE39-51875E812CB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogService.Core.Api.Test", "LogService.Core.Api.Test\LogService.Core.Api.Test.csproj", "{66865DDB-38EA-4074-81B5-C0ECDD0381F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogService.Core.Api.Test", "LogService.Core.Api.Test\LogService.Core.Api.Test.csproj", "{66865DDB-38EA-4074-81B5-C0ECDD0381F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogService.Core.Api", "LogService.Core.Api\LogService.Core.Api.csproj", "{0AA0C3EC-5C22-43A8-9697-7F710317927C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogService.Core.Api", "LogService.Core.Api\LogService.Core.Api.csproj", "{0AA0C3EC-5C22-43A8-9697-7F710317927C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogService.DataAccessLayer", "LogService.DataAccessLayer\LogService.DataAccessLayer.csproj", "{1EFFD879-9529-4959-B755-70E631C253E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogService.DataAccessLayer", "LogService.DataAccessLayer\LogService.DataAccessLayer.csproj", "{1EFFD879-9529-4959-B755-70E631C253E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogService.Api", "LogService.Api\LogService.Api.csproj", "{90606130-73C9-4BA7-94CF-A80B834ECD6B}"
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogService.Api", "LogService.Api\LogService.Api.csproj", "{90606130-73C9-4BA7-94CF-A80B834ECD6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,7 +110,6 @@ Global
 		{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}.Release|Any CPU.Build.0 = Release|Any CPU
-
 		{B4E35D5C-B7D2-4090-8526-196617BDB29E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4E35D5C-B7D2-4090-8526-196617BDB29E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E35D5C-B7D2-4090-8526-196617BDB29E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -128,7 +126,6 @@ Global
 		{4341ED65-C16F-492C-B274-5D097438A031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4341ED65-C16F-492C-B274-5D097438A031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4341ED65-C16F-492C-B274-5D097438A031}.Release|Any CPU.Build.0 = Release|Any CPU
-
 		{66865DDB-38EA-4074-81B5-C0ECDD0381F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66865DDB-38EA-4074-81B5-C0ECDD0381F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66865DDB-38EA-4074-81B5-C0ECDD0381F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -145,7 +142,6 @@ Global
 		{90606130-73C9-4BA7-94CF-A80B834ECD6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90606130-73C9-4BA7-94CF-A80B834ECD6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90606130-73C9-4BA7-94CF-A80B834ECD6B}.Release|Any CPU.Build.0 = Release|Any CPU
-
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,19 +161,16 @@ Global
 		{4155E476-B15D-4ED8-889E-9E2EADD82E4F} = {2E3FEECA-78B6-463E-8A35-AA30A94F9D75}
 		{51E3EFA5-4F21-45B8-ABF0-D246DEF26A6E} = {2E3FEECA-78B6-463E-8A35-AA30A94F9D75}
 		{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7} = {2E3FEECA-78B6-463E-8A35-AA30A94F9D75}
-
-		{DEB90CEE-0BCB-46D8-BD64-FA06177C292E} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{B4E35D5C-B7D2-4090-8526-196617BDB29E} = {DEB90CEE-0BCB-46D8-BD64-FA06177C292E}
+		{DEB90CEE-0BCB-46D8-BD64-FA06177C292E} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{398C3C1B-CB46-40DC-B486-675DE8617D05} = {DEB90CEE-0BCB-46D8-BD64-FA06177C292E}
 		{F07B02C1-AB79-4C0B-8443-9B850FD22B62} = {DEB90CEE-0BCB-46D8-BD64-FA06177C292E}
 		{4341ED65-C16F-492C-B274-5D097438A031} = {DEB90CEE-0BCB-46D8-BD64-FA06177C292E}
-
 		{DA3FB718-B95E-4B50-AE39-51875E812CB0} = {2337F546-B056-4710-BDB4-A63686894FC3}
 		{66865DDB-38EA-4074-81B5-C0ECDD0381F4} = {DA3FB718-B95E-4B50-AE39-51875E812CB0}
 		{0AA0C3EC-5C22-43A8-9697-7F710317927C} = {DA3FB718-B95E-4B50-AE39-51875E812CB0}
 		{1EFFD879-9529-4959-B755-70E631C253E3} = {DA3FB718-B95E-4B50-AE39-51875E812CB0}
 		{90606130-73C9-4BA7-94CF-A80B834ECD6B} = {DA3FB718-B95E-4B50-AE39-51875E812CB0}
-
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76921467-FEB5-4CAB-B402-FC547B8CD260}
