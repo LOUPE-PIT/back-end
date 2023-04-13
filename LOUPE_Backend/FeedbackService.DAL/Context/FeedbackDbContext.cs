@@ -7,7 +7,7 @@ namespace FeedbackService.DAL.Context
     public class FeedbackDbContext : DbContext
     {
 
-        public DbSet<FeedbackDbo> FeedbackDbo { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
 
         public FeedbackDbContext()
         {

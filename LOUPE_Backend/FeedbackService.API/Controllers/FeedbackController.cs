@@ -1,4 +1,5 @@
 ﻿using FeedbackService.Api.Core.Services;
+using FeedbackService.API.Core.Viewmodels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FeedbackService.API.Controllers
@@ -24,41 +25,52 @@ namespace FeedbackService.API.Controllers
             return Ok(feedback);
         }
 
+        [HttpPost("Create")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Create(FeedbackViewmodel feedbackViewmodel)
+        {
 
-        /*
-                    [HttpGet(Name = "GetById")]
-                    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-                    public async Task<IActionResult> GetById(Guid id)
-                    {
-                        var feedback = await _feedbackService.GetById(id);
+            await _feedbackService.Create(feedbackViewmodel);
 
-                        return Ok(feedback);
-                    }
+            return Ok();
+        }
 
-                    [HttpGet(Name = "GetByLogId")]
-                    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-                    public async Task<IActionResult> GetByLogId(Guid logId)
-                    {
-                        var feedback = await _feedbackService.GetByLogId(logId);
 
-                        return Ok(feedback);
-                    }
+        [HttpGet("GetById")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var feedback = await _feedbackService.GetById(id);
 
-                    [HttpGet(Name = "DeleteById")]
-                    [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-                    public async Task<IActionResult> DeleteById(Guid id)
-                    {
-                        await _feedbackService.DeleteById(id);
-                        return Ok();
+            return Ok(feedback);
+        }
 
-                    }
+        [HttpGet("GetByUserId")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByUserId(Guid UserId)
+        {
+            var feedback = await _feedbackService.GetByUserId(UserId);
 
-                    [HttpGet(Name = "DeleteByLogId")]
-                    [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-                    public async Task<IActionResult> DeleteByLogId(Guid id)
-                    {
-                        await _feedbackService.DeleteByLogId(id);
-                        return Ok();
-                    }*/
+            return Ok(feedback);
+        }
+
+        [HttpGet("GetByLogId")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByLogId(Guid UserId)
+        {
+            var feedback = await _feedbackService.GetByLogId(UserId);
+
+            return Ok(feedback);
+        }
+
+        [HttpDelete("DeleteById")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task<IActionResult> DeleteById(FeedbackViewmodel feedbackViewmodel)
+        {
+            await _feedbackService.DeleteById(feedbackViewmodel);
+            return Ok();
+
+        }
+
     }
 }

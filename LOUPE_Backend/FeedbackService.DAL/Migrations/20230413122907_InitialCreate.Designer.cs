@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeedbackService.DAL.Migrations
 {
     [DbContext(typeof(FeedbackDbContext))]
-    [Migration("20230404091308_FirstCommit")]
-    partial class FirstCommit
+    [Migration("20230413122907_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,21 +27,24 @@ namespace FeedbackService.DAL.Migrations
 
             modelBuilder.Entity("FeedbackService.DAL.Models.Feedback", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("FeedbackId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("FeedbackText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LogId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("FeedbackId");
 
                     b.ToTable("Feedback");
                 });

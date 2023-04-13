@@ -24,21 +24,24 @@ namespace FeedbackService.DAL.Migrations
 
             modelBuilder.Entity("FeedbackService.DAL.Models.Feedback", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("FeedbackId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("FeedbackText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LogId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("FeedbackId");
 
                     b.ToTable("Feedback");
                 });

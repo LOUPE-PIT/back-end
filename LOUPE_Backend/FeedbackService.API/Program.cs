@@ -1,10 +1,13 @@
+using FeedbackService.Api.Core.Profiels;
 using FeedbackService.Api.Core.Services;
 using FeedbackService.DAL.Context;
+using FeedbackService.DAL.Models;
 using FeedbackService.DAL.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -14,8 +17,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FeedbackDbContext>(x => x.UseSqlServer());
 builder.Services.AddTransient<IFeedbackService, FeedbackServiceCore>();
 builder.Services.AddTransient<IFeedbackRepository, FeedbackRepository>();
+builder.Services.AddAutoMapper(typeof(FeedbackProfile));
+
 
 var app = builder.Build();
+
+using(IServiceScope? scope = app.Services.CreateScope())
+{
+    FeedbackDbContext feedbackDbContext = scope.ServiceProvider.GetRequiredService<FeedbackDbContext>();
+    feedbackDbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

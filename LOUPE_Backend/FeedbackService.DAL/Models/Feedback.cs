@@ -1,18 +1,21 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace FeedbackService.DAL.Models
 {
     [DataContract]
-    public class FeedbackDbo
+    public class Feedback
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DataMember]
         public Guid FeedbackId { get; set; }
-        //public Collection<Guid> LogIds { get; set; }
         [DataMember]
         public Guid UserId { get; set; }
+        [DataMember]
+        public Guid LogId { get; set; }
         [DataMember]
         public DateTime Date { get; set; }
         [DataMember]

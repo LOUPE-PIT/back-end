@@ -13,9 +13,37 @@ namespace FeedbackService.DAL.Repository
             _feedbackDbContext = feedbackDbContext;
         }
 
-        public Task<Collection<FeedbackDbo>> GetAll()
+        public Task<Collection<Feedback>> GetAll()
         {
-            return Task.FromResult(new Collection<FeedbackDbo>(_feedbackDbContext.FeedbackDbo.ToList()));
+            return Task.FromResult(new Collection<Feedback>(_feedbackDbContext.Feedback.ToList()));
+        }
+
+        public Task<Collection<Feedback>> GetById(Guid id)
+        {
+            return Task.FromResult(new Collection<Feedback>(_feedbackDbContext.Feedback.Where(x => x.FeedbackId == id).ToList()));
+        }
+
+        public async Task Create(Feedback feedback)
+        {
+            await _feedbackDbContext.Feedback.AddAsync(feedback);
+            await _feedbackDbContext.SaveChangesAsync();
+        }
+
+        public Task<Collection<Feedback>> GetByUserId(Guid userId)
+        {
+            return Task.FromResult(new Collection<Feedback>(_feedbackDbContext.Feedback.Where(x => x.UserId == userId).ToList()));
+        }
+
+
+        public async Task DeleteById(Feedback feedback)
+        {
+            _feedbackDbContext.Feedback.Remove(feedback);
+            await _feedbackDbContext.SaveChangesAsync();
+        }
+
+        public Task<Collection<Feedback>> GetByLogId(Guid logId)
+        {
+            return Task.FromResult(new Collection<Feedback>(_feedbackDbContext.Feedback.Where(x => x.LogId == logId).ToList()));
         }
     }
 }
