@@ -33,7 +33,6 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div
       style={{
         display: 'flex',
-        maxWidth: 900,
         margin: 'auto'
       }}
     >
@@ -45,6 +44,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
     <div
+      className='sidebar'
       style={{
         padding: 20,
         flexShrink: 0,
