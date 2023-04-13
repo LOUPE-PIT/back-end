@@ -2,7 +2,6 @@
 using SynchronizationService.Core.API.ViewModels;
 using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace SynchronizationService.API.Controllers
 {
@@ -24,8 +23,8 @@ namespace SynchronizationService.API.Controllers
             return Ok();
         }
 
-        [HttpPost("Test")]
-        public async Task<IActionResult> Test([FromQuery] string action, [FromBody] TransformationViewModel transformation)
+        [HttpPost("Add")]
+        public async Task<IActionResult> SaveSyncronization([FromQuery] string action, [FromBody] TransformationViewModel transformation)
         {
             if (action == string.Empty)
                 return BadRequest("No action given");

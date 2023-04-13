@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using SynchronizationService.Core.API.Profiles;
 using SynchronizationService.Core.API.Services;
 using SynchronizationService.Core.API.Strategies;
 using SynchronizationService.Core.API.Strategies.Provider;
@@ -36,6 +37,8 @@ builder.Services.AddTransient<IActionStrategy>(provider =>
     new NamedStrategyProvider("Press", provider.GetService<PressActionStrategy>()!));
 
 builder.Services.AddScoped<ITransformationRepository, TransformationRepository>();
+
+builder.Services.AddAutoMapper(typeof(ActionProfile), typeof(TransformationProfile));
 
 var app = builder.Build();
 
