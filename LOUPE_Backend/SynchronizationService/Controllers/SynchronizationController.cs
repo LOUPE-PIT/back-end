@@ -11,19 +11,17 @@ namespace SynchronizationService.API.Controllers
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
         private readonly ICollection<TransformationViewModel> _groupedTransformations = new List<TransformationViewModel>();
+
         public SynchronizationController(IEnumerable<IActionStrategy> strategies)
         {
             _strategies = strategies.ToDictionary(s => s.Name);
         }
 
-        [HttpGet]
-        [ProducesResponseType(200)]
-        public IActionResult AllTransformations()
-        {
-            return Ok();
-        }
-
         [HttpPost("Add")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> SaveSyncronization([FromQuery] string action, [FromBody] TransformationViewModel transformation)
         {
             if (action == string.Empty)
@@ -32,7 +30,7 @@ namespace SynchronizationService.API.Controllers
             try
             {
                 if (!_strategies.TryGetValue(action, out IActionStrategy? strategy))
-                    return BadRequest("Given action not found");
+                    return NotFound("Given action not found");
 
                 bool isChanged = await strategy.AddAction(transformation);
 
