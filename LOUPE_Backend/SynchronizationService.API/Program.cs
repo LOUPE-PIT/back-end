@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using SynchronizationService.API.SyncLogService;
 using SynchronizationService.Core.API.Profiles;
 using SynchronizationService.Core.API.Services;
 using SynchronizationService.Core.API.Strategies;
@@ -24,6 +25,7 @@ Console.WriteLine(builder.Configuration.GetValue<string>("TransformationsDatabas
 builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configuration.GetValue<string>("TransformationsDatabaseSettings:Connectionstring")));
 
 builder.Services.AddTransient<ISynchronizationService, SyncService>();
+builder.Services.AddTransient<SyncLogService>();
 
 builder.Services.AddTransient<RotationActionStrategy>();
 builder.Services.AddTransient<TranslationActionStrategy>();
@@ -48,7 +50,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 //app.UseHttpsRedirection();
 
 //app.UseAuthorization();

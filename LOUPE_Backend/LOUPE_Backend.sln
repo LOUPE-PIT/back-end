@@ -38,7 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.DataLayer", "SynchronizationService.DataLayer\SynchronizationService.DataLayer.csproj", "{51E3EFA5-4F21-45B8-ABF0-D246DEF26A6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.API", "SynchronizationService\SynchronizationService.API.csproj", "{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.API", "SynchronizationService.API\SynchronizationService.API.csproj", "{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupingService.Api", "GroupingService.Api\GroupingService.Api.csproj", "{B4E35D5C-B7D2-4090-8526-196617BDB29E}"
 EndProject

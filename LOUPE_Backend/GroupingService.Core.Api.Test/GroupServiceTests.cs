@@ -21,7 +21,7 @@ public class GroupServiceTests
     {
         // Initialize the GroupService with a mocked repository
         _groupingRepositoryMock = new Mock<IGroupRepository>();
-        _groupService = new GroupService(_groupingRepositoryMock.Object);
+        //_groupService = new GroupService(_groupingRepositoryMock.Object);
     }
     
     [Test]
