@@ -30,12 +30,12 @@ namespace AuthenticationService.DataLayer.Context
                                     .AddJsonFile("appsettings.json")
                                     .Build();
 
-                connectionString = "Server=localhost,1433;User=SA;Password=Welkom12345; TrustServerCertificate=true"; //configuration.GetConnectionString("AppDb");
+                connectionString = configuration.GetConnectionString("AppDb");
 
             }
             else
             {
-                connectionString = "Server=localhost,1433;User=SA;Password=Welkom12345; TrustServerCertificate=true"; //Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
             }
 
             
