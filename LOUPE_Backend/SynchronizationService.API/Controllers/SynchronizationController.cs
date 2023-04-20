@@ -39,26 +39,14 @@ namespace SynchronizationService.API.Controllers
 
                 bool isChanged = await strategy.AddAction(transformation);
 
-                CheckLastMessage(transformation, isChanged);
-            }
-            catch (MongoWriteException ex)
-            {
-                Console.WriteLine("Mongo error: " + ex.Message);
-                return StatusCode(500, ex.Message);
-            }
-            catch (MongoWriteConcernException ex)
-            {
-                Console.WriteLine("Mongo error: " + ex.Message);
-                return StatusCode(500, ex.Message);
+                await CheckLastMessage(transformation, isChanged);
             }
             catch (MongoException ex)
             {
-                Console.Write("Mongo error: " + ex.Message);
                 return StatusCode(500, ex.Message);
             }
             catch (Exception ex)
             {
-                Console.Write("Generic error: " + ex.Message);
                 return StatusCode(500, ex.Message);
             }
 

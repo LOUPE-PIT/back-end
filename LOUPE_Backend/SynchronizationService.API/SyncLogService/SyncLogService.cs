@@ -14,7 +14,7 @@ namespace SynchronizationService.API.SyncLogService
         private readonly GrpcChannel _channel;
         public SyncLogService()
         {
-            _channel = GrpcChannel.ForAddress("http://localhost:5101");
+            _channel = GrpcChannel.ForAddress("https://localhost:5101");
         }
         
         public async Task SendTransformationsToLoggingAsync(Collection<TransformationViewModel> transofrmations)

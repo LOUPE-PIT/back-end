@@ -14,6 +14,5 @@ namespace SynchronizationService.Core.API.ViewModels
         {
 
         }
-
     }
 }
