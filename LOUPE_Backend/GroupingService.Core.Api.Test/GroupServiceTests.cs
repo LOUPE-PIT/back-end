@@ -3,6 +3,7 @@ using FluentAssertions;
 using GroupingService.Core.Api.Services;
 using GroupingService.Core.Api.Services.GroupService;
 using GroupingService.Core.Api.Services.GroupService.Implementation;
+using GroupingService.Core.Api.Services.RoomCodeService;
 using GroupingService.DataAccessLayer.Repositories;
 using GroupingService.DataAccessLayer.Models;
 using Moq;
@@ -14,6 +15,7 @@ public class GroupServiceTests
 {
     //Service
     private IGroupService _groupService;
+    private Mock<IRoomCodeService> _roomCodeService;
     private Mock<IGroupRepository> _groupingRepositoryMock;
 
     [SetUp]
@@ -21,7 +23,8 @@ public class GroupServiceTests
     {
         // Initialize the GroupService with a mocked repository
         _groupingRepositoryMock = new Mock<IGroupRepository>();
-        //_groupService = new GroupService(_groupingRepositoryMock.Object);
+        _roomCodeService = new Mock<IRoomCodeService>();
+        _groupService = new GroupService(_groupingRepositoryMock.Object, _roomCodeService.Object);
     }
     
     [Test]

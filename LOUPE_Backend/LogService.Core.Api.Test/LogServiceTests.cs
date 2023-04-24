@@ -3,6 +3,7 @@ using LogService.Core.Api.Services;
 using LogService.DataAccessLayer.Repositories;
 using LogService.DataAccessLayer.Models;
 using FluentAssertions;
+using LogService.Core.Api.Contracts;
 using Moq;
 
 namespace LogService.Core.Api.Test;
@@ -13,7 +14,7 @@ public class LogServiceTests
     //Service
     private ILogService _logService;
     private Mock<ILogRepository> _logRepositoryMock;
-    
+
     [SetUp]
     public void Setup()
     {
@@ -30,20 +31,136 @@ public class LogServiceTests
         {
             new Log
             {
-                Id = Guid.Parse("13baf352-cdb8-4c69-ba84-124d4b773fb"),
-                UserId = Guid.Parse("596d9da2-905e-48e4-aab5-41b29c89786f"),
-                GroupId = Guid.Parse("596d9da2-905e-48e4-aab5-41b29c89786c"),
-                Text = "Ilias has added a model",
+                Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+                UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+                GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+                Text = "Ilias has added a log",
                 Created = new DateTimeOffset(DateTime.Now)
             },
         };
 
         _logRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(expectedLogs);
-        
+
         // Act
         var result = await _logService.GetAll();
-        
+
         // Assert
         result.Should().BeEquivalentTo(expectedLogs);
+    }
+
+    [Test]
+    public async Task GetById_ReturnLog()
+    {
+        // Arrange
+        var expectedLog = new Log
+        {
+            Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+            UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+            GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+            Text = "Ilias has added a log",
+            Created = new DateTimeOffset(DateTime.Now)
+        };
+
+        _logRepositoryMock.Setup(x => x.ById(expectedLog.Id)).ReturnsAsync(expectedLog);
+
+        // Act
+        var result = await _logService.ById(expectedLog.Id);
+
+        // Assert
+        result.Should().BeEquivalentTo(expectedLog);
+    }
+
+    [Test]
+    public async Task New_ReturnActionResult()
+    {
+        // Arrange
+        var expectedResponse = new LogResponse()
+        {
+            Result = ActionResult.Succesvol
+        };
+        var newLog = new Log
+        {
+            Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+            UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+            GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+            Text = "Ilias has added a log",
+            Created = new DateTimeOffset(DateTime.Now)
+        };
+
+        _logRepositoryMock.Setup(x => x.New(newLog));
+
+        // Act
+        var result = await _logService.New(newLog);
+
+        // Assert
+        result.Should().BeEquivalentTo(expectedResponse);
+    }
+
+    [Test]
+    public async Task Update_ReturnActionResult()
+    {
+        // Arrange
+        var expectedResponse = new LogResponse()
+        {
+            Result = ActionResult.Succesvol
+        };
+        var newLog = new Log
+        {
+            Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+            UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+            GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+            Text = "Ilias has added a log",
+            Created = new DateTimeOffset(DateTime.Now)
+        };
+        var existingLog = new Log
+        {
+            Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+            UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+            GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+            Text = "Ilias has updated a log",
+            Created = new DateTimeOffset(DateTime.Now)
+        };
+        await _logService.New(newLog);
+        _logRepositoryMock.Setup(x => x.Update(existingLog));
+        
+        // Act
+        var result = await _logService.Update(existingLog);
+
+        // Assert
+        result.Should().BeEquivalentTo(expectedResponse);
+    }
+
+    [Test]
+    public async Task Delete_ReturnActionResult()
+    {
+        // Arrange
+        var expectedResponse = new LogResponse()
+        {
+            Result = ActionResult.Succesvol
+        };
+        var newLog = new Log
+        {
+            Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+            UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+            GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+            Text = "Ilias has added a log",
+            Created = new DateTimeOffset(DateTime.Now)
+        };
+        var existingLog = new Log
+        {
+            Id = Guid.Parse("6af419dc-fe99-4b0f-8f64-363eb13294b4"),
+            UserId = Guid.Parse("db5ddb4e-9e6d-46db-bee5-ac60af539130"),
+            GroupId = Guid.Parse("c7977d28-a339-402a-afc2-1f01b89c3d04"),
+            Text = "Ilias has updated a log",
+            Created = new DateTimeOffset(DateTime.Now)
+        };
+        await _logService.New(newLog);
+        _logRepositoryMock.Setup(x => x.Delete(existingLog));
+        
+        // Act
+        var result = await _logService.Delete(existingLog);
+
+        // Assert
+        result.Should().BeEquivalentTo(expectedResponse);
     }
 }

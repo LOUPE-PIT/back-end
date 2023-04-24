@@ -32,7 +32,6 @@ namespace SynchronizationService.API.Controllers
                 return BadRequest("No action given");
 
             transformation.Id = Guid.NewGuid();
-
             try
             {
                 if (!_strategies.TryGetValue(action, out IActionStrategy? strategy))
