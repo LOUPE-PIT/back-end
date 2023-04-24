@@ -3,8 +3,6 @@ using SynchronizationService.Core.API.ViewModels;
 using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
 using System.Collections.ObjectModel;
-using SynchronizationService.API.SyncLogService;
-using SynchronizationService.Core.API.ViewModels.Actions;
 
 namespace SynchronizationService.API.Controllers
 {
