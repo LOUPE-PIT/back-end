@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedbackService.Api.Core", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedbackService.DAL", "FeedbackService.DAL\FeedbackService.DAL.csproj", "{684BF27C-46A9-4CFF-A2B1-7840FE4786E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackService.Api.Core.Test", "FeedbackService.Api.Core.Test\FeedbackService.Api.Core.Test.csproj", "{0CDC4E0F-FA8D-4627-BB12-975BBABC92CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{684BF27C-46A9-4CFF-A2B1-7840FE4786E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{684BF27C-46A9-4CFF-A2B1-7840FE4786E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{684BF27C-46A9-4CFF-A2B1-7840FE4786E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDC4E0F-FA8D-4627-BB12-975BBABC92CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDC4E0F-FA8D-4627-BB12-975BBABC92CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDC4E0F-FA8D-4627-BB12-975BBABC92CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDC4E0F-FA8D-4627-BB12-975BBABC92CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{047E9901-769B-45ED-A33C-4DFFA1DC0256} = {84E913FA-8A42-4070-810C-8604FD1052A8}
 		{7B25BF36-4B68-404E-9F1B-211B2A1EA74E} = {84E913FA-8A42-4070-810C-8604FD1052A8}
 		{684BF27C-46A9-4CFF-A2B1-7840FE4786E4} = {84E913FA-8A42-4070-810C-8604FD1052A8}
+		{0CDC4E0F-FA8D-4627-BB12-975BBABC92CA} = {84E913FA-8A42-4070-810C-8604FD1052A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76921467-FEB5-4CAB-B402-FC547B8CD260}
