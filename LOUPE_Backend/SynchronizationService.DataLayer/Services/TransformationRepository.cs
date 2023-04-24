@@ -30,7 +30,7 @@ namespace SynchronizationService.DataLayer.Services
 
         public void Delete(Transformation transformation)
         {
-            _transformations.DeleteOne(transformation =>  transformation.Id == transformation.Id);
+            _transformations.DeleteOne(t =>  transformation.Id == t.Id);
         }
 
         public List<Transformation> Get()
