@@ -4,6 +4,7 @@ using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
 using System.Collections.ObjectModel;
 using SynchronizationService.API.SyncLogService;
+using SynchronizationService.Core.API.ViewModels.Actions;
 
 namespace SynchronizationService.API.Controllers
 {
@@ -14,7 +15,7 @@ namespace SynchronizationService.API.Controllers
 
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
-        private readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
+        private static readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
 
         public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService)
         {
@@ -31,6 +32,8 @@ namespace SynchronizationService.API.Controllers
         {
             if (action == string.Empty)
                 return BadRequest("No action given");
+
+            transformation.Id = Guid.NewGuid();
 
             try
             {
