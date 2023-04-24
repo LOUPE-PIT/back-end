@@ -1,7 +1,7 @@
-﻿using User.Microservice.Context;
-using User.Microservice.Model;
+﻿using AuthenticationService.DataLayer.Context;
+using AuthenticationService.DataLayer.Models.User;
 
-namespace User.Microservice.Data
+namespace AuthenticationService.DataLayer.Services
 {
     // dataseeder to seed the database with data. not needed can manually add data as well.
     public class DataSeeder
@@ -15,23 +15,23 @@ namespace User.Microservice.Data
 
         public void Seed()
         {
-            if (!userDbContext.User.Any())
+            if (!userDbContext.User_Db.Any())
             {
                 var user = new List<UserModel>()
                 {
                     new UserModel()
                     {
-                        userID = 44,
+                        userId = new Guid(),
                         name = "Sem"
                     },
                     new UserModel()
                     {
-                        userID = 55,
+                        userId = new Guid(),
                         name = "Nahir"
                     }
                 };
 
-                userDbContext.User.AddRange(user);
+                userDbContext.User_Db.AddRange(user);
                 userDbContext.SaveChanges();
             }
         }

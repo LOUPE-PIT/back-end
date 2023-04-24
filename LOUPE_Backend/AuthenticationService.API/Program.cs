@@ -5,16 +5,17 @@ using Microsoft.OpenApi.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using User.Microservice.Context;
-using User.Microservice.Data;
-using User.Microservice.Model;
+using AuthenticationService.DataLayer.Models.User;
+using AuthenticationService.DataLayer.Services;
+using AuthenticationService.DataLayer.Context;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var authenticationProviderKey = "UserKey";
 
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
-builder.Services.AddScoped<IUserDAL, UserDAL>();
+builder.Services.AddScoped<IAuthenticationDAL, AuthenticationDAL>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddEndpointsApiExplorer();
@@ -88,32 +89,32 @@ using (var scope = app.Services.CreateScope())
 //if (app.Environment.IsDevelopment())
 //{
 app.UseDeveloperExceptionPage();
-    // Add swagger
-    app.UseSwagger();
-    app.UseSwaggerUI();
+// Add swagger
+app.UseSwagger();
+app.UseSwaggerUI();
 //}
 
-app.MapGet("/user/login/{id}", ([FromServices] IUserDAL db, int id) =>
+app.MapGet("/user/login/{Guid}", ([FromServices] IAuthenticationDAL db, Guid id) =>
 {
     return db.GetUserById(id);
 });
 
-app.MapDelete("/user/delete/{id}", ([FromServices] IUserDAL db, int id) =>
+app.MapDelete("/user/delete/{Guid}", ([FromServices] IAuthenticationDAL db, Guid id) =>
 {
     return db.DeleteUserById(id);
 });
 
-app.MapGet("/user/all", ([FromServices] IUserDAL db) =>
+app.MapGet("/user/all", ([FromServices] IAuthenticationDAL db) =>
 {
     return db.GetUsers();
 });
 
-app.MapPut("/user/update/{id}", ([FromServices] IUserDAL db, UserModel user) =>
+app.MapPut("/user/update/{id}", ([FromServices] IAuthenticationDAL db, UserModel user) =>
 {
     db.UpdateUser(user);
 });
 
-app.MapPost("/user/add", ([FromServices] IUserDAL db, UserModel user) =>
+app.MapPost("/user/add", ([FromServices] IAuthenticationDAL db, UserModel user) =>
 {
     db.AddUser(user);
 });

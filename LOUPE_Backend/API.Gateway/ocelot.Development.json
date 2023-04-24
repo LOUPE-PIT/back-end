@@ -1,70 +1,70 @@
 {
   "Routes": [
-    //User.Microservice
+    //Authentication.Microservice
     {
       "DownstreamPathTemplate": "/user/all",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
+          "Host": "AuthenticationService",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/users",
       "UpstreamHttpMethod": [ "POST", "GET" ],
-      "SwaggerKey": "UserHandler.Microservice"
+      "SwaggerKey": "AuthenticationService.Microservice"
     },
     {
       "DownstreamPathTemplate": "/user/login/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
+          "Host": "AuthenticationService",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/user/login/{id}",
       "UpstreamHttpMethod": [ "GET" ],
-      "SwaggerKey": "UserHandler.Microservice"
+      "SwaggerKey": "AuthenticationService.Microservice"
     },
     {
       "DownstreamPathTemplate": "/user/delete/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
+          "Host": "AuthenticationService",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/user/delete/{id}",
       "UpstreamHttpMethod": [ "DELETE" ],
-      "SwaggerKey": "UserHandler.Microservice"
+      "SwaggerKey": "AuthenticationService.Microservice"
     },
     {
       "DownstreamPathTemplate": "/user/update/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
+          "Host": "AuthenticationService",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/user/login/{id}",
       "UpstreamHttpMethod": [ "PUT" ],
-      "SwaggerKey": "UserHandler.Microservice"
+      "SwaggerKey": "AuthenticationService.Microservice"
     },
     {
       "DownstreamPathTemplate": "/user/add",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userhandler",
+          "Host": "AuthenticationService",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/user/add",
       "UpstreamHttpMethod": [ "POST" ],
-      "SwaggerKey": "UserHandler.Microservice"
+      "SwaggerKey": "AuthenticationService.Microservice"
     },
     //Log.Microservice
     {
@@ -163,10 +163,10 @@
   ],
   "SwaggerEndPoints": [
     {
-      "Key": "UserHandler.Microservice",
+      "Key": "AuthenticationService.Microservice",
       "Config": [
         {
-          "Name": "UserHandler API",
+          "Name": "AuthenticationService API",
           "Version": "v1",
           "Url": "http://localhost:5002/swagger/v1/swagger.json"
         }
