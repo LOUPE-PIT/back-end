@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import './code.css'
 import { Canvas, useThree} from '@react-three/fiber'
-import Duck from '../../components/3Dobjects/duck';
+import Duck from '../../3Dobjectcomponents/duck';
 import { OrbitControls } from '@react-three/drei';
 
 export { Page }
