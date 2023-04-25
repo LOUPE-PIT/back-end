@@ -1,12 +1,4 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:62691/",
-      "sslPort": 44327
-    }
-  },
   "profiles": {
     "GroupingService": {
       "commandName": "Project",
@@ -17,13 +9,6 @@
       },
       "applicationUrl": "https://localhost:7232;http://localhost:5087",
       "dotnetRunMessages": true
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     }
   }
 }

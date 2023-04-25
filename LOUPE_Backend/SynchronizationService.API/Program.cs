@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using SynchronizationService.API.SyncLogService;
 using SynchronizationService.API.Extension_Methods;
 using SynchronizationService.Core.API.Profiles;
 using SynchronizationService.Core.API.Services;

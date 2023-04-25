@@ -2,18 +2,22 @@
 using SynchronizationService.Core.API.ViewModels;
 using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
+using System.Collections.ObjectModel;
 
 namespace SynchronizationService.API.Controllers
 {
     [Route("[controller]")]
     public class SynchronizationController : Controller
     {
+        private readonly SyncLogService.SyncLogService _syncLogService;
+
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
-        private readonly ICollection<TransformationViewModel> _groupedTransformations = new List<TransformationViewModel>();
+        private static readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
 
-        public SynchronizationController(IEnumerable<IActionStrategy> strategies)
+        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService)
         {
+            _syncLogService = syncLogService;
             _strategies = strategies.ToDictionary(s => s.Name);
         }
 
@@ -27,6 +31,7 @@ namespace SynchronizationService.API.Controllers
             if (action == string.Empty)
                 return BadRequest("No action given");
 
+            transformation.Id = Guid.NewGuid();
             try
             {
                 if (!_strategies.TryGetValue(action, out IActionStrategy? strategy))
@@ -34,41 +39,29 @@ namespace SynchronizationService.API.Controllers
 
                 bool isChanged = await strategy.AddAction(transformation);
 
-                CheckLastMessage(transformation, isChanged);
-            }
-            catch (MongoWriteException ex)
-            {
-                Console.WriteLine("Mongo error: " + ex.Message);
-                return StatusCode(500, ex.Message);
-            }
-            catch (MongoWriteConcernException ex)
-            {
-                Console.WriteLine("Mongo error: " + ex.Message);
-                return StatusCode(500, ex.Message);
+                await CheckLastMessage(transformation, isChanged);
             }
             catch (MongoException ex)
             {
-                Console.Write("Mongo error: " + ex.Message);
                 return StatusCode(500, ex.Message);
             }
             catch (Exception ex)
             {
-                Console.Write("Generic error: " + ex.Message);
                 return StatusCode(500, ex.Message);
             }
 
             return Ok();
         }
 
-        private void CheckLastMessage(TransformationViewModel transformation, bool isChanged)
+        private async Task CheckLastMessage(TransformationViewModel transformation, bool isChanged)
         {
-            if (!transformation.IsLast && isChanged)
-            {
+            if(isChanged)
                 _groupedTransformations.Add(transformation);
-            }
-            else if (transformation.IsLast)
+
+            if (transformation.IsLast)
             {
-                //send groupedTransformations to logservice
+                await _syncLogService.SendTransformationsToLoggingAsync(_groupedTransformations);
+
                 _groupedTransformations.Clear();
             }
         }

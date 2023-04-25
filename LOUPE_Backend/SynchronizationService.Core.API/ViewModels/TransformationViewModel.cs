@@ -6,7 +6,7 @@ namespace SynchronizationService.Core.API.ViewModels
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public string RoomCode { get; set; } = null!;
+        public Guid GroupId { get; set; }
         public DateTimeOffset TimeStamp { get; set; }
         public bool IsLast { get; set; }
         public PerformedActionViewModel ActionType { get; set; } = null!;
@@ -14,6 +14,5 @@ namespace SynchronizationService.Core.API.ViewModels
         {
 
         }
-
     }
 }

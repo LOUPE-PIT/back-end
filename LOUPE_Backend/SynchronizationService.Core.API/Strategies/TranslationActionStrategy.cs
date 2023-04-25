@@ -7,7 +7,7 @@ namespace SynchronizationService.Core.API.Strategies
     {
         private readonly ISynchronizationService _syncService;
 
-        private TransformationViewModel lastTransformation = null!;
+        private static TransformationViewModel lastTransformation = null!;
         public TranslationActionStrategy(ISynchronizationService service)
         {
             _syncService = service;
@@ -17,9 +17,9 @@ namespace SynchronizationService.Core.API.Strategies
 
         public async Task<bool> AddAction(TransformationViewModel transformation)
         {
-            if (transformation.ActionType.XPos == lastTransformation.ActionType.XPos &&
+            if (lastTransformation is not null ? transformation.ActionType.XPos == lastTransformation.ActionType.XPos &&
                 transformation.ActionType.YPos == lastTransformation.ActionType.YPos &&
-                transformation.ActionType.ZPos == lastTransformation.ActionType.ZPos)
+                transformation.ActionType.ZPos == lastTransformation.ActionType.ZPos : false)
                 return false;
             
             await _syncService.Add(transformation);

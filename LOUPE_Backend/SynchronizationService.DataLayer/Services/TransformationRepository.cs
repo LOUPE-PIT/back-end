@@ -17,25 +17,18 @@ namespace SynchronizationService.DataLayer.Services
 
         public async Task<bool> Create(Transformation transformation)
         {
-            try
-            {
-                await _transformations.InsertOneAsync(transformation);
-                return true;
-            }
-            catch
-            {
-                throw;
-            }
+            await _transformations.InsertOneAsync(transformation);
+            return true;
         }
 
         public void Delete(Transformation transformation)
         {
-            _transformations.DeleteOne(t =>  transformation.Id == t.Id);
+            _transformations.DeleteOne(t => t.Id == transformation.Id);
         }
 
         public List<Transformation> Get()
         {
-            return _transformations.Find(transformation => true).ToList();
+            return _transformations.Find(t => true).ToList();
 
         }
 
