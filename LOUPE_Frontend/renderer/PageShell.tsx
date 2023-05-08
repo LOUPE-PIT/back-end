@@ -5,6 +5,7 @@ import type { PageContext } from './types'
 import './PageShell.css'
 import { Link } from './Link'
 import GlobalServices from '../server/GlobalServices'
+import {FaHome, FaUsers, FaUser, FaSignOutAlt} from 'react-icons/fa';
 
 export { PageShell }
 
@@ -17,13 +18,16 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
             <Sidebar>
               <Logo />
               <Link className="navitem" href="/">
-                Home
+                <FaHome />
               </Link>
               <Link className="navitem" href="/about">
-                About
+                <FaUser />
               </Link>
               <Link className="navitem" href="/log">
-                Log
+                <FaUsers />
+              </Link>
+              <Link className="navitem logout" href="#">
+                <FaSignOutAlt />
               </Link>
             </Sidebar>
             <Content>{children}</Content>
@@ -52,7 +56,6 @@ function Sidebar({ children }: { children: React.ReactNode }) {
     <div
       className='sidebar'
       style={{
-        padding: 20,
         flexShrink: 0,
         display: 'flex',
         flexDirection: 'column',

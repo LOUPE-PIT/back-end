@@ -12,10 +12,20 @@ a {
 }
 
 .navitem {
-  padding: 3px 10px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.logout {
+  position: relative;
+  top: 67vh;
+  border-top: 1px solid white;
 }
 .navitem.is-active {
-  background-color: #eee;
+  background-color: #eeeeee23;
 }
 .sidebar {
   background-color: #1066A3;

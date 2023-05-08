@@ -20,9 +20,19 @@ const LogService: FC<LogServiceProps> = ({ children }: any) => {
     const logsService = {
         async getLogs(): Promise<Log[]> {
             let templogs: Log[];
-            const result = await axios.get('https://localhost:7123/Log/All')
-            templogs = result.data;
-            return templogs;
+            const [exportData, setLogs] = useState([]);
+            const result = await axios({
+                method: 'get',
+                url: 'http://localhost:7123/Log',
+                headers: {
+                    'Content-Type': 'application/json',
+                    
+                }
+            }).then((response) => {
+                console.log(response);
+                setLogs(response.data);
+            })
+            return exportData;
         }
     }
 
