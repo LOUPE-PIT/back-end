@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using GroupingService.Core.Api.Services;
 using GroupingService.Core.Api.Services.GroupService;
 using GroupingService.Core.Api.Services.GroupService.Implementation;
 using GroupingService.Core.Api.Services.RoomCodeService;

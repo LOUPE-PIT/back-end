@@ -1,7 +1,7 @@
 version: "2"
 services:
   loupe-backend:
-    image: "loupegroup/loupe_user.microservice"
+    image: "loupegroup/loupe_Authentication.microservice"
     depends_on: [db]
     ports:
       - "43332:32"
@@ -13,5 +13,5 @@ services:
     container_name: db
     hostname: db
     environment:
-      SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
+      SA_PASSWORD: "Welkom12345"
       ACCEPT_EULA: "Y"
