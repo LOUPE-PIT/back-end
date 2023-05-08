@@ -1,46 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AuthenticationService.DataLayer.Models.User;
+﻿using AuthenticationService.DataLayer.Models.User;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace AuthenticationService.DataLayer.Context
+namespace AuthenticationService.DataLayer.Context;
+
+public class UserDbContext : DbContext
 {
-    public class UserDbContext : DbContext
+    public UserDbContext()
     {
+    }
 
-        public UserDbContext()
-        {
+    public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
+    {
+    }
 
-        }
+    public DbSet<UserModel> User_Db { get; set; }
 
-        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
-        {
-        }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
 
-        public DbSet<UserModel> User_Db { get; set; }
+        var connectionString = configuration.GetConnectionString("AppDb");
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connectionString = "";
-
-
-            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
-            {
-                var configuration = new ConfigurationBuilder()
-                                    .SetBasePath(Directory.GetCurrentDirectory())
-                                    .AddJsonFile("appsettings.json")
-                                    .Build();
-
-                connectionString = configuration.GetConnectionString("AppDb");
-
-            }
-            else
-            {
-                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
-            }
-
-            
-
-            optionsBuilder.UseSqlServer(connectionString);
-        }
+        optionsBuilder.UseSqlServer(connectionString);
     }
 }
