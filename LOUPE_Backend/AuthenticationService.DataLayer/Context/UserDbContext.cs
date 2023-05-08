@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using User.Microservice.Model;
+using AuthenticationService.DataLayer.Models.User;
+using Microsoft.Extensions.Configuration;
 
-namespace User.Microservice.Context
+namespace AuthenticationService.DataLayer.Context
 {
     public class UserDbContext : DbContext
     {
@@ -15,7 +16,7 @@ namespace User.Microservice.Context
         {
         }
 
-        public DbSet<UserModel> User { get; set; }
+        public DbSet<UserModel> User_Db { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,9 +26,9 @@ namespace User.Microservice.Context
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
                 var configuration = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory())
-               .AddJsonFile("appsettings.json")
-               .Build();
+                                    .SetBasePath(Directory.GetCurrentDirectory())
+                                    .AddJsonFile("appsettings.json")
+                                    .Build();
 
                 connectionString = configuration.GetConnectionString("AppDb");
 
