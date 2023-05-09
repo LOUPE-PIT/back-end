@@ -5,6 +5,7 @@ using LogService.DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("LogDb");
@@ -21,6 +22,15 @@ builder.Services
     .AddControllers()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+        });
+});
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
@@ -36,11 +46,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
 // Cors
-app.UseCors(x => x
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
+app.UseCors(MyAllowSpecificOrigins);
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

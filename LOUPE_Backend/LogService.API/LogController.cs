@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LogService.Api;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("[controller]")]
 [Produces("application/json")]
 [Consumes("application/json")]
 public class LogController : ControllerBase
@@ -27,7 +27,7 @@ public class LogController : ControllerBase
         return Ok(await _logService.GetAll());
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(typeof(Log), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
