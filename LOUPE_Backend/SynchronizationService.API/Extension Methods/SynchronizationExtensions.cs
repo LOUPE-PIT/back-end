@@ -35,6 +35,7 @@ namespace SynchronizationService.API.Extension_Methods
         public static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<ISynchronizationService, SyncService>();
+            services.AddTransient<SyncLogService.SyncLogService>();
             services.AddScoped<ITransformationRepository, TransformationRepository>();
         }
     }

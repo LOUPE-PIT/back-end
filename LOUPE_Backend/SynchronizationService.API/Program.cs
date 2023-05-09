@@ -1,15 +1,6 @@
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using SynchronizationService.API.SyncLogService;
 using SynchronizationService.API.Extension_Methods;
 using SynchronizationService.Core.API.Profiles;
-using SynchronizationService.Core.API.Services;
-using SynchronizationService.Core.API.Strategies;
-using SynchronizationService.Core.API.Strategies.Provider;
 using SynchronizationService.DataLayer.Models.MongoDB;
-using SynchronizationService.DataLayer.Models.MongoDB.Interfaces;
-using SynchronizationService.DataLayer.Services;
-using SynchronizationService.DataLayer.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +18,8 @@ builder.Services.AddServices();
 builder.Services.AddStrategies();
 
 builder.Services.AddAutoMapper(typeof(ActionProfile), typeof(TransformationProfile));
+
+builder.Services.AddGrpc();
 
 var app = builder.Build();
 

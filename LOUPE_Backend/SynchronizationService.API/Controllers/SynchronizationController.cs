@@ -3,6 +3,7 @@ using SynchronizationService.Core.API.ViewModels;
 using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
 using System.Collections.ObjectModel;
+using Timer = System.Timers.Timer;
 
 namespace SynchronizationService.API.Controllers
 {
@@ -15,10 +16,16 @@ namespace SynchronizationService.API.Controllers
 
         private static readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
 
+        private static Timer eventTimer = new Timer();
+
         public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService)
         {
             _syncLogService = syncLogService;
             _strategies = strategies.ToDictionary(s => s.Name);
+
+            eventTimer.Interval = 2000;
+            eventTimer.Elapsed += TimerElapsed;
+            eventTimer.Enabled = true;
         }
 
         [HttpPost("Add")]
@@ -64,6 +71,11 @@ namespace SynchronizationService.API.Controllers
 
                 _groupedTransformations.Clear();
             }
+        }
+
+        private void TimerElapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            Console.WriteLine("Event fired at {0}", e.SignalTime);
         }
     }
 }

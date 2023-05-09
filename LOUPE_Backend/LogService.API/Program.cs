@@ -28,7 +28,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
-    y.Database.Migrate();
+    //y.Database.Migrate();
 }
 
 app.MapGrpcService<LogServer>();
