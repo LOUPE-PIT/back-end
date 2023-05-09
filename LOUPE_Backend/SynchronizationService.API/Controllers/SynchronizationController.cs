@@ -4,6 +4,7 @@ using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
 using System.Collections.ObjectModel;
 using Timer = System.Timers.Timer;
+using SynchronizationService.API.SignalRService;
 
 namespace SynchronizationService.API.Controllers
 {
@@ -14,14 +15,17 @@ namespace SynchronizationService.API.Controllers
 
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
+        private readonly SynchronizationMessaging _syncMessaging;
+
         private static readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
 
-        private static Timer eventTimer = new Timer();
+        private static readonly Timer eventTimer = new Timer();
 
-        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService)
+        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService, SynchronizationMessaging syncMessaging)
         {
             _syncLogService = syncLogService;
             _strategies = strategies.ToDictionary(s => s.Name);
+            _syncMessaging = syncMessaging;
 
             eventTimer.Interval = 2000;
             eventTimer.Elapsed += TimerElapsed;
@@ -44,9 +48,10 @@ namespace SynchronizationService.API.Controllers
                 if (!_strategies.TryGetValue(action, out IActionStrategy? strategy))
                     return NotFound("Given action not found");
 
-                bool isChanged = await strategy.AddAction(transformation);
+                if (await strategy.AddAction(transformation))
+                    _groupedTransformations.Add(transformation);
 
-                await CheckLastMessage(transformation, isChanged);
+                await CheckLastMessage(transformation);
             }
             catch (MongoException ex)
             {
@@ -60,11 +65,8 @@ namespace SynchronizationService.API.Controllers
             return Ok();
         }
 
-        private async Task CheckLastMessage(TransformationViewModel transformation, bool isChanged)
+        private async Task CheckLastMessage(TransformationViewModel transformation)
         {
-            if(isChanged)
-                _groupedTransformations.Add(transformation);
-
             if (transformation.IsLast)
             {
                 await _syncLogService.SendTransformationsToLoggingAsync(_groupedTransformations);

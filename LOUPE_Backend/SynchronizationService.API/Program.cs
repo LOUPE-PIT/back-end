@@ -1,4 +1,5 @@
 using SynchronizationService.API.Extension_Methods;
+using SynchronizationService.API.Hub;
 using SynchronizationService.Core.API.Profiles;
 using SynchronizationService.DataLayer.Models.MongoDB;
 
@@ -20,6 +21,7 @@ builder.Services.AddStrategies();
 builder.Services.AddAutoMapper(typeof(ActionProfile), typeof(TransformationProfile));
 
 builder.Services.AddGrpc();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -35,5 +37,6 @@ if (app.Environment.IsDevelopment())
 //app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<SynchronizationHub>("/synchronizations");
 
 app.Run();

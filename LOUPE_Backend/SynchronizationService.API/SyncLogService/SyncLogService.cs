@@ -1,11 +1,7 @@
-﻿using Google.Protobuf;
-using Grpc.Core;
-using Grpc.Net.Client;
+﻿using Grpc.Net.Client;
 using SynchronizationService.Core.API.ViewModels;
 using SyncronizationService.API;
 using System.Collections.ObjectModel;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 
 namespace SynchronizationService.API.SyncLogService
 {

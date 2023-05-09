@@ -7,6 +7,7 @@ using SynchronizationService.DataLayer.Models.MongoDB;
 using SynchronizationService.Core.API.Services;
 using SynchronizationService.DataLayer.Services.Interface;
 using SynchronizationService.DataLayer.Services;
+using SynchronizationService.API.SignalRService;
 
 namespace SynchronizationService.API.Extension_Methods
 {
@@ -35,6 +36,7 @@ namespace SynchronizationService.API.Extension_Methods
         public static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<ISynchronizationService, SyncService>();
+            services.AddTransient<SynchronizationMessaging>();
             services.AddTransient<SyncLogService.SyncLogService>();
             services.AddScoped<ITransformationRepository, TransformationRepository>();
         }
