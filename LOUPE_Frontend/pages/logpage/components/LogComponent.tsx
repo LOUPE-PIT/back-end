@@ -1,23 +1,13 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useLogService } from '../../../server/api/logdata/logservice';
+import React, { FC } from 'react'
 import { Log } from '../../../server/api/logdata/model/log';
-import Logs from './LogsComponent';
 
-interface LogComponentProps {}
-
-const LogComponent: FC<LogComponentProps> = () => {
-  const logService = useLogService();
-  const [logs, setLogs] = useState<Log[]>([]);
-
-  useEffect(() => {
-    if (logService !== undefined) {
-      logService.getLogs().then((result) => {
-        setLogs(result);
-      });
-    }
-  }, [logService]);
-
-  return <Logs logs={logs}></Logs>;
-};
+interface LogProps {
+    log: Log;
+}
+const LogComponent: FC<LogProps> = ({ log }: LogProps) => {
+    return (
+        <div className='logText'><p>{log.text}</p></div>
+    );
+}
 
 export default LogComponent;

@@ -16,12 +16,21 @@ const LogServiceContext = Contextualizer.createContext(ProvidedServices.LogServi
 export const useLogService = () => Contextualizer.use<ILogService>(ProvidedServices.LogService);
 
 const LogService: FC<LogServiceProps> = ({ children }: any) => {
+    const [exportData, setLogs] = useState([]);
 
     const logsService = {
         async getLogs(): Promise<Log[]> {
-            let templogs: Log[];
-            const result = await axios.get('https://localhost:7123/Log/All')
-            templogs = result.data;
+            let templogs: Log[] = [];
+            const result = await axios({
+                method: 'get',
+                url: 'https://localhost:7123/Log',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then((response) => {
+                console.log(response);
+                templogs = response.data;
+            })
             return templogs;
         }
     }

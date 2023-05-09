@@ -1,14 +1,14 @@
 import React from 'react';
 import './code.css';
-import Log from './components/LogComponent';
+import LogData from './components/LogDataComponent';
 
 export { Page }
 
 function Page() {
   return (
-    <>
-      <h1>Log</h1>
-      <Log />
-    </>
+    <div className='logContent'>
+      <h1 className='title'>Geschiedenis</h1>
+      <LogData />
+    </div>
   )
 }
