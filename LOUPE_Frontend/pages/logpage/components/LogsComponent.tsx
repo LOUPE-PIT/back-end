@@ -1,31 +1,17 @@
-import React, { Component, FC } from 'react'
+import React, { FC } from 'react'
 import { Log } from '../../../server/api/logdata/model/log';
+import LogComponent from './LogComponent';
 
-interface LogProps {
+interface LogsProps {
     logs: Log[];
 }
 
-const LogsComponent: FC<LogProps> = ({ logs }: LogProps) => {
+const LogsComponent: FC<LogsProps> = ({ logs }: LogsProps) => {
     console.log(logs);
     return (<>
-        <table>
-            <thead>
-                <th>id</th>
-                <th>userid</th>
-                <th>groupid</th>
-                <th>text</th>
-            </thead>
-            <tbody>
-                {logs.map(log => {
-                    return (<tr key={log.id}>
-                        <td>{log.id}</td>
-                        <td>{log.userid}</td>
-                        <td>{log.groupid}</td>
-                        <td>{log.text}</td>
-                    </tr>)
-                })}
-            </tbody>
-        </table>
+        {logs.map(log => {
+            return (<LogComponent log={log} />)
+        })}
     </>);
 }
 

@@ -23,7 +23,7 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
               <Link className="navitem" href="/about">
                 <FaUser />
               </Link>
-              <Link className="navitem" href="/log">
+              <Link className="navitem" href="/logpage">
                 <FaUsers />
               </Link>
               <Link className="navitem logout" href="#">
@@ -75,7 +75,8 @@ function Content({ children }: { children: React.ReactNode }) {
         padding: 20,
         paddingBottom: 50,
         borderLeft: '2px solid #eee',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        width: '100%'
       }}
     >
       {children}
