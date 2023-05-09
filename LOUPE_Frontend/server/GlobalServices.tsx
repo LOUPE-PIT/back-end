@@ -1,5 +1,5 @@
 import { FC } from "react"
-import LogService from "./api/log/logservice"
+import LogService from "./api/logdata/logservice"
 import React from "react";
 
 type GlobalServicesProps = {
