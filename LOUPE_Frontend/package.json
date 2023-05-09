@@ -7,6 +7,8 @@
     "server:prod": "cross-env NODE_ENV=production ts-node ./server/index.ts"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
+    "@chakra-ui/react": "^2.6.1",
     "@react-three/drei": "^9.65.5",
     "@react-three/fiber": "^8.12.1",
     "@types/compression": "^1.7.2",

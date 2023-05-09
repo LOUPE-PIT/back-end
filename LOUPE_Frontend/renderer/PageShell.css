@@ -1,8 +1,11 @@
 /* This CSS is common to all pages */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Inter', serif;
+  background-color: #D3D3D3;
 }
 * {
   box-sizing: border-box;
