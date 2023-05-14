@@ -20,6 +20,12 @@ public class GroupRepository : IGroupRepository
         return Task.FromResult(new Collection<Group>(_groupDbContext.Groups.ToList()));
     }
 
+    public Task<Collection<Guid>> GetParticipants()
+    {
+        throw new NotImplementedException();
+    }
+
+
     public Task<Collection<Group>> GetAllByRoomCode(string roomCode)
     {
         return Task.FromResult(new Collection<Group>(_groupDbContext.Groups.Where(x => x.RoomCode == roomCode).ToList()));

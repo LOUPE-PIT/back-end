@@ -9,7 +9,7 @@ interface GroupProps {
     onClick?: () => void;
     id?: string;
     name: string;
-    roomCode?: string;
+    roomCode: string;
 }
 
 
@@ -26,7 +26,7 @@ export default function Group({selected, onClick, id, name, roomCode}: GroupProp
     
     return(
         <Box
-            bg={selected ? "#F0615E" : "#1066A3"}
+            bg={selected ? '#F0615E' : '#1066A3'}
             borderRadius="10px"
             width="98%"
             height="12vh"
@@ -42,7 +42,7 @@ export default function Group({selected, onClick, id, name, roomCode}: GroupProp
                 {name}
             </Text>
             <Flex alignItems="center">
-               <Participants/>
+                <Participants roomCode={roomCode} />
                 <Text fontSize="24px" marginRight="1rem">
                     6/6 Completed Steps
                 </Text>
@@ -50,12 +50,7 @@ export default function Group({selected, onClick, id, name, roomCode}: GroupProp
                     Room Code: {roomCode}
                 </Text>
                 <Button
-                    leftIcon={
-                        <ArrowForwardIcon
-                            color="white"
-                            boxSize={7}
-                        />
-                    }
+                    leftIcon={<ArrowForwardIcon color="white" boxSize={7} />}
                     variant="ghost"
                     aria-label="Settings"
                     _hover={{ bg: 'transparent' }}

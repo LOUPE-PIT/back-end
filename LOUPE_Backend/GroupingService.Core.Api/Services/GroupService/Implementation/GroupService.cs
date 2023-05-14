@@ -30,6 +30,11 @@ public class GroupService : IGroupService
         return await _groupingRespository.GetAll();
     }
 
+    public async Task<Collection<Guid>> GetParticipants()
+    {
+        return await _groupingRespository.GetParticipants();
+    }
+
     /// <inheritdoc/>
     public async Task<Collection<Group>> ByRoomCode(string roomCode)
     {
