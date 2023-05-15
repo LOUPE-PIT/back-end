@@ -18,14 +18,13 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
           <PageContextProvider pageContext={pageContext}>
             <Layout>
               <Sidebar>
-                <Logo />
                 <Link className="navitem" href="/">
                   <FaHome />
                 </Link>
                 <Link className="navitem" href="/about">
                   <FaUser />
                 </Link>
-                <Link className="navitem" href="/logpage">
+                <Link className="navitem" href="/groupOverview">
                   <FaUsers />
                 </Link>
                 <Link className="navitem logout" href="#">
@@ -86,19 +85,4 @@ function Content({ children }: { children: React.ReactNode }) {
       {children}
     </div>
   )
-}
-
-function Logo() {
-    return (
-        <div
-            style={{
-                marginTop: 20,
-                marginBottom: 10
-            }}
-        >
-            <a href="/">
-                <img src={logo} height={64} width={64} alt="logo"/>
-            </a>
-        </div>
-    )
 }
