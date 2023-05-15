@@ -10,12 +10,10 @@ type GlobalServicesProps = {
 const GlobalServices: FC<GlobalServicesProps> = ({ children }: GlobalServicesProps) => {
     return (
         <>
-            {/* <LogService>
-                {children}
-            </LogService> */}
-
             <FeedbackService>
-                {children}
+                <LogService>
+                    {children}
+                </LogService>
             </FeedbackService>
         </>
     )

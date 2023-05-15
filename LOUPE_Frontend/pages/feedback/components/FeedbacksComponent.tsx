@@ -23,14 +23,26 @@ const FeedbacksComponent: FC<FeedbackProps> = ({ feedbacks }: FeedbackProps) => 
 
 <>
 
-     <Card className='feedbackCard' bg='gray.50' >
+     <Card
+         borderRadius="25px"
+         width="100%"
+         alignItems="center"
+         justifyContent="space-between"
+         padding="1rem"
+         color="black"
+         backgroundColor="white"
+         className='feedbackCard' 
+         bg='gray.50'
+     >
         <CardHeader textAlign="center">
           <Heading size='lg'>Feedback</Heading>
         </CardHeader>
 
 
-        <CardBody>
-        <Stack divider={<StackDivider />} spacing='2'>
+        <CardBody 
+        width="100%"
+        >
+        <Stack divider={<StackDivider />}>
           <div className='feedbackDiv'>
             {feedbacks.map(feedback => {
                 return (
