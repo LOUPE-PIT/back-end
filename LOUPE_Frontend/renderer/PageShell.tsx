@@ -6,6 +6,7 @@ import './PageShell.css'
 import { Link } from './Link'
 import GlobalServices from '../server/GlobalServices'
 import {FaHome, FaUsers, FaUser, FaSignOutAlt} from 'react-icons/fa';
+import Chat from '../pages/signalR/signalRHub'
 
 export { PageShell }
 
@@ -24,6 +25,9 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
                 <FaUser />
               </Link>
               <Link className="navitem" href="/logpage">
+                <FaUsers />
+              </Link>
+              <Link className="navitem" href="/signalR">
                 <FaUsers />
               </Link>
               <Link className="navitem logout" href="#">

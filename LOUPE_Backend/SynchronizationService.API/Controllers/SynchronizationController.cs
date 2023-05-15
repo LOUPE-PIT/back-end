@@ -4,7 +4,6 @@ using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
 using System.Collections.ObjectModel;
 using Timer = System.Timers.Timer;
-using SynchronizationService.API.SignalRService;
 
 namespace SynchronizationService.API.Controllers
 {
@@ -15,17 +14,14 @@ namespace SynchronizationService.API.Controllers
 
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
-        private readonly SynchronizationMessaging _syncMessaging;
-
         private static readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
 
         private static readonly Timer eventTimer = new Timer();
 
-        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService, SynchronizationMessaging syncMessaging)
+        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService)
         {
             _syncLogService = syncLogService;
             _strategies = strategies.ToDictionary(s => s.Name);
-            _syncMessaging = syncMessaging;
 
             eventTimer.Interval = 2000;
             eventTimer.Elapsed += TimerElapsed;
