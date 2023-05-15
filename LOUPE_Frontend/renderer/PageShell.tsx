@@ -6,13 +6,18 @@ import './PageShell.css'
 import { Link } from './Link'
 import GlobalServices from '../server/GlobalServices'
 import {FaHome, FaUsers, FaUser, FaSignOutAlt} from 'react-icons/fa';
+import { PublicClientApplication, EventType, EventMessage, AuthenticationResult, InteractionRequiredAuthError  } from '@azure/msal-browser';
+import { MsalProvider, useMsal, useIsAuthenticated} from "@azure/msal-react";
+import { useEffect } from "react";
+
 
 export { PageShell }
 
-function PageShell({ children, pageContext }: { children: React.ReactNode; pageContext: PageContext }) {
+function PageShell({ children, pageContext, msalInstance }: { children: React.ReactNode; pageContext: PageContext, msalInstance: any }) {
   return (
     <React.StrictMode>
       <GlobalServices>
+      <MsalProvider instance={msalInstance}>
         <PageContextProvider pageContext={pageContext}>
           <Layout>
             <Sidebar>
@@ -33,10 +38,63 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
             <Content>{children}</Content>
           </Layout>
         </PageContextProvider>
+        </MsalProvider>
       </GlobalServices>
     </React.StrictMode>
   )
 }
+
+const pca = new PublicClientApplication({
+  auth: {
+      clientId: '209f7026-2915-41d9-8e2e-8872571b7efb',
+      authority: 'https://login.microsoftonline.com/0a4457cd-eb55-4625-b2fc-9dc4c6e509aa',
+      redirectUri: '/'
+  },
+  cache: {
+      cacheLocation: 'localStorage',
+      storeAuthStateInCookie: false,
+  },
+  system: {
+      loggerOptions: {
+          loggerCallback: (level, message, containsPII) => {
+              console.log(message)
+          },
+
+      }
+  }
+
+})
+
+
+pca.addEventCallback(event => {
+  if(event.eventType === EventType.LOGIN_SUCCESS) {
+      console.log(event);
+      const payload = event.payload as AuthenticationResult;
+      const account = payload.account;
+      pca.setActiveAccount(account);
+  }
+});
+
+  const { instance } = useMsal();
+  const isAuthenticated: any = useIsAuthenticated();
+
+useEffect(() => {
+  if(!isAuthenticated) {
+      instance.ssoSilent({
+          scopes: ["user.read"],
+          loginHint: "yarikbrouwer@hotmail.com"
+      }).then((response) => {
+        instance.setActiveAccount(response.account);
+      }).catch((error: any) => {
+        if(error instanceof InteractionRequiredAuthError){
+            instance.loginRedirect({
+                scopes: ["user.read"],
+            });
+        }
+    });
+  }
+}, [])
+
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
