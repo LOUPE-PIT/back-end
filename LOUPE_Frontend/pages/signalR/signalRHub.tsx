@@ -1,12 +1,20 @@
 import React, { useEffect, FC, useState } from 'react';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { Vector3 } from 'three';
 
 interface ConnectionProps {
-    roomId: string
+    roomId: string;
 }
 
-const SignalRConnection:FC<ConnectionProps> = ({ roomId }:ConnectionProps) => {
+interface Synchronization {
+    NewPosition: Vector3;
+    DegreesRotation: number;
+    ObjectName: string;
+}
+
+const SignalRConnection: FC<ConnectionProps> = ({ roomId }: ConnectionProps) => {
     const [connection, setConnection] = useState<HubConnection | null>(null);
+    const [synchronization, setSynchronization] = useState<Synchronization | null>(null);
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
@@ -15,39 +23,43 @@ const SignalRConnection:FC<ConnectionProps> = ({ roomId }:ConnectionProps) => {
             .build();
 
         setConnection(newConnection);
-        return ()=>leaveRoom();
-    }, []); 
+    }, []);
 
     useEffect(() => {
-        if(connection)
-        {
-            joinRoom();
+        if (connection) {
+            connection.start()
+            .then(result => {
+                connection.invoke("JoinRoom", roomId);
+
+                const synchronization = {} as Synchronization
+                synchronization.DegreesRotation = 1.234;
+                synchronization.NewPosition = new Vector3(1.2, 2.5, 3.3);
+                synchronization.ObjectName = "Schroef25";
+                
+                connection.invoke("ReceiveSynchronization", synchronization, roomId)
+
+                connection.on('ReceiveSynchronization', synchronizationMessage =>{
+                    console.log(synchronizationMessage);
+                    const synchronization: Synchronization = JSON.parse(synchronizationMessage);
+                    setSynchronization(synchronization);
+                });
+            })
+            .catch(e => console.log('Connection failed: ', e));
+
         }
     }, [connection]);
 
     const joinRoom = async () => {
-        connection!.start()
-            .then(result => {
-                console.log('Connected!');
-
-                connection!.invoke("JoinRoom", roomId);
-            })
-            .catch(e => console.log('Connection failed: ', e));
+        connection!.invoke("JoinRoom", roomId);
     };
 
-    const leaveRoom = () => {
-        if (connection) {
-            connection.start()
-                .then(result => {
-                    console.log('Leaving!');
-    
-                    connection.invoke("LeaveRoom", roomId);
-                })
-                .catch(e => console.log('Connection failed: ', e));
-        }
-    };
-
-    return <div>hihihiha</div>
+    return (
+    <div>
+        {synchronization?.ObjectName}
+        {synchronization?.NewPosition.x} {synchronization?.NewPosition.y} {synchronization?.NewPosition.z}
+        {synchronization?.DegreesRotation}
+    </div>
+    );
 };
 
 export default SignalRConnection;
