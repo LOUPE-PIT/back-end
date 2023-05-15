@@ -12,12 +12,6 @@ public interface IGroupService
     /// </summary>
     /// <returns> Collection of groups</returns>
     Task<Collection<Group>> GetAll();
-    
-    /// <summary>
-    /// Returns a collection of groups
-    /// </summary>
-    /// <returns> Collection of groups</returns>
-    Task<Collection<Guid>> GetParticipants();
 
     /// <summary>
     /// Gets a group by its roomCode

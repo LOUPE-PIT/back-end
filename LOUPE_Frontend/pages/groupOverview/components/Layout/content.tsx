@@ -14,7 +14,7 @@ interface GroupProps {
 
 export default function Content() {
     const [selectedGroupIndex, setSelectedGroupIndex] = useState(-1);
-    const [groups, setGroups] = useState([]);
+    const [groups, setGroups] = useState<GroupProps[]>([]);
 
     useEffect(() => {
         fetchGroups();
@@ -46,8 +46,6 @@ export default function Content() {
 
         return uniqueGroups;
     };
-
-
     const uniqueGroups = getUniqueGroupsByRoomCode();
 
     return (

@@ -6,37 +6,40 @@ import './PageShell.css'
 import {Link} from './Link'
 import GlobalServices from '../server/GlobalServices'
 import {ChakraProvider} from '@chakra-ui/react'
+import {BrowserRouter} from 'react-router-dom'
+
 
 export {PageShell}
 
 function PageShell({children, pageContext}: { children: React.ReactNode; pageContext: PageContext }) {
     return (
         <React.StrictMode>
-            <ChakraProvider>
-                <GlobalServices>
-                    <PageContextProvider pageContext={pageContext}>
-                        <Layout>
-                            <Sidebar>
-                                <Logo/>
-                                <Link className="navitem" href="/">
-                                    Home
-                                </Link>
-                                <Link className="navitem" href="/about">
-                                    About
-                                </Link>
-                                <Link className="navitem" href="/log">
-                                    Log
-                                </Link>
-                                <Link className="navitem" href="/groupOverview">
-                                    Groepen
-                                </Link>
-                            </Sidebar>
-                            <Content>{children}</Content>
-                        </Layout>
-                    </PageContextProvider>
-                </GlobalServices>
-            </ChakraProvider>
-
+            <BrowserRouter>
+                <ChakraProvider>
+                    <GlobalServices>
+                        <PageContextProvider pageContext={pageContext}>
+                            <Layout>
+                                <Sidebar>
+                                    <Logo/>
+                                    <Link className="navitem" href="/">
+                                        Home
+                                    </Link>
+                                    <Link className="navitem" href="/about">
+                                        About
+                                    </Link>
+                                    <Link className="navitem" href="/log">
+                                        Log
+                                    </Link>
+                                    <Link className="navitem" href="/groupOverview">
+                                        Groepen
+                                    </Link>
+                                </Sidebar>
+                                <Content>{children}</Content>
+                            </Layout>
+                        </PageContextProvider>
+                    </GlobalServices>
+                </ChakraProvider>
+            </BrowserRouter>
         </React.StrictMode>
     )
 }

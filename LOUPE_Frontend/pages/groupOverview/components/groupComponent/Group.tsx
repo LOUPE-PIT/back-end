@@ -1,8 +1,9 @@
-﻿import {ArrowForwardIcon} from "@chakra-ui/icons";
-import React, {useState} from "react";
-import {Button, Flex} from "@chakra-ui/react";
-import {Box, Text} from "@chakra-ui/layout";
+﻿import { ArrowForwardIcon } from "@chakra-ui/icons";
+import React, { useState } from "react";
+import { Button, Flex, Link } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/layout";
 import Participants from "./participants";
+import { Link as RouterLink } from "react-router-dom";
 
 interface GroupProps {
     selected: boolean;
@@ -12,9 +13,7 @@ interface GroupProps {
     roomCode: string;
 }
 
-
-export default function Group({selected, onClick, id, name, roomCode}: GroupProps)
-{
+export default function Group({ selected, onClick, id, name, roomCode }: GroupProps) {
     const [isClicked, setIsClicked] = useState(false);
 
     const handleClick = () => {
@@ -23,10 +22,10 @@ export default function Group({selected, onClick, id, name, roomCode}: GroupProp
             onClick();
         }
     };
-    
-    return(
+
+    return (
         <Box
-            bg={selected ? '#F0615E' : '#1066A3'}
+            bg={selected ? "#F0615E" : "#1066A3"}
             borderRadius="10px"
             width="98%"
             height="12vh"
@@ -49,13 +48,12 @@ export default function Group({selected, onClick, id, name, roomCode}: GroupProp
                 <Text fontSize="24px" marginRight="1rem">
                     Room Code: {roomCode}
                 </Text>
-                <Button
-                    leftIcon={<ArrowForwardIcon color="white" boxSize={7} />}
-                    variant="ghost"
-                    aria-label="Settings"
-                    _hover={{ bg: 'transparent' }}
-                />
+                <Link 
+                    href={`/threejsdemo/roomCode=${roomCode}`}
+                >
+                    <ArrowForwardIcon color="white" boxSize={7} />
+                </Link>
             </Flex>
         </Box>
-    )
+    );
 }
