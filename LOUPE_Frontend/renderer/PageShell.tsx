@@ -5,35 +5,38 @@ import type { PageContext } from './types'
 import './PageShell.css'
 import { Link } from './Link'
 import GlobalServices from '../server/GlobalServices'
-import {FaHome, FaUsers, FaUser, FaSignOutAlt} from 'react-icons/fa';
+import { FaHome, FaUsers, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { ChakraProvider } from '@chakra-ui/react'
 
 export { PageShell }
 
 function PageShell({ children, pageContext }: { children: React.ReactNode; pageContext: PageContext }) {
   return (
     <React.StrictMode>
-      <GlobalServices>
-        <PageContextProvider pageContext={pageContext}>
-          <Layout>
-            <Sidebar>
-              <Logo />
-              <Link className="navitem" href="/">
-                <FaHome />
-              </Link>
-              <Link className="navitem" href="/about">
-                <FaUser />
-              </Link>
-              <Link className="navitem" href="/logpage">
-                <FaUsers />
-              </Link>
-              <Link className="navitem logout" href="#">
-                <FaSignOutAlt />
-              </Link>
-            </Sidebar>
-            <Content>{children}</Content>
-          </Layout>
-        </PageContextProvider>
-      </GlobalServices>
+      <ChakraProvider>
+        <GlobalServices>
+          <PageContextProvider pageContext={pageContext}>
+            <Layout>
+              <Sidebar>
+                <Logo />
+                <Link className="navitem" href="/">
+                  <FaHome />
+                </Link>
+                <Link className="navitem" href="/about">
+                  <FaUser />
+                </Link>
+                <Link className="navitem" href="/logpage">
+                  <FaUsers />
+                </Link>
+                <Link className="navitem logout" href="#">
+                  <FaSignOutAlt />
+                </Link>
+              </Sidebar>
+              <Content>{children}</Content>
+            </Layout>
+          </PageContextProvider>
+        </GlobalServices>
+      </ChakraProvider>
     </React.StrictMode>
   )
 }

@@ -1,25 +1,8 @@
 code {
   font-family: monospace;
-  background-color: #eaeaea;
+  background-color: black;
   padding: 3px 5px;
   border-radius: 4px;
-}
-
-.logText {
-  background-color:#F0615E;
-  color: white;
-  padding: 0.1em 1em;
-  margin: 10px 0;
-  border-radius: 10px;
-  width: 100%;
-}
-.logContent {
-  background-color: #1066A3;
-  color: white;
-  border-radius: 25px;
-  padding: 0.2em 1em;
-  width: 30%;
-  float: right;
 }
 .title {
   font-style: italic;
