@@ -16,7 +16,7 @@ function Page() {
       color="black"
       backgroundColor="white"
     >
-      <div className='logContent'>
+      <div>
         <h1 className='title'>Geschiedenis</h1>
         <LogData />
       </div>

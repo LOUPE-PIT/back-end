@@ -16,7 +16,7 @@ const LogComponent: FC<LogProps> = ({ log }: LogProps) => {
             padding="1rem"
             cursor="pointer"
         >
-            <div className='logText'><p>{log.text}</p></div>
+            <div><p>{log.text}</p></div>
         </Box>
     );
 }
