@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogService.DataAccessLayer.Migrations
 {
     [DbContext(typeof(LogDbContext))]
-    [Migration("20230404075137_initialcommit")]
-    partial class initialcommit
+    [Migration("20230511092642_InitialLog")]
+    partial class InitialLog
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

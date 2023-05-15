@@ -1,23 +1,24 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useLogService } from '../../../server/api/logdata/logservice';
+import React, { FC } from 'react'
 import { Log } from '../../../server/api/logdata/model/log';
-import Logs from './LogsComponent';
+import { Box } from '@chakra-ui/react';
 
-interface LogComponentProps {}
-
-const LogComponent: FC<LogComponentProps> = () => {
-  const logService = useLogService();
-  const [logs, setLogs] = useState<Log[]>([]);
-
-  useEffect(() => {
-    if (logService !== undefined) {
-      logService.getLogs().then((result) => {
-        setLogs(result);
-      });
-    }
-  }, [logService]);
-
-  return <Logs logs={logs}></Logs>;
-};
+interface LogProps {
+    log: Log;
+}
+const LogComponent: FC<LogProps> = ({ log }: LogProps) => {
+    return (
+        <Box
+            borderRadius="10px"
+            width="100%"
+            backgroundColor="#1066A3"
+            color="white"
+            margin="10px 0"
+            padding="1rem"
+            cursor="pointer"
+        >
+            <div><p>{log.text}</p></div>
+        </Box>
+    );
+}
 
 export default LogComponent;
