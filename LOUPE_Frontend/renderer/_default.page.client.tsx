@@ -11,7 +11,7 @@ async function render(pageContext: PageContextClient) {
   if (!Page) throw new Error('Client-side render() hook expects pageContext.Page to be defined')
   hydrateRoot(
     document.getElementById('page-view')!,
-    <PageShell pageContext={pageContext}>
+    <PageShell pageContext={pageContext} msalInstance={undefined}>
       <Page {...pageProps} />
     </PageShell>
   )
