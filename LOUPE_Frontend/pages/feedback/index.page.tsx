@@ -8,8 +8,8 @@ export { Page }
 
 function Page() {
   return (
-    <>
+    <div style={{width:'30%'}}>
         <Feedback/>
-    </>
+    </div>
   )
 }

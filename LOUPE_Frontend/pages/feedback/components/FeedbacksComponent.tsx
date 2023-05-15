@@ -4,16 +4,26 @@ import { Avatar, Card, CardHeader, CardBody, Heading, Stack, Box, Text, StackDiv
 import AddFeedback from './AddFeedback';
 
 interface FeedbackProps {
+  
     feedbacks: feedback[];
+
 }
+
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 const FeedbacksComponent: FC<FeedbackProps> = ({ feedbacks }: FeedbackProps) => {
     console.log(feedbacks);
+
+    if(feedbacks.length > 0){
+      console.log("test");
+      console.log(feedbacks[0].date);
+    }
+   
     return (
 
 <>
 
-     <Card className='feedbackCard' bg='gray.50'  maxW='30%' >
+     <Card className='feedbackCard' bg='gray.50' >
         <CardHeader textAlign="center">
           <Heading size='lg'>Feedback</Heading>
         </CardHeader>
@@ -26,14 +36,14 @@ const FeedbacksComponent: FC<FeedbackProps> = ({ feedbacks }: FeedbackProps) => 
                 return (
                     <Box className='feedback' key={feedback.feedbackId}>
                     <Flex align='center'>
-                    <Avatar name={feedback.userid}  bg='red.500'/>
+                    <Avatar name={feedback.userId}  bg='red.500'/>
                       <Spacer />
-                      <Text pl='5'>{feedback.userid} </Text>
+                      <Text pl='5'>{feedback.userId}</Text>
                       <Spacer />
-                      <Text pl='20'>{feedback.timestamp.toString()}</Text>
+                      <Text pl='20'>{feedback.date}</Text>
                     </Flex>
                     <Text pt='2' fontSize='sm'>
-                      {feedback.text}
+                      {feedback.feedbackText}
                     </Text>
                   </Box>
             )})}

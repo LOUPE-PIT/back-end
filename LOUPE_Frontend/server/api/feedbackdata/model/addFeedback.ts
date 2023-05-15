@@ -1,10 +1,8 @@
 
-export interface feedback {
-    feedbackId: string;
+export interface addFeedback {
     userId: string;
     logId: string;
     feedbackText: string
-    date: Date; 
 }
 
 
