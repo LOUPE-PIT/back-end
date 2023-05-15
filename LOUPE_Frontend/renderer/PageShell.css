@@ -3,6 +3,8 @@
 body {
   margin: 0;
   font-family: sans-serif;
+  color: black;
+  background-color: #D3D3D3;
 }
 * {
   box-sizing: border-box;

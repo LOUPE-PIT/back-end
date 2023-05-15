@@ -1,11 +1,11 @@
 code {
   font-family: monospace;
-  background-color: #eaeaea;
+  background-color: black;
   padding: 3px 5px;
   border-radius: 4px;
 }
 
-.logText {
+/* .logText {
   background-color:#F0615E;
   color: white;
   padding: 0.1em 1em;
@@ -18,9 +18,9 @@ code {
   color: white;
   border-radius: 25px;
   padding: 0.2em 1em;
-  width: 30%;
+  width: 100%;
   float: right;
-}
+} */
 .title {
   font-style: italic;
   text-align: center;
