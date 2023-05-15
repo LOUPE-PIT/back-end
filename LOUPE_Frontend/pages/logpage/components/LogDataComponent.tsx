@@ -25,13 +25,26 @@ const LogComponent: FC<LogComponentProps> = () => {
   }, [memoizedLogService]);
 
   return (
-    <Box
-      borderRadius="10px"
-      width="100%"
-    >
-      <Logs logs={logs}></Logs>
-    </Box>
-
+      <Box
+          borderRadius="25px"
+          width="100%"
+          alignItems="center"
+          justifyContent="space-between"
+          padding="1rem"
+          color="black"
+          backgroundColor="white"
+      >
+        <div>
+          <h1 className='title'>Geschiedenis</h1>
+          <Box
+              borderRadius="10px"
+              width="100%"
+          >
+            <Logs logs={logs}></Logs>
+          </Box>
+        </div>
+      </Box>
+      
   );
 };
 

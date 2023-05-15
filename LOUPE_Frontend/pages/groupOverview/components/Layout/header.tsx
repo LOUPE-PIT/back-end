@@ -8,7 +8,6 @@ export default function Header() {
             bg="#1066A3"
             borderRadius="20px"
             margin="1rem"
-            width="70%"
             height="8vh"
             display="flex"
             alignItems="center"

@@ -54,7 +54,6 @@ export default function Content() {
                 bg="white"
                 borderRadius="20px"
                 margin="1rem"
-                width="70%"
                 height="85.5vh"
                 display="flex"
                 overflowY="scroll"

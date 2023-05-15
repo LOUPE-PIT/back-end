@@ -49,7 +49,7 @@ export default function Group({ selected, onClick, id, name, roomCode }: GroupPr
                     Room Code: {roomCode}
                 </Text>
                 <Link 
-                    href={`/threejsdemo/roomCode=${roomCode}`}
+                    href={`/threejsdemo?roomCode=${roomCode}`}
                 >
                     <ArrowForwardIcon color="white" boxSize={7} />
                 </Link>
