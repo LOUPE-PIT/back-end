@@ -1,5 +1,7 @@
 /* This CSS is common to all pages */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body {
   margin: 0;
   font-family: sans-serif;

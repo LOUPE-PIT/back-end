@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from './logo.svg'
 import { PageContextProvider } from './usePageContext'
 import type { PageContext } from './types'
 import './PageShell.css'
@@ -19,14 +18,13 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
           <PageContextProvider pageContext={pageContext}>
             <Layout>
               <Sidebar>
-                <Logo />
                 <Link className="navitem" href="/">
                   <FaHome />
                 </Link>
                 <Link className="navitem" href="/about">
                   <FaUser />
                 </Link>
-                <Link className="navitem" href="/logpage">
+                <Link className="navitem" href="/groupOverview">
                   <FaUsers />
                 </Link>
                 <Link className="navitem logout" href="#">
@@ -42,17 +40,17 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
   )
 }
 
-function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        margin: 'auto'
-      }}
-    >
-      {children}
-    </div>
-  )
+function Layout({children}: { children: React.ReactNode }) {
+    return (
+        <div
+            style={{
+                display: 'flex',
+                background: '#D3D3D3'
+            }}
+        >
+            {children}
+        </div>
+    )
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
@@ -60,6 +58,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
     <div
       className='sidebar'
       style={{
+        padding: 20,
         flexShrink: 0,
         display: 'flex',
         flexDirection: 'column',
@@ -84,21 +83,6 @@ function Content({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-    </div>
-  )
-}
-
-function Logo() {
-  return (
-    <div
-      style={{
-        marginTop: 20,
-        marginBottom: 10
-      }}
-    >
-      <a href="/">
-        <img src={logo} height={64} width={64} alt="logo" />
-      </a>
     </div>
   )
 }

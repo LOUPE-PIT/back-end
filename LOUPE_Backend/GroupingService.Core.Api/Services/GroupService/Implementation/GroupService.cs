@@ -29,7 +29,7 @@ public class GroupService : IGroupService
     {
         return await _groupingRespository.GetAll();
     }
-
+    
     /// <inheritdoc/>
     public async Task<Collection<Group>> ByRoomCode(string roomCode)
     {
