@@ -7,6 +7,7 @@ import { Link } from './Link'
 import GlobalServices from '../server/GlobalServices'
 import { FaHome, FaUsers, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import { ChakraProvider } from '@chakra-ui/react'
+import Chat from '../pages/signalR/signalRHub'
 
 export { PageShell }
 
