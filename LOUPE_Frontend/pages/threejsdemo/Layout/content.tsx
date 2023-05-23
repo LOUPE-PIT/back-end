@@ -1,6 +1,7 @@
 ﻿import {Box} from "@chakra-ui/layout";
 import React from "react";
 import Duck from "../../../3Dobjectcomponents/duck";
+import { Redbutton } from "../../../3Dobjectcomponents/redbutton";
 import {Canvas, useThree} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei";
 
@@ -31,7 +32,8 @@ export default function Content() {
                 <pointLight position={[5, 5, 5]} intensity={1} />
                 <pointLight position={[-3, -3, 2]} intensity={1} />
                 <Controls />
-                <Duck position={[0, -1, -3]} />
+                {/* <Duck position={[0, -1, -3]} /> */}
+                <Redbutton position={[0, -1, -3]} />
             </Canvas>
         </Box>
     );
