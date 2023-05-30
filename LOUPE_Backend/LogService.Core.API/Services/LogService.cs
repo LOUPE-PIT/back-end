@@ -49,4 +49,12 @@ public class LogService : ILogService
         response.Result = ActionResult.Succesvol;
         return await Task.FromResult(response);
     }
+
+    public async Task<LogResponse> SaveSyncLog(Log log)
+    {
+        await _logRepository.New(log);
+        var response = new LogResponse();
+        response.Result = ActionResult.Succesvol;
+        return await Task.FromResult(response);
+    }
 }
