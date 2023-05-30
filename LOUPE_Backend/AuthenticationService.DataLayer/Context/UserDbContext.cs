@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using AuthenticationService.DataLayer.Models.User;
 using Microsoft.Extensions.Configuration;
+using AuthenticationService.DataLayer.Models.User;
 
 namespace AuthenticationService.DataLayer.Context
 {
@@ -20,25 +20,12 @@ namespace AuthenticationService.DataLayer.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "";
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-
-            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
-            {
-                var configuration = new ConfigurationBuilder()
-                                    .SetBasePath(Directory.GetCurrentDirectory())
-                                    .AddJsonFile("appsettings.json")
-                                    .Build();
-
-                connectionString = configuration.GetConnectionString("AppDb");
-
-            }
-            else
-            {
-                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
-            }
-
-            
+            var connectionString = configuration.GetConnectionString("AppDb");
 
             optionsBuilder.UseSqlServer(connectionString);
         }
