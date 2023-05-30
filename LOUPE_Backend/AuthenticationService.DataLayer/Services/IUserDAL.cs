@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticationService.DataLayer.Services
 {
-    public interface IAuthenticationDAL
+    public interface IUserDAL
     {
         ActionResult AddUser(UserModel user);
         List<UserModel> GetUsers();

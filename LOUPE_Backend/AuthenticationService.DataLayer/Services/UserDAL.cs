@@ -4,11 +4,11 @@ using AuthenticationService.DataLayer.Context;
 
 namespace AuthenticationService.DataLayer.Services
 {
-    public class AuthenticationDAL : IAuthenticationDAL
+    public class UserDAL : IUserDAL
     {
         private readonly UserDbContext db;
 
-        public AuthenticationDAL(UserDbContext db)
+        public UserDAL(UserDbContext db)
         {
             this.db = db;
         }

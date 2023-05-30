@@ -15,7 +15,7 @@ var authenticationProviderKey = "UserKey";
 
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
-builder.Services.AddScoped<IAuthenticationDAL, AuthenticationDAL>();
+builder.Services.AddScoped<IUserDAL, UserDAL>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddEndpointsApiExplorer();
@@ -94,27 +94,27 @@ app.UseSwagger();
 app.UseSwaggerUI();
 //}
 
-app.MapGet("/user/login/{Guid}", ([FromServices] IAuthenticationDAL db, Guid id) =>
+app.MapGet("/user/login/{Guid}", ([FromServices] IUserDAL db, Guid id) =>
 {
     return db.GetUserById(id);
 });
 
-app.MapDelete("/user/delete/{Guid}", ([FromServices] IAuthenticationDAL db, Guid id) =>
+app.MapDelete("/user/delete/{Guid}", ([FromServices] IUserDAL db, Guid id) =>
 {
     return db.DeleteUserById(id);
 });
 
-app.MapGet("/user/all", ([FromServices] IAuthenticationDAL db) =>
+app.MapGet("/user/all", ([FromServices] IUserDAL db) =>
 {
     return db.GetUsers();
 });
 
-app.MapPut("/user/update/{id}", ([FromServices] IAuthenticationDAL db, UserModel user) =>
+app.MapPut("/user/update/{id}", ([FromServices] IUserDAL db, UserModel user) =>
 {
     db.UpdateUser(user);
 });
 
-app.MapPost("/user/add", ([FromServices] IAuthenticationDAL db, UserModel user) =>
+app.MapPost("/user/add", ([FromServices] IUserDAL db, UserModel user) =>
 {
     db.AddUser(user);
 });
