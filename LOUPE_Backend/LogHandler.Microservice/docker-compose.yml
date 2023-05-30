@@ -13,5 +13,5 @@ services:
     container_name: db
     hostname: db
     environment:
-      SA_PASSWORD: "Welkom12345"
+      SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
       ACCEPT_EULA: "Y"

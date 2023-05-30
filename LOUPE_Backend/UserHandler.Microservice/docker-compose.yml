@@ -1,0 +1,17 @@
+version: "2"
+services:
+  loupe-backend:
+    image: "loupegroup/loupe_user.microservice"
+    depends_on: [db]
+    ports:
+      - "43332:32"
+    environment:
+      - ConnectionStrings__AppDb=Server=192.168.150.128,1401;Database=UserDb;User=SA;Password=Welkom12345
+      
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: db
+    hostname: db
+    environment:
+      SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
+      ACCEPT_EULA: "Y"
