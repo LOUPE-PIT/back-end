@@ -67,10 +67,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserService", "UserService", "{9059713C-EF12-4CF0-B69F-4682E6F3EBC3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.API", "UserService.API\UserService.API.csproj", "{FB30D84A-4880-4F24-ACA9-FA22C7B505E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{08815728-0746-46C3-8222-F9DAD1E96166} = {08815728-0746-46C3-8222-F9DAD1E96166}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Core.API", "UserService.Core.API\UserService.Core.API.csproj", "{08815728-0746-46C3-8222-F9DAD1E96166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Core.API", "UserService.Core.API\UserService.Core.API.csproj", "{08815728-0746-46C3-8222-F9DAD1E96166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.DAL", "UserService.DAL\UserService.DAL.csproj", "{A53CA80A-7B20-4C43-9130-B066B64A6F03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.DAL", "UserService.DAL\UserService.DAL.csproj", "{A53CA80A-7B20-4C43-9130-B066B64A6F03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
