@@ -26,7 +26,7 @@ namespace SynchronizationService.API.Controllers
         public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService, SynchronizationHub synchronizationMessaging)
         {
             _syncLogService = syncLogService;
-            _strategies = strategies.ToDictionary(s => s.Name);
+            _strategies = strategies.ToDictionary(s => s.Name.ToLower());
             _synchronizationMessaging = synchronizationMessaging;
 
             eventTimer.Interval = 2000;
@@ -47,7 +47,7 @@ namespace SynchronizationService.API.Controllers
             transformation.Id = Guid.NewGuid();
             try
             {
-                if (!_strategies.TryGetValue(action, out IActionStrategy? strategy))
+                if (!_strategies.TryGetValue(action.ToLower(), out IActionStrategy? strategy))
                     return NotFound("Given action not found");
 
                 if (await strategy.AddAction(transformation))
