@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using LogService.Api.LogServer;
 using LogService.Core.Api.Services;
 using LogService.DataAccessLayer.Context;
 using LogService.DataAccessLayer.Repositories;
@@ -22,6 +23,8 @@ builder.Services
     .AddControllers()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+builder.Services.AddGrpc();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -31,12 +34,15 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
         });
 });
+
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var y = scope.ServiceProvider.GetRequiredService<LogDbContext>();
-    //y.Database.Migrate();
+    y.Database.Migrate();
 }
+
+app.MapGrpcService<LogServer>();
 
 app.UseDeveloperExceptionPage();
 

@@ -17,7 +17,6 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddScoped<IAuthenticationDAL, AuthenticationDAL>();
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer(connectionString!));
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {

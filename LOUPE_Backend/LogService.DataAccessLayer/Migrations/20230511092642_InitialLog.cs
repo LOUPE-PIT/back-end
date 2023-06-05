@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LogService.DataAccessLayer.Migrations
 {
-    public partial class initialcommit : Migration
+    public partial class InitialLog : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Log",
+                name: "Logs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -21,14 +21,14 @@ namespace LogService.DataAccessLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Log", x => x.Id);
+                    table.PrimaryKey("PK_Logs", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Log");
+                name: "Logs");
         }
     }
 }

@@ -34,7 +34,7 @@ public class GroupingController : ControllerBase
         var groups = await _groupService.GetAll();
         return Ok(groups);
     }
-
+    
     [HttpGet("roomCode")]
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

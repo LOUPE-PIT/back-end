@@ -2,6 +2,9 @@ import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useLogService } from '../../../server/api/logdata/logservice';
 import { Log } from '../../../server/api/logdata/model/log';
 import Logs from './LogsComponent';
+import {
+  Box
+} from "@chakra-ui/layout";
 
 interface LogComponentProps { }
 
@@ -21,7 +24,28 @@ const LogComponent: FC<LogComponentProps> = () => {
     }
   }, [memoizedLogService]);
 
-  return <Logs logs={logs}></Logs>;
+  return (
+      <Box
+          borderRadius="25px"
+          width="100%"
+          alignItems="center"
+          justifyContent="space-between"
+          padding="1rem"
+          color="black"
+          backgroundColor="white"
+      >
+        <div>
+          <h1 className='title'>Geschiedenis</h1>
+          <Box
+              borderRadius="10px"
+              width="100%"
+          >
+            <Logs logs={logs}></Logs>
+          </Box>
+        </div>
+      </Box>
+      
+  );
 };
 
 export default LogComponent;

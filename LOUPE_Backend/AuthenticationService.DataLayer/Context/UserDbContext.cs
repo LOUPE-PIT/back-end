@@ -1,30 +1,33 @@
-﻿using AuthenticationService.DataLayer.Models.User;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using AuthenticationService.DataLayer.Models.User;
 
-namespace AuthenticationService.DataLayer.Context;
-
-public class UserDbContext : DbContext
+namespace AuthenticationService.DataLayer.Context
 {
-    public UserDbContext()
+    public class UserDbContext : DbContext
     {
-    }
 
-    public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
-    {
-    }
+        public UserDbContext()
+        {
 
-    public DbSet<UserModel> User_Db { get; set; }
+        }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
-            .Build();
+        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
+        {
+        }
 
-        var connectionString = configuration.GetConnectionString("AppDb");
+        public DbSet<UserModel> User_Db { get; set; }
 
-        optionsBuilder.UseSqlServer(connectionString);
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var connectionString = configuration.GetConnectionString("AppDb");
+
+            optionsBuilder.UseSqlServer(connectionString);
+        }
     }
 }
