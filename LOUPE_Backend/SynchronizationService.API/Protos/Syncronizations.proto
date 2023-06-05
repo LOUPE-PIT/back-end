@@ -12,8 +12,10 @@ service SyncLog {
 message SyncLogRequest {
 	string userId = 1;
 	string groupId = 2;
-	string startSyncronizationId = 3;
-	string endSyncronizationId = 4;
+	string object = 3;
+	string action = 4;
+	string startSyncronizationId = 5;
+	string endSyncronizationId = 6;
 }
 
 message SyncLogReply {

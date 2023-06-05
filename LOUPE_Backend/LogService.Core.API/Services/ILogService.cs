@@ -11,4 +11,5 @@ public interface ILogService
     Task<LogResponse> New(Log log);
     Task<LogResponse> Update(Log log);
     Task<LogResponse> Delete(Log log);
+    Task<LogResponse> SaveSyncLog(Log log);
 }

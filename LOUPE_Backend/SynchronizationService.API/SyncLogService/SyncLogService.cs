@@ -13,14 +13,16 @@ namespace SynchronizationService.API.SyncLogService
             _channel = GrpcChannel.ForAddress("https://localhost:7123");
         }
         
-        public async Task SendTransformationsToLoggingAsync(Collection<TransformationViewModel> transofrmations)
+        public async Task SendTransformationsToLoggingAsync(Collection<TransformationViewModel> transformations)
         {
             SyncLogRequest request = new SyncLogRequest
             {
-                UserId = transofrmations[0].UserId.ToString(),
-                GroupId = transofrmations[0].GroupId.ToString(),
-                StartSyncronizationId = transofrmations[0].Id.ToString(),
-                EndSyncronizationId = transofrmations[^1].Id.ToString()
+                UserId = transformations[0].UserId.ToString(),
+                Object = transformations[0].ActionType.ObjectName,
+                Action = transformations[0].ActionType.ActionName,
+                GroupId = transformations[0].GroupId.ToString(),
+                StartSyncronizationId = transformations[0].Id.ToString(),
+                EndSyncronizationId = transformations[^1].Id.ToString()
             };
 
             SyncLog.SyncLogClient client = new SyncLog.SyncLogClient(_channel);
