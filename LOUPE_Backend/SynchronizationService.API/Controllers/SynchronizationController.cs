@@ -4,15 +4,18 @@ using SynchronizationService.Core.API.Strategies;
 using MongoDB.Driver;
 using System.Collections.ObjectModel;
 using Timer = System.Timers.Timer;
+using SynchronizationService.API.Hubs;
+using SynchronizationService.API.Hubs.Messages;
 
 namespace SynchronizationService.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]s")]
     public class SynchronizationController : Controller
     {
         private readonly SyncLogService.SyncLogService _syncLogService;
 
         private readonly Dictionary<string, IActionStrategy> _strategies;
+        private readonly SynchronizationHub _synchronizationMessaging;
 
         private readonly int transformationLimit = 12;
 
@@ -20,10 +23,11 @@ namespace SynchronizationService.API.Controllers
 
         private static readonly Timer eventTimer = new Timer();
 
-        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService)
+        public SynchronizationController(IEnumerable<IActionStrategy> strategies, SyncLogService.SyncLogService syncLogService, SynchronizationHub synchronizationMessaging)
         {
             _syncLogService = syncLogService;
             _strategies = strategies.ToDictionary(s => s.Name);
+            _synchronizationMessaging = synchronizationMessaging;
 
             eventTimer.Interval = 2000;
             eventTimer.Elapsed += TimerElapsed;
@@ -79,7 +83,20 @@ namespace SynchronizationService.API.Controllers
 
         private async Task FireEvent()
         {
-            await _syncLogService.SendTransformationsToLoggingAsync(_groupedTransformations);
+            List<List<TransformationViewModel>> GroupedTransformationPerGroup = new();
+
+            List<Guid> GroupIds = _groupedTransformations.Select(tr => tr.GroupId).Distinct().ToList();
+
+            foreach(Guid id in GroupIds)
+            {
+                GroupedTransformationPerGroup.Add(_groupedTransformations.Where(tr => tr.GroupId == id).ToList());
+            }
+
+            foreach(List<TransformationViewModel> synchronizations in GroupedTransformationPerGroup)
+            {
+                await _syncLogService.SendTransformationsToLoggingAsync(new Collection<TransformationViewModel>(synchronizations));
+                SendMessages(synchronizations[^1]);
+            }
 
             _groupedTransformations.Clear();
         }
@@ -89,8 +106,15 @@ namespace SynchronizationService.API.Controllers
             Collection<TransformationViewModel> transformations = new(_groupedTransformations.Where(tr => tr.GroupId == GroupId).ToList());
 
             await _syncLogService.SendTransformationsToLoggingAsync(transformations);
+            SendMessages(transformations[^1]);
 
             _groupedTransformations.Clear();
+        }
+
+        private async Task SendMessages(TransformationViewModel lastTransformation)
+        {
+            SynchronizationMessage message = new SynchronizationMessage() { ObjectName = lastTransformation.ActionType.ObjectName, NewPosition = new MyNumbers(lastTransformation.ActionType.XPos ?? -1, lastTransformation.ActionType.YPos ?? -1, lastTransformation.ActionType.ZPos ?? -1), DegreesRotation = lastTransformation.ActionType.Degrees ?? -1 };
+            _synchronizationMessaging.ReceiveSynchronization(message, lastTransformation.GroupId);
         }
     }
 }
