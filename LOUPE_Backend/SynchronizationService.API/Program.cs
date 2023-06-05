@@ -1,3 +1,5 @@
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using SynchronizationService.API.Extension_Methods;
 using SynchronizationService.API.Hubs;
 using SynchronizationService.Core.API.Profiles;
@@ -19,6 +21,30 @@ builder.Services.AddAutoMapper(typeof(ActionProfile), typeof(TransformationProfi
 
 builder.Services.AddGrpc();
 builder.Services.AddSignalR();
+
+builder.Services.AddOpenTelemetryTracing(builder =>
+{
+    builder
+        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SynchronizationService"))
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation(
+            options => options.Enrich = (activity, eventName, rawObject) =>
+            {
+
+            }
+
+        )
+        .AddGrpcClientInstrumentation(options => options.SuppressDownstreamInstrumentation = true)
+        .AddEntityFrameworkCoreInstrumentation(options => options.SetDbStatementForText = true)
+        .AddZipkinExporter(options =>
+        {
+
+        })
+        .AddJaegerExporter(options =>
+        {
+
+        });
+});
 
 var app = builder.Build();
 

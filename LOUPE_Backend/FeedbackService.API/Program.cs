@@ -4,6 +4,8 @@ using FeedbackService.DAL.Context;
 using FeedbackService.DAL.Models;
 using FeedbackService.DAL.Repository;
 using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
@@ -18,6 +20,33 @@ builder.Services.AddDbContext<FeedbackDbContext>(x => x.UseSqlServer());
 builder.Services.AddTransient<IFeedbackService, FeedbackServiceCore>();
 builder.Services.AddTransient<IFeedbackRepository, FeedbackRepository>();
 builder.Services.AddAutoMapper(typeof(FeedbackProfile));
+
+builder.Services.AddOpenTelemetryTracing(builder =>
+{
+    builder
+        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("FeedbackService"))
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation(
+            options => options.Enrich = (activity, eventName, rawObject) =>
+            {
+                if (eventName == "api/Feedback/All" && rawObject is System.Net.Http.HttpRequestMessage request && request.Method == HttpMethod.Get)
+                {
+                    activity.SetTag("Added message", "Manuelly");
+                }
+            }
+
+        )
+        .AddGrpcClientInstrumentation(options => options.SuppressDownstreamInstrumentation = true)
+        .AddEntityFrameworkCoreInstrumentation(options => options.SetDbStatementForText = true)
+        .AddZipkinExporter(options =>
+        {
+
+        })
+        .AddJaegerExporter(options =>
+        {
+
+        });
+});
 
 
 var app = builder.Build();

@@ -5,6 +5,8 @@ using LogService.DataAccessLayer.Context;
 using LogService.DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +34,30 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins("http://localhost:3000")
                 .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+        });
+});
+
+builder.Services.AddOpenTelemetryTracing(builder =>
+{
+    builder
+        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("LogService"))
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation(
+            options => options.Enrich = (activity, eventName, rawObject) =>
+            {
+
+            }
+
+        )
+        .AddGrpcClientInstrumentation(options => options.SuppressDownstreamInstrumentation = true)
+        .AddEntityFrameworkCoreInstrumentation(options => options.SetDbStatementForText = true)
+        .AddZipkinExporter(options =>
+        {
+
+        })
+        .AddJaegerExporter(options =>
+        {
+
         });
 });
 
