@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserService.DataLayer.Models.User;
 using UserService.DataLayer.Context;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 namespace UserService.DataLayer.Services
 {
@@ -13,32 +15,32 @@ namespace UserService.DataLayer.Services
             this.db = db;
         }
 
-        public List<UserModel> GetUsers() => db.User_Db.ToList();
+        public async Task<ICollection<UserModel>> GetUsers() => db.User_Db.ToList();
 
-        public UserModel UpdateUser(UserModel user)
+        public Task UpdateUser(UserModel user)
         {
             db.User_Db.Update(user);
             db.SaveChanges();
-            return db.User_Db.Where(x => x.userId == user.userId).FirstOrDefault();
+            return Task.CompletedTask;
         }
 
-        public ActionResult AddUser(UserModel user)
+        public async Task AddUser(UserModel user)
         {
-            db.User_Db.Add(user);
+            await db.User_Db.AddAsync(user);
             db.SaveChanges();
-            return new OkResult();
         }
 
-        public UserModel GetUserById(Guid id)
+        public async Task<UserModel> GetUserById(Guid id, CancellationToken cancellationToken)
         {
-            return db.User_Db.Where(x => x.userId == id).FirstOrDefault();
+            return await db.User_Db.AsNoTracking().FirstOrDefaultAsync(u => u.userId == id, cancellationToken);
         }
 
-        public ActionResult DeleteUserById(Guid id)
+        public Task DeleteUserById(Guid id)
         {
             db.User_Db.Remove(db.User_Db.Where(x => x.userId == id).FirstOrDefault());
             db.SaveChanges();
-            return new OkResult();
+            return Task.CompletedTask;
         }
+
     }
 }

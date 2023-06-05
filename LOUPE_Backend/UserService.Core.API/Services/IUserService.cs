@@ -1,9 +1,9 @@
-﻿using UserService.DataLayer.Models.User;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using UserService.DataLayer.Models.User;
 
-namespace UserService.DataLayer.Services
+namespace UserService.Core.API.Services
 {
-    public interface IUserDAL
+    public interface IUserService
     {
         Task AddUser(UserModel user);
         Task<ICollection<UserModel>> GetUsers();

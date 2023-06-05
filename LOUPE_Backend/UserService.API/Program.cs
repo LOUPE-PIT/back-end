@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using UserService.Core.API.Services;
 using UserService.DataLayer.Context;
 using UserService.DataLayer.Models;
 using UserService.DataLayer.Services;
@@ -10,9 +11,10 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();   
 builder.Services.AddDbContext<UserDbContext>(x => x.UseSqlServer());
 builder.Services.AddTransient<IUserDAL, UserDAL>();
+builder.Services.AddTransient<IUserService, UserCore>();
 
 var app = builder.Build();
 
