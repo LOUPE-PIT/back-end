@@ -14,6 +14,8 @@ namespace SynchronizationService.API.Controllers
 
         private readonly Dictionary<string, IActionStrategy> _strategies;
 
+        private readonly int transformationLimit = 12;
+
         private static readonly Collection<TransformationViewModel> _groupedTransformations = new Collection<TransformationViewModel>();
 
         private static readonly Timer eventTimer = new Timer();
@@ -47,7 +49,7 @@ namespace SynchronizationService.API.Controllers
                 if (await strategy.AddAction(transformation))
                     _groupedTransformations.Add(transformation);
 
-                await CheckLastMessage(transformation);
+                await CheckGroupsTransformationSize(transformation);
             }
             catch (MongoException ex)
             {
@@ -61,19 +63,34 @@ namespace SynchronizationService.API.Controllers
             return Ok();
         }
 
-        private async Task CheckLastMessage(TransformationViewModel transformation)
+        private async Task CheckGroupsTransformationSize(TransformationViewModel transformation)
         {
-            if (transformation.IsLast)
+            List<TransformationViewModel> transfomrationsForGroup = _groupedTransformations.Where(tr => tr.GroupId == transformation.GroupId).ToList();
+            if (transfomrationsForGroup.Count >= transformationLimit)
             {
-                await _syncLogService.SendTransformationsToLoggingAsync(_groupedTransformations);
-
-                _groupedTransformations.Clear();
+                await FireEvent(transformation.GroupId);
             }
         }
 
-        private void TimerElapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        private async void TimerElapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("Event fired at {0}", e.SignalTime);
+            await FireEvent();
+        }
+
+        private async Task FireEvent()
+        {
+            await _syncLogService.SendTransformationsToLoggingAsync(_groupedTransformations);
+
+            _groupedTransformations.Clear();
+        }
+
+        private async Task FireEvent(Guid GroupId)
+        {
+            Collection<TransformationViewModel> transformations = new(_groupedTransformations.Where(tr => tr.GroupId == GroupId).ToList());
+
+            await _syncLogService.SendTransformationsToLoggingAsync(transformations);
+
+            _groupedTransformations.Clear();
         }
     }
 }
