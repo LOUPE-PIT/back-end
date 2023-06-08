@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "ObjectHandler.Microservice.Test": {
+    "SynchronizationService.Core.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:56864;http://localhost:56868"
+      "applicationUrl": "https://localhost:56869;http://localhost:56870"
     }
   }
 }
