@@ -6,7 +6,8 @@ SignalR is used for messaging between the Synchronisation service and the Front-
 GRPC is used for remote procedure calls betwen the Synchronisation- and Log Service.
 
 ## Table Of contents
-* Loupe project 
+* Loupe project
+* Back-end 
 * Installation of the project	
 * How to use the project	
 * Feedback Service	
@@ -14,9 +15,13 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 * Logging Service
 * Synchronisation Service
 * User Service
-* Object Service		
+* Object Service
+* Front-end		
+* Installation of the project
 * Useful Sources	
 
+
+# Back-end
 ## Installation of the project
 
 ## How to use the project
@@ -31,8 +36,11 @@ Because this project makes use of the microservice architecture the project is s
 ### Synchronisation Service
 
 ### User Service
-
+The User Service is responsible for all user data and actions (CRUD).
 ### Object Service
+
+# Front-end
+## Installation of the project
 
 ## Useful Sources
 [How to create a minimal api microservice](https://www.youtube.com/watch?v=Z4bINJudHX8&list=PL6tu16kXT9PrlCX-b1o0WdBc56rXHJXLy)
