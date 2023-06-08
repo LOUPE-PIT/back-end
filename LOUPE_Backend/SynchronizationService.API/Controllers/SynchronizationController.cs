@@ -87,12 +87,12 @@ namespace SynchronizationService.API.Controllers
 
             List<Guid> GroupIds = _groupedTransformations.Select(tr => tr.GroupId).Distinct().ToList();
 
-            foreach(Guid id in GroupIds)
+            foreach (Guid id in GroupIds)
             {
                 GroupedTransformationPerGroup.Add(_groupedTransformations.Where(tr => tr.GroupId == id).ToList());
             }
 
-            foreach(List<TransformationViewModel> synchronizations in GroupedTransformationPerGroup)
+            foreach (List<TransformationViewModel> synchronizations in GroupedTransformationPerGroup)
             {
                 await _syncLogService.SendTransformationsToLoggingAsync(new Collection<TransformationViewModel>(synchronizations));
                 SendMessages(synchronizations[^1]);
@@ -113,7 +113,17 @@ namespace SynchronizationService.API.Controllers
 
         private async Task SendMessages(TransformationViewModel lastTransformation)
         {
-            SynchronizationMessage message = new SynchronizationMessage() { ObjectName = lastTransformation.ActionType.ObjectName, NewPosition = new MyNumbers(lastTransformation.ActionType.XPos ?? -1, lastTransformation.ActionType.YPos ?? -1, lastTransformation.ActionType.ZPos ?? -1), DegreesRotation = lastTransformation.ActionType.Degrees ?? -1 };
+            SynchronizationMessage message = new SynchronizationMessage()
+            {
+                ObjectName = lastTransformation.ActionType.ObjectName,
+                NewPosition = new MyNumbers(
+                    lastTransformation.ActionType.XPos ?? -1, 
+                    lastTransformation.ActionType.YPos ?? -1, 
+                    lastTransformation.ActionType.ZPos ?? -1
+                ),
+                DegreesRotation = lastTransformation.ActionType.Degrees ?? -1
+            };
+            Console.WriteLine($"message: {message}");
             _synchronizationMessaging.ReceiveSynchronization(message, lastTransformation.GroupId);
         }
     }

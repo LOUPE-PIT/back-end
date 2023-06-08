@@ -2,8 +2,9 @@
 import React from "react";
 import Duck from "../../../3Dobjectcomponents/duck";
 import { Redbutton } from "../../../3Dobjectcomponents/redbutton";
-import {Canvas, useThree} from "@react-three/fiber";
+import {Canvas, context, useThree} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei";
+import {Synchronization} from "../../signalR/signalRHub"
 
 function Controls() {
     const {
@@ -14,7 +15,13 @@ function Controls() {
     return <OrbitControls args={[camera, domElement]} minDistance={0} maxDistance={10} />;
 }
 
-export default function Content() {
+//change object(string objecname object changediets)
+
+const Content =(transformation: any) => {
+    function click(){
+        console.log(transformation);
+    }
+    console.log(transformation);
     return (
         <Box
             bg="white"
@@ -35,7 +42,11 @@ export default function Content() {
                 {/* <Duck position={[0, -1, -3]} /> */}
                 <Redbutton position={[0, -1, -3]} />
             </Canvas>
+        <button onClick={click}>
+            Click me
+        </button>
         </Box>
     );
 }
 
+export default Content;
