@@ -7,6 +7,7 @@ using SynchronizationService.DataLayer.Models.MongoDB;
 using SynchronizationService.Core.API.Services;
 using SynchronizationService.DataLayer.Services.Interface;
 using SynchronizationService.DataLayer.Services;
+using SynchronizationService.API.Hubs;
 
 namespace SynchronizationService.API.Extension_Methods
 {
@@ -37,6 +38,11 @@ namespace SynchronizationService.API.Extension_Methods
             services.AddTransient<ISynchronizationService, SyncService>();
             services.AddTransient<SyncLogService.SyncLogService>();
             services.AddScoped<ITransformationRepository, TransformationRepository>();
+        }
+
+        public static void AddSynchronizationHub(this IServiceCollection services)
+        {
+            services.AddSingleton<SynchronizationHub>();
         }
     }
 }

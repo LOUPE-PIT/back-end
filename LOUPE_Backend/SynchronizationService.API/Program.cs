@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMongoDB(builder.Configuration.GetSection(nameof(TransformationsDatabaseSettings)), builder.Configuration.GetSection("TransformationsDatabaseSettings:Connectionstring").Value);
 
 builder.Services.AddServices();
+builder.Services.AddSynchronizationHub();
 
 builder.Services.AddStrategies();
 
