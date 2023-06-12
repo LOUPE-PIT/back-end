@@ -26,8 +26,9 @@ a {
   justify-content: center;
 }
 .logout {
-  position: relative;
-  top: 67vh;
+  position: fixed;
+  bottom: 0;
+  width: 4vw;
   border-top: 1px solid white;
 }
 .navitem.is-active {
@@ -35,4 +36,5 @@ a {
 }
 .sidebar {
   background-color: #1066A3;
+  width: 4vw;
 }

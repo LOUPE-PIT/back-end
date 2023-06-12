@@ -58,7 +58,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
     <div
       className='sidebar'
       style={{
-        padding: 20,
+        padding: 0,
         flexShrink: 0,
         display: 'flex',
         flexDirection: 'column',
