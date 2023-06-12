@@ -44,8 +44,7 @@ function Layout({children}: { children: React.ReactNode }) {
     return (
         <div
             style={{
-                display: 'flex',
-                background: '#D3D3D3'
+                display: 'flex'
             }}
         >
             {children}

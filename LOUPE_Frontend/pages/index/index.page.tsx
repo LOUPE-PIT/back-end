@@ -1,19 +1,13 @@
 import React from 'react'
-import { Counter } from './Counter'
+import './code.css'
+import Logo from '../../public/assets/LOUPELOGO.png';
 
 export { Page }
 
 function Page() {
   return (
     <>
-      <h1>Welcome</h1>
-      This page is:
-      <ul>
-        <li>Rendered to HTML.</li>
-        <li>
-          Interactive.test <Counter />
-        </li>
-      </ul>
+      <img className="logo" src={Logo} />
     </>
   )
 }
