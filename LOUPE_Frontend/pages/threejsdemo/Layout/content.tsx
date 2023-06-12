@@ -1,27 +1,58 @@
-﻿import {Box} from "@chakra-ui/layout";
-import React from "react";
+﻿import { Box } from "@chakra-ui/layout";
+import React, { useEffect, useState } from "react";
 import Duck from "../../../3Dobjectcomponents/duck";
 import { Redbutton } from "../../../3Dobjectcomponents/redbutton";
-import {Canvas, context, useThree} from "@react-three/fiber";
-import {OrbitControls} from "@react-three/drei";
-import {Synchronization} from "../../signalR/signalRHub"
+import { Canvas, context, useThree } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { Synchronization } from "../../signalR/signalRHub"
+import * as THREE from 'three';
+import { delay } from "framer-motion";
 
-function Controls() {
-    const {
-        camera,
-        gl: { domElement },
-    } = useThree();
+const Content = ({ transformation }: { transformation: Synchronization }) => {
+    const [scene] = useState<THREE.Scene>(new THREE.Scene());
+    const [rendererRef, setRender] = useState<THREE.WebGLRenderer | null>(null);
+    const [cameraRef, setCamera] = useState<THREE.PerspectiveCamera | null>(null)
 
-    return <OrbitControls args={[camera, domElement]} minDistance={0} maxDistance={10} />;
-}
+    useEffect(() => {
+        if (transformation === undefined)
+            return;
+        let obj = scene.getObjectByName("cube");
+        obj?.position.set(transformation.NewPosition.x, transformation.NewPosition.y, transformation.NewPosition.z);
+        rendererRef.render(scene, cameraRef);
+    }, [transformation])
 
-//change object(string objecname object changediets)
+    useEffect(() => {
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5
+        setCamera(camera);
 
-const Content =(transformation: any) => {
-    function click(){
-        console.log(transformation);
-    }
-    console.log(transformation);
+        let renderer = new THREE.WebGLRenderer();
+        setRender(renderer);
+    }, [])
+
+    useEffect(() => {
+        if(rendererRef === null) return
+        if(cameraRef === null) return
+        rendererRef.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("canvas").appendChild(rendererRef.domElement);
+
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.name = "cube";
+        const geometry2 = new THREE.BoxGeometry(2, 1, 0);
+        const material2 = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const cube2 = new THREE.Mesh(geometry2, material2);
+        cube2.name = "cube2"
+        //cube.add(cube2);
+
+        scene.add(cube);
+
+        cameraRef.position.z = 5;
+
+        rendererRef.render(scene, cameraRef);
+    }, [rendererRef])
+
     return (
         <Box
             bg="white"
@@ -33,18 +64,8 @@ const Content =(transformation: any) => {
             justifyContent="center"
             alignItems="center"
             overflow="hidden"
+            id="canvas"
         >
-            <Canvas style={{ width: '100%', height: '100%' }}>
-                <ambientLight />
-                <pointLight position={[5, 5, 5]} intensity={1} />
-                <pointLight position={[-3, -3, 2]} intensity={1} />
-                <Controls />
-                {/* <Duck position={[0, -1, -3]} /> */}
-                <Redbutton position={[0, -1, -3]} />
-            </Canvas>
-        <button onClick={click}>
-            Click me
-        </button>
         </Box>
     );
 }
