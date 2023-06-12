@@ -2,7 +2,7 @@
 {
     public class FeedbackViewmodel
     {
-        public Guid FeedbackId { get; set; }
+        public Guid? FeedbackId { get; set; }
 
         public Guid UserId { get; set; }
 

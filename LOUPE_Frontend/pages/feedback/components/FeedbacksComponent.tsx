@@ -12,12 +12,7 @@ interface FeedbackProps {
 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 const FeedbacksComponent: FC<FeedbackProps> = ({ feedbacks }: FeedbackProps) => {
-    console.log(feedbacks);
 
-    if(feedbacks.length > 0){
-      console.log("test");
-      console.log(feedbacks[0].date);
-    }
    
     return (
 
@@ -48,9 +43,9 @@ const FeedbacksComponent: FC<FeedbackProps> = ({ feedbacks }: FeedbackProps) => 
                 return (
                     <Box className='feedback' key={feedback.feedbackId}>
                     <Flex align='center'>
-                    <Avatar name={feedback.userId}  bg='red.500'/>
+                    <Avatar name={feedback.userName}  bg='red.500'/>
                       <Spacer />
-                      <Text pl='5'>{feedback.userId}</Text>
+                      <Text pl='5'>{feedback.userName}</Text>
                       <Spacer />
                       <Text pl='20'>{feedback.date}</Text>
                     </Flex>

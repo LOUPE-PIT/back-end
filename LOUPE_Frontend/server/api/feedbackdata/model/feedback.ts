@@ -5,6 +5,7 @@ export interface feedback {
     logId: string;
     feedbackText: string
     date: Date; 
+    userName: string;
 }
 
 

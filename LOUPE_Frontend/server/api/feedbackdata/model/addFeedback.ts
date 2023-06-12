@@ -1,7 +1,8 @@
 
 export interface addFeedback {
-    userId: string;
     logId: string;
+    userId: string;
+    date:string;
     feedbackText: string
 }
 

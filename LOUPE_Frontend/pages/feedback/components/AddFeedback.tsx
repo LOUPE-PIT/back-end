@@ -15,7 +15,8 @@ const AddFeedback = () => {
     const [textValue, setTextValue] = useState('');
     const feedbackInstance: addFeedback = {
         logId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        userId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+        userId: 'd35da748-460e-447b-8e87-6fcb05f8352a',
+        date:  new Date().toLocaleString(),
         feedbackText: textValue
     }
 
