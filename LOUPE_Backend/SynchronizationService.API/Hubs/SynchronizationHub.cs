@@ -14,7 +14,7 @@ namespace SynchronizationService.API.Hubs
 
         public async Task ReceiveSynchronization(SynchronizationMessage message, Guid roomId)
         {
-            await Clients.Group(roomId.ToString()).SendAsync("ReceiveSynchronization", $"{message.NewPosition.ToString()} {message.DegreesRotation} {message.ObjectName}");
+            await Clients.All.SendAsync("ReceiveSynchronization", $"{{ \"NewPosition\": {message.NewPosition.ToString()}, \"DegreesRotation\":{message.DegreesRotation.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture)}, \"ObjectName\":\"{message.ObjectName}\"}}");
         }
     }
 }

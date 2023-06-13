@@ -4,17 +4,17 @@ import { Vector3 } from 'three';
 
 interface ConnectionProps {
     roomId: string;
-}
+    setTransformation: Function;
+    }
 
-interface Synchronization {
+export interface Synchronization {
     NewPosition: Vector3;
     DegreesRotation: number;
     ObjectName: string;
 }
 
-const SignalRConnection: FC<ConnectionProps> = ({ roomId }: ConnectionProps) => {
+const SignalRConnection: FC<ConnectionProps> = ({ roomId, setTransformation}) => {
     const [connection, setConnection] = useState<HubConnection | null>(null);
-    const [synchronization, setSynchronization] = useState<Synchronization | null>(null);
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
@@ -31,17 +31,10 @@ const SignalRConnection: FC<ConnectionProps> = ({ roomId }: ConnectionProps) => 
             .then(result => {
                 connection.invoke("JoinRoom", roomId);
 
-                const synchronization = {} as Synchronization
-                synchronization.DegreesRotation = 1.234;
-                synchronization.NewPosition = new Vector3(1.2, 2.5, 3.3);
-                synchronization.ObjectName = "Schroef25";
-                
-                connection.invoke("ReceiveSynchronization", synchronization, roomId)
-
                 connection.on('ReceiveSynchronization', synchronizationMessage =>{
-                    console.log(synchronizationMessage);
                     const synchronization: Synchronization = JSON.parse(synchronizationMessage);
-                    setSynchronization(synchronization);
+                    
+                    setTransformation(synchronization);
                 });
             })
             .catch(e => console.log('Connection failed: ', e));
@@ -49,15 +42,8 @@ const SignalRConnection: FC<ConnectionProps> = ({ roomId }: ConnectionProps) => 
         }
     }, [connection]);
 
-    const joinRoom = async () => {
-        connection!.invoke("JoinRoom", roomId);
-    };
-
     return (
     <div>
-        {synchronization?.ObjectName}
-        {synchronization?.NewPosition.x} {synchronization?.NewPosition.y} {synchronization?.NewPosition.z}
-        {synchronization?.DegreesRotation}
     </div>
     );
 };
