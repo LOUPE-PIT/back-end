@@ -1,13 +1,12 @@
 {
   "profiles": {
-    "SynchronizationService.DataLayer": {
+    "UserService.Core.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:56863;http://localhost:56866"
-
+      "applicationUrl": "https://localhost:55414;http://localhost:55415"
     }
   }
 }

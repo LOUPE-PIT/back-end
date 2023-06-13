@@ -6,7 +6,9 @@ body {
   margin: 0;
   font-family: sans-serif;
   color: black;
-  background-color: #D3D3D3;
+  background-color: #f5f5f5 !important;
+  max-height: 100%;
+  overflow:hidden;
 }
 * {
   box-sizing: border-box;
@@ -24,8 +26,9 @@ a {
   justify-content: center;
 }
 .logout {
-  position: relative;
-  top: 67vh;
+  position: fixed;
+  bottom: 0;
+  width: 4vw;
   border-top: 1px solid white;
 }
 .navitem.is-active {
@@ -33,4 +36,5 @@ a {
 }
 .sidebar {
   background-color: #1066A3;
+  width: 4vw;
 }
