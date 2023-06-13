@@ -28,14 +28,14 @@ const FeedbacksComponent: FC<FeedbackProps> = ({ feedbacks }: FeedbackProps) => 
          width="100%"
          alignItems="center"
          justifyContent="space-between"
-         padding="1rem"
+         padding="0 1rem 1rem 1rem"
          color="black"
          backgroundColor="white"
          className='feedbackCard' 
          bg='gray.50'
      >
         <CardHeader textAlign="center">
-          <Heading size='lg'>Feedback</Heading>
+          <Heading className="title">Feedback</Heading>
         </CardHeader>
 
 

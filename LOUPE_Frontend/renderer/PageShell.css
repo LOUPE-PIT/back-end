@@ -38,3 +38,7 @@ a {
   background-color: #1066A3;
   width: 4vw;
 }
+.title {
+  font-style: italic;
+  text-align: center;
+}
