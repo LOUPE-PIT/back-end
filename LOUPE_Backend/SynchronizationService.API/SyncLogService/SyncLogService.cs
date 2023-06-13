@@ -25,10 +25,8 @@ namespace SynchronizationService.API.SyncLogService
                 EndSyncronizationId = transformations[^1].Id.ToString()
             };
 
-            //SyncLog.SyncLogClient client = new SyncLog.SyncLogClient(_channel);
-            //SyncLogReply reply = await client.GenerateLogAsync(request);
-
-            //Console.WriteLine(reply.Succeded.ToString());
+            SyncLog.SyncLogClient client = new SyncLog.SyncLogClient(_channel);
+            SyncLogReply reply = await client.GenerateLogAsync(request);
         }
     }
 }
