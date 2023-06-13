@@ -1,23 +1,21 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+# Create a new user
+RUN adduser dotnetuser -D
+
+# Impersonate into the new user
+USER dotnetuser
+
+# Switch to working directory
+WORKDIR /home/dotnetuser/app
+
+# Copy application files into container
+COPY ./FeedbackService.API/build .
+COPY ./FeedbackService.Api.Core .
+COPY ./FeedbackService.DAL .
+
+# Expose port for communication
 EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["FeedbackService.API.csproj", "FeedbackService.API/"]
-RUN dotnet restore "FeedbackService.API/FeedbackService.API.csproj"
-
-WORKDIR "/src/FeedbackService.API"
-COPY . .
-RUN dotnet build "FeedbackService.API.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "FeedbackService.API.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# Set container entrypoint to dotnet application
 ENTRYPOINT ["dotnet", "FeedbackService.API.dll"]
