@@ -8,8 +8,8 @@ export default function Header() {
         <Box
             bg="#1066A3"
             borderRadius="20px"
-            margin="1rem"
-            width="70%"
+            margin="1rem 0"
+            width="100%"
             height="8vh"
             display="flex"
             alignItems="center"

@@ -33,7 +33,7 @@ const Content = ({ transformation }: { transformation: Synchronization }) => {
     useEffect(() => {
         if(rendererRef === null) return
         if(cameraRef === null) return
-        rendererRef.setSize(window.innerWidth, window.innerHeight);
+        rendererRef.setSize(1250, window.innerHeight);
         document.getElementById("canvas").appendChild(rendererRef.domElement);
 
         const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -57,8 +57,7 @@ const Content = ({ transformation }: { transformation: Synchronization }) => {
         <Box
             bg="white"
             borderRadius="20px"
-            margin="1rem"
-            width="70%"
+            width="100%"
             height="85.5vh"
             display="flex"
             justifyContent="center"
