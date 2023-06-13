@@ -27,9 +27,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronizationService.API", "SynchronizationService.API\SynchronizationService.API.csproj", "{DDD0CFC8-E88F-4BAD-A631-C0A95B312DA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GroupingService", "GroupingService", "{DEB90CEE-0BCB-46D8-BD64-FA06177C292E}"
-	ProjectSection(SolutionItems) = preProject
-		Dockerfile = Dockerfile
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupingService.Core.Api", "GroupingService.Core.Api\GroupingService.Core.Api.csproj", "{398C3C1B-CB46-40DC-B486-675DE8617D05}"
 EndProject

@@ -1,21 +1,23 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
-
-# Create a new user
-RUN adduser dotnetuser -D
-
-# Impersonate into the new user
-USER dotnetuser
-
-# Switch to working directory
-WORKDIR /home/dotnetuser/app
-
-# Copy application files into container
-COPY ./FeedbackService.API/build .
-COPY ./FeedbackService.Api.Core .
-COPY ./FeedbackService.DAL .
-
-# Expose port for communication
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
-# Set container entrypoint to dotnet application
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["FeedbackService.API/FeedbackService.API.csproj", "FeedbackService.API/"]
+COPY ["FeedbackService.DAL/FeedbackService.DAL.csproj", "FeedbackService.DAL/"]
+COPY ["FeedbackService.Api.Core/FeedbackService.Api.Core.csproj", "FeedbackService.Api.Core/"]
+RUN dotnet restore "FeedbackService.API/FeedbackService.API.csproj"
+COPY . .
+
+WORKDIR "/src/FeedbackService.API"
+RUN dotnet build "FeedbackService.API.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "FeedbackService.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "FeedbackService.API.dll"]

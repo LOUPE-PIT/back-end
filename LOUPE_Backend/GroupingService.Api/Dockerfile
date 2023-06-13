@@ -5,11 +5,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["./GroupingService.Api/GroupingService.Api.csproj", "GroupingService.Api/"]
-COPY ["./GroupingService.DataAccessLayer/GroupingService.DataAccessLayer.csproj", "GroupingService.DataAccessLayer/"]
-COPY ["./GroupingService.Core.Api/GroupingService.Core.Api.csproj", "GroupingService.Core.Api/"]
+COPY ["GroupingService.Api/GroupingService.Api.csproj", "GroupingService.Api/"]
+COPY ["GroupingService.DataAccessLayer/GroupingService.DataAccessLayer.csproj", "GroupingService.DataAccessLayer/"]
+COPY ["GroupingService.Core.Api/GroupingService.Core.Api.csproj", "GroupingService.Core.Api/"]
 RUN dotnet restore "GroupingService.Api/GroupingService.Api.csproj"
 COPY . .
+
 WORKDIR "/src/GroupingService.Api"
 RUN dotnet build "GroupingService.Api.csproj" -c Release -o /app/build
 
