@@ -1,24 +1,24 @@
-version: "3"
+version: "4"
 services:
-  
-  # LOG Microservice
-  loghandler:
-    image: "loupegroup/loupe_loghandler.microservice:latest"
-    depends_on: [db, rabbit-mq]
-    container_name: loghandler
-    hostname: loghandler
-    ports:
-      - "5000:5000"
-    environment:
-      - ConnectionStrings:AppDb=Server=db,1433;Database=log_db;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
-      - rabbitmq:user=user
-      - rabbitmq:password=password
-      - rabbitmq:ip-address=rabbit-mq:5672
-      - rabbitmq:queue-name=log-queue
-      - ASPNETCORE_URLS=http://+:5000
+# LOGGING SERVICE
+#  logservice:
+#    image: "loupegroup/logservice:1.0.1"
+#    depends_on: [db, rabbit-mq]
+#    container_name: logservice
+#    hostname: logservice
+#    ports:
+#      - "5000:5000"
+#    environment:
+#      - ConnectionStrings:AppDb=Server=db,1433;Database=log_db;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
+#      - rabbitmq:user=user
+#      - rabbitmq:password=password
+#      - rabbitmq:ip-address=rabbit-mq:5672
+#      - rabbitmq:queue-name=log-queue
+#      - ASPNETCORE_URLS=http://+:5000
 
+# GROUPING SERVICE
   groupingservice:
-    image: "loupegroup/grouping-service:latest"
+    image: "loupegroup/groupingservice:1.0.2"
     depends_on: [db]
     container_name: groupingservice
     hostname: groupingservice
@@ -30,74 +30,45 @@ services:
       - rabbitmq:password=password
       - ASPNETCORE_URLS=http://+:5006
 
-  rabbit-mq:
-    image: "rabbitmq:management"
-    container_name: rabbit-mq
-    hostname: rabbit-mq
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    environment:
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=password
-
-
-  # OBJECT
-  objecthandler:
-    image: "loupegroup/loupe_objecthandler.microservice:latest"
-    depends_on: [db, ftp]
-    container_name: objecthandler
-    hostname: objecthandler
-    ports:
-      - "5001:5001"
-    environment:
-      - ConnectionStrings:AppDb=Server=db;Database=object_db;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
-      - FTP:User=username
-      - FTP:Password=mypass
-      - FTP:IpAddress=ftp
-      - ASPNETCORE_URLS=http://+:5001
+# OBJECT SERVICE
+#  objectservice:
+#    image: "loupegroup/objectservice:1.0.1"
+#    depends_on: [db, ftp]
+#    container_name: objectservice
+#    hostname: objectservice
+#    ports:
+#      - "5001:5001"
+#    environment:
+#      - ConnectionStrings:AppDb=Server=db;Database=object_db;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
+#      - FTP:User=username
+#      - FTP:Password=mypass
+#      - FTP:IpAddress=ftp
+#      - ASPNETCORE_URLS=http://+:5001
       
-  ftp:
-    image: stilliard/pure-ftpd:latest
-    container_name: ftp
-    hostname: ftp
-    ports:
-      - "21:21"
-      - "30000-30009:30000-30009"
-    environment:
-      - PUBLICHOST=localhost
-      - FTP_USER_NAME=username
-      - FTP_USER_PASS=mypass
-      - FTP_USER_HOME=/home/username
-
-
-# USER
-  userhandler:
-    image: "loupegroup/loupe_userhandler.microservice:latest"
+# USER SERVICE
+  userservice:
+    image: "loupegroup/userservice:1.0.2"
     depends_on: [db]
-    container_name: userhandler
-    hostname: userhandler
+    container_name: userservice
+    hostname: userservice
     ports:
       - "5002:5002"
     environment:
       - ConnectionStrings:AppDb=Server=db,1433;Database=user_db;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
       - ASPNETCORE_URLS=http://+:5002
-
-
-# API 
-  api-gateway:
-    image: "loupegroup/loupe_api.gateway:latest"
-    container_name: api-gateway
-    hostname: api-gateway
-    depends_on: [userhandler, objecthandler, loghandler, db]
+  
+# SYNCHRONISATION SERVICE
+  synchronisationservice:
+    image: "loupegroup/synchronisationservice:1.0.1"
+    container_name: synchronisationservice
+    hostname: synchronisationservice
     ports:
-      - "8080:80"
+      - "5008:5008"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    links:
-      - "userhandler:userhandler"
-      - "objecthandler:objecthandler"
-      - "loghandler:loghandler"
+      - Connectionstring=mongodb+srv://fhictloupe:pGB4gqHlTZX78CKv@loupedb.lq622nn.mongodb.net/?retryWrites=true&w=majority
+      - ASPNETCORE_URLS=http://+:5008
+      - TransformationsCollectionName=synchronizations
+      - DatabaseName=LOUPEDb
 
 
 # DATABASE
@@ -110,3 +81,29 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"
+
+# MESSAGE QUEUE
+  rabbit-mq:
+    image: "rabbitmq:management"
+    container_name: rabbit-mq
+    hostname: rabbit-mq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+
+# FTP SERVER
+  ftp:
+    image: stilliard/pure-ftpd:latest
+    container_name: ftp
+    hostname: ftp
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    environment:
+      - PUBLICHOST=localhost
+      - FTP_USER_NAME=username
+      - FTP_USER_PASS=mypass
+      - FTP_USER_HOME=/home/username
