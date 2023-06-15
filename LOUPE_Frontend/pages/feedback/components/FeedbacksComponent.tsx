@@ -21,7 +21,6 @@ interface FeedbackProps {
     feedbacks: feedback[];
 }
 
-var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
 
 const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
     return (
@@ -43,10 +42,11 @@ const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
                 </CardHeader>
                 <CardBody
                     width="100%"
+                    overflowY='scroll'
                 >
                     <Stack divider={<StackDivider/>}>
                         <div className='feedbackDiv'>
-                            {feedbacks.map(feedback => {
+                            {feedbacks.length === 0 ?(<div>Selecteer een log.</div>):(feedbacks.map(feedback => {
                                 return (
                                     <Box className='feedback' key={feedback.feedbackId}>
                                         <Flex align='center'>
@@ -61,7 +61,7 @@ const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
                                         </Text>
                                     </Box>
                                 )
-                            })}
+                            }))}
                         </div>
                         <AddFeedback/>
                     </Stack>

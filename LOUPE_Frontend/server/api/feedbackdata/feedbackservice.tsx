@@ -1,14 +1,13 @@
-import React, {FC, createContext, useState} from 'react';
-import {feedback} from './model/feedback';
+import React, { FC, createContext, useState } from 'react';
+import { feedback } from './model/feedback';
 import ProvidedServices from '../../contextmanager/ProvidedServices';
 import Contextualizer from '../../contextmanager/Contextualizer';
 import axios from 'axios';
-import {addFeedback} from './model/addFeedback';
-import {response} from 'express';
+import { addFeedback } from './model/addFeedback';
+import { response } from 'express';
 
 export interface IfeedbackService {
     getfeedbacks(): Promise<feedback[]>,
-
     postfeedback(feedbackInstance: addFeedback): Promise<any>
 }
 
@@ -20,22 +19,23 @@ type feedbackServiceProps = {
 const feedbackServiceContext = Contextualizer.createContext(ProvidedServices.FeedbackService);
 export const usefeedbackService = () => Contextualizer.use<IfeedbackService>(ProvidedServices.FeedbackService);
 
-const FeedbackService: FC<feedbackServiceProps> = ({children}: any) => {
+const FeedbackService: FC<feedbackServiceProps> = ({ children }: any) => {
 
     const FeedbacksService = {
         async getfeedbacks(userid: string): Promise<feedback[]> {
             let tempfeedbacks: feedback[];
-            const result = await axios.get('https://localhost:7114/api/Feedback/All', {params: {userid: userid}})
+            let UserId = "2b6d8bdd-ab4f-4731-934a-4cafd01b86b9"
+            console.log(UserId);
+            const result = await axios.get('https://localhost:7114/api/Feedback/GetByLogId', { params: {UserId}})
+            console.log(result);
             tempfeedbacks = result.data;
 
             await Promise.all(tempfeedbacks.map(async (item) => {
                 const result2 = await axios.get('https://localhost:7211/Users/' + item.userId);
-                console.log("rijst")
+
                 console.log(result2.data.name)
                 item.userName = result2.data.name;
 
-
-                console.log("pasta")
                 console.log(item.userName)
             }));
             console.log(tempfeedbacks)
@@ -43,16 +43,19 @@ const FeedbackService: FC<feedbackServiceProps> = ({children}: any) => {
         },
 
         async postfeedback(addFeedback: addFeedback) {
-            console.log(addFeedback)
-            const feedbackViewmodel = {
-                logId: addFeedback.logId,
-                userId: addFeedback.userId,
-                date: addFeedback.date,
-                feedbackText: addFeedback.feedbackText
-            }
 
+            const feedbackViewmodel = {
+                    logId: addFeedback.logId,
+                    userId: addFeedback.userId,
+                    date: addFeedback.date,
+                    feedbackText: addFeedback.feedbackText
+            }
             await axios.post('https://localhost:7114/api/Feedback', feedbackViewmodel)
         },
+
+
+
+
     }
 
     return (
