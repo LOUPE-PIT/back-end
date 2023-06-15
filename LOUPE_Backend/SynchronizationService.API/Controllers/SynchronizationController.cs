@@ -123,7 +123,7 @@ namespace SynchronizationService.API.Controllers
                 ),
                 DegreesRotation = lastTransformation.ActionType.Degrees ?? -1
             };
-            Console.WriteLine($"message: {message}");
+
             _synchronizationMessaging.ReceiveSynchronization(message, lastTransformation.GroupId);
         }
     }

@@ -8,8 +8,6 @@ namespace SynchronizationService.API.Hubs
         public async Task JoinRoom(Guid roomId)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, roomId.ToString());
-
-            Console.WriteLine($"{Context.ConnectionId} connected to room: {roomId}");
         }
 
         public async Task ReceiveSynchronization(SynchronizationMessage message, Guid roomId)
