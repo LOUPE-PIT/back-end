@@ -17,6 +17,19 @@ services:
       - rabbitmq:queue-name=log-queue
       - ASPNETCORE_URLS=http://+:5000
 
+  groupingservice:
+    image: "loupegroup/grouping-service:latest"
+    depends_on: [db]
+    container_name: groupingservice
+    hostname: groupingservice
+    ports:
+      - "5006:5006"
+    environment:
+      - ConnectionStrings:AppDb=Server=db,1433;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
+      - rabbitmq:user=user
+      - rabbitmq:password=password
+      - ASPNETCORE_URLS=http://+:5006
+
   rabbit-mq:
     image: "rabbitmq:management"
     container_name: rabbit-mq

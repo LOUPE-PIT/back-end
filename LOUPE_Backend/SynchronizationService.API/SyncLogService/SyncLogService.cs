@@ -27,8 +27,6 @@ namespace SynchronizationService.API.SyncLogService
 
             SyncLog.SyncLogClient client = new SyncLog.SyncLogClient(_channel);
             SyncLogReply reply = await client.GenerateLogAsync(request);
-
-            Console.WriteLine(reply.Succeded.ToString());
         }
     }
 }
