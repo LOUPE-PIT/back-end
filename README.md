@@ -36,7 +36,7 @@ The Grouping Service handles making groups of students. This is used by teachers
 The Logging Service is responsible for logging all actions done to a object made by students. When te student makes a change to the object, which he/she is working on, it will be logged. 
 
 ### Synchronisation Service
-The Synchronisation Service makes sure that all clients are kept in sync. The Synchronisation Service uses the logs, made by performing actions to an object, and makes sure everyone 
+The Synchronisation Service makes sure that all clients are kept in sync. The Synchronisation Service uses the logs, made by performing actions to an object, and makes sure everyone sees, and works with the same object, containing the same transformations.
 
 ### User Service
 The User Service is responsible for all user data and actions (CRUD).
