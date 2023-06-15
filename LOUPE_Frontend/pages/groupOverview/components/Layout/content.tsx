@@ -1,8 +1,10 @@
-﻿import {Box} from "@chakra-ui/layout";
+﻿import {Box, VStack, IconButton, Button, Input, Select} from "@chakra-ui/react";
+import {AddIcon} from "@chakra-ui/icons";
 import React, {useEffect, useState} from "react";
 import Group from "../groupComponent/Group";
-import {VStack} from "@chakra-ui/react";
 import axios from "axios";
+import {Text} from "@chakra-ui/layout";
+import CreateGroupForm from "../../Forms/CreateGroupForm";
 
 interface GroupProps {
     selected: boolean;
@@ -15,6 +17,7 @@ interface GroupProps {
 export default function Content() {
     const [selectedGroupIndex, setSelectedGroupIndex] = useState(-1);
     const [groups, setGroups] = useState<GroupProps[]>([]);
+    const [isPopoverOpen, setPopoverOpen] = useState(false);
 
     useEffect(() => {
         fetchGroups();
@@ -22,10 +25,10 @@ export default function Content() {
 
     const fetchGroups = async () => {
         try {
-            const response = await axios.get('https://localhost:7232/Grouping');
+            const response = await axios.get("https://localhost:7232/Grouping");
             setGroups(response.data);
         } catch (error) {
-            console.log('Error fetching groups:', error);
+            console.log("Error fetching groups:", error);
         }
     };
 
@@ -48,8 +51,16 @@ export default function Content() {
     };
     const uniqueGroups = getUniqueGroupsByRoomCode();
 
+    useEffect(() => {
+        if (isPopoverOpen) {
+            document.body.classList.add("blur");
+        } else {
+            document.body.classList.remove("blur");
+        }
+    }, [isPopoverOpen]);
+
     return (
-        <>
+        <Box position="relative">
             <Box
                 bg="white"
                 borderRadius="20px"
@@ -57,6 +68,7 @@ export default function Content() {
                 height="85.5vh"
                 display="flex"
                 overflowY="scroll"
+                position="relative"
             >
                 <VStack width="100%" spacing="4" mt={4}>
                     {uniqueGroups.map((group, index) => (
@@ -70,6 +82,49 @@ export default function Content() {
                     ))}
                 </VStack>
             </Box>
-        </>
+
+            <Box
+                position="absolute"
+                bottom="1rem"
+                left="2rem"
+                zIndex={1}
+                display="flex"
+            >
+                <IconButton
+                    aria-label="Add Group"
+                    icon={<AddIcon/>}
+                    colorScheme="blue"
+                    size="lg"
+                    boxShadow="md"
+                    onClick={() => setPopoverOpen(!isPopoverOpen)}
+                />
+            </Box>
+
+            {isPopoverOpen && (
+                <Box
+                    position="fixed"
+                    right="0"
+                    top="0"
+                    height="100vh"
+                    width="25%"
+                    bg="#1066A3"
+                    zIndex={999}
+                    transition="transform 0.3s ease-in-out"
+                    transform="translateX(0%)"
+                    padding="1rem"
+                    overflowY="scroll"
+                >
+                    <Text
+                        fontSize="24px"
+                        fontWeight="bold"
+                        color="white"
+                        mb="2rem"
+                    >
+                        Maak hier een nieuwe groep aan
+                    </Text>
+                    <CreateGroupForm/>
+                </Box>
+            )}
+        </Box>
     );
 }
