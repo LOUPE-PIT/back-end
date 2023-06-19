@@ -5,7 +5,7 @@ import Contextualizer from '../../contextmanager/Contextualizer';
 import axios from 'axios';
 
 export interface ILogService {
-    getLogs(): Promise<Log[]>
+    getLogs(groupId:string): Promise<Log[]>
 }
 
 type LogServiceProps = {
@@ -19,12 +19,12 @@ const LogService: FC<LogServiceProps> = ({ children }: any) => {
     const [exportData, setLogs] = useState([]);
 
     const logsService = {
-        async getLogs(): Promise<Log[]> {
+        async getLogs(groupId:string): Promise<Log[]> {
+            console.log(groupId)
             let templogs: Log[] = [];
-            let groupId = sessionStorage.getItem('groupId')
             const result = await axios({
                 method: 'get',
-                url: 'https://localhost:7123/{groupId}}',
+                url: 'https://localhost:7123/' + groupId,
                 headers: {
                     'Content-Type': 'application/json',
                 }

@@ -19,6 +19,12 @@
     <ProjectReference Include="..\FeedbackService.Api.Core\FeedbackService.Api.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="build\Microsoft.Extensions.FileSystemGlobbing.dll" />
+    <None Remove="build\Microsoft.Extensions.DependencyInjection.dll" />
+    <None Remove="build\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+  </ItemGroup>
+
   <PropertyGroup>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
