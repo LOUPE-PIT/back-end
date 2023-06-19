@@ -69,7 +69,7 @@ To start working with this project:
 ```console
 npm install
 ```
-- Run the application in the LOUPE_Frontend folder
+- Run the application from the LOUPE_Frontend folder
 ```console
 npm run dev
 ```
