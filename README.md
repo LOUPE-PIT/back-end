@@ -8,7 +8,6 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 ## Table Of contents
 * Loupe project
 * Back-end 
-* Installation of the project	
 * How to use the project	
 * Feedback Service	
 * Grouping Service
@@ -16,28 +15,36 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 * Synchronisation Service
 * User Service
 * Object Service
+* Installation of the project	
 * Front-end		
 * Installation of the project
 * Useful Sources	
 
 
 # Back-end
-## Installation of the project
 
 ## How to use the project
 Because this project makes use of the microservice architecture the project is split into several components/services. 
 
 ### Feedback Service
+The Feedback Service handles giving feedback to actions that users have performed. This is used by teachers in the portal to give feedback to specific actions that a student did.
 
 ### Grouping Service
+The Grouping Service handles making groups of students. This is used by teachers in the portal, the teacher is able to add students to a group. After the students inside a group will be able to work on the same assignment.
 
 ### Logging Service
+The Logging Service is responsible for logging all actions done to a object made by students. When te student makes a change to the object, which he/she is working on, it will be logged. 
 
 ### Synchronisation Service
+The Synchronisation Service makes sure that all clients are kept in sync. The Synchronisation Service uses the logs, made by performing actions to an object, and makes sure everyone sees, and works with the same object, containing the same transformations.
 
 ### User Service
 The User Service is responsible for all user data and actions (CRUD).
+
 ### Object Service
+The Object Service is still a work in progress. Ultimately the Object Service should be used for uploading and managing the different 3D objects that will be used for lessons/assignments.
+
+## Installation of the project
 
 # Front-end
 ## Installation of the project
