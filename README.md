@@ -57,8 +57,7 @@ cd .\Docker_compose\
 ```console
 docker-compose up -d
 ```
-- Note that the -d is optional and will run the containers in detached mode.
-  https://docs.docker.com/language/golang/run-containers/#:~:text=Run%20in%20detached%20mode&text=Docker%20can%20run%20your%20container,you%20to%20the%20terminal%20prompt.
+- Note that the -d is optional and will run the containers in detached mode. [More Info](https://docs.docker.com/language/golang/run-containers/#:~:text=Run%20in%20detached%20mode&text=Docker%20can%20run%20your%20container,you%20to%20the%20terminal%20prompt.)
 
 # Front-end
 ## Installation of the project
