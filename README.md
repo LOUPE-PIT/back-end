@@ -45,6 +45,20 @@ The User Service is responsible for all user data and actions (CRUD).
 The Object Service is still a work in progress. Ultimately the Object Service should be used for uploading and managing the different 3D objects that will be used for lessons/assignments.
 
 ## Installation of the project
+To fully use this project, all services need to be running.
+To start working with this project:
+- Clone the repository to your device
+- Open the repository with your IDE of choice.
+- Start by routing into the correct repository.
+```console
+cd .\Docker_compose\
+```
+- Proceed to launch the containers using the images on the LOUPE container registry
+```console
+docker-compose up -d
+```
+- Note that the -d is optional and will run the containers in detached mode.
+  https://docs.docker.com/language/golang/run-containers/#:~:text=Run%20in%20detached%20mode&text=Docker%20can%20run%20your%20container,you%20to%20the%20terminal%20prompt.
 
 # Front-end
 ## Installation of the project
