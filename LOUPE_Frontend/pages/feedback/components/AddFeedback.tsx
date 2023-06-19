@@ -1,7 +1,7 @@
 import React, {useState, Component} from 'react'
 import FeedbackService from '../../../server/api/feedbackdata/feedbackservice'
 import {usefeedbackService} from '../../../server/api/feedbackdata/feedbackservice';
-import {Box, Flex, Button, Textarea, Input} from '@chakra-ui/react';
+import {Box, Flex, Button, Textarea, Input, Spacer} from '@chakra-ui/react';
 import {addFeedback} from '../../../server/api/feedbackdata/model/addFeedback';
 
 
@@ -21,17 +21,23 @@ const AddFeedback = () => {
 
     async function Add() {
         if (feedbackService !== undefined) {
+            if (textValue.trim() === ''){
            await feedbackService.postfeedback(feedbackInstance), [feedbackService];
-        }
+        }}
         window.location.reload();
         
     }
 
     return (
-        <Box display="flex" margin="1.5rem">
-            <Input color="black" placeholder="Type hier je feedback..." value={textValue}
-                   onChange={(e) => setTextValue(e.target.value)}/>
-            <Button bg="#F0615E" color="white" className="addBtn" onClick={() => Add()}>Add</Button>
+        <Box margin="1.5rem">
+            <form onSubmit={Add}>
+                <Flex>
+                    <Input color="black" placeholder="Type hier je feedback..." value={textValue} required
+                        onChange={(e) => setTextValue(e.target.value)}/>
+                    <Button type='submit' bg="#F0615E" color="white" className="addBtn">Add</Button>
+                </Flex>
+            </form>
+
         </Box>
     )
 }
