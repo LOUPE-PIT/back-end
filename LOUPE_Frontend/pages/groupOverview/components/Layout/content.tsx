@@ -76,6 +76,7 @@ export default function Content() {
                             key={index}
                             selected={selectedGroupIndex === index}
                             onClick={() => handleGroupClick(index)}
+                            id={group.id}
                             name="TestName"
                             roomCode={group.roomCode}
                         />

@@ -21,9 +21,9 @@ public class LogService : ILogService
         return await _logRepository.GetAll();
     }
 
-    public async Task<Log> ById(Guid id)
+    public async Task<Collection<Log>> ByGroupId(Guid groupId)
     {
-        return await _logRepository.ById(id);
+        return (await _logRepository.ByGroupId(groupId))!;
     }
 
     public async Task<LogResponse> New(Log log)

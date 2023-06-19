@@ -61,10 +61,10 @@ public class LogServiceTests
             Created = new DateTimeOffset(DateTime.Now)
         };
 
-        _logRepositoryMock.Setup(x => x.ById(expectedLog.Id)).ReturnsAsync(expectedLog);
+        _logRepositoryMock.Setup(x => x.ByGroupId(expectedLog.Id)).ReturnsAsync(expectedLog);
 
         // Act
-        var result = await _logService.ById(expectedLog.Id);
+        var result = await _logService.ByGroupId(expectedLog.Id);
 
         // Assert
         result.Should().BeEquivalentTo(expectedLog);

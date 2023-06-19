@@ -24,18 +24,12 @@ const FeedbackService: FC<feedbackServiceProps> = ({children}: any) => {
     const FeedbacksService = {
         async getfeedbacks(logId: string): Promise<feedback[]> {
             let tempfeedbacks: feedback[];
-            console.log(logId)
             const result = await axios.get('https://localhost:7114/api/Feedback/GetByLogId', {params: {UserId: logId}})
-            console.log(result);
             tempfeedbacks = result.data;
 
             await Promise.all(tempfeedbacks.map(async (item) => {
                 const result2 = await axios.get('https://localhost:7211/Users/' + item.userId);
-
-                console.log(result2.data.name)
                 item.userName = result2.data.name;
-
-                console.log(item.userName)
             }));
             console.log(tempfeedbacks)
             return tempfeedbacks;

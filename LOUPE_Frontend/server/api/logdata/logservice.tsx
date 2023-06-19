@@ -21,9 +21,10 @@ const LogService: FC<LogServiceProps> = ({ children }: any) => {
     const logsService = {
         async getLogs(): Promise<Log[]> {
             let templogs: Log[] = [];
+            let groupId = sessionStorage.getItem('groupId')
             const result = await axios({
                 method: 'get',
-                url: 'https://localhost:7123/Log',
+                url: 'https://localhost:7123/{groupId}}',
                 headers: {
                     'Content-Type': 'application/json',
                 }

@@ -20,9 +20,10 @@ public class LogRepository : ILogRepository
         return Task.FromResult(new Collection<Log>(_logDbContext.Logs.ToList()));
     }
 
-    public Task<Log?> ById(Guid id)
+    public Task<Collection<Log?>> ByGroupId(Guid groupId)
     {
-        return Task.FromResult(_logDbContext.Logs.FirstOrDefault(l => l.Id == id));
+        var logs = _logDbContext.Logs.Where(l => l.GroupId == groupId).ToList();
+        return Task.FromResult<Collection<Log?>>(new Collection<Log?>(logs!));
     }
 
     public async Task New(Log log)

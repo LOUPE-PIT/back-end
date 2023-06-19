@@ -18,7 +18,8 @@ const LogComponent: FC<LogComponentProps> = () => {
 
   useEffect(() => {
     if (memoizedLogService !== undefined) {
-      memoizedLogService.getLogs().then((result) => {
+      const groupId = sessionStorage.getItem('groupId');
+      memoizedLogService.getLogs(groupId).then((result) => {
         setLogs(result);
       }).catch((error) => {
         console.error(error);
