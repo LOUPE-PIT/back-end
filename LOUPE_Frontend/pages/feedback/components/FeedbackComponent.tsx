@@ -11,7 +11,9 @@ const FeedbackComponent: FC<FeedbackComponentProps> = () => {
 
   useEffect(() => {
     if (feedbackService !== undefined) {
-      feedbackService.getfeedbacks().then((result) => {
+
+      const logId = sessionStorage.getItem('logId');
+      feedbackService.getfeedbacks(logId).then((result) => {
         setFeedbacks(result);
       });
     }

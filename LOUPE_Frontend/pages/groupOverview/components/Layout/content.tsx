@@ -25,7 +25,7 @@ export default function Content() {
 
     const fetchGroups = async () => {
         try {
-            const response = await axios.get("https://localhost:7232/Grouping");
+            const response = await axios.get("http://localhost:5006/Grouping");
             setGroups(response.data);
         } catch (error) {
             console.log("Error fetching groups:", error);

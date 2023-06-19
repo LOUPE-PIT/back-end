@@ -31,7 +31,13 @@ namespace LogService.DataAccessLayer.Migrations
                     b.Property<DateTimeOffset>("Created")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<Guid>("EndSynchronizationId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StartSynchronizationId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Text")

@@ -14,23 +14,24 @@ const AddFeedback = () => {
     const [textValue, setTextValue] = useState('');
     const feedbackInstance: addFeedback = {
         logId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        userId: 'd35da748-460e-447b-8e87-6fcb05f8352a',
+        userId: 'd7cf81dc-f665-496a-8a81-08db7095bd75',
         date: new Date().toISOString(),
         feedbackText: textValue
     }
 
-    function Add() {
+    async function Add() {
         if (feedbackService !== undefined) {
-            feedbackService.postfeedback(feedbackInstance), [feedbackService];
+           await feedbackService.postfeedback(feedbackInstance), [feedbackService];
         }
-        ;
+        window.location.reload();
+        
     }
 
     return (
-        <Box display="flex" alignItems="center">
-            <Input placeholder="Type hier je feedback..." value={textValue}
+        <Box display="flex" margin="1.5rem">
+            <Input color="black" placeholder="Type hier je feedback..." value={textValue}
                    onChange={(e) => setTextValue(e.target.value)}/>
-            <Button className="addBtn" onClick={() => Add()}>Add</Button>
+            <Button bg="#F0615E" color="white" className="addBtn" onClick={() => Add()}>Add</Button>
         </Box>
     )
 }

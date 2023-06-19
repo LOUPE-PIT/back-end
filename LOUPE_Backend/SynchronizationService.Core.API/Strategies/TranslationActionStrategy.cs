@@ -17,11 +17,6 @@ namespace SynchronizationService.Core.API.Strategies
 
         public async Task<bool> AddAction(TransformationViewModel transformation)
         {
-            if (lastTransformation is not null ? transformation.ActionType.XPos == lastTransformation.ActionType.XPos &&
-                transformation.ActionType.YPos == lastTransformation.ActionType.YPos &&
-                transformation.ActionType.ZPos == lastTransformation.ActionType.ZPos : false)
-                return false;
-            
             await _syncService.Add(transformation);
             lastTransformation = transformation;
             return true;

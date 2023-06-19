@@ -25,11 +25,9 @@ interface FeedbackProps {
 const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
     return (
         <>
-
             <Card
                 borderRadius="25px"
                 width="100%"
-                alignItems="center"
                 justifyContent="space-between"
                 color="black"
                 backgroundColor="white"
@@ -63,9 +61,9 @@ const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
                                 )
                             }))}
                         </div>
-                        <AddFeedback/>
                     </Stack>
                 </CardBody>
+                <AddFeedback/>
             </Card>
         </>
     );

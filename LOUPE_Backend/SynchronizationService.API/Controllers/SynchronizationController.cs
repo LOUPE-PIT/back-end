@@ -29,7 +29,7 @@ namespace SynchronizationService.API.Controllers
             _strategies = strategies.ToDictionary(s => s.Name.ToLower());
             _synchronizationMessaging = synchronizationMessaging;
 
-            eventTimer.Interval = 2000;
+            eventTimer.Interval = 100;
             eventTimer.Elapsed += TimerElapsed;
             eventTimer.Enabled = true;
         }

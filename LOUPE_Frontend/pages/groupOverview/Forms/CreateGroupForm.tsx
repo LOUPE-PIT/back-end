@@ -46,12 +46,12 @@ export default function CreateGroupForm() {
     const handleFormSubmit = async () => {
         try {
             const payload = {
-                userIds: inputFields.filter(Boolean), // Remove any empty values from inputFields array
+                userIds: inputFields.filter(Boolean),
             };
 
-            await axios.post('https://localhost:7232/grouping', payload);
+            await axios.post('http://localhost:5006/grouping', payload);
             console.log('Data submitted successfully!');
-            window.location.reload(); // Reload the page
+            window.location.reload();
         } catch (error) {
             console.error('Error submitting data:', error);
         }

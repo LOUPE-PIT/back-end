@@ -1,13 +1,14 @@
-import React, { FC, createContext, useState } from 'react';
-import { feedback } from './model/feedback';
+import React, {FC, createContext, useState, useEffect} from 'react';
+import {feedback} from './model/feedback';
 import ProvidedServices from '../../contextmanager/ProvidedServices';
 import Contextualizer from '../../contextmanager/Contextualizer';
 import axios from 'axios';
-import { addFeedback } from './model/addFeedback';
-import { response } from 'express';
+import {addFeedback} from './model/addFeedback';
+import {response} from 'express';
 
 export interface IfeedbackService {
-    getfeedbacks(): Promise<feedback[]>,
+    getfeedbacks(logId: string): Promise<feedback[]>,
+
     postfeedback(feedbackInstance: addFeedback): Promise<any>
 }
 
@@ -19,14 +20,12 @@ type feedbackServiceProps = {
 const feedbackServiceContext = Contextualizer.createContext(ProvidedServices.FeedbackService);
 export const usefeedbackService = () => Contextualizer.use<IfeedbackService>(ProvidedServices.FeedbackService);
 
-const FeedbackService: FC<feedbackServiceProps> = ({ children }: any) => {
-
+const FeedbackService: FC<feedbackServiceProps> = ({children}: any) => {
     const FeedbacksService = {
-        async getfeedbacks(userid: string): Promise<feedback[]> {
+        async getfeedbacks(logId: string): Promise<feedback[]> {
             let tempfeedbacks: feedback[];
-            let UserId = "2b6d8bdd-ab4f-4731-934a-4cafd01b86b9"
-            console.log(UserId);
-            const result = await axios.get('https://localhost:7114/api/Feedback/GetByLogId', { params: {UserId}})
+            console.log(logId)
+            const result = await axios.get('https://localhost:7114/api/Feedback/GetByLogId', {params: {UserId: logId}})
             console.log(result);
             tempfeedbacks = result.data;
 
@@ -45,19 +44,14 @@ const FeedbackService: FC<feedbackServiceProps> = ({ children }: any) => {
         async postfeedback(addFeedback: addFeedback) {
 
             const feedbackViewmodel = {
-                    logId: addFeedback.logId,
-                    userId: addFeedback.userId,
-                    date: addFeedback.date,
-                    feedbackText: addFeedback.feedbackText
+                logId: addFeedback.logId,
+                userId: addFeedback.userId,
+                date: addFeedback.date,
+                feedbackText: addFeedback.feedbackText
             }
             await axios.post('https://localhost:7114/api/Feedback', feedbackViewmodel)
         },
-
-
-
-
     }
-
     return (
         <>
             <feedbackServiceContext.Provider value={FeedbacksService}>
