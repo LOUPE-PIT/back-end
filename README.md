@@ -62,6 +62,7 @@ docker-compose up -d
 # Front-end
 ## Installation of the project
 To start working with this project:
+- Install node version .... [Link](https://nodejs.org/en)
 - Clone the repository to your device
 - Open the repository with your IDE of choice.
 - Start by installing necessary packages.
