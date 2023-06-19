@@ -3,30 +3,29 @@
 /* width */
 ::-webkit-scrollbar {
     width: 20px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+}
 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #F0615E; 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #F0615E;
     border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+}
 
-  .addBtn{
-    margin-top: 5%;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.addBtn{
     color: #f1f1f1;
     background-color: #F0615E !important;
-    
+
 }
 
 
@@ -36,11 +35,11 @@
 
 .feedbackDiv{
     overflow-x: hidden;
-    height: 500px;
+    height: 50vh;
     padding: 30px;
 }
 
 .feedbackCard{
     color: #474C69;
-    
+
 }

@@ -25,13 +25,11 @@ namespace FeedbackService.API.Controllers
             return Ok(feedback);
         }
 
-        [HttpPost("Create")]
+        [HttpPost]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Create(FeedbackViewmodel feedbackViewmodel)
+        public async Task<IActionResult> Create([FromBody] FeedbackViewmodel feedbackViewmodel)
         {
-
             await _feedbackService.Create(feedbackViewmodel);
-
             return Ok();
         }
 
