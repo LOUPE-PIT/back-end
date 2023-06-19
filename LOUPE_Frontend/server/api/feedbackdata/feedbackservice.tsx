@@ -38,10 +38,10 @@ const FeedbackService: FC<feedbackServiceProps> = ({children}: any) => {
         async postfeedback(addFeedback: addFeedback) {
 
             const feedbackViewmodel = {
-                logId: addFeedback.logId,
-                userId: addFeedback.userId,
-                date: addFeedback.date,
-                feedbackText: addFeedback.feedbackText
+                    logId: addFeedback.logId,
+                    userId: addFeedback.userId,
+                    date: addFeedback.date,
+                    feedbackText: addFeedback.feedbackText
             }
             await axios.post('https://localhost:7114/api/Feedback', feedbackViewmodel)
         },
