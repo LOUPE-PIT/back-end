@@ -61,6 +61,17 @@ docker-compose up -d
 
 # Front-end
 ## Installation of the project
+To start working with this project:
+- Clone the repository to your device
+- Open the repository with your IDE of choice.
+- Start by installing necessary packages.
+```console
+npm install
+```
+- Run the application in the LOUPE_Frontend folder
+```console
+npm run dev
+```
 
 ## Useful Sources
 [How to create a minimal api microservice](https://www.youtube.com/watch?v=Z4bINJudHX8&list=PL6tu16kXT9PrlCX-b1o0WdBc56rXHJXLy)
