@@ -2,9 +2,11 @@ import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useLogService } from '../../../server/api/logdata/logservice';
 import { Log } from '../../../server/api/logdata/model/log';
 import Logs from './LogsComponent';
+import '../code.css';
 import {
   Box
 } from "@chakra-ui/layout";
+import { Heading } from '@chakra-ui/react';
 
 interface LogComponentProps { }
 
@@ -35,7 +37,7 @@ const LogComponent: FC<LogComponentProps> = () => {
           backgroundColor="white"
       >
         <div>
-          <h1 className='title'>Geschiedenis</h1>
+          <Heading className='title'>Geschiedenis</Heading>
           <Box
               borderRadius="10px"
               width="100%"
