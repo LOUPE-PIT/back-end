@@ -24,7 +24,11 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 # Back-end
 
 ## How to use the project
-Because this project makes use of the microservice architecture the project is split into several components/services. 
+Because this project makes use of the microservice architecture the project is split into several components/services.
+These different microservices consist of 3 projects:
+- The DAL, or data access layer is responsible for handling data persistence and database interactions. It provides an abstraction layer between the application and the underlying data storage system. The DAL project communicates with the database to perform CRUD (Create, Read, Update, Delete) operations and ensures data integrity and consistency.
+- API.Core, this project serves as the core functionality and business logic layer of the microservice. It encapsulates the essential business rules and operations of the application. It defines the models, services and interfaces that represent the core functionalities of the microservice. The API.Core project does not directly handle the HTTP requests but provides a foundation for the API layer to build upon.
+- API, the API project is responsible for exposing the microservice's functionalities to clients through HTTP-based APIs. It acts as a communication interface between the clients and the core logic of the microservice. This layer handles incoming HTTP requests, parses the request parameters and routes them to the appropriate API.Core service or method. 
 
 ### Feedback Service
 The Feedback Service handles giving feedback to actions that users have performed. This is used by teachers in the portal to give feedback to specific actions that a student did.
@@ -45,11 +49,38 @@ The User Service is responsible for all user data and actions (CRUD).
 The Object Service is still a work in progress. Ultimately the Object Service should be used for uploading and managing the different 3D objects that will be used for lessons/assignments.
 
 ## Installation of the project
+To fully use this project, all services need to be running.
+To start working with this project:
+- Clone the repository to your device
+- Open the repository with your IDE of choice.
+- Start by routing into the correct repository.
+```console
+cd .\Docker_compose\
+```
+- Proceed to launch the containers using the images on the LOUPE container registry
+```console
+docker-compose up -d
+```
+- Note that the -d is optional and will run the containers in detached mode. [More Info](https://docs.docker.com/language/golang/run-containers/#:~:text=Run%20in%20detached%20mode&text=Docker%20can%20run%20your%20container,you%20to%20the%20terminal%20prompt.)
 
 # Front-end
 ## Installation of the project
+To start working with this project:
+- Install node version 18.16.0 (or LTS) [link](https://nodejs.org/en)
+- Clone the repository to your device
+- Open the repository with your IDE of choice.
+- Start by installing necessary packages.
+```console
+npm install
+```
+- Run the application from the LOUPE_Frontend folder
+```console
+npm run dev
+```
 
 ## Useful Sources
+[What are microservices?](https://microservices.io/)
+
 [How to create a minimal api microservice](https://www.youtube.com/watch?v=Z4bINJudHX8&list=PL6tu16kXT9PrlCX-b1o0WdBc56rXHJXLy)
 
 [Mega directory to all project related documents](https://mega.nz/fm/poAQnJhZ)
