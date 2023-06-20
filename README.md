@@ -26,7 +26,7 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 At the moment of writing, the backend functions the way it was intended. There are some issues that could be addressed, these issues can be found in the [backlog](https://github.com/orgs/LOUPE-PIT/projects/1).
 The frontend has some experimental work, like the use of Vite.js and Three.js. Because of that, there might be a lot of improvements possible frontend wise.
 
-At the moment, this application is only used for the students/teacher portal. In the future it should be possible to use the application together with unity clients to actually work in a Mixed Reality space.
+At the moment, this application is only used for the student/teacher portal. In the future it should be possible to use the application together with unity clients to actually work in a Mixed Reality space.
 
 # Back-end
 
