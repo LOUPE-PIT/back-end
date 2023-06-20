@@ -19,7 +19,13 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 * Installation of the project	
 * Front-end		
 * Installation of the project
-* Useful Sources	
+* Useful Sources
+* Dependencies	
+
+# Evaluation and future
+At the moment of writing, the backend functions the way it was intended. There are some issues that could be addressed, these issues can be found in the [backlog](https://github.com/orgs/LOUPE-PIT/projects/1).
+The frontend has some experimental work, like the use of Vite.js and Three.js. 
+Front-end is experimental 
 
 
 # Back-end
@@ -38,10 +44,10 @@ The Feedback Service handles giving feedback to actions that users have performe
 The Grouping Service handles making groups of students. This is used by teachers in the portal, the teacher is able to add students to a group. After the students inside a group will be able to work on the same assignment.
 
 ### Logging Service
-The Logging Service is responsible for logging all actions done to a object made by students. When te student makes a change to the object, which he/she is working on, it will be logged. 
+The Logging Service is responsible for logging all actions done to a object made by students. When the student makes a change to the object, which he/she is working on, it will be logged. Note that these logs are text, like: User A did X  
 
 ### Synchronisation Service
-The Synchronisation Service makes sure that all clients are kept in sync. The Synchronisation Service uses the logs, made by performing actions to an object, and makes sure everyone sees, and works with the same object, containing the same transformations.
+
 
 ### User Service
 The User Service is responsible for all user data and actions (CRUD).
@@ -70,11 +76,11 @@ To start working with this project:
 - Install node version 18.16.0 (or LTS) [link](https://nodejs.org/en)
 - Clone the repository to your device
 - Open the repository with your IDE of choice.
+- Run the application from the LOUPE_Frontend folder
 - Start by installing necessary packages.
 ```console
 npm install
 ```
-- Run the application from the LOUPE_Frontend folder
 ```console
 npm run dev
 ```
@@ -91,3 +97,146 @@ npm run dev
 [Mega directory to all project related documents](https://mega.nz/fm/poAQnJhZ)
 
 [See the Trello board for open issues](https://trello.com/b/RDldlSvD/loupe-back-end)
+
+## Dependencies
+| Service              | Package                                           | Version                          |
+|----------------------|---------------------------------------------------|----------------------------------|
+| FeedbackService      | **API**                                           |                                  |
+|                      | Microsoft.EntityFrameworkCore                      | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Design              | 7.0.4                            |
+|                      | Swashbuckle.AspNetCore                            | 6.2.3                            |
+|                      |                                                   |                                  |
+|                      | **Core**                                          |                                  |
+|                      | AutoMapper                                       | 12.0.1                           |
+|                      | AutoMapper.Extensions.Microsoft.DependencyInjection | 12.0.1                           |
+|                      |                                                   |                                  |
+|                      | **DAL**                                           |                                  |
+|                      | Microsoft.EntityFrameworkCore                      | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Design              | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Tools                | 7.0.4                            |
+|                      | Microsoft.Extensions.Configuration                | 7.0.0                            |
+|                      | Microsoft.Extensions.Configuration.Json           | 7.0.0                            |
+|                      |                                                   |                                  |
+|                      | **Test**                                          |                                  |
+|                      | coverlet.collector                                | 3.1.0                            |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Microsoft.NET.Test.Sdk                           | 16.11.0                          |
+|                      | Moq                                              | 4.18.4                           |
+|                      | NUnit                                            | 3.13.2                           |
+|                      | NUnit3TestAdapter                                | 4.0.0                            |
+| GroupingService      | **API**                                           |                                  |
+|                      | EntityFramework                                  | 6.4.4                            |
+|                      | Microsoft.EntityFrameworkCore                      | 6.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Relational           | 6.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 6.0.4                            |
+|                      | Swashbuckle.AspNetCore.Annotations                | 6.5.0                            |
+|                      | Swashbuckle.AspNetCore.SwaggerUI                  | 6.5.0                            |
+|                      |                                                   |                                  |
+|                      | **Core**                                          |                                  |
+|                      | Refit                                            | 6.3.2                            |
+|                      |                                                   |                                  |
+|                      | **DAL**                                           |                                  |
+|                      | Microsoft.EntityFrameworkCore                      | 6.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Design              | 6.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 6.0.4                            |
+|                      | Microsoft.Extensions.Configuration                | 8.0.0-preview.2.23128.3         |
+|                      | Microsoft.Extensions.Configuration.Abstracions    | 8.0.0-preview.2.23128.3         |
+|                      | Microsoft.Extensions.Configuration.FileExtensions | 8.0.0-preview.2.23128.3         |
+|                      | Microsoft.Extensions.Configuration.Json           | 8.0.0-preview.2.23128.3         |
+|                      |                                                   |                                  |
+|                      | **Test**                                          |                                  |
+|                      | coverlet.collector                                | 3.1.2                            |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Microsoft.NET.Test.Sdk                           | 17.1.0                           |
+|                      | Moq                                              | 4.18.4                           |
+|                      | NUnit                                            | 3.13.3                           |
+|                      | NUnit.Analyzers                                  | 3.3.0                            |
+|                      | NUnit3TestAdapter                                | 4.2.1                            |
+| LogService           | **Api**                                           |                                  |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Google.Protobuf                                  | 3.22.3                           |
+|                      | Grpc.AspNetCore.Server.ClientFactory              | 2.52.0                           |
+|                      | Grpc.Tools                                       | 2.54.0                           |
+|                      |                                                   |                                  |
+|                      | **Core**                                          |                                  |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Swashbuckle.AspNetCore.Swaggergen                 | 6.5.0                            |
+|                      | Swashbuckle.AspNetCore.SwaggerUI                  | 6.5.0                            |
+|                      |                                                   |                                  |
+|                      | **DAL**                                           |                                  |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Microsoft.EntityFrameworkCore                      | 6.0.15                           |
+|                      | Microsoft.EntityFrameworkCore.Design              | 6.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 6.0.15                           |
+|                      | Microsoft.Extensions.Configuration.FileExtensions | 7.0.0                            |
+|                      | Microsoft.Extensions.Configuration.Json           | 7.0.0                            |
+|                      | Microsoft.NET.Test.Sdk                           | 17.6.0-preview-20230223-05      |
+|                      |                                                   |                                  |
+|                      | **Test**                                          |                                  |
+|                      | coverlet.collector                                | 3.1.2                            |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Microsoft.NET.Test.Sdk                           | 17.6.0-preview-20230223-05      |
+|                      | Moq                                              | 4.18.4                           |
+|                      | NUnit                                            | 3.13.3                           |
+|                      | NUnit.Analyzers                                  | 3.3.0                            |
+|                      | NUnit3TestAdapter                                | 4.2.1                            |
+| ObjectHandler        | **Microservice**                                  |                                  |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | FluentFTP                                        | 37.0.2                           |
+|                      | Microsoft.EntityFrameworkCore                      | 6.0.5                            |
+|                      | Microsoft.EntityFrameworkCore.Design              | 6.0.5                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 6.0.5                            |
+|                      | Microsoft.VisualStudio.Azure.Containers.Tools.Targets | 1.14.0                        |
+|                      | Moq                                              | 4.18.4                           |
+|                      | Swashbuckle.AspNetCore                            | 6.2.3                            |
+|                      |                                                   |                                  |
+|                      | **Test**                                          |                                  |
+|                      | coverlet.collector                                | 3.1.2                            |
+|                      | FluentAssertions                                 | 6.10.0                           |
+|                      | Microsoft.AspNetCore.Mvc.Testing                  | 6.0.3                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 8.0.0-preview.2.23128.3         |
+|                      | Microsoft.NET.Test.Sdk                           | 16.11.0                          |
+|                      | Moq                                              | 4.18.4                           |
+|                      | MSTest.TestAdapter                               | 2.2.7                            |
+|                      | MSTest.TestFramework                             | 2.2.7                            |
+|                      | xunit                                            | 2.4.1                            |
+|                      | xunit.extensibility.core                         | 2.4.1                            |
+|                      | xunit.runner.console                             | 2.4.1                            |
+|                      | xunit.runner.visualstudio                         | 2.4.3                            |
+| SynchronisationService | **API**                                          |                                  |
+|                      | Google.Protobuf                                  | 3.22.3                           |
+|                      | Grpc.AspNetCore.Server.ClientFactory              | 2.52.0                           |
+|                      | Grpc.Tools                                       | 2.54.0                           |
+|                      | Microsoft.VisualStudio.Azure.Containers.Tools.Targets | 1.17.2                        |
+|                      | Swashbuckle.AspNetCore                            | 6.5.0                            |
+|                      |                                                   |                                  |
+|                      | **Core**                                          |                                  |
+|                      | AutoMapper                                       | 12.0.1                           |
+|                      | AutoMapper.Extensions.Microsoft.DependencyInjection | 12.0.1                           |
+|                      |                                                   |                                  |
+|                      | **DAL**                                           |                                  |
+|                      | Microsoft.Extensions.Configuration.Json           | 7.0.0                            |
+|                      | MongoDB.Driver                                   | 2.19.1                           |
+| UserService          | **API**                                           |                                  |
+|                      | Microsoft.EntityFrameworkCore                      | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Design              | 7.0.4                            |
+|                      | Swashbuckle.AspNetCore                            | 6.2.3                            |
+|                      |                                                   |                                  |
+|                      | **Core**                                          |                                  |
+|                      | NONE                                             |                                  |
+|                      |                                                   |                                  |
+|                      | **DAL**                                           |                                  |
+|                      | Microsoft.AspNetCore.Mvc.Core                     | 2.2.5 (Deprecated)               |
+|                      | Microsoft.EntityFrameworkCore                      | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Design              | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.SqlServer            | 7.0.4                            |
+|                      | Microsoft.EntityFrameworkCore.Tools                | 7.0.4                            |
+|                      | Microsoft.Extensions.Configuration                | 7.0.0                            |
+|                      | Microsoft.Extensions.Configuration.Json           | 7.0.0                            |
+| API.Gateway          | FluentAssertions                                 | 6.10.0                           |
+|                      | Microsoft.VisualStudio.Azure.Containers.Tools.Targets | 1.14.0                        |
+|                      | MMLib.SwaggerForOcelot                           | 5.0.3                            |
+|                      | Moq                                              | 4.18.4                           |
+|                      | Ocelot                                           | 18.0.0                           |
+|                      | Swashbuckle.AspNetCore                            | 6.3.1                            |
