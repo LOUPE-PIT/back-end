@@ -10,7 +10,6 @@ interface FeedbackProps {
 }
 
 const AddFeedback = () => {
-    
     const feedbackService = usefeedbackService();
     const [textValue, setTextValue] = useState('');
 
@@ -24,9 +23,11 @@ const AddFeedback = () => {
             feedbackText: textValue
         }
         if (feedbackService !== undefined) {
-            await feedbackService.postfeedback(feedbackInstance), [feedbackService];
+
+           await feedbackService.postfeedback(feedbackInstance), [feedbackService];
         }
-        window.location.reload()
+        window.location.reload();
+        
     }
 
     return (

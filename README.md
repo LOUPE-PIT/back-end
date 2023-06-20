@@ -47,7 +47,7 @@ The Grouping Service handles making groups of students. This is used by teachers
 The Logging Service is responsible for logging all actions done to a object made by students. When the student makes a change to the object, which he/she is working on, it will be logged. Note that these logs are text, like: User A did X  
 
 ### Synchronisation Service
-The Synchronisation Service 
+The Synchronisation Service is responsible for syncing the object state, between all connected clients. It sends transformations, containing x,y,z or rotation values. The transformations are also sent to the Log Service, to be logged with the performed action.
 
 ### User Service
 The User Service is responsible for all user data and actions (CRUD).
@@ -59,6 +59,7 @@ The Object Service is still a work in progress. Ultimately the Object Service sh
 To fully use this project, all services need to be running.
 To start working with this project:
 - Clone the repository to your device
+- Make sure you are on the S6_VJ2023.dev branch.
 - Open the repository with your IDE of choice.
 - Start by routing into the correct repository.
 ```console
@@ -74,7 +75,8 @@ docker-compose up -d
 ## Installation of the project
 To start working with this project:
 - Install node version 18.16.0 (or LTS) [link](https://nodejs.org/en)
-- Clone the repository to your device
+- Clone the repository to your device.
+- Make sure you are on the S6_VJ2023.dev branch.
 - Open the repository with your IDE of choice.
 - Start by routing to the LOUPE_Frontend folder.
 - Start by installing necessary packages.
