@@ -1,5 +1,6 @@
 import React, {Component, FC} from 'react'
 import {feedback} from '../../../server/api/feedbackdata/model/feedback';
+import dayjs from 'dayjs';
 import {
     Avatar,
     Card,
@@ -13,7 +14,8 @@ import {
     Flex,
     Button,
     Textarea,
-    Spacer
+    Spacer,
+    HStack
 } from '@chakra-ui/react';
 import AddFeedback from './AddFeedback';
 
@@ -47,13 +49,13 @@ const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
                             {feedbacks.length === 0 ?(<div>Selecteer een log.</div>):(feedbacks.map(feedback => {
                                 return (
                                     <Box className='feedback' key={feedback.feedbackId} mb={10}>
-                                        <Flex align='center'>
-                                            <Avatar name={feedback.userName} bg='red.500'/>
-                                            <Spacer/>
-                                            <Text pl='1'>{feedback.userName}</Text>
-                                            <Spacer/>
-                                            <Text pl='20'>{feedback.date}</Text>
-                                        </Flex>
+                                        <HStack align='center' spacing='24px'>
+                                            <Avatar name={feedback.userName} bg='red.500' />
+                                  
+                                            <Text>{feedback.userName}</Text>
+           
+                                            <Text>{dayjs(feedback.date).format("MM/DD/YYYY")}</Text>
+                                        </HStack>
                                         <Text pt='2' fontSize='sm'>
                                             {feedback.feedbackText}
                                         </Text>
