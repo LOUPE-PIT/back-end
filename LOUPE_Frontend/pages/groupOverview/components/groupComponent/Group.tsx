@@ -20,6 +20,7 @@ export default function Group({ selected, onClick, id, name, roomCode }: GroupPr
         setIsClicked(!isClicked);
         if (onClick) {
             onClick();
+            await sessionStorage.clear();
             await sessionStorage.setItem('groupId', id);
             window.location.reload();
         }

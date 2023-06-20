@@ -15,6 +15,23 @@ services:
 #      - rabbitmq:ip-address=rabbit-mq:5672
 #      - rabbitmq:queue-name=log-queue
 #      - ASPNETCORE_URLS=http://+:5000
+  
+# LOGGING SERVICE
+  feedbackservice:
+    image: "loupegroup/feedbackservice:1.0.1"
+    depends_on: [db, rabbit-mq]
+    container_name: feedbackservice
+    hostname: feedbackservice
+    ports:
+      - "5000:5000"
+    environment:
+      - ConnectionStrings:AppDb=Server=db,1433;Database=feedback_db;User Id=SA;Password=Welkom12345;TrustServerCertificate=true
+      - rabbitmq:user=user
+      - rabbitmq:password=password
+      - rabbitmq:ip-address=rabbit-mq:5672
+      - rabbitmq:queue-name=log-queue
+      - ASPNETCORE_URLS=http://+:5000
+  
 
 # GROUPING SERVICE
   groupingservice:
