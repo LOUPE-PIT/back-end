@@ -51,9 +51,7 @@ const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
                                     <Box className='feedback' key={feedback.feedbackId} mb={10}>
                                         <HStack align='center' spacing='24px'>
                                             <Avatar name={feedback.userName} bg='red.500' />
-                                  
                                             <Text>{feedback.userName}</Text>
-           
                                             <Text>{dayjs(feedback.date).format("MM/DD/YYYY")}</Text>
                                         </HStack>
                                         <Text pt='2' fontSize='sm'>

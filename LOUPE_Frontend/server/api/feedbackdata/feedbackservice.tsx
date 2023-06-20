@@ -36,7 +36,7 @@ const FeedbackService: FC<feedbackServiceProps> = ({children}: any) => {
         },
 
         async postfeedback(addFeedback: addFeedback) {
-
+            console.log("The feedbck: ",addFeedback)
             const feedbackViewmodel = {
                     logId: addFeedback.logId,
                     userId: addFeedback.userId,
