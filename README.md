@@ -76,11 +76,12 @@ To start working with this project:
 - Install node version 18.16.0 (or LTS) [link](https://nodejs.org/en)
 - Clone the repository to your device
 - Open the repository with your IDE of choice.
-- Run the application from the LOUPE_Frontend folder
+- Start by routing to the LOUPE_Frontend folder.
 - Start by installing necessary packages.
 ```console
 npm install
 ```
+- Run the application 
 ```console
 npm run dev
 ```
