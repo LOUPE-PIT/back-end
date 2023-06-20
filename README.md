@@ -83,6 +83,8 @@ npm run dev
 
 [Backlog with open issues](https://github.com/orgs/LOUPE-PIT/projects/1)
 
+[Figma designs for the portal](https://www.figma.com/file/Zrbd25ObPN7vdwjT1SpIrd/LOUPE-Designs?type=design&node-id=0-1)
+
 ## Resources from older groups
 
 [Mega directory to all project related documents](https://mega.nz/fm/poAQnJhZ)
