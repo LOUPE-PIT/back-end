@@ -7,6 +7,7 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 
 ## Table Of contents
 * Loupe project
+* Evaluation and future
 * Back-end 
 * How to use the project	
 * Feedback Service	
