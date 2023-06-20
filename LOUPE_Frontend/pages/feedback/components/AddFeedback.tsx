@@ -14,16 +14,16 @@ const AddFeedback = () => {
     const [textValue, setTextValue] = useState('');
     const feedbackInstance: addFeedback = {
         logId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        userId: 'd7cf81dc-f665-496a-8a81-08db7095bd75',
+        userId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
         date: new Date().toISOString(),
         feedbackText: textValue
     }
 
     async function Add() {
         if (feedbackService !== undefined) {
-            if (textValue.trim() === ''){
+
            await feedbackService.postfeedback(feedbackInstance), [feedbackService];
-        }}
+        }
         window.location.reload();
         
     }

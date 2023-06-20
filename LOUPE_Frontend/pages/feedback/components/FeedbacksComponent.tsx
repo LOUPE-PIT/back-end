@@ -47,12 +47,13 @@ const FeedbacksComponent: FC<FeedbackProps> = ({feedbacks}: FeedbackProps) => {
                     <Stack divider={<StackDivider/>}>
                         <div className='feedbackDiv'>
                             {feedbacks.length === 0 ?(<div>Selecteer een log.</div>):(feedbacks.map(feedback => {
+                                const userName = feedback.userName || "guest";
                                 return (
                                     <Box className='feedback' key={feedback.feedbackId} mb={10}>
                                         <HStack align='center' spacing='24px'>
                                             <Avatar name={feedback.userName} bg='red.500' />
                                   
-                                            <Text>{feedback.userName}</Text>
+                                        <Text>{userName}</Text>
            
                                             <Text>{dayjs(feedback.date).format("MM/DD/YYYY")}</Text>
                                         </HStack>
