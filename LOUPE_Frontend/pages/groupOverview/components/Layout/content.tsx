@@ -26,6 +26,7 @@ export default function Content() {
     const fetchGroups = async () => {
         try {
             const response = await axios.get("http://localhost:5006/Grouping");
+            console.log(response.data)
             setGroups(response.data);
         } catch (error) {
             console.log("Error fetching groups:", error);
@@ -76,6 +77,7 @@ export default function Content() {
                             key={index}
                             selected={selectedGroupIndex === index}
                             onClick={() => handleGroupClick(index)}
+                            id={group.id}
                             name="TestName"
                             roomCode={group.roomCode}
                         />

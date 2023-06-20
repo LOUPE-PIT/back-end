@@ -16,10 +16,13 @@ interface GroupProps {
 export default function Group({ selected, onClick, id, name, roomCode }: GroupProps) {
     const [isClicked, setIsClicked] = useState(false);
 
-    const handleClick = () => {
+    const  handleClick = async () => {
         setIsClicked(!isClicked);
         if (onClick) {
             onClick();
+            await sessionStorage.clear();
+            await sessionStorage.setItem('groupId', id);
+            window.location.reload();
         }
     };
 

@@ -27,13 +27,13 @@ public class LogController : ControllerBase
         return Ok(await _logService.GetAll());
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("/{id}")]
     [ProducesResponseType(typeof(Log), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ById(Guid id)
     {
-        return Ok(await _logService.ById(id));
+        return Ok(await _logService.ByGroupId(id));
     }
     
     [HttpPost]

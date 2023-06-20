@@ -12,14 +12,16 @@ interface FeedbackProps {
 const AddFeedback = () => {
     const feedbackService = usefeedbackService();
     const [textValue, setTextValue] = useState('');
-    const feedbackInstance: addFeedback = {
-        logId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        userId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        date: new Date().toISOString(),
-        feedbackText: textValue
-    }
 
-    async function Add() {
+    async function Add(event: React.FormEvent) {
+        event.preventDefault();
+        let logId = sessionStorage.getItem('logId');
+        const feedbackInstance: addFeedback = {
+            logId: logId,
+            userId: 'd7cf81dc-f665-496a-8a81-08db7095bd75',
+            date: new Date().toISOString(),
+            feedbackText: textValue
+        }
         if (feedbackService !== undefined) {
 
            await feedbackService.postfeedback(feedbackInstance), [feedbackService];

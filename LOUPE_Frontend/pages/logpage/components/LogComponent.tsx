@@ -9,7 +9,7 @@ const LogComponent: FC<LogProps> = ({ log }: LogProps) => {
     const setLogId = (id: string) => {
         sessionStorage.setItem('logId', id);
         document.cookie = `logId=${id}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
-        window.location.reload();
+        window.location.reload()
     };
     
     return (

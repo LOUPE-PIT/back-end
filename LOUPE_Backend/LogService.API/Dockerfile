@@ -12,12 +12,13 @@ RUN dotnet restore "LogService.API/LogService.API.csproj"
 COPY . .
 
 WORKDIR "/src/LogService.API"
-RUN dotnet build "LogService.Api.csproj" -c Release -o /app/build
+RUN dotnet build "LogService.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LogService.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "LogService.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "LogService.API.dll"]
+
