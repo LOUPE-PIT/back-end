@@ -81,7 +81,9 @@ npm run dev
 ## Useful Sources
 [What are microservices?](https://microservices.io/)
 
-[How to create a minimal api microservice](https://www.youtube.com/watch?v=Z4bINJudHX8&list=PL6tu16kXT9PrlCX-b1o0WdBc56rXHJXLy)
+[Backlog with open issues](https://github.com/orgs/LOUPE-PIT/projects/1)
+
+## Resources from older groups
 
 [Mega directory to all project related documents](https://mega.nz/fm/poAQnJhZ)
 
