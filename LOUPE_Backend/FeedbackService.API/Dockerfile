@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["FeedbackService.API/FeedbackService.API.csproj", "FeedbackService.API/"]
+COPY ["LOUPE_Backend/FeedbackService.API/FeedbackService.API.csproj", "FeedbackService.API/"]
 COPY ["FeedbackService.DAL/FeedbackService.DAL.csproj", "FeedbackService.DAL/"]
 COPY ["FeedbackService.Api.Core/FeedbackService.Api.Core.csproj", "FeedbackService.Api.Core/"]
 RUN dotnet restore "FeedbackService.API/FeedbackService.API.csproj"
