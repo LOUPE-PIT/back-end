@@ -68,6 +68,11 @@ jobs:
             PATH_TO_DOCKERFILE: "./LOUPE_Backend/FeedbackService.API/",
             DOCKER_IMAGE_NAME: "feedbackservice:latest",
             DOCKER_REPO_NAME: "loupegroup"
+          },          
+          {
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/ObjectHandler.Microservice/",
+            DOCKER_IMAGE_NAME: "objecthandler.microservice:latest",
+            DOCKER_REPO_NAME: "loupegroup/loupe_objecthandler.microservice"
           }
         ]
 
