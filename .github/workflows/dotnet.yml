@@ -70,18 +70,15 @@ jobs:
             PATH_TO_DOCKERFILE: "./LOUPE_Backend/FeedbackService.API/",
             DOCKER_IMAGE_NAME: "feedbackservice:latest",
             DOCKER_REPO_NAME: "loupegroup"
-          },
-      ]
+          }
+        ]
 
     steps:
-    - name: Clone repo to runner
-      uses: actions/checkout@v3
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
 
-    - name: containerize 
-      uses: ./.github/actions/containerize
-      with:
-        PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
-        DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE_NAME}}
-        DOCKER_REPO_NAME: ${{matrix.array.DOCKER_REPO_NAME}}
-        DOCKER_ACCTOKEN: ${{secrets.DOCKER_ACCTOKEN}}
-        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      - name: containerize 
+        uses: ./.github/actions/containerize
+        with:
+          PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
+          DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE
