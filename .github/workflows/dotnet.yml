@@ -10,12 +10,10 @@ jobs:
       matrix: 
         PATH_TO_SLN_OR_CSPROJ:
           - "./LOUPE_Backend/UserService.API/UserService.API.csproj"
-          - "./LOUPE_Backend/LogService.API/LogService.API.csproj"
           - "./LOUPE_Backend/SynchronizationService.API/SynchronizationService.API.csproj"
           - "./LOUPE_Backend/GroupingService.Api/GroupingService.Api.csproj"
           - "./LOUPE_Backend/FeedbackService.API/FeedbackService.API.csproj"
           - "./LOUPE_Backend/ObjectHandler.Microservice/ObjectHandler.Microservice.csproj"
-          - "./LOUPE_Backend/LOUPE_Backend.sln"
 
     steps:
       - name: Clone repo to runner
