@@ -60,7 +60,7 @@ jobs:
             DOCKER_REPO_NAME: "loupegroup"
           },
           {
-            PATH_TO_DOCKERFILE: "./LOUPE_Backend/SynchronisationService.API/",
+            PATH_TO_DOCKERFILE: "./LOUPE_Backend/SynchronizationService.API/",
             DOCKER_IMAGE_NAME: "synchronisationservice:latest",
             DOCKER_REPO_NAME: "loupegroup"
           },
