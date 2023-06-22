@@ -23,7 +23,10 @@ GRPC is used for remote procedure calls betwen the Synchronisation- and Log Serv
 * Dependencies	
 
 # Evaluation and future
-At the moment of writing, the backend functions the way it was intended. There are some issues that could be addressed, these issues can be found in the [backlog](https://github.com/orgs/LOUPE-PIT/projects/1).
+At the moment of writing, the backend functions the way it was intended. 
+The focus should lie on the integration with multiple unity clients and the game design aspect of things.
+The Microsoft authentication is also a work in progress.
+There are some issues that could be addressed, these issues can be found in the [backlog](https://github.com/orgs/LOUPE-PIT/projects/1).
 The frontend has some experimental work, like the use of Vite.js and Three.js. Because of that, there might be a lot of improvements possible frontend wise.
 
 At the moment, this application is only used for the student/teacher portal. In the future it should be possible to use the application together with unity clients to actually work in a Mixed Reality space.
@@ -47,16 +50,22 @@ The Grouping Service handles making groups of students. This is used by teachers
 The Logging Service is responsible for logging all actions done to a object made by students. When the student makes a change to the object, which he/she is working on, it will be logged. Note that these logs are text, like: User A did X  
 
 ### Synchronisation Service
-The Synchronisation Service is responsible for syncing the object state, between all connected clients. It sends transformations, containing x,y,z or rotation values. The transformations are also sent to the Log Service, to be logged with the performed action.
+The Synchronisation Service is responsible for syncing the object state, between all connected clients. It sends transformations, containing x,y,z, state or rotation values. The transformations are also sent to the Log Service, to be logged with the performed action this event is sent using gRPC.
 
 ### User Service
 The User Service is responsible for all user data and actions (CRUD).
+
+### Authentication Service
+The Microsoft authentications which is still a work in progress and not integrated with the React application.
 
 ### Object Service
 The Object Service is still a work in progress. Ultimately the Object Service should be used for uploading and managing the different 3D objects that will be used for lessons/assignments.
 
 ## Installation of the project
-To fully use this project, all services need to be running.
+To fully use this project, all services need to be running. 
+This can be done either through your IDE for development or through the docker-compose file.
+For credentials to the container registry and other information, please refer to the [Trello board](https://trello.com/b/RDldlSvD/loupe-back-end).
+You can find all credentials plus a roadmap in that Trello board, all open issues on this board should be ignored. For open issues refer to the github project board.
 To start working with this project:
 - Clone the repository to your device
 - Make sure you are on the S6_VJ2023.dev branch.
@@ -102,6 +111,7 @@ npm run dev
 [See the Trello board for open issues](https://trello.com/b/RDldlSvD/loupe-back-end)
 
 ## Dependencies
+All used dependencies within the different microservices.
 | Service              | Package                                           | Version                          |
 |----------------------|---------------------------------------------------|----------------------------------|
 | FeedbackService      | **API**                                           |                                  |
