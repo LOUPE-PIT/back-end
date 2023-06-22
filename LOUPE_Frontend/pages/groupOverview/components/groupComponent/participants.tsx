@@ -21,7 +21,7 @@ export default function Participants({roomCode}: ParticipantsProps) {
 
     const fetchParticipants = async () => {
         try {
-            const response = await axios.get(`http://localhost:5006/Grouping/roomCode?roomCode=${roomCode}`);
+            const response = await axios.get(`https://localhost:7232/Grouping/roomCode?roomCode=${roomCode}`);
             setParticipants(response.data.map((participant: Participant) => participant.userId));
         } catch (error) {
             console.log('Error fetching participants:', error);

@@ -49,7 +49,7 @@ export default function CreateGroupForm() {
                 userIds: inputFields.filter(Boolean),
             };
 
-            await axios.post('http://localhost:5006/grouping', payload);
+            await axios.post('https://localhost:7232/grouping', payload);
             console.log('Data submitted successfully!');
             window.location.reload();
         } catch (error) {
