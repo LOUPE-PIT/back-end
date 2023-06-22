@@ -81,6 +81,8 @@ docker-compose up -d
 - Note that the -d is optional and will run the containers in detached mode. [More Info](https://docs.docker.com/language/golang/run-containers/#:~:text=Run%20in%20detached%20mode&text=Docker%20can%20run%20your%20container,you%20to%20the%20terminal%20prompt.)
 
 # Front-end
+The front end is a supporting aspect to the LOUPE project where a 3d model is rendered and updated live based on the changes made in Unity.
+It is meant to give a teacher insights in the work a group of students has done. It is a supporting aspect which is not finished. A lot of issues that could be worked on are written in the product backlog of the repository.
 ## Installation of the project
 To start working with this project:
 - Install node version 18.16.0 (or LTS) [link](https://nodejs.org/en)
