@@ -16,7 +16,4 @@ public class Group
     [Required]
     [DataMember]
     public string RoomCode { get; set; }
-
-    [DataMember]
-    public Guid UserId { get; set; }
 }

@@ -27,6 +27,8 @@ public interface IGroupService
     /// <param name="cancellationToken"></param>
     Task<GroupActionResponse> NewAsync(GroupRequestBody groupRequestBody, CancellationToken cancellationToken);
 
+    Task<GroupActionResponse> CreateGroup(CancellationToken cancellationToken);
+
     /// <summary>
     /// 
     /// </summary>

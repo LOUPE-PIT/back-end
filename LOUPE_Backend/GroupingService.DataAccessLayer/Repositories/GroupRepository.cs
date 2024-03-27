@@ -36,13 +36,18 @@ public class GroupRepository : IGroupRepository
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
+    public async Task CreateGroup(Group group, GroupDbContext dbContext, CancellationToken cancellationToken)
+    {
+        await dbContext.Groups.AddAsync(group, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
     public async Task ArchiveAsync(Group group, CancellationToken cancellationToken)
     {
         var groupToBeArchived = new ArchivedGroup
         {
             Id = group.Id,
-            RoomCode = group.RoomCode,
-            UserId = group.UserId
+            RoomCode = group.RoomCode
         };
         
         _groupDbContext.Groups.Remove(group);

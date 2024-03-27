@@ -49,6 +49,13 @@ public class GroupingController : ControllerBase
         return Ok(group);
     }
 
+
+    /// <summary>
+    /// DEPRICATED USE CREATEGROUP INSTEAD
+    /// </summary>
+    /// <param name="group"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost]
     [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -56,6 +63,20 @@ public class GroupingController : ControllerBase
     public async Task<IActionResult> New([FromBody] GroupRequestBody group, CancellationToken cancellationToken)
     {
         return Ok(await _groupService.NewAsync(group, cancellationToken));
+    }
+
+    /// <summary>
+    /// Creates a group with a id and roomcode
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    [HttpPost("Create")]
+    [ProducesResponseType(typeof(Group), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> CreateGroup(CancellationToken cancellationToken)
+    {
+        return Ok(await _groupService.CreateGroup(cancellationToken));
     }
 
     [HttpDelete("roomCode")]

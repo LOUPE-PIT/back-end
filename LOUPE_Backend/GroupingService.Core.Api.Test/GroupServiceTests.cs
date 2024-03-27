@@ -35,7 +35,7 @@ public class GroupServiceTests
         {
             new Group {
                 RoomCode = "ABCDEFG",
-                UserId = Guid.Parse("596d9da2-905e-48e4-aab5-41b29c89786f"), 
+/*                UserId = Guid.Parse("596d9da2-905e-48e4-aab5-41b29c89786f"), */
             },
         };
 

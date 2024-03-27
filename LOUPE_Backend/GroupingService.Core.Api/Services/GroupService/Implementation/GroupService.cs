@@ -42,16 +42,30 @@ public class GroupService : IGroupService
     {
         var response = new GroupActionResponse();
         var roomCode = await _roomCodeService.GenerateUniqueRoomCode();
-        
+
         foreach (var userId in groupRequestBody.UserIds)
         {
             var groupEntry = new Group
             {
                 RoomCode = roomCode,
-                UserId = userId
+                //pacUserId = userId
             };
             await _groupingRespository.NewAsync(groupEntry, new GroupDbContext(), cancellationToken);
         }
+
+        response.Result = ActionResult.Succesvol;
+        response.ResultString = Enum.GetName(typeof(ActionResult), ActionResult.Succesvol);
+        return await Task.FromResult(response);
+    }
+
+    public async Task<GroupActionResponse> CreateGroup(CancellationToken cancellationToken)
+    {
+        var response = new GroupActionResponse();
+        var roomCode = await _roomCodeService.GenerateUniqueRoomCode();
+
+        Group group = new Group { RoomCode = roomCode };
+
+        await _groupingRespository.CreateGroup(group, new GroupDbContext(), cancellationToken);
 
         response.Result = ActionResult.Succesvol;
         response.ResultString = Enum.GetName(typeof(ActionResult), ActionResult.Succesvol);
